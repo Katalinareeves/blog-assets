@@ -1,11 +1,11 @@
 {
   "weekLabel": "semana del 27 de julio",
-  "generatedAt": "2026-07-27T06:37:05.081465+00:00",
+  "generatedAt": "2026-07-27T12:30:57.687748+00:00",
   "songs": [
     {
       "title": "Dying To Love",
       "artist": "Bad Omens",
-      "plays": "6 reproducciones",
+      "plays": "6 reproducciones",
       "videoId": "lsb4TskX3kU",
       "src": "https://www.youtube.com/watch?v=lsb4TskX3kU",
       "cover": "",
@@ -14,7 +14,7 @@
     {
       "title": "bad decisions",
       "artist": "Bad Omens",
-      "plays": "5 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "KzHa9rlvUng",
       "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
       "cover": "",
@@ -23,7 +23,7 @@
     {
       "title": "Nico and the Niners",
       "artist": "twenty one pilots",
-      "plays": "5 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "DBD_naiiXkQ",
       "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
       "cover": "",
@@ -32,7 +32,7 @@
     {
       "title": "Showbiz",
       "artist": "Hayley Williams",
-      "plays": "5 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "naKCSRndTZg",
       "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
       "cover": "../assets/image/cover6.jpg",
@@ -41,7 +41,7 @@
     {
       "title": "DEMONIAS MUÑECAS",
       "artist": "Metrika",
-      "plays": "4 reproducciones",
+      "plays": "4 reproducciones",
       "videoId": "Ow_xdmCWivw",
       "src": "https://www.youtube.com/watch?v=Ow_xdmCWivw",
       "cover": "",
@@ -51,20 +51,86 @@
   "artists": [
     {
       "artist": "Twenty One Pilots",
-      "time": "2 horas",
+      "time": "2 horas",
       "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
       "cover": "",
       "external": true
     },
     {
       "artist": "Bad Omens",
-      "time": "1 hora",
+      "time": "1 hora",
       "src": "https://www.youtube.com/watch?v=lsb4TskX3kU",
       "cover": "",
       "external": true
     }
   ],
   "pastWeeks": [
+    {
+      "label": "semana del 27 de julio",
+      "songs": [
+        {
+          "title": "Dying To Love",
+          "artist": "Bad Omens",
+          "plays": "6 reproducciones",
+          "videoId": "lsb4TskX3kU",
+          "src": "https://www.youtube.com/watch?v=lsb4TskX3kU",
+          "cover": "",
+          "external": true
+        },
+        {
+          "title": "bad decisions",
+          "artist": "Bad Omens",
+          "plays": "5 reproducciones",
+          "videoId": "KzHa9rlvUng",
+          "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
+          "cover": "",
+          "external": true
+        },
+        {
+          "title": "Nico and the Niners",
+          "artist": "twenty one pilots",
+          "plays": "5 reproducciones",
+          "videoId": "DBD_naiiXkQ",
+          "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
+          "cover": "",
+          "external": true
+        },
+        {
+          "title": "Showbiz",
+          "artist": "Hayley Williams",
+          "plays": "5 reproducciones",
+          "videoId": "naKCSRndTZg",
+          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
+          "cover": "../assets/image/cover6.jpg",
+          "external": false
+        },
+        {
+          "title": "DEMONIAS MUÑECAS",
+          "artist": "Metrika",
+          "plays": "4 reproducciones",
+          "videoId": "Ow_xdmCWivw",
+          "src": "https://www.youtube.com/watch?v=Ow_xdmCWivw",
+          "cover": "",
+          "external": true
+        }
+      ],
+      "artists": [
+        {
+          "artist": "Twenty One Pilots",
+          "time": "2 horas",
+          "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
+          "cover": "",
+          "external": true
+        },
+        {
+          "artist": "Bad Omens",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=lsb4TskX3kU",
+          "cover": "",
+          "external": true
+        }
+      ]
+    },
     {
       "label": "semana del 27 de julio",
       "songs": [
