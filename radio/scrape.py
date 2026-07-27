@@ -128,6 +128,18 @@ def find_songs(blobs):
 _ARTIST_SUBTITLE = re.compile(r"^\d+\s+\S+$")
 
 
+def _thumbnail_url(renderer):
+    thumbs = (
+        renderer.get("thumbnailRenderer", {})
+        .get("musicThumbnailRenderer", {})
+        .get("thumbnail", {})
+        .get("thumbnails", [])
+    )
+    if not thumbs:
+        return ""
+    return max(thumbs, key=lambda t: t.get("width", 0)).get("url", "")
+
+
 def find_artists(blobs, known_artists):
     """Busca, entre todos los musicCarouselShelfRenderer cuyos items tengan
     forma de 'artista + una sola cifra de tiempo' (ej. '2 horas'), el que mas
@@ -157,7 +169,13 @@ def find_artists(blobs, known_artists):
                 if not _ARTIST_SUBTITLE.match(subtitle_text):
                     ok = False
                     break
-                parsed.append({"artist": title_runs[0]["text"], "time": subtitle_text})
+                parsed.append(
+                    {
+                        "artist": title_runs[0]["text"],
+                        "time": subtitle_text,
+                        "photo": _thumbnail_url(renderer),
+                    }
+                )
             if not ok:
                 continue
             score = sum(1 for a in parsed if a["artist"].lower() in known_lower)
@@ -232,12 +250,14 @@ def main():
         if not candidates:
             continue
         best = max(candidates, key=lambda s: plays_number(s["plays"]))
+        # La tapa siempre es la foto real del artista (asi se ve algo aunque
+        # su cancion representativa todavia no tenga mp3 propio subido).
         artists.append(
             {
                 "artist": a["artist"],
                 "time": a["time"],
                 "src": best["src"],
-                "cover": best["cover"],
+                "cover": a["photo"] or best["cover"],
                 "external": best["external"],
             }
         )
