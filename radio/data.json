@@ -61,10 +61,10 @@
     {
       "artist": "Bring Me the Horizon",
       "time": "2 horas",
-      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Hospital%20for%20Souls.mp3",
+      "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
       "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
-      "external": false,
-      "videoId": "-_pj39Xeabo"
+      "external": true,
+      "videoId": "UonVoc65dx8"
     },
     {
       "artist": "Bad Omens",
@@ -77,18 +77,18 @@
     {
       "artist": "Paramore",
       "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=2kw3RkxAAjk",
+      "src": "https://www.youtube.com/watch?v=1VPotzhpAGE",
       "cover": "https://yt3.googleusercontent.com/302b-QV3HY1-IE-qMD1tHKoHlA4GczxhZWUBuTdYSJzC8WQQdOB6lb9zfq1FLTZypjKGgnGAYg=w544-h544-l90-rj",
       "external": true,
-      "videoId": "2kw3RkxAAjk"
+      "videoId": "1VPotzhpAGE"
     },
     {
       "artist": "AKRIILA",
       "time": "55 minutos",
-      "src": "https://www.youtube.com/watch?v=_rBbdr8Gads",
-      "cover": "https://yt3.googleusercontent.com/S0qZEE-KZ-PmFR3tN7MUb2-udxr_T9a3VFf3T6PO69PmC3oM3D6vQVRqVuSh3Tcq6D_Z1hkE5llNakeL=w544-h544-l90-rj",
+      "src": "https://www.youtube.com/watch?v=7um_CSNuFbc",
+      "cover": "https://yt3.googleusercontent.com/EY3AOZS9MZUqCglsFmB65Y0mIgVIb8wcRXpjEi2HCQ5Keckta2KhAPkq4LyYScUGMtvV5qCGya6QzdA=w120-h120-l90-rj",
       "external": true,
-      "videoId": "_rBbdr8Gads"
+      "videoId": "7um_CSNuFbc"
     }
   ],
   "pastWeeks": [
