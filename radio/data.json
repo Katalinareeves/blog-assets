@@ -1,18 +1,84 @@
 {
   "weekLabel": "semana del 27 de julio",
-  "generatedAt": "2026-07-27T06:30:54.741636+00:00",
+  "generatedAt": "2026-07-27T06:37:05.081465+00:00",
   "songs": [
+    {
+      "title": "Dying To Love",
+      "artist": "Bad Omens",
+      "plays": "6 reproducciones",
+      "videoId": "lsb4TskX3kU",
+      "src": "https://www.youtube.com/watch?v=lsb4TskX3kU",
+      "cover": "",
+      "external": true
+    },
+    {
+      "title": "bad decisions",
+      "artist": "Bad Omens",
+      "plays": "5 reproducciones",
+      "videoId": "KzHa9rlvUng",
+      "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
+      "cover": "",
+      "external": true
+    },
+    {
+      "title": "Nico and the Niners",
+      "artist": "twenty one pilots",
+      "plays": "5 reproducciones",
+      "videoId": "DBD_naiiXkQ",
+      "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
+      "cover": "",
+      "external": true
+    },
     {
       "title": "Showbiz",
       "artist": "Hayley Williams",
-      "plays": "5 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "naKCSRndTZg",
       "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
-      "cover": "../assets/image/cover6.jpg"
+      "cover": "../assets/image/cover6.jpg",
+      "external": false
+    },
+    {
+      "title": "DEMONIAS MUÑECAS",
+      "artist": "Metrika",
+      "plays": "4 reproducciones",
+      "videoId": "Ow_xdmCWivw",
+      "src": "https://www.youtube.com/watch?v=Ow_xdmCWivw",
+      "cover": "",
+      "external": true
     }
   ],
-  "artists": [],
+  "artists": [
+    {
+      "artist": "Twenty One Pilots",
+      "time": "2 horas",
+      "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
+      "cover": "",
+      "external": true
+    },
+    {
+      "artist": "Bad Omens",
+      "time": "1 hora",
+      "src": "https://www.youtube.com/watch?v=lsb4TskX3kU",
+      "cover": "",
+      "external": true
+    }
+  ],
   "pastWeeks": [
+    {
+      "label": "semana del 27 de julio",
+      "songs": [
+        {
+          "title": "Showbiz",
+          "artist": "Hayley Williams",
+          "plays": "5 reproducciones",
+          "videoId": "naKCSRndTZg",
+          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
+          "cover": "../assets/image/cover6.jpg"
+        }
+      ],
+      "artists": []
+    },
     {
       "label": "semana pasada (antes de automatizar)",
       "songs": [

@@ -187,25 +187,37 @@ def main():
     with open(MAPPING_PATH, encoding="utf-8") as f:
         mapping = json.load(f)
 
-    # Solo lo que de verdad es top esta semana. No se completa con el resto
-    # de la biblioteca mapeada: eso rompia la separacion entre "esta semana"
-    # y "semanas pasadas" (una cancion como registrada en mapping.json no
-    # necesariamente sono esta semana especifica).
+    # Todo lo que de verdad es top esta semana. Si ya tenes el mp3 subido y
+    # registrado en mapping.json, se reproduce self-hosted; si no, se enlaza
+    # directo al video oficial de YouTube (no hay audio propio que servir
+    # todavia). En cuanto lo subas y lo mapees, pasa solo a self-hosted.
     songs = []
     for s in scraped_songs:
         m = mapping.get(s["videoId"])
-        if not m:
-            continue
-        songs.append(
-            {
-                "title": s["title"],
-                "artist": s["artist"],
-                "plays": s["plays"],
-                "videoId": s["videoId"],
-                "src": m["src"],
-                "cover": m.get("cover", ""),
-            }
-        )
+        if m:
+            songs.append(
+                {
+                    "title": s["title"],
+                    "artist": s["artist"],
+                    "plays": s["plays"],
+                    "videoId": s["videoId"],
+                    "src": m["src"],
+                    "cover": m.get("cover", ""),
+                    "external": False,
+                }
+            )
+        else:
+            songs.append(
+                {
+                    "title": s["title"],
+                    "artist": s["artist"],
+                    "plays": s["plays"],
+                    "videoId": s["videoId"],
+                    "src": f"https://www.youtube.com/watch?v={s['videoId']}",
+                    "cover": "",
+                    "external": True,
+                }
+            )
 
     # YouTube no siempre capitaliza igual al mismo artista entre secciones
     # (ej: "twenty one pilots" en canciones vs "Twenty One Pilots" en artistas),
@@ -226,6 +238,7 @@ def main():
                 "time": a["time"],
                 "src": best["src"],
                 "cover": best["cover"],
+                "external": best["external"],
             }
         )
 
@@ -265,10 +278,10 @@ def main():
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    faltantes = sum(1 for s in scraped_songs if s["videoId"] not in mapping)
+    sin_mp3_propio = sum(1 for s in songs if s["external"])
     print(f"listo: {len(songs)} canciones y {len(artists)} artistas en radio/data.json")
-    if faltantes:
-        print(f"aviso: {faltantes} cancion(es) del top real no estan en mapping.json todavia")
+    if sin_mp3_propio:
+        print(f"aviso: {sin_mp3_propio} cancion(es) enlazan a YouTube por no tener mp3 propio mapeado todavia")
 
 
 if __name__ == "__main__":
