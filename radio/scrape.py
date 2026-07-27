@@ -144,7 +144,12 @@ def plays_number(text):
 
 def main():
     html = fetch_html(PROFILE_URL)
+    print(f"debug: html len={len(html)}", file=sys.stderr)
+    print(f"debug: primeros 300 chars: {html[:300]!r}", file=sys.stderr)
+    for marker in ["consent", "recaptcha", "unusual traffic", "no esta optimizado", "reproducciones"]:
+        print(f"debug: contiene {marker!r}: {marker in html}", file=sys.stderr)
     blobs = extract_data_blobs(html)
+    print(f"debug: blobs encontrados={len(blobs)}", file=sys.stderr)
 
     songs_shelf = find_shelf(blobs, SONGS_HEADER)
     artists_shelf = find_shelf(blobs, ARTISTS_HEADER)
