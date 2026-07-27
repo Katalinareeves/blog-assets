@@ -1,6 +1,6 @@
 {
-  "weekLabel": "semana del 27 de julio",
-  "date": "2026-07-27",
+  "weekLabel": "semana del 28 de julio al 3 de agosto",
+  "date": "2026-08-03",
   "generatedAt": "2026-07-27T16:27:25.003904+00:00",
   "songs": [
     {
@@ -61,10 +61,10 @@
     {
       "artist": "Bring Me the Horizon",
       "time": "2 horas",
-      "src": "https://music.youtube.com/channel/UCGNMi-3h6Tx72EfbW6f2BxQ",
+      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Hospital%20for%20Souls.mp3",
       "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
-      "external": true,
-      "videoId": ""
+      "external": false,
+      "videoId": "-_pj39Xeabo"
     },
     {
       "artist": "Bad Omens",
@@ -77,24 +77,24 @@
     {
       "artist": "Paramore",
       "time": "1 hora",
-      "src": "https://music.youtube.com/channel/UCl2qVCHeUjL3lCnSCrKxtoQ",
+      "src": "https://www.youtube.com/watch?v=2kw3RkxAAjk",
       "cover": "https://yt3.googleusercontent.com/302b-QV3HY1-IE-qMD1tHKoHlA4GczxhZWUBuTdYSJzC8WQQdOB6lb9zfq1FLTZypjKGgnGAYg=w544-h544-l90-rj",
       "external": true,
-      "videoId": ""
+      "videoId": "2kw3RkxAAjk"
     },
     {
       "artist": "AKRIILA",
       "time": "55 minutos",
-      "src": "https://music.youtube.com/channel/UCSWwjbRFTRMAYT8139t0UJw",
+      "src": "https://www.youtube.com/watch?v=_rBbdr8Gads",
       "cover": "https://yt3.googleusercontent.com/S0qZEE-KZ-PmFR3tN7MUb2-udxr_T9a3VFf3T6PO69PmC3oM3D6vQVRqVuSh3Tcq6D_Z1hkE5llNakeL=w544-h544-l90-rj",
       "external": true,
-      "videoId": ""
+      "videoId": "_rBbdr8Gads"
     }
   ],
   "pastWeeks": [
     {
-      "label": "semana del 21 al 27 de julio",
-      "date": "2026-07-21",
+      "label": "semana del 21 al 28 de julio",
+      "date": "2026-07-28",
       "songs": [
         {
           "title": "Showbiz",

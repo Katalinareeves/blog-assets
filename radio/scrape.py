@@ -11,8 +11,9 @@ script puede dejar de encontrar las secciones y va a fallar a proposito
 import json
 import re
 import sys
+import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 PROFILE_URL = "https://music.youtube.com/@minatozakitty2778"
 MAPPING_PATH = "radio/mapping.json"
@@ -192,6 +193,46 @@ def plays_number(text):
     return int(m.group()) if m else 0
 
 
+def search_top_song(artist):
+    """Busca en YouTube Music una cancion oficial (no un video random de fan)
+    de este artista, para usar como muestra representativa cuando no hay
+    ninguna suya ni en el top real de esta semana ni en mapping.json.
+
+    Se identifica una "cancion oficial" por su musicVideoType (ATV = Audio
+    Track Video), no por el texto "Cancion"/"Song", que cambia de idioma."""
+    url = "https://music.youtube.com/search?q=" + urllib.parse.quote(artist)
+    try:
+        html = fetch_html(url)
+    except Exception:
+        return None
+    blobs = extract_data_blobs(html)
+    for blob in blobs:
+        for node in walk(blob):
+            renderer = node.get("musicResponsiveListItemRenderer")
+            if not renderer:
+                continue
+            cols = renderer.get("flexColumns", [])
+            if not cols:
+                continue
+            title_runs = cols[0]["musicResponsiveListItemFlexColumnRenderer"]["text"].get("runs", [])
+            if not title_runs:
+                continue
+            watch = title_runs[0].get("navigationEndpoint", {}).get("watchEndpoint", {})
+            video_type = (
+                watch.get("watchEndpointMusicSupportedConfigs", {})
+                .get("watchEndpointMusicConfig", {})
+                .get("musicVideoType", "")
+            )
+            if video_type != "MUSIC_VIDEO_TYPE_ATV" or not watch.get("videoId"):
+                continue
+            return {
+                "title": title_runs[0]["text"],
+                "videoId": watch["videoId"],
+                "cover": _thumbnail_url(renderer),
+            }
+    return None
+
+
 def main():
     html = fetch_html(PROFILE_URL)
     blobs = extract_data_blobs(html)
@@ -207,6 +248,11 @@ def main():
 
     with open(MAPPING_PATH, encoding="utf-8") as f:
         mapping = json.load(f)
+
+    mapped_by_artist = {}
+    for vid, m in mapping.items():
+        if "artist" in m:
+            mapped_by_artist.setdefault(m["artist"].lower(), []).append({**m, "videoId": vid})
 
     # Todo lo que de verdad es top esta semana. Si ya tenes el mp3 subido y
     # registrado en mapping.json, se reproduce self-hosted; si no, se enlaza
@@ -250,16 +296,27 @@ def main():
     artists = []
     for a in scraped_artists:
         candidates = songs_by_artist.get(a["artist"].lower())
+        mapped = mapped_by_artist.get(a["artist"].lower())
+        found = None
         if candidates:
+            # Prioridad 1: una cancion suya que de verdad es top esta semana.
             best = max(candidates, key=lambda s: plays_number(s["plays"]))
             src, external, video_id = best["src"], best["external"], best.get("videoId", "")
+        elif mapped:
+            # Prioridad 2: ya tenes alguna cancion suya self-hosted (aunque
+            # no haya sido top esta semana en particular).
+            m0 = mapped[0]
+            src, external, video_id = m0["src"], False, m0["videoId"]
         else:
-            # No hay ninguna cancion de este artista en el top de esta
-            # semana: igual se muestra (con su foto real), enlazando a su
-            # pagina de artista en YouTube Music en vez de quedar afuera
-            # (esta no se puede reproducir embebida: no hay un video puntual).
-            src = f"https://music.youtube.com/channel/{a['browseId']}" if a["browseId"] else ""
-            external, video_id = True, ""
+            # Prioridad 3: buscar una cancion oficial suya en YouTube Music
+            # solo para tener algo que suene, en vez de mandar al canal.
+            found = search_top_song(a["artist"])
+            if found:
+                src = f"https://www.youtube.com/watch?v={found['videoId']}"
+                external, video_id = True, found["videoId"]
+            else:
+                src = f"https://music.youtube.com/channel/{a['browseId']}" if a["browseId"] else ""
+                external, video_id = True, ""
         if not src:
             continue
         # La tapa siempre es la foto real del artista (asi se ve algo aunque
@@ -286,8 +343,25 @@ def main():
         "enero", "febrero", "marzo", "abril", "mayo", "junio",
         "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
     ]
-    week_label = f"semana del {now.day} de {meses[now.month - 1]}"
-    week_date = now.date().isoformat()
+
+    # Cada semana empieza donde termino la anterior (14 -> 21 -> 28 -> 3...),
+    # no en bloques de 7 dias independientes. La fecha de fin de la semana
+    # anterior queda guardada en "date", asi que esta semana arranca ahi.
+    prev_date_str = previous.get("date")
+    try:
+        week_start = date.fromisoformat(prev_date_str) if prev_date_str else now.date()
+    except ValueError:
+        week_start = now.date()
+    week_end = week_start + timedelta(days=7)
+
+    if week_start.month == week_end.month:
+        week_label = f"semana del {week_start.day} al {week_end.day} de {meses[week_start.month - 1]}"
+    else:
+        week_label = (
+            f"semana del {week_start.day} de {meses[week_start.month - 1]} "
+            f"al {week_end.day} de {meses[week_end.month - 1]}"
+        )
+    week_date = week_end.isoformat()
 
     past_weeks = previous.get("pastWeeks", [])
     if previous.get("songs") or previous.get("artists"):
