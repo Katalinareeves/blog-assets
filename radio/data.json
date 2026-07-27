@@ -1,6 +1,6 @@
 {
   "weekLabel": "semana del 27 de julio",
-  "generatedAt": "2026-07-27T05:38:06.004330+00:00",
+  "generatedAt": "2026-07-27T06:17:22.647149+00:00",
   "songs": [
     {
       "title": "Showbiz",
@@ -12,5 +12,20 @@
     }
   ],
   "artists": [],
-  "pastWeeks": []
+  "pastWeeks": [
+    {
+      "label": "semana del 27 de julio",
+      "songs": [
+        {
+          "title": "Showbiz",
+          "artist": "Hayley Williams",
+          "plays": "5 reproducciones",
+          "videoId": "naKCSRndTZg",
+          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
+          "cover": "../assets/image/cover6.jpg"
+        }
+      ],
+      "artists": []
+    }
+  ]
 }
