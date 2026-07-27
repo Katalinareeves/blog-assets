@@ -102,6 +102,7 @@ def _song_item(item):
         "artist": sub_runs[0]["text"],
         "plays": sub_runs[-1]["text"],
         "videoId": video_id,
+        "photo": _thumbnail_url(renderer),
     }
 
 
@@ -129,12 +130,10 @@ _ARTIST_SUBTITLE = re.compile(r"^\d+\s+\S+$")
 
 
 def _thumbnail_url(renderer):
-    thumbs = (
-        renderer.get("thumbnailRenderer", {})
-        .get("musicThumbnailRenderer", {})
-        .get("thumbnail", {})
-        .get("thumbnails", [])
-    )
+    # musicResponsiveListItemRenderer (canciones) usa "thumbnail";
+    # musicTwoRowItemRenderer (artistas) usa "thumbnailRenderer".
+    node = renderer.get("thumbnail") or renderer.get("thumbnailRenderer") or {}
+    thumbs = node.get("musicThumbnailRenderer", {}).get("thumbnail", {}).get("thumbnails", [])
     if not thumbs:
         return ""
     return max(thumbs, key=lambda t: t.get("width", 0)).get("url", "")
@@ -169,11 +168,15 @@ def find_artists(blobs, known_artists):
                 if not _ARTIST_SUBTITLE.match(subtitle_text):
                     ok = False
                     break
+                browse_id = (
+                    title_runs[0].get("navigationEndpoint", {}).get("browseEndpoint", {}).get("browseId", "")
+                )
                 parsed.append(
                     {
                         "artist": title_runs[0]["text"],
                         "time": subtitle_text,
                         "photo": _thumbnail_url(renderer),
+                        "browseId": browse_id,
                     }
                 )
             if not ok:
@@ -232,7 +235,7 @@ def main():
                     "plays": s["plays"],
                     "videoId": s["videoId"],
                     "src": f"https://www.youtube.com/watch?v={s['videoId']}",
-                    "cover": "",
+                    "cover": s["photo"],
                     "external": True,
                 }
             )
@@ -247,18 +250,26 @@ def main():
     artists = []
     for a in scraped_artists:
         candidates = songs_by_artist.get(a["artist"].lower())
-        if not candidates:
+        if candidates:
+            best = max(candidates, key=lambda s: plays_number(s["plays"]))
+            src, external = best["src"], best["external"]
+        else:
+            # No hay ninguna cancion de este artista en el top de esta
+            # semana: igual se muestra (con su foto real), enlazando a su
+            # pagina de artista en YouTube Music en vez de quedar afuera.
+            src = f"https://music.youtube.com/channel/{a['browseId']}" if a["browseId"] else ""
+            external = True
+        if not src:
             continue
-        best = max(candidates, key=lambda s: plays_number(s["plays"]))
         # La tapa siempre es la foto real del artista (asi se ve algo aunque
         # su cancion representativa todavia no tenga mp3 propio subido).
         artists.append(
             {
                 "artist": a["artist"],
                 "time": a["time"],
-                "src": best["src"],
-                "cover": a["photo"] or best["cover"],
-                "external": best["external"],
+                "src": src,
+                "cover": a["photo"],
+                "external": external,
             }
         )
 
@@ -274,21 +285,25 @@ def main():
         "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
     ]
     week_label = f"semana del {now.day} de {meses[now.month - 1]}"
+    week_date = now.date().isoformat()
 
     past_weeks = previous.get("pastWeeks", [])
     if previous.get("songs") or previous.get("artists"):
-        past_weeks.insert(
-            0,
+        past_weeks.append(
             {
                 "label": previous.get("weekLabel", "semana anterior"),
+                "date": previous.get("date", "0000-00-00"),
                 "songs": previous.get("songs", []),
                 "artists": previous.get("artists", []),
-            },
+            }
         )
+    # Mas reciente primero, igual que el orden que ya usabas a mano.
+    past_weeks.sort(key=lambda w: w.get("date", "0000-00-00"), reverse=True)
     past_weeks = past_weeks[:12]
 
     output = {
         "weekLabel": week_label,
+        "date": week_date,
         "generatedAt": now.isoformat(),
         "songs": songs,
         "artists": artists,
