@@ -17,6 +17,7 @@ from datetime import date, datetime, timedelta, timezone
 
 PROFILE_URL = "https://music.youtube.com/@minatozakitty2778"
 MAPPING_PATH = "radio/mapping.json"
+ARTIST_PICKS_PATH = "radio/artist_picks.json"
 OUTPUT_PATH = "radio/data.json"
 
 USER_AGENT = (
@@ -249,6 +250,12 @@ def main():
     with open(MAPPING_PATH, encoding="utf-8") as f:
         mapping = json.load(f)
 
+    try:
+        with open(ARTIST_PICKS_PATH, encoding="utf-8") as f:
+            artist_picks = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
+    except FileNotFoundError:
+        artist_picks = {}
+
     mapped_by_artist = {}
     for vid, m in mapping.items():
         if "artist" in m:
@@ -295,10 +302,21 @@ def main():
 
     artists = []
     for a in scraped_artists:
+        pick = artist_picks.get(a["artist"].lower())
         candidates = songs_by_artist.get(a["artist"].lower())
         mapped = mapped_by_artist.get(a["artist"].lower())
-        found = None
-        if candidates:
+        cover_override = None
+        if pick and pick.get("videoId"):
+            # Prioridad 0: elegiste vos misma que cancion usar para este
+            # artista (radio/artist_picks.json), eso siempre gana.
+            video_id = pick["videoId"]
+            in_mapping = mapping.get(video_id)
+            if in_mapping:
+                src, external = in_mapping["src"], False
+            else:
+                src, external = f"https://www.youtube.com/watch?v={video_id}", True
+            cover_override = pick.get("cover")
+        elif candidates:
             # Prioridad 1: una cancion suya que de verdad es top esta semana.
             best = max(candidates, key=lambda s: plays_number(s["plays"]))
             src, external, video_id = best["src"], best["external"], best.get("videoId", "")
@@ -319,14 +337,14 @@ def main():
                 external, video_id = True, ""
         if not src:
             continue
-        # La tapa siempre es la foto real del artista (asi se ve algo aunque
-        # su cancion representativa todavia no tenga mp3 propio subido).
+        # La tapa es la foto real del artista, salvo que artist_picks.json
+        # traiga una tapa especifica para esa cancion.
         artists.append(
             {
                 "artist": a["artist"],
                 "time": a["time"],
                 "src": src,
-                "cover": a["photo"],
+                "cover": cover_override or a["photo"],
                 "external": external,
                 "videoId": video_id,
             }

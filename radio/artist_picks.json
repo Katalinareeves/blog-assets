@@ -1,0 +1,9 @@
+{
+  "_comentario": "Cuando quieras que la vista de 'artistas' de la radio siempre use una cancion en especifico para alguien (en vez de que el script elija sola), agregala aca: la clave es el nombre del artista en minusculas, 'videoId' es el ID de YouTube de esa cancion (el codigo despues de v= en la URL), y 'cover' es opcional (si no lo pones, usa la foto real del artista).",
+  "bring me the horizon": { "videoId": "UonVoc65dx8" },
+  "paramore": { "videoId": "1VPotzhpAGE" },
+  "akriila": {
+    "videoId": "07VRRfD6vrw",
+    "cover": "https://yt3.googleusercontent.com/ChQNTwh5Cxazpa4mofBpjp-SdVGfYC1tAGCVqrD5uT9Ci6pI5seYXDrglU4U5CjWauGAqFilhabEM0MOoQ=w120-h120-l90-rj"
+  }
+}
