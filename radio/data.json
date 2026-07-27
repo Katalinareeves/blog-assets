@@ -1,12 +1,12 @@
 {
   "weekLabel": "semana del 27 de julio",
   "date": "2026-07-27",
-  "generatedAt": "2026-07-27T16:15:29.381805+00:00",
+  "generatedAt": "2026-07-27T16:27:25.003904+00:00",
   "songs": [
     {
       "title": "Dying To Love",
       "artist": "Bad Omens",
-      "plays": "6 reproducciones",
+      "plays": "6 reproducciones",
       "videoId": "lsb4TskX3kU",
       "src": "https://www.youtube.com/watch?v=lsb4TskX3kU",
       "cover": "https://yt3.googleusercontent.com/vFhJ6zQOMolV_pcfdAV0RJNhGlOC_uuLFTcRGh5Los3QUT9BHZX_3letaymn443xvlmghLYIS_EO_fg8Lw=w120-h120-l90-rj",
@@ -15,7 +15,7 @@
     {
       "title": "bad decisions",
       "artist": "Bad Omens",
-      "plays": "5 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "KzHa9rlvUng",
       "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
       "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
@@ -24,7 +24,7 @@
     {
       "title": "Nico and the Niners",
       "artist": "twenty one pilots",
-      "plays": "5 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "DBD_naiiXkQ",
       "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
       "cover": "https://yt3.googleusercontent.com/rdRNXYW4gCiEAEhep-lJRdlhhR08iWQPdVyD9JTvlOjkD-g0prTcZ5eajhO4ZlWwgGNKmAGPVlWCfKc=w120-h120-l90-rj",
@@ -33,7 +33,7 @@
     {
       "title": "Showbiz",
       "artist": "Hayley Williams",
-      "plays": "5 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "naKCSRndTZg",
       "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
       "cover": "../assets/image/cover6.jpg",
@@ -42,7 +42,7 @@
     {
       "title": "DEMONIAS MUÑECAS",
       "artist": "Metrika",
-      "plays": "4 reproducciones",
+      "plays": "4 reproducciones",
       "videoId": "Ow_xdmCWivw",
       "src": "https://www.youtube.com/watch?v=Ow_xdmCWivw",
       "cover": "https://yt3.googleusercontent.com/VjfzDXvA4thUeOG8Do-7j85N-jo4gRpdqZVEhQQmG-q00DGDrnlkMvRmcHuYL_KbPg03fsrQY8XBdYJe=w120-h120-l90-rj",
@@ -52,38 +52,43 @@
   "artists": [
     {
       "artist": "Twenty One Pilots",
-      "time": "2 horas",
+      "time": "2 horas",
       "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
       "cover": "https://yt3.googleusercontent.com/uF3nEJZcQIu_EhgOhnZZn9KnbgNOJN8QU88imE0vM4Wp1WzcqmN5xtmOWkK6WbKAUkswkr1XjoWeFTY=w544-h544-p-l90-rj",
-      "external": true
+      "external": true,
+      "videoId": "DBD_naiiXkQ"
     },
     {
       "artist": "Bring Me the Horizon",
-      "time": "2 horas",
+      "time": "2 horas",
       "src": "https://music.youtube.com/channel/UCGNMi-3h6Tx72EfbW6f2BxQ",
       "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
-      "external": true
+      "external": true,
+      "videoId": ""
     },
     {
       "artist": "Bad Omens",
-      "time": "1 hora",
+      "time": "1 hora",
       "src": "https://www.youtube.com/watch?v=lsb4TskX3kU",
       "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
-      "external": true
+      "external": true,
+      "videoId": "lsb4TskX3kU"
     },
     {
       "artist": "Paramore",
-      "time": "1 hora",
+      "time": "1 hora",
       "src": "https://music.youtube.com/channel/UCl2qVCHeUjL3lCnSCrKxtoQ",
       "cover": "https://yt3.googleusercontent.com/302b-QV3HY1-IE-qMD1tHKoHlA4GczxhZWUBuTdYSJzC8WQQdOB6lb9zfq1FLTZypjKGgnGAYg=w544-h544-l90-rj",
-      "external": true
+      "external": true,
+      "videoId": ""
     },
     {
       "artist": "AKRIILA",
-      "time": "55 minutos",
+      "time": "55 minutos",
       "src": "https://music.youtube.com/channel/UCSWwjbRFTRMAYT8139t0UJw",
       "cover": "https://yt3.googleusercontent.com/S0qZEE-KZ-PmFR3tN7MUb2-udxr_T9a3VFf3T6PO69PmC3oM3D6vQVRqVuSh3Tcq6D_Z1hkE5llNakeL=w544-h544-l90-rj",
-      "external": true
+      "external": true,
+      "videoId": ""
     }
   ],
   "pastWeeks": [

@@ -252,13 +252,14 @@ def main():
         candidates = songs_by_artist.get(a["artist"].lower())
         if candidates:
             best = max(candidates, key=lambda s: plays_number(s["plays"]))
-            src, external = best["src"], best["external"]
+            src, external, video_id = best["src"], best["external"], best.get("videoId", "")
         else:
             # No hay ninguna cancion de este artista en el top de esta
             # semana: igual se muestra (con su foto real), enlazando a su
-            # pagina de artista en YouTube Music en vez de quedar afuera.
+            # pagina de artista en YouTube Music en vez de quedar afuera
+            # (esta no se puede reproducir embebida: no hay un video puntual).
             src = f"https://music.youtube.com/channel/{a['browseId']}" if a["browseId"] else ""
-            external = True
+            external, video_id = True, ""
         if not src:
             continue
         # La tapa siempre es la foto real del artista (asi se ve algo aunque
@@ -270,6 +271,7 @@ def main():
                 "src": src,
                 "cover": a["photo"],
                 "external": external,
+                "videoId": video_id,
             }
         )
 
