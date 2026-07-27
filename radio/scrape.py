@@ -187,9 +187,10 @@ def main():
     with open(MAPPING_PATH, encoding="utf-8") as f:
         mapping = json.load(f)
 
-    # Primero las que de verdad son top esta semana (con su numero real),
-    # despues el resto de tu biblioteca registrada que no fue top esta vez
-    # (sin inventarle un numero: se marca como "en tu rotacion").
+    # Solo lo que de verdad es top esta semana. No se completa con el resto
+    # de la biblioteca mapeada: eso rompia la separacion entre "esta semana"
+    # y "semanas pasadas" (una cancion como registrada en mapping.json no
+    # necesariamente sono esta semana especifica).
     songs = []
     for s in scraped_songs:
         m = mapping.get(s["videoId"])
@@ -201,23 +202,6 @@ def main():
                 "artist": s["artist"],
                 "plays": s["plays"],
                 "videoId": s["videoId"],
-                "src": m["src"],
-                "cover": m.get("cover", ""),
-            }
-        )
-
-    top_video_ids = {s["videoId"] for s in songs}
-    for video_id, m in mapping.items():
-        if video_id in top_video_ids:
-            continue
-        if "title" not in m or "artist" not in m:
-            continue
-        songs.append(
-            {
-                "title": m["title"],
-                "artist": m["artist"],
-                "plays": "en tu rotación",
-                "videoId": video_id,
                 "src": m["src"],
                 "cover": m.get("cover", ""),
             }
