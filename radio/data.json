@@ -1,31 +1,77 @@
 {
   "weekLabel": "semana del 27 de julio",
-  "generatedAt": "2026-07-27T06:17:22.647149+00:00",
+  "generatedAt": "2026-07-27T06:24:07.234506+00:00",
   "songs": [
     {
       "title": "Showbiz",
       "artist": "Hayley Williams",
-      "plays": "5 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "naKCSRndTZg",
       "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
       "cover": "../assets/image/cover6.jpg"
+    },
+    {
+      "title": "Hospital for Souls",
+      "artist": "Bring Me The Horizon",
+      "plays": "en tu rotación",
+      "videoId": "-_pj39Xeabo",
+      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Hospital%20for%20Souls.mp3",
+      "cover": "../assets/image/cover4.jpg"
+    },
+    {
+      "title": "Ice In My OJ",
+      "artist": "Hayley Williams",
+      "plays": "en tu rotación",
+      "videoId": "rqZThdo6DEA",
+      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Ice%20In%20My%20OJ.mp3",
+      "cover": "../assets/image/cover6.jpg"
+    },
+    {
+      "title": "Kill Me",
+      "artist": "Hayley Williams",
+      "plays": "en tu rotación",
+      "videoId": "-R5FR5G0Aec",
+      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Kill%20Me.mp3",
+      "cover": "../assets/image/cover6.jpg"
+    },
+    {
+      "title": "Guns for Hands",
+      "artist": "twenty one pilots",
+      "plays": "en tu rotación",
+      "videoId": "CLJmHNp1jJM",
+      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Guns%20for%20Hands.mp3",
+      "cover": "../assets/image/cover9.jpg"
+    },
+    {
+      "title": "Playing God",
+      "artist": "Motionless In White y Corey Taylor",
+      "plays": "en tu rotación",
+      "videoId": "f-zSsXdZKwk",
+      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Playing%20God%20(feat.%20Corey%20Taylor).mp3",
+      "cover": "../assets/image/cover7.jpg"
+    },
+    {
+      "title": "What You Need",
+      "artist": "Bring Me The Horizon",
+      "plays": "en tu rotación",
+      "videoId": "yz4SU7pEHxA",
+      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/What%20You%20Need.mp3",
+      "cover": "../assets/image/cover8.jpg"
     }
   ],
-  "artists": [],
-  "pastWeeks": [
+  "artists": [
     {
-      "label": "semana del 27 de julio",
-      "songs": [
-        {
-          "title": "Showbiz",
-          "artist": "Hayley Williams",
-          "plays": "5 reproducciones",
-          "videoId": "naKCSRndTZg",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
-          "cover": "../assets/image/cover6.jpg"
-        }
-      ],
-      "artists": []
+      "artist": "Twenty One Pilots",
+      "time": "2 horas",
+      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Guns%20for%20Hands.mp3",
+      "cover": "../assets/image/cover9.jpg"
+    },
+    {
+      "artist": "Bring Me the Horizon",
+      "time": "2 horas",
+      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Hospital%20for%20Souls.mp3",
+      "cover": "../assets/image/cover4.jpg"
     }
-  ]
+  ],
+  "pastWeeks": []
 }

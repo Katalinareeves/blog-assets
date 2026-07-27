@@ -187,6 +187,9 @@ def main():
     with open(MAPPING_PATH, encoding="utf-8") as f:
         mapping = json.load(f)
 
+    # Primero las que de verdad son top esta semana (con su numero real),
+    # despues el resto de tu biblioteca registrada que no fue top esta vez
+    # (sin inventarle un numero: se marca como "en tu rotacion").
     songs = []
     for s in scraped_songs:
         m = mapping.get(s["videoId"])
@@ -198,6 +201,23 @@ def main():
                 "artist": s["artist"],
                 "plays": s["plays"],
                 "videoId": s["videoId"],
+                "src": m["src"],
+                "cover": m.get("cover", ""),
+            }
+        )
+
+    top_video_ids = {s["videoId"] for s in songs}
+    for video_id, m in mapping.items():
+        if video_id in top_video_ids:
+            continue
+        if "title" not in m or "artist" not in m:
+            continue
+        songs.append(
+            {
+                "title": m["title"],
+                "artist": m["artist"],
+                "plays": "en tu rotación",
+                "videoId": video_id,
                 "src": m["src"],
                 "cover": m.get("cover", ""),
             }
@@ -261,10 +281,10 @@ def main():
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"listo: {len(songs)} canciones y {len(artists)} artistas mapeados esta semana")
-    if len(songs) < len(scraped_songs):
-        faltantes = len(scraped_songs) - len(songs)
-        print(f"aviso: {faltantes} cancion(es) del top no estan en mapping.json todavia")
+    faltantes = sum(1 for s in scraped_songs if s["videoId"] not in mapping)
+    print(f"listo: {len(songs)} canciones y {len(artists)} artistas en radio/data.json")
+    if faltantes:
+        print(f"aviso: {faltantes} cancion(es) del top real no estan en mapping.json todavia")
 
 
 if __name__ == "__main__":
