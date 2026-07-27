@@ -18,9 +18,6 @@ PROFILE_URL = "https://music.youtube.com/@minatozakitty2778"
 MAPPING_PATH = "radio/mapping.json"
 OUTPUT_PATH = "radio/data.json"
 
-SONGS_HEADER = "Canciones que más escuchas"
-ARTISTS_HEADER = "Tus artistas favoritos"
-
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
@@ -76,65 +73,97 @@ def walk(node):
             yield from walk(v)
 
 
-def _shelf_title(shelf):
-    header = shelf.get("header", {})
-    for renderer in header.values():
-        runs = (renderer.get("title") or {}).get("runs") or []
-        if runs:
-            return runs[0].get("text", "")
-    runs = (shelf.get("title") or {}).get("runs") or []
-    return runs[0]["text"] if runs else ""
+def _song_item(item):
+    """Si el item es una cancion con videoId y un ultimo dato numerico
+    (la cuenta de reproducciones, en el idioma que sea), la devuelve parseada.
+    Si no calza con esa forma, devuelve None."""
+    renderer = item.get("musicResponsiveListItemRenderer")
+    if not renderer:
+        return None
+    cols = renderer.get("flexColumns", [])
+    if len(cols) < 2:
+        return None
+    title_runs = cols[0]["musicResponsiveListItemFlexColumnRenderer"]["text"].get("runs", [])
+    if not title_runs:
+        return None
+    video_id = next(
+        (
+            run.get("navigationEndpoint", {}).get("watchEndpoint", {}).get("videoId")
+            for run in title_runs
+            if run.get("navigationEndpoint", {}).get("watchEndpoint", {}).get("videoId")
+        ),
+        None,
+    )
+    sub_runs = cols[1]["musicResponsiveListItemFlexColumnRenderer"]["text"].get("runs", [])
+    if not video_id or not sub_runs or not re.search(r"\d", sub_runs[-1].get("text", "")):
+        return None
+    return {
+        "title": title_runs[0]["text"],
+        "artist": sub_runs[0]["text"],
+        "plays": sub_runs[-1]["text"],
+        "videoId": video_id,
+    }
 
 
-def find_shelf(blobs, header_text):
+def find_songs(blobs):
+    """Busca el primer musicShelfRenderer cuyos items sean todos 'canciones con
+    reproducciones' segun la forma de _song_item. No depende del titulo de la
+    seccion, que YouTube traduce distinto segun la region de quien pide la
+    pagina (confirmado: 'Canciones que mas escuchas' en LatAm vs 'Canciones
+    escuchadas en bucle' desde datacenters en EEUU)."""
     for blob in blobs:
         for node in walk(blob):
-            shelf = node.get("musicShelfRenderer") or node.get("musicCarouselShelfRenderer")
-            if shelf and header_text in _shelf_title(shelf):
-                return shelf
-    return None
+            shelf = node.get("musicShelfRenderer")
+            if not shelf:
+                continue
+            contents = shelf.get("contents", [])
+            if not contents:
+                continue
+            parsed = [_song_item(item) for item in contents]
+            if all(parsed):
+                return parsed
+    return []
 
 
-def parse_songs(shelf):
-    songs = []
-    for item in shelf.get("contents", []):
-        renderer = item.get("musicResponsiveListItemRenderer")
-        if not renderer:
-            continue
-        cols = renderer.get("flexColumns", [])
-        if len(cols) < 2:
-            continue
-        title_runs = cols[0]["musicResponsiveListItemFlexColumnRenderer"]["text"]["runs"]
-        title = title_runs[0]["text"]
-        video_id = next(
-            (
-                run.get("navigationEndpoint", {}).get("watchEndpoint", {}).get("videoId")
-                for run in title_runs
-                if run.get("navigationEndpoint", {}).get("watchEndpoint", {}).get("videoId")
-            ),
-            None,
-        )
-        sub_runs = cols[1]["musicResponsiveListItemFlexColumnRenderer"]["text"]["runs"]
-        artist = sub_runs[0]["text"] if sub_runs else ""
-        plays_text = sub_runs[-1]["text"] if sub_runs else ""
-        if not video_id or "reproduc" not in plays_text:
-            continue
-        songs.append({"title": title, "artist": artist, "plays": plays_text, "videoId": video_id})
-    return songs
+_ARTIST_SUBTITLE = re.compile(r"^\d+\s+\S+$")
 
 
-def parse_artists(shelf):
-    artists = []
-    for item in shelf.get("contents", []):
-        renderer = item.get("musicTwoRowItemRenderer")
-        if not renderer:
-            continue
-        title_runs = renderer.get("title", {}).get("runs", [])
-        subtitle_runs = renderer.get("subtitle", {}).get("runs", [])
-        if not title_runs or not subtitle_runs:
-            continue
-        artists.append({"artist": title_runs[0]["text"], "time": subtitle_runs[0]["text"]})
-    return artists
+def find_artists(blobs, known_artists):
+    """Busca, entre todos los musicCarouselShelfRenderer cuyos items tengan
+    forma de 'artista + una sola cifra de tiempo' (ej. '2 horas'), el que mas
+    se solape con los artistas que ya salieron en find_songs(). Asi se
+    distingue de otros carruseles (videos, playlists) sin depender de texto
+    fijo en ningun idioma."""
+    best_shelf, best_score = None, 0
+    known_lower = {a.lower() for a in known_artists}
+    for blob in blobs:
+        for node in walk(blob):
+            shelf = node.get("musicCarouselShelfRenderer")
+            if not shelf:
+                continue
+            contents = shelf.get("contents", [])
+            if not contents:
+                continue
+            parsed = []
+            ok = True
+            for item in contents:
+                renderer = item.get("musicTwoRowItemRenderer")
+                title_runs = renderer.get("title", {}).get("runs", []) if renderer else []
+                subtitle_runs = renderer.get("subtitle", {}).get("runs", []) if renderer else []
+                if not renderer or not title_runs or len(subtitle_runs) != 1:
+                    ok = False
+                    break
+                subtitle_text = subtitle_runs[0].get("text", "")
+                if not _ARTIST_SUBTITLE.match(subtitle_text):
+                    ok = False
+                    break
+                parsed.append({"artist": title_runs[0]["text"], "time": subtitle_text})
+            if not ok:
+                continue
+            score = sum(1 for a in parsed if a["artist"].lower() in known_lower)
+            if score > best_score:
+                best_shelf, best_score = parsed, score
+    return best_shelf or []
 
 
 def plays_number(text):
@@ -144,30 +173,16 @@ def plays_number(text):
 
 def main():
     html = fetch_html(PROFILE_URL)
-    print(f"debug: html len={len(html)}", file=sys.stderr)
-    print(f"debug: primeros 300 chars: {html[:300]!r}", file=sys.stderr)
-    for marker in ["consent", "recaptcha", "unusual traffic", "no esta optimizado", "reproducciones"]:
-        print(f"debug: contiene {marker!r}: {marker in html}", file=sys.stderr)
     blobs = extract_data_blobs(html)
-    print(f"debug: blobs encontrados={len(blobs)}", file=sys.stderr)
-    for blob in blobs:
-        for node in walk(blob):
-            shelf = node.get("musicShelfRenderer") or node.get("musicCarouselShelfRenderer")
-            if shelf:
-                print(f"debug: shelf titulo={_shelf_title(shelf)!r}", file=sys.stderr)
 
-    songs_shelf = find_shelf(blobs, SONGS_HEADER)
-    artists_shelf = find_shelf(blobs, ARTISTS_HEADER)
-
-    scraped_songs = parse_songs(songs_shelf) if songs_shelf else []
-    scraped_artists = parse_artists(artists_shelf) if artists_shelf else []
-
+    scraped_songs = find_songs(blobs)
     if not scraped_songs:
         sys.exit(
-            "error: no se encontro la seccion 'Canciones que mas escuchas' "
+            "error: no se encontro la seccion de canciones mas escuchadas "
             "(puede que YouTube haya cambiado el formato de la pagina). "
             "No se va a pisar radio/data.json."
         )
+    scraped_artists = find_artists(blobs, [s["artist"] for s in scraped_songs])
 
     with open(MAPPING_PATH, encoding="utf-8") as f:
         mapping = json.load(f)
