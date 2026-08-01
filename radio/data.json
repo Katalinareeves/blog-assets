@@ -1,15 +1,24 @@
 {
-  "weekLabel": "semana del 3 al 10 de agosto",
-  "date": "2026-08-10",
-  "generatedAt": "2026-07-29T03:14:44.951057+00:00",
+  "weekLabel": "semana del 10 al 17 de agosto",
+  "date": "2026-08-17",
+  "generatedAt": "2026-08-01T01:22:22.104734+00:00",
   "songs": [
     {
       "title": "bad decisions",
       "artist": "Bad Omens",
-      "plays": "9 reproducciones",
+      "plays": "12 reproducciones",
       "videoId": "KzHa9rlvUng",
       "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
       "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
+      "external": true
+    },
+    {
+      "title": "Diamonds Aren't Forever",
+      "artist": "Bring Me The Horizon",
+      "plays": "8 reproducciones",
+      "videoId": "ND15MCOefvo",
+      "src": "https://www.youtube.com/watch?v=ND15MCOefvo",
+      "cover": "https://yt3.googleusercontent.com/obWw8ASa4cF_xwCVmZLTweJsSVZ0aglH1lECDW0U957poDC26MTVDUbPwWGeLL3BmnrJUSXade5SKkGB9g=w120-h120-l90-rj",
       "external": true
     },
     {
@@ -22,15 +31,6 @@
       "external": true
     },
     {
-      "title": "Dying To Love",
-      "artist": "Bad Omens",
-      "plays": "6 reproducciones",
-      "videoId": "lsb4TskX3kU",
-      "src": "https://www.youtube.com/watch?v=lsb4TskX3kU",
-      "cover": "https://yt3.googleusercontent.com/vFhJ6zQOMolV_pcfdAV0RJNhGlOC_uuLFTcRGh5Los3QUT9BHZX_3letaymn443xvlmghLYIS_EO_fg8Lw=w120-h120-l90-rj",
-      "external": true
-    },
-    {
       "title": "Nico and the Niners",
       "artist": "twenty one pilots",
       "plays": "6 reproducciones",
@@ -40,19 +40,19 @@
       "external": true
     },
     {
-      "title": "Diamonds Aren't Forever",
-      "artist": "Bring Me The Horizon",
-      "plays": "6 reproducciones",
-      "videoId": "ND15MCOefvo",
-      "src": "https://www.youtube.com/watch?v=ND15MCOefvo",
-      "cover": "https://yt3.googleusercontent.com/obWw8ASa4cF_xwCVmZLTweJsSVZ0aglH1lECDW0U957poDC26MTVDUbPwWGeLL3BmnrJUSXade5SKkGB9g=w120-h120-l90-rj",
+      "title": "SOLtera nunca solA",
+      "artist": "Juicy BAE",
+      "plays": "5 reproducciones",
+      "videoId": "zllNQDbUO4M",
+      "src": "https://www.youtube.com/watch?v=zllNQDbUO4M",
+      "cover": "https://yt3.googleusercontent.com/m3DSmmQl9qkQp1AS_FCspfKukYI_3IJodIBsURah0qGhjMvqNyU7I5ASi9jRuSO_82XnJX3KBn2EpYhc_g=w120-h120-l90-rj",
       "external": true
     }
   ],
   "artists": [
     {
-      "artist": "Bring Me the Horizon",
-      "time": "3 horas",
+      "artist": "Bring Me The Horizon",
+      "time": "4 horas",
       "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
       "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
       "external": true,
@@ -67,7 +67,7 @@
       "videoId": "KzHa9rlvUng"
     },
     {
-      "artist": "Twenty One Pilots",
+      "artist": "twenty one pilots",
       "time": "2 horas",
       "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
       "cover": "https://yt3.googleusercontent.com/uF3nEJZcQIu_EhgOhnZZn9KnbgNOJN8QU88imE0vM4Wp1WzcqmN5xtmOWkK6WbKAUkswkr1XjoWeFTY=w544-h544-p-l90-rj",
@@ -83,15 +83,108 @@
       "videoId": "07VRRfD6vrw"
     },
     {
-      "artist": "Paramore",
+      "artist": "Easykid",
       "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=1VPotzhpAGE",
-      "cover": "https://yt3.googleusercontent.com/302b-QV3HY1-IE-qMD1tHKoHlA4GczxhZWUBuTdYSJzC8WQQdOB6lb9zfq1FLTZypjKGgnGAYg=w544-h544-l90-rj",
+      "src": "https://www.youtube.com/watch?v=6csiUIinM68",
+      "cover": "https://yt3.googleusercontent.com/9_sE4WDIWdfB57N_GIaUd8dOqkRqNHuCHdJ0Un71hC4yUovXexyv9rzBmonk3onlaMx_shcuX4JGgHUp=w544-h544-l90-rj",
       "external": true,
-      "videoId": "1VPotzhpAGE"
+      "videoId": "6csiUIinM68"
     }
   ],
   "pastWeeks": [
+    {
+      "label": "semana del 3 al 10 de agosto",
+      "date": "2026-08-10",
+      "songs": [
+        {
+          "title": "bad decisions",
+          "artist": "Bad Omens",
+          "plays": "9 reproducciones",
+          "videoId": "KzHa9rlvUng",
+          "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
+          "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Dethrone",
+          "artist": "Bad Omens",
+          "plays": "7 reproducciones",
+          "videoId": "dEVwnMfVjrQ",
+          "src": "https://www.youtube.com/watch?v=dEVwnMfVjrQ",
+          "cover": "https://yt3.googleusercontent.com/O6r4vCT9YJYhvnineB4M_1LETqNrx-TcXckmhgu6NMM9YDTk2iykroGsCzLFlU8QQm_2Y9BhPBi6UUi6=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Dying To Love",
+          "artist": "Bad Omens",
+          "plays": "6 reproducciones",
+          "videoId": "lsb4TskX3kU",
+          "src": "https://www.youtube.com/watch?v=lsb4TskX3kU",
+          "cover": "https://yt3.googleusercontent.com/vFhJ6zQOMolV_pcfdAV0RJNhGlOC_uuLFTcRGh5Los3QUT9BHZX_3letaymn443xvlmghLYIS_EO_fg8Lw=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Nico and the Niners",
+          "artist": "twenty one pilots",
+          "plays": "6 reproducciones",
+          "videoId": "DBD_naiiXkQ",
+          "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
+          "cover": "https://yt3.googleusercontent.com/rdRNXYW4gCiEAEhep-lJRdlhhR08iWQPdVyD9JTvlOjkD-g0prTcZ5eajhO4ZlWwgGNKmAGPVlWCfKc=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Diamonds Aren't Forever",
+          "artist": "Bring Me The Horizon",
+          "plays": "6 reproducciones",
+          "videoId": "ND15MCOefvo",
+          "src": "https://www.youtube.com/watch?v=ND15MCOefvo",
+          "cover": "https://yt3.googleusercontent.com/obWw8ASa4cF_xwCVmZLTweJsSVZ0aglH1lECDW0U957poDC26MTVDUbPwWGeLL3BmnrJUSXade5SKkGB9g=w120-h120-l90-rj",
+          "external": true
+        }
+      ],
+      "artists": [
+        {
+          "artist": "Bring Me the Horizon",
+          "time": "3 horas",
+          "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
+          "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "UonVoc65dx8"
+        },
+        {
+          "artist": "Bad Omens",
+          "time": "2 horas",
+          "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
+          "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "KzHa9rlvUng"
+        },
+        {
+          "artist": "Twenty One Pilots",
+          "time": "2 horas",
+          "src": "https://www.youtube.com/watch?v=DBD_naiiXkQ",
+          "cover": "https://yt3.googleusercontent.com/uF3nEJZcQIu_EhgOhnZZn9KnbgNOJN8QU88imE0vM4Wp1WzcqmN5xtmOWkK6WbKAUkswkr1XjoWeFTY=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "DBD_naiiXkQ"
+        },
+        {
+          "artist": "AKRIILA",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=07VRRfD6vrw",
+          "cover": "https://yt3.googleusercontent.com/ChQNTwh5Cxazpa4mofBpjp-SdVGfYC1tAGCVqrD5uT9Ci6pI5seYXDrglU4U5CjWauGAqFilhabEM0MOoQ=w120-h120-l90-rj",
+          "external": true,
+          "videoId": "07VRRfD6vrw"
+        },
+        {
+          "artist": "Paramore",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=1VPotzhpAGE",
+          "cover": "https://yt3.googleusercontent.com/302b-QV3HY1-IE-qMD1tHKoHlA4GczxhZWUBuTdYSJzC8WQQdOB6lb9zfq1FLTZypjKGgnGAYg=w544-h544-l90-rj",
+          "external": true,
+          "videoId": "1VPotzhpAGE"
+        }
+      ]
+    },
     {
       "label": "semana del 28 de julio al 3 de agosto",
       "date": "2026-08-03",
