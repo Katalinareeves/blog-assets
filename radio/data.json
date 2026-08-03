@@ -1,7 +1,7 @@
 {
-  "weekLabel": "semana del 17 al 24 de agosto",
-  "date": "2026-08-24",
-  "generatedAt": "2026-08-03T11:00:37.376136+00:00",
+  "weekLabel": "semana del 24 al 31 de agosto",
+  "date": "2026-08-31",
+  "generatedAt": "2026-08-03T12:31:13.258055+00:00",
   "songs": [
     {
       "title": "bad decisions",
@@ -92,6 +92,99 @@
     }
   ],
   "pastWeeks": [
+    {
+      "label": "semana del 17 al 24 de agosto",
+      "date": "2026-08-24",
+      "songs": [
+        {
+          "title": "bad decisions",
+          "artist": "Bad Omens",
+          "plays": "13 reproducciones",
+          "videoId": "KzHa9rlvUng",
+          "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
+          "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Diamonds Aren't Forever",
+          "artist": "Bring Me The Horizon",
+          "plays": "7 reproducciones",
+          "videoId": "ND15MCOefvo",
+          "src": "https://www.youtube.com/watch?v=ND15MCOefvo",
+          "cover": "https://yt3.googleusercontent.com/obWw8ASa4cF_xwCVmZLTweJsSVZ0aglH1lECDW0U957poDC26MTVDUbPwWGeLL3BmnrJUSXade5SKkGB9g=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Dethrone",
+          "artist": "Bad Omens",
+          "plays": "7 reproducciones",
+          "videoId": "dEVwnMfVjrQ",
+          "src": "https://www.youtube.com/watch?v=dEVwnMfVjrQ",
+          "cover": "https://yt3.googleusercontent.com/O6r4vCT9YJYhvnineB4M_1LETqNrx-TcXckmhgu6NMM9YDTk2iykroGsCzLFlU8QQm_2Y9BhPBi6UUi6=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "For Stevie Wonder's Eyes Only (Braille) (2026 Repented)",
+          "artist": "Bring Me The Horizon",
+          "plays": "6 reproducciones",
+          "videoId": "2lFrJ72h9eE",
+          "src": "https://www.youtube.com/watch?v=2lFrJ72h9eE",
+          "cover": "https://yt3.googleusercontent.com/ma6sAXGMVmVUlJUqD5zrhGWlbaTqbel4WDbgjY2xOUOyNE7Yy1ftfBHrU0sJZ10DrHe4pK3CEOo_mqwN=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Like A Villain",
+          "artist": "Bad Omens",
+          "plays": "5 reproducciones",
+          "videoId": "rqEbv3Z-i4c",
+          "src": "https://www.youtube.com/watch?v=rqEbv3Z-i4c",
+          "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
+          "external": true
+        }
+      ],
+      "artists": [
+        {
+          "artist": "Bring Me The Horizon",
+          "time": "4 horas",
+          "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
+          "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "UonVoc65dx8"
+        },
+        {
+          "artist": "Bad Omens",
+          "time": "3 horas",
+          "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
+          "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "KzHa9rlvUng"
+        },
+        {
+          "artist": "AKRIILA",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=07VRRfD6vrw",
+          "cover": "https://yt3.googleusercontent.com/ChQNTwh5Cxazpa4mofBpjp-SdVGfYC1tAGCVqrD5uT9Ci6pI5seYXDrglU4U5CjWauGAqFilhabEM0MOoQ=w120-h120-l90-rj",
+          "external": true,
+          "videoId": "07VRRfD6vrw"
+        },
+        {
+          "artist": "Easykid",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=6csiUIinM68",
+          "cover": "https://yt3.googleusercontent.com/9_sE4WDIWdfB57N_GIaUd8dOqkRqNHuCHdJ0Un71hC4yUovXexyv9rzBmonk3onlaMx_shcuX4JGgHUp=w544-h544-l90-rj",
+          "external": true,
+          "videoId": "6csiUIinM68"
+        },
+        {
+          "artist": "Hayley Williams",
+          "time": "48 minutos",
+          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
+          "cover": "https://lh3.googleusercontent.com/A_sSN2qGnrpiw7WK54BnzpTPOXQ5BAsTtP9MKAyRnnvdy8lerbrw04iPPVuxSerngE4rIRCMw6jdjA=w544-h544-p-l90-rj",
+          "external": false,
+          "videoId": "naKCSRndTZg"
+        }
+      ]
+    },
     {
       "label": "semana del 10 al 17 de agosto",
       "date": "2026-08-17",
