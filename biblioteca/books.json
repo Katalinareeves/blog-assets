@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "updated": "2026-08-09",
+  "books": [
+    {
+      "id": "marion-classical-dynamics",
+      "title": "Classical Dynamics of Particles and Systems",
+      "shortTitle": "Classical Dynamics",
+      "author": "Jerry B. Marion & Stephen T. Thornton",
+      "subject": "Mecánica Clásica",
+      "status": "reading",
+      "pages": 0,
+      "cover": "",
+      "pdf": "",
+      "description": "Texto principal de referencia para mecánica clásica.",
+      "seedPerPage": 1
+    },
+    {
+      "id": "butkov-matematical-physics",
+      "title": "Mathematical Physics",
+      "shortTitle": "Mathematical Physics",
+      "author": "E. Butkov",
+      "subject": "Métodos Matemáticos",
+      "status": "reading",
+      "pages": 0,
+      "cover": "",
+      "pdf": "",
+      "description": "Referencia para herramientas matemáticas utilizadas en física.",
+      "seedPerPage": 1
+    },
+    {
+      "id": "blundell-concepts-thermal-physics",
+      "title": "Concepts in Thermal Physics",
+      "shortTitle": "Concepts in Thermal Physics",
+      "author": "Stephen J. Blundell & Katherine M. Blundell",
+      "subject": "Termodinámica",
+      "status": "reading",
+      "pages": 0,
+      "cover": "",
+      "pdf": "",
+      "description": "Texto de referencia para termodinámica y física estadística.",
+      "seedPerPage": 1
+    },
+    {
+      "id": "greiner-thermodynamics-statistical-mechanics",
+      "title": "Thermodynamics and Statistical Mechanics",
+      "shortTitle": "Thermodynamics and Statistical Mechanics",
+      "author": "Walter Greiner, Ludwig Neise & Horst Stöcker",
+      "subject": "Termodinámica",
+      "status": "to-read",
+      "pages": 0,
+      "cover": "",
+      "pdf": "",
+      "description": "Referencia avanzada de termodinámica y mecánica estadística.",
+      "seedPerPage": 1
+    },
+    {
+      "id": "callen-thermodynamics",
+      "title": "Thermodynamics and an Introduction to Thermostatistics",
+      "shortTitle": "Thermodynamics",
+      "author": "Herbert B. Callen",
+      "subject": "Termodinámica",
+      "status": "to-read",
+      "pages": 0,
+      "cover": "",
+      "pdf": "",
+      "description": "Texto clásico para el desarrollo formal de la termodinámica.",
+      "seedPerPage": 1
+    }
+  ]
+}
