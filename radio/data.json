@@ -1,51 +1,51 @@
 {
-  "weekLabel": "semana del 14 al 21 de septiembre",
-  "date": "2026-09-21",
-  "generatedAt": "2026-08-24T09:54:18.568087+00:00",
+  "weekLabel": "semana del 21 al 28 de septiembre",
+  "date": "2026-09-28",
+  "generatedAt": "2026-08-31T16:57:58.654393+00:00",
   "songs": [
     {
-      "title": "STILETTO O CUADRÁS",
+      "title": "Ego Death At A Bachelorette Party",
+      "artist": "Hayley Williams",
+      "plays": "9 reproducciones",
+      "videoId": "TRCRapkCF8E",
+      "src": "https://www.youtube.com/watch?v=TRCRapkCF8E",
+      "cover": "https://yt3.googleusercontent.com/OG6kB5buZzyfgUSGIFEQiQAv5hf3B_lw5jCwwzrKpxNN1ieuuUeT0Nf25o_wekIyHFc7TuRF2IQrJQse=w120-h120-l90-rj",
+      "external": true
+    },
+    {
+      "title": "Ya t Has Corrido?",
       "artist": "Metrika",
-      "plays": "6 reproducciones",
-      "videoId": "rsM68zAip4A",
-      "src": "https://www.youtube.com/watch?v=rsM68zAip4A",
-      "cover": "https://yt3.googleusercontent.com/5BitC5hUtzuIA1uf7zVqI6Jnp7rYa5n8LON563e_eNWrNiFbIFER9pOVzDOMjs-Kj6XjL-oUXIyq13ZR=w120-h120-l90-rj",
-      "external": true
-    },
-    {
-      "title": "Esclava (Remix) (con Anonimus)",
-      "artist": "Bryant Myers",
-      "plays": "5 reproducciones",
-      "videoId": "ZFWpzlsGUnc",
-      "src": "https://www.youtube.com/watch?v=ZFWpzlsGUnc",
-      "cover": "https://yt3.googleusercontent.com/sMnpsN2oJIJxGn75z3J3cp6-eLiCNVvtKQyy9Gd7OLGlLj6UbSgd6J-j5Q7_TWHuXnySoDxSfKRh0qbsDw=w120-h120-l90-rj",
-      "external": true
-    },
-    {
-      "title": "For Stevie Wonder's Eyes Only (Braille) (2026 Repented)",
-      "artist": "Bring Me The Horizon",
-      "plays": "5 reproducciones",
-      "videoId": "2lFrJ72h9eE",
-      "src": "https://www.youtube.com/watch?v=2lFrJ72h9eE",
-      "cover": "https://yt3.googleusercontent.com/ma6sAXGMVmVUlJUqD5zrhGWlbaTqbel4WDbgjY2xOUOyNE7Yy1ftfBHrU0sJZ10DrHe4pK3CEOo_mqwN=w120-h120-l90-rj",
+      "plays": "8 reproducciones",
+      "videoId": "d5xsJ2EW4vA",
+      "src": "https://www.youtube.com/watch?v=d5xsJ2EW4vA",
+      "cover": "https://yt3.googleusercontent.com/OaImVSxpl3ORPmd-GC4prvKdauUILLvf4TQWZxQpEGdRlnfZaizEGrSGLQurqGkS4hPC8COYrwfgrHoJ=w120-h120-l90-rj",
       "external": true
     },
     {
       "title": "THE DEATH OF PEACE OF MIND",
       "artist": "Bad Omens",
-      "plays": "5 reproducciones",
+      "plays": "7 reproducciones",
       "videoId": "AvMY_KYUv1g",
       "src": "https://www.youtube.com/watch?v=AvMY_KYUv1g",
       "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
       "external": true
     },
     {
-      "title": "Adderall",
-      "artist": "Almighty",
-      "plays": "5 reproducciones",
-      "videoId": "n2mK9OIf0EQ",
-      "src": "https://www.youtube.com/watch?v=n2mK9OIf0EQ",
-      "cover": "https://yt3.googleusercontent.com/AHhaBm9b9AwphIawqmfFs65qVz44jn1I0E9yE-jLBgU_yfnIUjmxHIjKZbSBg7e-j3SqNGh0R2bEmy_3=w120-h120-l90-rj",
+      "title": "Rakata",
+      "artist": "Arca",
+      "plays": "7 reproducciones",
+      "videoId": "CHk7IiUUYK8",
+      "src": "https://www.youtube.com/watch?v=CHk7IiUUYK8",
+      "cover": "https://yt3.googleusercontent.com/q03uYhoZGHhEau8cEjceDtD2h3z6mJyXe-LMtsm6M75Qrws6jkOH28wZoSIimoFev95hlLFdp7_0s2nD=w120-h120-l90-rj",
+      "external": true
+    },
+    {
+      "title": "Más Cara",
+      "artist": "Bad Gyal",
+      "plays": "6 reproducciones",
+      "videoId": "wsoBK7-aof0",
+      "src": "https://www.youtube.com/watch?v=wsoBK7-aof0",
+      "cover": "https://yt3.googleusercontent.com/bv7ZcHoCkl-g7ODX2YtOOKZqYf-gKWAqUvmYBJ1QW8KBpqFRG_CSsVfsGjaqiLTq9aFjWFwxJbRi6esEyA=w120-h120-l90-rj",
       "external": true
     }
   ],
@@ -59,6 +59,14 @@
       "videoId": "UonVoc65dx8"
     },
     {
+      "artist": "Metrika",
+      "time": "1 hora",
+      "src": "https://www.youtube.com/watch?v=d5xsJ2EW4vA",
+      "cover": "https://yt3.googleusercontent.com/3CZxn8RdVMxid-dt1E33kf9UmpojSOLmW2ZEvWD0mH2xHjZ9nJkSLSO2RfrXU9evD47zTdT3RI8=w544-h544-l90-rj",
+      "external": true,
+      "videoId": "d5xsJ2EW4vA"
+    },
+    {
       "artist": "Bad Omens",
       "time": "2 horas",
       "src": "https://www.youtube.com/watch?v=AvMY_KYUv1g",
@@ -67,31 +75,116 @@
       "videoId": "AvMY_KYUv1g"
     },
     {
-      "artist": "Metrika",
-      "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=rsM68zAip4A",
-      "cover": "https://yt3.googleusercontent.com/3CZxn8RdVMxid-dt1E33kf9UmpojSOLmW2ZEvWD0mH2xHjZ9nJkSLSO2RfrXU9evD47zTdT3RI8=w544-h544-l90-rj",
-      "external": true,
-      "videoId": "rsM68zAip4A"
-    },
-    {
-      "artist": "twenty one pilots",
-      "time": "1 hora",
-      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Guns%20for%20Hands.mp3",
-      "cover": "https://yt3.googleusercontent.com/uF3nEJZcQIu_EhgOhnZZn9KnbgNOJN8QU88imE0vM4Wp1WzcqmN5xtmOWkK6WbKAUkswkr1XjoWeFTY=w544-h544-p-l90-rj",
-      "external": false,
-      "videoId": "CLJmHNp1jJM"
-    },
-    {
       "artist": "Hayley Williams",
       "time": "1 hora",
-      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
+      "src": "https://www.youtube.com/watch?v=TRCRapkCF8E",
       "cover": "https://lh3.googleusercontent.com/A_sSN2qGnrpiw7WK54BnzpTPOXQ5BAsTtP9MKAyRnnvdy8lerbrw04iPPVuxSerngE4rIRCMw6jdjA=w544-h544-p-l90-rj",
-      "external": false,
-      "videoId": "naKCSRndTZg"
+      "external": true,
+      "videoId": "TRCRapkCF8E"
+    },
+    {
+      "artist": "D.Basto",
+      "time": "1 hora",
+      "src": "https://www.youtube.com/watch?v=_2Wj7n4rAjU",
+      "cover": "https://yt3.googleusercontent.com/X6r2HfAQ0HYIx803c1ffr9N0ePLKTzz6gydbUDfU4FcVIA5XnAXuukWMZSMh_GYSKDkROO_BKt1UejCH=w544-h544-l90-rj",
+      "external": true,
+      "videoId": "_2Wj7n4rAjU"
     }
   ],
   "pastWeeks": [
+    {
+      "label": "semana del 14 al 21 de septiembre",
+      "date": "2026-09-21",
+      "songs": [
+        {
+          "title": "STILETTO O CUADRÁS",
+          "artist": "Metrika",
+          "plays": "6 reproducciones",
+          "videoId": "rsM68zAip4A",
+          "src": "https://www.youtube.com/watch?v=rsM68zAip4A",
+          "cover": "https://yt3.googleusercontent.com/5BitC5hUtzuIA1uf7zVqI6Jnp7rYa5n8LON563e_eNWrNiFbIFER9pOVzDOMjs-Kj6XjL-oUXIyq13ZR=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Esclava (Remix) (con Anonimus)",
+          "artist": "Bryant Myers",
+          "plays": "5 reproducciones",
+          "videoId": "ZFWpzlsGUnc",
+          "src": "https://www.youtube.com/watch?v=ZFWpzlsGUnc",
+          "cover": "https://yt3.googleusercontent.com/sMnpsN2oJIJxGn75z3J3cp6-eLiCNVvtKQyy9Gd7OLGlLj6UbSgd6J-j5Q7_TWHuXnySoDxSfKRh0qbsDw=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "For Stevie Wonder's Eyes Only (Braille) (2026 Repented)",
+          "artist": "Bring Me The Horizon",
+          "plays": "5 reproducciones",
+          "videoId": "2lFrJ72h9eE",
+          "src": "https://www.youtube.com/watch?v=2lFrJ72h9eE",
+          "cover": "https://yt3.googleusercontent.com/ma6sAXGMVmVUlJUqD5zrhGWlbaTqbel4WDbgjY2xOUOyNE7Yy1ftfBHrU0sJZ10DrHe4pK3CEOo_mqwN=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "THE DEATH OF PEACE OF MIND",
+          "artist": "Bad Omens",
+          "plays": "5 reproducciones",
+          "videoId": "AvMY_KYUv1g",
+          "src": "https://www.youtube.com/watch?v=AvMY_KYUv1g",
+          "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Adderall",
+          "artist": "Almighty",
+          "plays": "5 reproducciones",
+          "videoId": "n2mK9OIf0EQ",
+          "src": "https://www.youtube.com/watch?v=n2mK9OIf0EQ",
+          "cover": "https://yt3.googleusercontent.com/AHhaBm9b9AwphIawqmfFs65qVz44jn1I0E9yE-jLBgU_yfnIUjmxHIjKZbSBg7e-j3SqNGh0R2bEmy_3=w120-h120-l90-rj",
+          "external": true
+        }
+      ],
+      "artists": [
+        {
+          "artist": "Bring Me The Horizon",
+          "time": "3 horas",
+          "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
+          "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "UonVoc65dx8"
+        },
+        {
+          "artist": "Bad Omens",
+          "time": "2 horas",
+          "src": "https://www.youtube.com/watch?v=AvMY_KYUv1g",
+          "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "AvMY_KYUv1g"
+        },
+        {
+          "artist": "Metrika",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=rsM68zAip4A",
+          "cover": "https://yt3.googleusercontent.com/3CZxn8RdVMxid-dt1E33kf9UmpojSOLmW2ZEvWD0mH2xHjZ9nJkSLSO2RfrXU9evD47zTdT3RI8=w544-h544-l90-rj",
+          "external": true,
+          "videoId": "rsM68zAip4A"
+        },
+        {
+          "artist": "twenty one pilots",
+          "time": "1 hora",
+          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Guns%20for%20Hands.mp3",
+          "cover": "https://yt3.googleusercontent.com/uF3nEJZcQIu_EhgOhnZZn9KnbgNOJN8QU88imE0vM4Wp1WzcqmN5xtmOWkK6WbKAUkswkr1XjoWeFTY=w544-h544-p-l90-rj",
+          "external": false,
+          "videoId": "CLJmHNp1jJM"
+        },
+        {
+          "artist": "Hayley Williams",
+          "time": "1 hora",
+          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
+          "cover": "https://lh3.googleusercontent.com/A_sSN2qGnrpiw7WK54BnzpTPOXQ5BAsTtP9MKAyRnnvdy8lerbrw04iPPVuxSerngE4rIRCMw6jdjA=w544-h544-p-l90-rj",
+          "external": false,
+          "videoId": "naKCSRndTZg"
+        }
+      ]
+    },
     {
       "label": "semana del 7 al 14 de septiembre",
       "date": "2026-09-14",
