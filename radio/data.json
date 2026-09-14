@@ -1,86 +1,70 @@
 {
-  "weekLabel": "semana del 28 de septiembre al 5 de octubre",
-  "date": "2026-10-05",
-  "generatedAt": "2026-09-07T14:57:18.943454+00:00",
+  "weekLabel": "semana del 5 al 12 de octubre",
+  "date": "2026-10-12",
+  "generatedAt": "2026-09-14T15:48:59.266634+00:00",
   "songs": [
     {
-      "title": "Dethrone",
-      "artist": "Bad Omens",
-      "plays": "8 reproducciones",
-      "videoId": "dEVwnMfVjrQ",
-      "src": "https://www.youtube.com/watch?v=dEVwnMfVjrQ",
-      "cover": "https://yt3.googleusercontent.com/O6r4vCT9YJYhvnineB4M_1LETqNrx-TcXckmhgu6NMM9YDTk2iykroGsCzLFlU8QQm_2Y9BhPBi6UUi6=w120-h120-l90-rj",
+      "title": "TOTO DE LOCA",
+      "artist": "Metrika",
+      "plays": "10 reproducciones",
+      "videoId": "IgaZL0roo5Y",
+      "src": "https://www.youtube.com/watch?v=IgaZL0roo5Y",
+      "cover": "https://yt3.googleusercontent.com/-u4u49UiUSE3IoovFzTxLOwCBgohlO6quLIUlE4LvOFzGXqD6uc_upBqT42CeWpGvXlst3oWnzG_dUPK=w120-h120-l90-rj",
+      "external": true
+    },
+    {
+      "title": "Bruce Wayne",
+      "artist": "Easykid",
+      "plays": "7 reproducciones",
+      "videoId": "uhXEepVeJ8c",
+      "src": "https://www.youtube.com/watch?v=uhXEepVeJ8c",
+      "cover": "https://yt3.googleusercontent.com/brvZPOfImFJPANfbawVLGKNpnIc_P40N5P3CW--6d5lQrjI9_BvLQUNjj8fGWZ6eMdxuR_Jrmvu5D8nTIw=w120-h120-l90-rj",
       "external": true
     },
     {
       "title": "Ego Death At A Bachelorette Party",
       "artist": "Hayley Williams",
-      "plays": "8 reproducciones",
+      "plays": "6 reproducciones",
       "videoId": "TRCRapkCF8E",
       "src": "https://www.youtube.com/watch?v=TRCRapkCF8E",
       "cover": "https://yt3.googleusercontent.com/OG6kB5buZzyfgUSGIFEQiQAv5hf3B_lw5jCwwzrKpxNN1ieuuUeT0Nf25o_wekIyHFc7TuRF2IQrJQse=w120-h120-l90-rj",
       "external": true
     },
     {
-      "title": "Obey (con YUNGBLUD)",
-      "artist": "Bring Me The Horizon",
-      "plays": "7 reproducciones",
-      "videoId": "hgcYbaCq7BU",
-      "src": "https://www.youtube.com/watch?v=hgcYbaCq7BU",
-      "cover": "https://yt3.googleusercontent.com/CpIQXSuQqjd0WEJEzgEO2YkuJuIyAq9BRcokRdozEXPk0c8EBVS05GYqPd-7ifzo6HdfK7xrqHHCX8Uq=w120-h120-l90-rj",
+      "title": "LAS PLÁSTICAS",
+      "artist": "Metrika",
+      "plays": "6 reproducciones",
+      "videoId": "8IC-v6kWGQI",
+      "src": "https://www.youtube.com/watch?v=8IC-v6kWGQI",
+      "cover": "https://yt3.googleusercontent.com/slhtvI42zSJFpfymBMt7dUfydamWfEU52TY5xh2-ATT2ZgzzGx2A6rnDZqPmYLps12khciRUPJS5W44G=w120-h120-l90-rj",
       "external": true
     },
     {
-      "title": "Doomed",
-      "artist": "Bring Me The Horizon",
-      "plays": "6 reproducciones",
-      "videoId": "5Oc0ja19_GU",
-      "src": "https://www.youtube.com/watch?v=5Oc0ja19_GU",
-      "cover": "https://yt3.googleusercontent.com/af_jQ-T0nTfQPVpTV7xJSN6FKrSI6fTju7X3-KSB8pmDpXHG7DxQ3KsLSifNnCzs_ETxQ9a13ukCJqNs=w120-h120-l90-rj",
-      "external": true
-    },
-    {
-      "title": "Shadow Moses",
-      "artist": "Bring Me The Horizon",
-      "plays": "6 reproducciones",
-      "videoId": "w-9QbmebBn8",
-      "src": "https://www.youtube.com/watch?v=w-9QbmebBn8",
-      "cover": "https://yt3.googleusercontent.com/Kx7Rl-Fg6JYhIVyLxxdfuBzR58K6rXqQXbUI4JmoMqbhp5HJo0KRAK_Wjx_C3XQi8lPEPjRWMrIlEuVb=w120-h120-l90-rj",
+      "title": "ARTIFICIAL SUICIDE",
+      "artist": "Bad Omens",
+      "plays": "5 reproducciones",
+      "videoId": "Gw5I3HzMWek",
+      "src": "https://www.youtube.com/watch?v=Gw5I3HzMWek",
+      "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
       "external": true
     }
   ],
   "artists": [
     {
       "artist": "Bring Me The Horizon",
-      "time": "5 horas",
+      "time": "4 horas",
       "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
       "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
       "external": true,
       "videoId": "UonVoc65dx8"
     },
     {
-      "artist": "Bad Omens",
+      "artist": "Easykid",
       "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=dEVwnMfVjrQ",
-      "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
+      "src": "https://www.youtube.com/watch?v=uhXEepVeJ8c",
+      "cover": "https://yt3.googleusercontent.com/9_sE4WDIWdfB57N_GIaUd8dOqkRqNHuCHdJ0Un71hC4yUovXexyv9rzBmonk3onlaMx_shcuX4JGgHUp=w544-h544-l90-rj",
       "external": true,
-      "videoId": "dEVwnMfVjrQ"
-    },
-    {
-      "artist": "twenty one pilots",
-      "time": "1 hora",
-      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Guns%20for%20Hands.mp3",
-      "cover": "https://yt3.googleusercontent.com/uF3nEJZcQIu_EhgOhnZZn9KnbgNOJN8QU88imE0vM4Wp1WzcqmN5xtmOWkK6WbKAUkswkr1XjoWeFTY=w544-h544-p-l90-rj",
-      "external": false,
-      "videoId": "CLJmHNp1jJM"
-    },
-    {
-      "artist": "The Strokes",
-      "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=6FnbPTaoahM",
-      "cover": "https://lh3.googleusercontent.com/QdxnTbXnfk-f0uP-7x9q2uYEkwNDLvDsEd7ViMBxB1jEIudgCUkxI7YGnZlL_IPdVRlgbOa1Mc4r6w=w544-h544-p-l90-rj",
-      "external": true,
-      "videoId": "6FnbPTaoahM"
+      "videoId": "uhXEepVeJ8c"
     },
     {
       "artist": "Metrika",
@@ -89,9 +73,118 @@
       "cover": "https://yt3.googleusercontent.com/3CZxn8RdVMxid-dt1E33kf9UmpojSOLmW2ZEvWD0mH2xHjZ9nJkSLSO2RfrXU9evD47zTdT3RI8=w544-h544-l90-rj",
       "external": true,
       "videoId": "IgaZL0roo5Y"
+    },
+    {
+      "artist": "Bad Omens",
+      "time": "1 hora",
+      "src": "https://www.youtube.com/watch?v=Gw5I3HzMWek",
+      "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
+      "external": true,
+      "videoId": "Gw5I3HzMWek"
+    },
+    {
+      "artist": "Face",
+      "time": "1 hora",
+      "src": "https://www.youtube.com/watch?v=j7riyax3VlA",
+      "cover": "https://yt3.googleusercontent.com/oPviG6rkOnKqTu0dilvZI2hYuEiPpzpRMhpSYnhad1PqAiBfhVdmQn_bY8q1waCCD4oj-5kP=w544-h544-l90-rj",
+      "external": true,
+      "videoId": "j7riyax3VlA"
     }
   ],
   "pastWeeks": [
+    {
+      "label": "semana del 28 de septiembre al 5 de octubre",
+      "date": "2026-10-05",
+      "songs": [
+        {
+          "title": "Dethrone",
+          "artist": "Bad Omens",
+          "plays": "8 reproducciones",
+          "videoId": "dEVwnMfVjrQ",
+          "src": "https://www.youtube.com/watch?v=dEVwnMfVjrQ",
+          "cover": "https://yt3.googleusercontent.com/O6r4vCT9YJYhvnineB4M_1LETqNrx-TcXckmhgu6NMM9YDTk2iykroGsCzLFlU8QQm_2Y9BhPBi6UUi6=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Ego Death At A Bachelorette Party",
+          "artist": "Hayley Williams",
+          "plays": "8 reproducciones",
+          "videoId": "TRCRapkCF8E",
+          "src": "https://www.youtube.com/watch?v=TRCRapkCF8E",
+          "cover": "https://yt3.googleusercontent.com/OG6kB5buZzyfgUSGIFEQiQAv5hf3B_lw5jCwwzrKpxNN1ieuuUeT0Nf25o_wekIyHFc7TuRF2IQrJQse=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Obey (con YUNGBLUD)",
+          "artist": "Bring Me The Horizon",
+          "plays": "7 reproducciones",
+          "videoId": "hgcYbaCq7BU",
+          "src": "https://www.youtube.com/watch?v=hgcYbaCq7BU",
+          "cover": "https://yt3.googleusercontent.com/CpIQXSuQqjd0WEJEzgEO2YkuJuIyAq9BRcokRdozEXPk0c8EBVS05GYqPd-7ifzo6HdfK7xrqHHCX8Uq=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Doomed",
+          "artist": "Bring Me The Horizon",
+          "plays": "6 reproducciones",
+          "videoId": "5Oc0ja19_GU",
+          "src": "https://www.youtube.com/watch?v=5Oc0ja19_GU",
+          "cover": "https://yt3.googleusercontent.com/af_jQ-T0nTfQPVpTV7xJSN6FKrSI6fTju7X3-KSB8pmDpXHG7DxQ3KsLSifNnCzs_ETxQ9a13ukCJqNs=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Shadow Moses",
+          "artist": "Bring Me The Horizon",
+          "plays": "6 reproducciones",
+          "videoId": "w-9QbmebBn8",
+          "src": "https://www.youtube.com/watch?v=w-9QbmebBn8",
+          "cover": "https://yt3.googleusercontent.com/Kx7Rl-Fg6JYhIVyLxxdfuBzR58K6rXqQXbUI4JmoMqbhp5HJo0KRAK_Wjx_C3XQi8lPEPjRWMrIlEuVb=w120-h120-l90-rj",
+          "external": true
+        }
+      ],
+      "artists": [
+        {
+          "artist": "Bring Me The Horizon",
+          "time": "5 horas",
+          "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
+          "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "UonVoc65dx8"
+        },
+        {
+          "artist": "Bad Omens",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=dEVwnMfVjrQ",
+          "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "dEVwnMfVjrQ"
+        },
+        {
+          "artist": "twenty one pilots",
+          "time": "1 hora",
+          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Guns%20for%20Hands.mp3",
+          "cover": "https://yt3.googleusercontent.com/uF3nEJZcQIu_EhgOhnZZn9KnbgNOJN8QU88imE0vM4Wp1WzcqmN5xtmOWkK6WbKAUkswkr1XjoWeFTY=w544-h544-p-l90-rj",
+          "external": false,
+          "videoId": "CLJmHNp1jJM"
+        },
+        {
+          "artist": "The Strokes",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=6FnbPTaoahM",
+          "cover": "https://lh3.googleusercontent.com/QdxnTbXnfk-f0uP-7x9q2uYEkwNDLvDsEd7ViMBxB1jEIudgCUkxI7YGnZlL_IPdVRlgbOa1Mc4r6w=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "6FnbPTaoahM"
+        },
+        {
+          "artist": "Metrika",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=IgaZL0roo5Y",
+          "cover": "https://yt3.googleusercontent.com/3CZxn8RdVMxid-dt1E33kf9UmpojSOLmW2ZEvWD0mH2xHjZ9nJkSLSO2RfrXU9evD47zTdT3RI8=w544-h544-l90-rj",
+          "external": true,
+          "videoId": "IgaZL0roo5Y"
+        }
+      ]
+    },
     {
       "label": "semana del 21 al 28 de septiembre",
       "date": "2026-09-28",
