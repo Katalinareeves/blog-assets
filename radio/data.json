@@ -1,12 +1,12 @@
 {
-  "weekLabel": "semana del 5 al 12 de octubre",
-  "date": "2026-10-12",
-  "generatedAt": "2026-09-14T15:48:59.266634+00:00",
+  "weekLabel": "semana del 15 al 22 de septiembre",
+  "date": "2026-09-22",
+  "generatedAt": "2026-09-15T23:03:20.691292+00:00",
   "songs": [
     {
       "title": "TOTO DE LOCA",
       "artist": "Metrika",
-      "plays": "10 reproducciones",
+      "plays": "9 reproducciones",
       "videoId": "IgaZL0roo5Y",
       "src": "https://www.youtube.com/watch?v=IgaZL0roo5Y",
       "cover": "https://yt3.googleusercontent.com/-u4u49UiUSE3IoovFzTxLOwCBgohlO6quLIUlE4LvOFzGXqD6uc_upBqT42CeWpGvXlst3oWnzG_dUPK=w120-h120-l90-rj",
@@ -15,7 +15,7 @@
     {
       "title": "Bruce Wayne",
       "artist": "Easykid",
-      "plays": "7 reproducciones",
+      "plays": "6 reproducciones",
       "videoId": "uhXEepVeJ8c",
       "src": "https://www.youtube.com/watch?v=uhXEepVeJ8c",
       "cover": "https://yt3.googleusercontent.com/brvZPOfImFJPANfbawVLGKNpnIc_P40N5P3CW--6d5lQrjI9_BvLQUNjj8fGWZ6eMdxuR_Jrmvu5D8nTIw=w120-h120-l90-rj",
@@ -24,7 +24,7 @@
     {
       "title": "Ego Death At A Bachelorette Party",
       "artist": "Hayley Williams",
-      "plays": "6 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "TRCRapkCF8E",
       "src": "https://www.youtube.com/watch?v=TRCRapkCF8E",
       "cover": "https://yt3.googleusercontent.com/OG6kB5buZzyfgUSGIFEQiQAv5hf3B_lw5jCwwzrKpxNN1ieuuUeT0Nf25o_wekIyHFc7TuRF2IQrJQse=w120-h120-l90-rj",
@@ -33,26 +33,26 @@
     {
       "title": "LAS PLÁSTICAS",
       "artist": "Metrika",
-      "plays": "6 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "8IC-v6kWGQI",
       "src": "https://www.youtube.com/watch?v=8IC-v6kWGQI",
       "cover": "https://yt3.googleusercontent.com/slhtvI42zSJFpfymBMt7dUfydamWfEU52TY5xh2-ATT2ZgzzGx2A6rnDZqPmYLps12khciRUPJS5W44G=w120-h120-l90-rj",
       "external": true
     },
     {
-      "title": "ARTIFICIAL SUICIDE",
-      "artist": "Bad Omens",
-      "plays": "5 reproducciones",
-      "videoId": "Gw5I3HzMWek",
-      "src": "https://www.youtube.com/watch?v=Gw5I3HzMWek",
-      "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
+      "title": "Doomed",
+      "artist": "Bring Me The Horizon",
+      "plays": "4 reproducciones",
+      "videoId": "5Oc0ja19_GU",
+      "src": "https://www.youtube.com/watch?v=5Oc0ja19_GU",
+      "cover": "https://yt3.googleusercontent.com/af_jQ-T0nTfQPVpTV7xJSN6FKrSI6fTju7X3-KSB8pmDpXHG7DxQ3KsLSifNnCzs_ETxQ9a13ukCJqNs=w120-h120-l90-rj",
       "external": true
     }
   ],
   "artists": [
     {
       "artist": "Bring Me The Horizon",
-      "time": "4 horas",
+      "time": "3 horas",
       "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
       "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
       "external": true,
@@ -67,6 +67,14 @@
       "videoId": "uhXEepVeJ8c"
     },
     {
+      "artist": "Bad Omens",
+      "time": "1 hora",
+      "src": "https://www.youtube.com/watch?v=AyNsPBQguEA",
+      "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
+      "external": true,
+      "videoId": "AyNsPBQguEA"
+    },
+    {
       "artist": "Metrika",
       "time": "1 hora",
       "src": "https://www.youtube.com/watch?v=IgaZL0roo5Y",
@@ -75,23 +83,108 @@
       "videoId": "IgaZL0roo5Y"
     },
     {
-      "artist": "Bad Omens",
-      "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=Gw5I3HzMWek",
-      "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
-      "external": true,
-      "videoId": "Gw5I3HzMWek"
-    },
-    {
       "artist": "Face",
-      "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=j7riyax3VlA",
+      "time": "59 minutos",
+      "src": "https://www.youtube.com/watch?v=ZjqknX8d7_s",
       "cover": "https://yt3.googleusercontent.com/oPviG6rkOnKqTu0dilvZI2hYuEiPpzpRMhpSYnhad1PqAiBfhVdmQn_bY8q1waCCD4oj-5kP=w544-h544-l90-rj",
       "external": true,
-      "videoId": "j7riyax3VlA"
+      "videoId": "ZjqknX8d7_s"
     }
   ],
   "pastWeeks": [
+    {
+      "label": "semana del 5 al 12 de octubre",
+      "date": "2026-10-12",
+      "songs": [
+        {
+          "title": "TOTO DE LOCA",
+          "artist": "Metrika",
+          "plays": "10 reproducciones",
+          "videoId": "IgaZL0roo5Y",
+          "src": "https://www.youtube.com/watch?v=IgaZL0roo5Y",
+          "cover": "https://yt3.googleusercontent.com/-u4u49UiUSE3IoovFzTxLOwCBgohlO6quLIUlE4LvOFzGXqD6uc_upBqT42CeWpGvXlst3oWnzG_dUPK=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Bruce Wayne",
+          "artist": "Easykid",
+          "plays": "7 reproducciones",
+          "videoId": "uhXEepVeJ8c",
+          "src": "https://www.youtube.com/watch?v=uhXEepVeJ8c",
+          "cover": "https://yt3.googleusercontent.com/brvZPOfImFJPANfbawVLGKNpnIc_P40N5P3CW--6d5lQrjI9_BvLQUNjj8fGWZ6eMdxuR_Jrmvu5D8nTIw=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Ego Death At A Bachelorette Party",
+          "artist": "Hayley Williams",
+          "plays": "6 reproducciones",
+          "videoId": "TRCRapkCF8E",
+          "src": "https://www.youtube.com/watch?v=TRCRapkCF8E",
+          "cover": "https://yt3.googleusercontent.com/OG6kB5buZzyfgUSGIFEQiQAv5hf3B_lw5jCwwzrKpxNN1ieuuUeT0Nf25o_wekIyHFc7TuRF2IQrJQse=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "LAS PLÁSTICAS",
+          "artist": "Metrika",
+          "plays": "6 reproducciones",
+          "videoId": "8IC-v6kWGQI",
+          "src": "https://www.youtube.com/watch?v=8IC-v6kWGQI",
+          "cover": "https://yt3.googleusercontent.com/slhtvI42zSJFpfymBMt7dUfydamWfEU52TY5xh2-ATT2ZgzzGx2A6rnDZqPmYLps12khciRUPJS5W44G=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "ARTIFICIAL SUICIDE",
+          "artist": "Bad Omens",
+          "plays": "5 reproducciones",
+          "videoId": "Gw5I3HzMWek",
+          "src": "https://www.youtube.com/watch?v=Gw5I3HzMWek",
+          "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
+          "external": true
+        }
+      ],
+      "artists": [
+        {
+          "artist": "Bring Me The Horizon",
+          "time": "4 horas",
+          "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
+          "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "UonVoc65dx8"
+        },
+        {
+          "artist": "Easykid",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=uhXEepVeJ8c",
+          "cover": "https://yt3.googleusercontent.com/9_sE4WDIWdfB57N_GIaUd8dOqkRqNHuCHdJ0Un71hC4yUovXexyv9rzBmonk3onlaMx_shcuX4JGgHUp=w544-h544-l90-rj",
+          "external": true,
+          "videoId": "uhXEepVeJ8c"
+        },
+        {
+          "artist": "Metrika",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=IgaZL0roo5Y",
+          "cover": "https://yt3.googleusercontent.com/3CZxn8RdVMxid-dt1E33kf9UmpojSOLmW2ZEvWD0mH2xHjZ9nJkSLSO2RfrXU9evD47zTdT3RI8=w544-h544-l90-rj",
+          "external": true,
+          "videoId": "IgaZL0roo5Y"
+        },
+        {
+          "artist": "Bad Omens",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=Gw5I3HzMWek",
+          "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "Gw5I3HzMWek"
+        },
+        {
+          "artist": "Face",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=j7riyax3VlA",
+          "cover": "https://yt3.googleusercontent.com/oPviG6rkOnKqTu0dilvZI2hYuEiPpzpRMhpSYnhad1PqAiBfhVdmQn_bY8q1waCCD4oj-5kP=w544-h544-l90-rj",
+          "external": true,
+          "videoId": "j7riyax3VlA"
+        }
+      ]
+    },
     {
       "label": "semana del 28 de septiembre al 5 de octubre",
       "date": "2026-10-05",
@@ -1060,48 +1153,6 @@
           "plays": "3 reproducciones",
           "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Guns%20for%20Hands.mp3",
           "cover": "../assets/image/cover9.jpg"
-        }
-      ],
-      "artists": []
-    },
-    {
-      "label": "semana del 14 al 21 de julio",
-      "date": "2026-07-14",
-      "songs": [
-        {
-          "title": "Showbiz",
-          "artist": "Hayley Williams",
-          "plays": "7 reproducciones",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
-          "cover": "../assets/image/cover6.jpg"
-        },
-        {
-          "title": "Hospital For Souls",
-          "artist": "Bring Me The Horizon",
-          "plays": "6 reproducciones",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Hospital%20for%20Souls.mp3",
-          "cover": "../assets/image/cover4.jpg"
-        },
-        {
-          "title": "Playing God",
-          "artist": "Motionless In White ft Corey Taylor",
-          "plays": "5 reproducciones",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Playing%20God%20(feat.%20Corey%20Taylor).mp3",
-          "cover": "../assets/image/cover7.jpg"
-        },
-        {
-          "title": "Kill me",
-          "artist": "Hayley Williams",
-          "plays": "4 reproducciones",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Kill%20Me.mp3",
-          "cover": "../assets/image/cover6.jpg"
-        },
-        {
-          "title": "What You Need",
-          "artist": "Bring Me The Horizon",
-          "plays": "3 reproducciones",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/What%20You%20Need.mp3",
-          "cover": "../assets/image/cover8.jpg"
         }
       ],
       "artists": []
