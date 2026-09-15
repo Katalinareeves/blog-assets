@@ -370,6 +370,11 @@ def main():
         week_start = date.fromisoformat(prev_date_str) if prev_date_str else now.date()
     except ValueError:
         week_start = now.date()
+    # Nunca dejar que la semana "virtual" se adelante a la fecha real: si el
+    # workflow corrio de mas (pruebas manuales, reintentos, doble disparo del
+    # cron), esto la frena en el presente en vez de seguir sumando 7 dias
+    # sobre una fecha que ya estaba adelantada.
+    week_start = min(week_start, now.date())
     week_end = week_start + timedelta(days=7)
 
     if week_start.month == week_end.month:
