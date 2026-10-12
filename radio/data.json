@@ -1,86 +1,62 @@
 {
-  "weekLabel": "semana del 5 al 12 de octubre",
-  "date": "2026-10-12",
-  "generatedAt": "2026-10-05T18:12:38.239518+00:00",
+  "weekLabel": "semana del 12 al 19 de octubre",
+  "date": "2026-10-19",
+  "generatedAt": "2026-10-12T18:50:25.120945+00:00",
   "songs": [
+    {
+      "title": "Off the Heezay (2026 Repented)",
+      "artist": "Bring Me The Horizon",
+      "plays": "4 reproducciones",
+      "videoId": "F6NIwCkw1-0",
+      "src": "https://www.youtube.com/watch?v=F6NIwCkw1-0",
+      "cover": "https://yt3.googleusercontent.com/ma6sAXGMVmVUlJUqD5zrhGWlbaTqbel4WDbgjY2xOUOyNE7Yy1ftfBHrU0sJZ10DrHe4pK3CEOo_mqwN=w120-h120-l90-rj",
+      "external": true
+    },
     {
       "title": "Nicole Kidman",
       "artist": "ADÉLA",
-      "plays": "9 reproducciones",
+      "plays": "4 reproducciones",
       "videoId": "h-zuG75Ds-w",
       "src": "https://www.youtube.com/watch?v=h-zuG75Ds-w",
       "cover": "https://yt3.googleusercontent.com/mHa1sg5pmlgudnTZ_XOcJ-0VAKuFDodEstxurIF2C6RttpfyyeaqC75FmPQjlc2BQQ5JfvGaFuU69dhs=w120-h120-l90-rj",
       "external": true
     },
     {
-      "title": "Tell Slater Not to Wash His Dick (2026 Repented)",
+      "title": "Parasite Eve",
       "artist": "Bring Me The Horizon",
-      "plays": "5 reproducciones",
-      "videoId": "LL73Noz6fdc",
-      "src": "https://www.youtube.com/watch?v=LL73Noz6fdc",
-      "cover": "https://yt3.googleusercontent.com/ma6sAXGMVmVUlJUqD5zrhGWlbaTqbel4WDbgjY2xOUOyNE7Yy1ftfBHrU0sJZ10DrHe4pK3CEOo_mqwN=w120-h120-l90-rj",
-      "external": true
-    },
-    {
-      "title": "Planetarium",
-      "artist": "Justin Hurwitz",
-      "plays": "4 reproducciones",
-      "videoId": "i0hcq522FFE",
-      "src": "https://www.youtube.com/watch?v=i0hcq522FFE",
-      "cover": "https://yt3.googleusercontent.com/8IOAaKBmQQwxFz78Gg9rhPbH7c3NoyQJU4q7Zbe4D8wFZVut6sRYrLlgHmwhzrGSVxiO7_3XRhyRRuPbsQ=w120-h120-l90-rj",
+      "plays": "3 reproducciones",
+      "videoId": "GbiB9BBs_qk",
+      "src": "https://www.youtube.com/watch?v=GbiB9BBs_qk",
+      "cover": "https://yt3.googleusercontent.com/CpIQXSuQqjd0WEJEzgEO2YkuJuIyAq9BRcokRdozEXPk0c8EBVS05GYqPd-7ifzo6HdfK7xrqHHCX8Uq=w120-h120-l90-rj",
       "external": true
     },
     {
       "title": "As Long as You Love Me (con Big Sean)",
       "artist": "Justin Bieber",
-      "plays": "4 reproducciones",
+      "plays": "3 reproducciones",
       "videoId": "Fy29UahP_hQ",
       "src": "https://www.youtube.com/watch?v=Fy29UahP_hQ",
       "cover": "https://yt3.googleusercontent.com/jXXzY2fTfxgr0_wR_I_V8W3Ai0L3ece217Biqm0tY36I9VAoce09xXmjgt8mXggTVgGGBHdJ3eAyICY=w120-h120-l90-rj",
       "external": true
     },
     {
-      "title": "Playing God (con Corey Taylor)",
-      "artist": "Motionless In White",
-      "plays": "4 reproducciones",
-      "videoId": "WsoPbQ9B58g",
-      "src": "https://www.youtube.com/watch?v=WsoPbQ9B58g",
-      "cover": "https://yt3.googleusercontent.com/U2-29rA8_qp2-upQ3sVKs2WqOxQ4Jvgo9H8gV22NUUrzlxxBda74iwKKkulr2vW4_qTyRtNYzk0ygw9Q=w120-h120-l90-rj",
+      "title": "HIJO DE PUTA",
+      "artist": "Metrika",
+      "plays": "3 reproducciones",
+      "videoId": "eSjW93A5ROQ",
+      "src": "https://www.youtube.com/watch?v=eSjW93A5ROQ",
+      "cover": "https://yt3.googleusercontent.com/HiIPSZBuRu8BXi7PnhnxqePXSw_zOd7_VMFR414tdieLR11naxFUzB6x3V_1doGyMgMdezkmQshhvHDQQg=w120-h120-l90-rj",
       "external": true
     }
   ],
   "artists": [
     {
       "artist": "Bring Me The Horizon",
-      "time": "4 horas",
+      "time": "3 horas",
       "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
       "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
       "external": true,
       "videoId": "UonVoc65dx8"
-    },
-    {
-      "artist": "Hayley Williams",
-      "time": "1 hora",
-      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
-      "cover": "https://lh3.googleusercontent.com/A_sSN2qGnrpiw7WK54BnzpTPOXQ5BAsTtP9MKAyRnnvdy8lerbrw04iPPVuxSerngE4rIRCMw6jdjA=w544-h544-p-l90-rj",
-      "external": false,
-      "videoId": "naKCSRndTZg"
-    },
-    {
-      "artist": "Frédéric Chopin",
-      "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=JVZ0MvGvajs",
-      "cover": "https://lh3.googleusercontent.com/k0voQ5Her_EJvKWzawMj4cZyY77xx4K8ZyoaRmMakgBug5hs7Nu4ufgVLDTbmc-oAymgf97xSogLln2e=w544-h544-p-l90-rj",
-      "external": true,
-      "videoId": "JVZ0MvGvajs"
-    },
-    {
-      "artist": "Claude Debussy",
-      "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=WKU8DJzipW4",
-      "cover": "https://lh3.googleusercontent.com/GtlibpMRuI_NuSzSy_N-KGKXgr4OZg4TnVaX7VeGn5suKliSWH41BNZ34MGqQ9-FEarQCYLGwQtqhvE=w544-h544-p-l90-rj",
-      "external": true,
-      "videoId": "WKU8DJzipW4"
     },
     {
       "artist": "Bad Omens",
@@ -89,9 +65,126 @@
       "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
       "external": true,
       "videoId": "OiLfOPtjCL8"
+    },
+    {
+      "artist": "Easykid",
+      "time": "1 hora",
+      "src": "https://www.youtube.com/watch?v=LC0lnWGnlwM",
+      "cover": "https://yt3.googleusercontent.com/ZrTpqRdoxbknUBApB35Llo7hMXB6dAzFlDBVSMJ0ARAVwHZaxpeHQQpCSKQuAzFPuT5x1Rd80A=w544-h544-l90-rj",
+      "external": true,
+      "videoId": "LC0lnWGnlwM"
+    },
+    {
+      "artist": "Hayley Williams",
+      "time": "56 minutos",
+      "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
+      "cover": "https://lh3.googleusercontent.com/A_sSN2qGnrpiw7WK54BnzpTPOXQ5BAsTtP9MKAyRnnvdy8lerbrw04iPPVuxSerngE4rIRCMw6jdjA=w544-h544-p-l90-rj",
+      "external": false,
+      "videoId": "naKCSRndTZg"
+    },
+    {
+      "artist": "Face",
+      "time": "48 minutos",
+      "src": "https://www.youtube.com/watch?v=mWjDkr5iLU8",
+      "cover": "https://yt3.googleusercontent.com/oPviG6rkOnKqTu0dilvZI2hYuEiPpzpRMhpSYnhad1PqAiBfhVdmQn_bY8q1waCCD4oj-5kP=w544-h544-l90-rj",
+      "external": true,
+      "videoId": "mWjDkr5iLU8"
     }
   ],
   "pastWeeks": [
+    {
+      "label": "semana del 5 al 12 de octubre",
+      "date": "2026-10-12",
+      "songs": [
+        {
+          "title": "Nicole Kidman",
+          "artist": "ADÉLA",
+          "plays": "9 reproducciones",
+          "videoId": "h-zuG75Ds-w",
+          "src": "https://www.youtube.com/watch?v=h-zuG75Ds-w",
+          "cover": "https://yt3.googleusercontent.com/mHa1sg5pmlgudnTZ_XOcJ-0VAKuFDodEstxurIF2C6RttpfyyeaqC75FmPQjlc2BQQ5JfvGaFuU69dhs=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Tell Slater Not to Wash His Dick (2026 Repented)",
+          "artist": "Bring Me The Horizon",
+          "plays": "5 reproducciones",
+          "videoId": "LL73Noz6fdc",
+          "src": "https://www.youtube.com/watch?v=LL73Noz6fdc",
+          "cover": "https://yt3.googleusercontent.com/ma6sAXGMVmVUlJUqD5zrhGWlbaTqbel4WDbgjY2xOUOyNE7Yy1ftfBHrU0sJZ10DrHe4pK3CEOo_mqwN=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Planetarium",
+          "artist": "Justin Hurwitz",
+          "plays": "4 reproducciones",
+          "videoId": "i0hcq522FFE",
+          "src": "https://www.youtube.com/watch?v=i0hcq522FFE",
+          "cover": "https://yt3.googleusercontent.com/8IOAaKBmQQwxFz78Gg9rhPbH7c3NoyQJU4q7Zbe4D8wFZVut6sRYrLlgHmwhzrGSVxiO7_3XRhyRRuPbsQ=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "As Long as You Love Me (con Big Sean)",
+          "artist": "Justin Bieber",
+          "plays": "4 reproducciones",
+          "videoId": "Fy29UahP_hQ",
+          "src": "https://www.youtube.com/watch?v=Fy29UahP_hQ",
+          "cover": "https://yt3.googleusercontent.com/jXXzY2fTfxgr0_wR_I_V8W3Ai0L3ece217Biqm0tY36I9VAoce09xXmjgt8mXggTVgGGBHdJ3eAyICY=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "Playing God (con Corey Taylor)",
+          "artist": "Motionless In White",
+          "plays": "4 reproducciones",
+          "videoId": "WsoPbQ9B58g",
+          "src": "https://www.youtube.com/watch?v=WsoPbQ9B58g",
+          "cover": "https://yt3.googleusercontent.com/U2-29rA8_qp2-upQ3sVKs2WqOxQ4Jvgo9H8gV22NUUrzlxxBda74iwKKkulr2vW4_qTyRtNYzk0ygw9Q=w120-h120-l90-rj",
+          "external": true
+        }
+      ],
+      "artists": [
+        {
+          "artist": "Bring Me The Horizon",
+          "time": "4 horas",
+          "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
+          "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "UonVoc65dx8"
+        },
+        {
+          "artist": "Hayley Williams",
+          "time": "1 hora",
+          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
+          "cover": "https://lh3.googleusercontent.com/A_sSN2qGnrpiw7WK54BnzpTPOXQ5BAsTtP9MKAyRnnvdy8lerbrw04iPPVuxSerngE4rIRCMw6jdjA=w544-h544-p-l90-rj",
+          "external": false,
+          "videoId": "naKCSRndTZg"
+        },
+        {
+          "artist": "Frédéric Chopin",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=JVZ0MvGvajs",
+          "cover": "https://lh3.googleusercontent.com/k0voQ5Her_EJvKWzawMj4cZyY77xx4K8ZyoaRmMakgBug5hs7Nu4ufgVLDTbmc-oAymgf97xSogLln2e=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "JVZ0MvGvajs"
+        },
+        {
+          "artist": "Claude Debussy",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=WKU8DJzipW4",
+          "cover": "https://lh3.googleusercontent.com/GtlibpMRuI_NuSzSy_N-KGKXgr4OZg4TnVaX7VeGn5suKliSWH41BNZ34MGqQ9-FEarQCYLGwQtqhvE=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "WKU8DJzipW4"
+        },
+        {
+          "artist": "Bad Omens",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=OiLfOPtjCL8",
+          "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "OiLfOPtjCL8"
+        }
+      ]
+    },
     {
       "label": "semana del 28 de septiembre al 5 de octubre",
       "date": "2026-10-05",
@@ -1114,48 +1207,6 @@
           "videoId": "07VRRfD6vrw"
         }
       ]
-    },
-    {
-      "label": "semana del 21 al 28 de julio",
-      "date": "2026-07-28",
-      "songs": [
-        {
-          "title": "Showbiz",
-          "artist": "Hayley Williams",
-          "plays": "5 reproducciones",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
-          "cover": "../assets/image/cover6.jpg"
-        },
-        {
-          "title": "Hospital For Souls",
-          "artist": "Bring Me The Horizon",
-          "plays": "4 reproducciones",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Hospital%20for%20Souls.mp3",
-          "cover": "../assets/image/cover4.jpg"
-        },
-        {
-          "title": "Ice on my oj",
-          "artist": "Hayley Williams",
-          "plays": "3 reproducciones",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Ice%20In%20My%20OJ.mp3",
-          "cover": "../assets/image/cover6.jpg"
-        },
-        {
-          "title": "Kill me",
-          "artist": "Hayley Williams",
-          "plays": "4 reproducciones",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Kill%20Me.mp3",
-          "cover": "../assets/image/cover6.jpg"
-        },
-        {
-          "title": "Guns For Hands",
-          "artist": "Twenty One Pilots",
-          "plays": "3 reproducciones",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Guns%20for%20Hands.mp3",
-          "cover": "../assets/image/cover9.jpg"
-        }
-      ],
-      "artists": []
     }
   ]
 }
