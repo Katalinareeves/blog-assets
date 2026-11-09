@@ -1,42 +1,24 @@
 {
-  "weekLabel": "semana del 2 al 9 de noviembre",
-  "date": "2026-11-09",
-  "generatedAt": "2026-11-02T19:22:12.682872+00:00",
+  "weekLabel": "semana del 9 al 16 de noviembre",
+  "date": "2026-11-16",
+  "generatedAt": "2026-11-09T19:40:24.593024+00:00",
   "songs": [
-    {
-      "title": "Nicole Kidman",
-      "artist": "ADÉLA",
-      "plays": "8 reproducciones",
-      "videoId": "h-zuG75Ds-w",
-      "src": "https://www.youtube.com/watch?v=h-zuG75Ds-w",
-      "cover": "https://yt3.googleusercontent.com/mHa1sg5pmlgudnTZ_XOcJ-0VAKuFDodEstxurIF2C6RttpfyyeaqC75FmPQjlc2BQQ5JfvGaFuU69dhs=w120-h120-l90-rj",
-      "external": true
-    },
-    {
-      "title": "WONDERWaLL (Spotify Singles - Lyric Video)",
-      "artist": "Bring Me The Horizon",
-      "plays": "5 reproducciones",
-      "videoId": "pwYCbAsF3EI",
-      "src": "https://www.youtube.com/watch?v=pwYCbAsF3EI",
-      "cover": "https://i.ytimg.com/vi/pwYCbAsF3EI/hqdefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCggAEOADGC0guwJIWg&rs=AMzJL3lMgEe-tVZ4Vf3nMrGcEqzIws2zAw",
-      "external": true
-    },
-    {
-      "title": "LAS PLÁSTICAS",
-      "artist": "Metrika",
-      "plays": "5 reproducciones",
-      "videoId": "8IC-v6kWGQI",
-      "src": "https://www.youtube.com/watch?v=8IC-v6kWGQI",
-      "cover": "https://yt3.googleusercontent.com/slhtvI42zSJFpfymBMt7dUfydamWfEU52TY5xh2-ATT2ZgzzGx2A6rnDZqPmYLps12khciRUPJS5W44G=w120-h120-l90-rj",
-      "external": true
-    },
     {
       "title": "STILETTO O CUADRÁS",
       "artist": "Metrika",
-      "plays": "4 reproducciones",
+      "plays": "5 reproducciones",
       "videoId": "rsM68zAip4A",
       "src": "https://www.youtube.com/watch?v=rsM68zAip4A",
       "cover": "https://yt3.googleusercontent.com/5BitC5hUtzuIA1uf7zVqI6Jnp7rYa5n8LON563e_eNWrNiFbIFER9pOVzDOMjs-Kj6XjL-oUXIyq13ZR=w120-h120-l90-rj",
+      "external": true
+    },
+    {
+      "title": "OVULANDO",
+      "artist": "l0rna",
+      "plays": "5 reproducciones",
+      "videoId": "g-Qqii4PgXA",
+      "src": "https://www.youtube.com/watch?v=g-Qqii4PgXA",
+      "cover": "https://yt3.googleusercontent.com/De8AIeUakJoP58fhZqC5wdkENR31V8LSltwnpFsiCK0N_wfpTy1cvoyvXlCLRmNzAaRyC9acMOoRkZHF=w120-h120-l90-rj",
       "external": true
     },
     {
@@ -47,24 +29,34 @@
       "src": "https://www.youtube.com/watch?v=Ow_xdmCWivw",
       "cover": "https://yt3.googleusercontent.com/VjfzDXvA4thUeOG8Do-7j85N-jo4gRpdqZVEhQQmG-q00DGDrnlkMvRmcHuYL_KbPg03fsrQY8XBdYJe=w120-h120-l90-rj",
       "external": true
+    },
+    {
+      "title": "P0RN0",
+      "artist": "Metrika",
+      "plays": "4 reproducciones",
+      "videoId": "IPkBQXmyY2Y",
+      "src": "https://www.youtube.com/watch?v=IPkBQXmyY2Y",
+      "cover": "https://yt3.googleusercontent.com/dIXNR0SBNWQU7vY-gh7Zb51SYqqTaIf3G7PSqvu4MgtkjeqtQrAyHoSano1zf-rJS2iaAuDV1QOCSmhF=w120-h120-l90-rj",
+      "external": true
+    },
+    {
+      "title": "Planetarium",
+      "artist": "Justin Hurwitz",
+      "plays": "3 reproducciones",
+      "videoId": "i0hcq522FFE",
+      "src": "https://www.youtube.com/watch?v=i0hcq522FFE",
+      "cover": "https://yt3.googleusercontent.com/8IOAaKBmQQwxFz78Gg9rhPbH7c3NoyQJU4q7Zbe4D8wFZVut6sRYrLlgHmwhzrGSVxiO7_3XRhyRRuPbsQ=w120-h120-l90-rj",
+      "external": true
     }
   ],
   "artists": [
     {
       "artist": "METRIKA",
       "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=8IC-v6kWGQI",
+      "src": "https://www.youtube.com/watch?v=rsM68zAip4A",
       "cover": "https://yt3.googleusercontent.com/srB3NYEM_AJdJ1prj8C6m4fMeklQJacZLNMBDLPM5kV5EiTFnV_2UGuJIhSzBvOGfnow2I6Jaw=w544-h544-l90-rj-dcEUaO6x0J",
       "external": true,
-      "videoId": "8IC-v6kWGQI"
-    },
-    {
-      "artist": "D.Basto",
-      "time": "1 hora",
-      "src": "https://www.youtube.com/watch?v=vj9wG4F1ZhQ",
-      "cover": "https://yt3.googleusercontent.com/RBr70ItWwZ0wwlwNXH4S_mPa-yYqEhp1Csl1XUP6x_IQ9qRhwbiaEuluYGsd8-ov7sQgg2skTRLH_Rs=w544-h544-l90-rj",
-      "external": true,
-      "videoId": "vj9wG4F1ZhQ"
+      "videoId": "rsM68zAip4A"
     },
     {
       "artist": "Bring Me The Horizon",
@@ -75,23 +67,124 @@
       "videoId": "UonVoc65dx8"
     },
     {
-      "artist": "ADÉLA",
-      "time": "30 minutos",
-      "src": "https://www.youtube.com/watch?v=h-zuG75Ds-w",
-      "cover": "https://yt3.googleusercontent.com/lL3krGdmthFHXMoe34SzFS03IYQc1sSn0D2I6ctZjFELh6Mrxh6kTmtF1dyXfWxp1ZTc4WOuB3M=w544-h544-l90-rj",
+      "artist": "D.Basto",
+      "time": "59 minutos",
+      "src": "https://www.youtube.com/watch?v=_2Wj7n4rAjU",
+      "cover": "https://yt3.googleusercontent.com/RBr70ItWwZ0wwlwNXH4S_mPa-yYqEhp1Csl1XUP6x_IQ9qRhwbiaEuluYGsd8-ov7sQgg2skTRLH_Rs=w544-h544-l90-rj",
       "external": true,
-      "videoId": "h-zuG75Ds-w"
+      "videoId": "_2Wj7n4rAjU"
     },
     {
-      "artist": "l0rna",
-      "time": "23 minutos",
-      "src": "https://www.youtube.com/watch?v=EVfbNYhI9k4",
-      "cover": "https://yt3.googleusercontent.com/btExYBjN8D_Zpyze_S5RJOK_6gfo3bFW5rb0IZNR6o5XT_PbacARX3gAGRANYb7yCjxwPNA5TQ=w544-h544-l90-rj-dckUGUhxYK",
+      "artist": "My Chemical Romance",
+      "time": "54 minutos",
+      "src": "https://www.youtube.com/watch?v=deJGmifvgzY",
+      "cover": "https://lh3.googleusercontent.com/1WSmQWdB5WRxmMNW0t8s8i1K5anvvL5MMIyYjhaR7POAJcBQwLaPQV371sscRgNz_vD4EQztAd_C0ar-=w544-h544-p-l90-rj",
       "external": true,
-      "videoId": "EVfbNYhI9k4"
+      "videoId": "deJGmifvgzY"
+    },
+    {
+      "artist": "Pierce The Veil",
+      "time": "58 minutos",
+      "src": "https://www.youtube.com/watch?v=D_SZhrYnpFU",
+      "cover": "https://yt3.googleusercontent.com/waACidzFj1aopPp_ZU27HtiImAN_3t21J8q9TJzA625Vfh728xJvfSUBbrfni7MAIqTKP0KvS1322nI=w544-h544-p-l90-rj",
+      "external": true,
+      "videoId": "D_SZhrYnpFU"
     }
   ],
   "pastWeeks": [
+    {
+      "label": "semana del 2 al 9 de noviembre",
+      "date": "2026-11-09",
+      "songs": [
+        {
+          "title": "Nicole Kidman",
+          "artist": "ADÉLA",
+          "plays": "8 reproducciones",
+          "videoId": "h-zuG75Ds-w",
+          "src": "https://www.youtube.com/watch?v=h-zuG75Ds-w",
+          "cover": "https://yt3.googleusercontent.com/mHa1sg5pmlgudnTZ_XOcJ-0VAKuFDodEstxurIF2C6RttpfyyeaqC75FmPQjlc2BQQ5JfvGaFuU69dhs=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "WONDERWaLL (Spotify Singles - Lyric Video)",
+          "artist": "Bring Me The Horizon",
+          "plays": "5 reproducciones",
+          "videoId": "pwYCbAsF3EI",
+          "src": "https://www.youtube.com/watch?v=pwYCbAsF3EI",
+          "cover": "https://i.ytimg.com/vi/pwYCbAsF3EI/hqdefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCggAEOADGC0guwJIWg&rs=AMzJL3lMgEe-tVZ4Vf3nMrGcEqzIws2zAw",
+          "external": true
+        },
+        {
+          "title": "LAS PLÁSTICAS",
+          "artist": "Metrika",
+          "plays": "5 reproducciones",
+          "videoId": "8IC-v6kWGQI",
+          "src": "https://www.youtube.com/watch?v=8IC-v6kWGQI",
+          "cover": "https://yt3.googleusercontent.com/slhtvI42zSJFpfymBMt7dUfydamWfEU52TY5xh2-ATT2ZgzzGx2A6rnDZqPmYLps12khciRUPJS5W44G=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "STILETTO O CUADRÁS",
+          "artist": "Metrika",
+          "plays": "4 reproducciones",
+          "videoId": "rsM68zAip4A",
+          "src": "https://www.youtube.com/watch?v=rsM68zAip4A",
+          "cover": "https://yt3.googleusercontent.com/5BitC5hUtzuIA1uf7zVqI6Jnp7rYa5n8LON563e_eNWrNiFbIFER9pOVzDOMjs-Kj6XjL-oUXIyq13ZR=w120-h120-l90-rj",
+          "external": true
+        },
+        {
+          "title": "DEMONIAS MUÑECAS",
+          "artist": "Metrika",
+          "plays": "4 reproducciones",
+          "videoId": "Ow_xdmCWivw",
+          "src": "https://www.youtube.com/watch?v=Ow_xdmCWivw",
+          "cover": "https://yt3.googleusercontent.com/VjfzDXvA4thUeOG8Do-7j85N-jo4gRpdqZVEhQQmG-q00DGDrnlkMvRmcHuYL_KbPg03fsrQY8XBdYJe=w120-h120-l90-rj",
+          "external": true
+        }
+      ],
+      "artists": [
+        {
+          "artist": "METRIKA",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=8IC-v6kWGQI",
+          "cover": "https://yt3.googleusercontent.com/srB3NYEM_AJdJ1prj8C6m4fMeklQJacZLNMBDLPM5kV5EiTFnV_2UGuJIhSzBvOGfnow2I6Jaw=w544-h544-l90-rj-dcEUaO6x0J",
+          "external": true,
+          "videoId": "8IC-v6kWGQI"
+        },
+        {
+          "artist": "D.Basto",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=vj9wG4F1ZhQ",
+          "cover": "https://yt3.googleusercontent.com/RBr70ItWwZ0wwlwNXH4S_mPa-yYqEhp1Csl1XUP6x_IQ9qRhwbiaEuluYGsd8-ov7sQgg2skTRLH_Rs=w544-h544-l90-rj",
+          "external": true,
+          "videoId": "vj9wG4F1ZhQ"
+        },
+        {
+          "artist": "Bring Me The Horizon",
+          "time": "1 hora",
+          "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
+          "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
+          "external": true,
+          "videoId": "UonVoc65dx8"
+        },
+        {
+          "artist": "ADÉLA",
+          "time": "30 minutos",
+          "src": "https://www.youtube.com/watch?v=h-zuG75Ds-w",
+          "cover": "https://yt3.googleusercontent.com/lL3krGdmthFHXMoe34SzFS03IYQc1sSn0D2I6ctZjFELh6Mrxh6kTmtF1dyXfWxp1ZTc4WOuB3M=w544-h544-l90-rj",
+          "external": true,
+          "videoId": "h-zuG75Ds-w"
+        },
+        {
+          "artist": "l0rna",
+          "time": "23 minutos",
+          "src": "https://www.youtube.com/watch?v=EVfbNYhI9k4",
+          "cover": "https://yt3.googleusercontent.com/btExYBjN8D_Zpyze_S5RJOK_6gfo3bFW5rb0IZNR6o5XT_PbacARX3gAGRANYb7yCjxwPNA5TQ=w544-h544-l90-rj-dckUGUhxYK",
+          "external": true,
+          "videoId": "EVfbNYhI9k4"
+        }
+      ]
+    },
     {
       "label": "semana del 26 de octubre al 2 de noviembre",
       "date": "2026-11-02",
@@ -1025,99 +1118,6 @@
     {
       "label": "semana del 24 al 31 de agosto",
       "date": "2026-08-31",
-      "songs": [
-        {
-          "title": "bad decisions",
-          "artist": "Bad Omens",
-          "plays": "13 reproducciones",
-          "videoId": "KzHa9rlvUng",
-          "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
-          "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
-          "external": true
-        },
-        {
-          "title": "Diamonds Aren't Forever",
-          "artist": "Bring Me The Horizon",
-          "plays": "7 reproducciones",
-          "videoId": "ND15MCOefvo",
-          "src": "https://www.youtube.com/watch?v=ND15MCOefvo",
-          "cover": "https://yt3.googleusercontent.com/obWw8ASa4cF_xwCVmZLTweJsSVZ0aglH1lECDW0U957poDC26MTVDUbPwWGeLL3BmnrJUSXade5SKkGB9g=w120-h120-l90-rj",
-          "external": true
-        },
-        {
-          "title": "Dethrone",
-          "artist": "Bad Omens",
-          "plays": "7 reproducciones",
-          "videoId": "dEVwnMfVjrQ",
-          "src": "https://www.youtube.com/watch?v=dEVwnMfVjrQ",
-          "cover": "https://yt3.googleusercontent.com/O6r4vCT9YJYhvnineB4M_1LETqNrx-TcXckmhgu6NMM9YDTk2iykroGsCzLFlU8QQm_2Y9BhPBi6UUi6=w120-h120-l90-rj",
-          "external": true
-        },
-        {
-          "title": "For Stevie Wonder's Eyes Only (Braille) (2026 Repented)",
-          "artist": "Bring Me The Horizon",
-          "plays": "6 reproducciones",
-          "videoId": "2lFrJ72h9eE",
-          "src": "https://www.youtube.com/watch?v=2lFrJ72h9eE",
-          "cover": "https://yt3.googleusercontent.com/ma6sAXGMVmVUlJUqD5zrhGWlbaTqbel4WDbgjY2xOUOyNE7Yy1ftfBHrU0sJZ10DrHe4pK3CEOo_mqwN=w120-h120-l90-rj",
-          "external": true
-        },
-        {
-          "title": "Like A Villain",
-          "artist": "Bad Omens",
-          "plays": "5 reproducciones",
-          "videoId": "rqEbv3Z-i4c",
-          "src": "https://www.youtube.com/watch?v=rqEbv3Z-i4c",
-          "cover": "https://yt3.googleusercontent.com/-lNauAZx-tnOkrfVElHxsoakg6zEvXhrQDRhGpyXwlh6SxvxwBUQBmnZ9qf-uj7LrFtvxR9sd-eN8DE=w120-h120-l90-rj",
-          "external": true
-        }
-      ],
-      "artists": [
-        {
-          "artist": "Bring Me The Horizon",
-          "time": "4 horas",
-          "src": "https://www.youtube.com/watch?v=UonVoc65dx8",
-          "cover": "https://yt3.googleusercontent.com/YgsyFk3KZHvI5cYtcGOcWYwbpu_GJc-IbPeWyF_Xzy2JIDwL1cPefog1szowNlvuIJ-_OkpoyWOYxhg=w544-h544-p-l90-rj",
-          "external": true,
-          "videoId": "UonVoc65dx8"
-        },
-        {
-          "artist": "Bad Omens",
-          "time": "3 horas",
-          "src": "https://www.youtube.com/watch?v=KzHa9rlvUng",
-          "cover": "https://lh3.googleusercontent.com/ls0eOZYTrMDaS44I6JU1Axd2iC8qiPj0YUw7T6IFnXrY_sAL8LuwAvnC_TDnwG_qP19dVjUe8ns2YA=w544-h544-p-l90-rj",
-          "external": true,
-          "videoId": "KzHa9rlvUng"
-        },
-        {
-          "artist": "AKRIILA",
-          "time": "1 hora",
-          "src": "https://www.youtube.com/watch?v=07VRRfD6vrw",
-          "cover": "https://yt3.googleusercontent.com/ChQNTwh5Cxazpa4mofBpjp-SdVGfYC1tAGCVqrD5uT9Ci6pI5seYXDrglU4U5CjWauGAqFilhabEM0MOoQ=w120-h120-l90-rj",
-          "external": true,
-          "videoId": "07VRRfD6vrw"
-        },
-        {
-          "artist": "Easykid",
-          "time": "1 hora",
-          "src": "https://www.youtube.com/watch?v=6csiUIinM68",
-          "cover": "https://yt3.googleusercontent.com/9_sE4WDIWdfB57N_GIaUd8dOqkRqNHuCHdJ0Un71hC4yUovXexyv9rzBmonk3onlaMx_shcuX4JGgHUp=w544-h544-l90-rj",
-          "external": true,
-          "videoId": "6csiUIinM68"
-        },
-        {
-          "artist": "Hayley Williams",
-          "time": "48 minutos",
-          "src": "https://github.com/Katalinareeves/blog-assets/raw/refs/heads/main/Showbiz.mp3",
-          "cover": "https://lh3.googleusercontent.com/A_sSN2qGnrpiw7WK54BnzpTPOXQ5BAsTtP9MKAyRnnvdy8lerbrw04iPPVuxSerngE4rIRCMw6jdjA=w544-h544-p-l90-rj",
-          "external": false,
-          "videoId": "naKCSRndTZg"
-        }
-      ]
-    },
-    {
-      "label": "semana del 17 al 24 de agosto",
-      "date": "2026-08-24",
       "songs": [
         {
           "title": "bad decisions",
