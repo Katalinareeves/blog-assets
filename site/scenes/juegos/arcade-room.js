@@ -2,10 +2,12 @@
 (()=>{'use strict';
 const canvas=document.getElementById('arcade-canvas'),ctx=canvas.getContext('2d'),W=1024,H=560;
 const machines=[
- {x:116,name:'Bubble Lab',sub:'SOLO / BOT',href:'bubble.html',color:'#d3a2f7',symbol:'✳'},
- {x:342,name:'Duelo de física',sub:'ONLINE / 2',href:'quiz.html',color:'#8dd2d2',symbol:'⚛'},
- {x:568,name:'Piedra, papel, tijera',sub:'ONLINE / 2',href:'rps.html',color:'#f0b6bb',symbol:'✂'},
- {x:794,name:'Clásicos',sub:'ARCADE ALPHA',href:'clasicos.html',color:'#e0c389',symbol:'◇'}
+ {x:22,name:'Bubble Lab',sub:'SOLO / BOT',href:'bubble.html',color:'#d3a2f7',symbol:'✳'},
+ {x:189,name:'Lluvia Estelar',sub:'ACCIÓN / SOLO',href:'stars.html',color:'#ffe0a3',symbol:'★'},
+ {x:356,name:'Memoria Cósmica',sub:'PUZLE / SOLO',href:'memory.html',color:'#b1c8f6',symbol:'◇'},
+ {x:523,name:'Duelo de física',sub:'ONLINE / 2',href:'quiz.html',color:'#8dd2d2',symbol:'⚛'},
+ {x:690,name:'Cachipún',sub:'ONLINE / 2',href:'rps.html',color:'#f0b6bb',symbol:'✂'},
+ {x:857,name:'Gato',sub:'ONLINE / 2',href:'clasicos.html',color:'#e0c389',symbol:'⌗'}
 ];
 let hover=-1,selected=0,t=0;
 const rect=(x,y,w,h,color)=>{ctx.fillStyle=color;ctx.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h));};
@@ -57,10 +59,10 @@ function scene(){
  // window on each side
  for(const x of [32,920]){rect(x,47,70,124,'#111b2d');rect(x+8,54,54,109,'#242841');rect(x+34,54,3,109,'#685978');}
  // ceiling glows
- for(const x of [116,342,568,794]){const a=.55+.3*Math.sin(t/1000+x);ctx.fillStyle='rgba(230,180,250,'+a+')';ctx.beginPath();ctx.arc(x+78,161,4,0,Math.PI*2);ctx.fill();}
+ for(const x of machines.map(m=>m.x)){const a=.55+.3*Math.sin(t/1000+x);ctx.fillStyle='rgba(230,180,250,'+a+')';ctx.beginPath();ctx.arc(x+78,161,4,0,Math.PI*2);ctx.fill();}
  machines.forEach(machine);
  // arcade floor stools
- for(const x of [184,410,636,862]){rect(x,498,56,14,'#514357');rect(x+22,512,13,28,'#342d45');rect(x+4,540,50,6,'#191829');}
+ for(const x of machines.map(m=>m.x+69)){rect(x,498,56,14,'#514357');rect(x+22,512,13,28,'#342d45');rect(x+4,540,50,6,'#191829');}
  // foreground carpet with glowing lane
  rect(0,545,W,15,'#1d1b2d');rect(280,549,465,3,'#6c507a');
  const idx=hover>=0?hover:selected;
@@ -73,7 +75,7 @@ canvas.addEventListener('pointermove',e=>{hover=indexAt(e);canvas.style.cursor=h
 canvas.addEventListener('pointerleave',()=>hover=-1);
 canvas.addEventListener('click',e=>{const idx=indexAt(e);if(idx>=0)location.href=machines[idx].href;});
 canvas.addEventListener('keydown',e=>{
- if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();selected=(selected+(e.key==='ArrowRight'?1:3))%4;hover=-1;}
+ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();selected=(selected+(e.key==='ArrowRight'?1:3) )%machines.length;hover=-1;}
  if(e.key==='Enter'||e.key===' '){e.preventDefault();location.href=machines[hover>=0?hover:selected].href;}
 });
 requestAnimationFrame(scene);
