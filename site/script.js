@@ -286,6 +286,8 @@ function drawScene() {
   drawParadaMicro(busStop, nearTarget && nearTarget.kind === 'bus');
 
   drawPlayer(player);
+  // Dibujar jugadores remotos sobre el mismo lienzo y con el sprite original.
+  if (window.CityMultiplayer) window.CityMultiplayer.draw();
 }
 
 function drawFachadaPatrimonial(b) {
@@ -702,6 +704,7 @@ function initCharacterUI() {
   document.getElementById('char-save').addEventListener('click', () => {
     character = sanitizeChar(charUI.draft);
     saveChar(character);
+    if(window.CityMultiplayer)window.CityMultiplayer.sendPosition(true);
     closeCharacterEditor();
   });
   document.getElementById('char-cancel').addEventListener('click', closeCharacterEditor);
