@@ -19,6 +19,8 @@ const $ = id => document.getElementById(id);
 let BOOKS = [];
 let currentBook = null;
 let subjectFilter = "";
+let catalogQuery = new URLSearchParams(location.search).get('q')?.trim().slice(0,80) || "";
+const normalizeText = x => String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 
 /* ---------- utilidades ---------- */
 function el(tag, cls, text) {
@@ -154,7 +156,8 @@ function renderCatalog() {
   const grid = $("book-grid");
   grid.innerHTML = "";
   const sf = $("status-filter").value;
-  const list = BOOKS.filter(b => (!subjectFilter || b.subject === subjectFilter) && (!sf || getStatus(b) === sf));
+  const q=normalizeText(catalogQuery);
+  const list = BOOKS.filter(b => (!subjectFilter || b.subject === subjectFilter) && (!sf || getStatus(b) === sf) && (!q || normalizeText([b.subject,b.title,b.author,b.description].join(' ')).includes(q)));
   $("catalog-status").textContent = `${list.length} de ${BOOKS.length} libros`;
 
   if (!list.length) {
@@ -357,6 +360,9 @@ document.addEventListener("keydown", e => {
   if (e.key === "Escape" && currentBook && !["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement && document.activeElement.tagName)) closeBook();
 });
 
+/* ---------- acceso contextual desde Universidad ---------- */
+const searchBox=document.getElementById('library-course-filter');
+if(searchBox){searchBox.value=catalogQuery;searchBox.addEventListener('input',()=>{catalogQuery=searchBox.value.trim().slice(0,80);renderCatalog();});}
 /* ---------- inicio ---------- */
 updateSeedCounter();
 loadBooks();
