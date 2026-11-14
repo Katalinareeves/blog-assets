@@ -2,6 +2,9 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id),canvas=$('room'),ctx=canvas.getContext('2d');
 const W=2300,H=420,VIEW=1100,KEY='ciudadHabitacionV6';
+const VISIT_ID=new URLSearchParams(location.search).get('visitar');
+const visiting=!!VISIT_ID&&/^[a-f0-9-]{36}$/i.test(VISIT_ID);
+
 const starts=[
 {id:'bed',name:'Cama de ensueño',icon:'🛏️',type:'muebles',w:170,h:110},
 {id:'desk',name:'Escritorio de estudio',icon:'🖥️',type:'muebles',w:150,h:94},
@@ -26,7 +29,7 @@ let mode='play',cam=0,goal=data.playerX||480,playerX=goal,selected=-1,placing=nu
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));const own=()=>{try{return JSON.parse(localStorage.getItem('ciudadColeccion'))||{}}catch{return {}}};
 const stock=id=>starts.some(i=>i.id===id)?1:Math.max(0,Number(own()[id]?.count)||0);
 const available=id=>stock(id)-data.placed.filter(p=>p.id===id).length;
-function save(){data.playerX=playerX;localStorage.setItem(KEY,JSON.stringify(data));$('save-label').textContent='✓ Guardado en este dispositivo'}
+function save(){if(visiting)return;data.playerX=playerX;localStorage.setItem(KEY,JSON.stringify(data));$('save-label').textContent='✓ Guardado en este dispositivo'}
 function notify(s){const e=$('toast');e.textContent=s;e.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('visible'),2300)}
 function box(x,y,w,h,fill,stroke){ctx.fillStyle=fill;ctx.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h));if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=3;ctx.strokeRect(Math.round(x)+1,Math.round(y)+1,Math.round(w)-2,Math.round(h)-2)}}
 function ellipse(x,y,rx,ry,color){ctx.beginPath();ctx.ellipse(x,y,Math.max(1,rx),Math.max(1,ry),0,0,Math.PI*2);ctx.fillStyle=color;ctx.fill()}
@@ -187,6 +190,7 @@ function nearest(x,y){const hits=data.placed.map((o,i)=>({o,i,d:byId[o.id]})).fi
 let history=[];function snapshot(){history.push(JSON.stringify({placed:data.placed,wall:data.wall,floor:data.floor,light:data.light}));if(history.length>20)history.shift();$('undo-btn').disabled=false}
 function mousePos(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*VIEW,y:(e.clientY-r.top)/r.height*H}}
 canvas.addEventListener('pointerdown',e=>{const p=mousePos(e),world=screenToWorld(e.clientX-canvas.getBoundingClientRect().left,e.clientY-canvas.getBoundingClientRect().top);pointer.x=p.x;pointer.y=p.y;canvas.setPointerCapture(e.pointerId);if(mode==='play'){
+ if(visiting){goal=clamp(world.x,25,W-25);return;}
  const hit=nearest(world.x,world.y);
  if(hit>=0&&data.placed[hit]?.id==='desk'){
   const desk=data.placed[hit];
@@ -204,7 +208,7 @@ canvas.addEventListener('pointermove',e=>{const r=canvas.getBoundingClientRect()
 function finishDrag(){if(drag?.type==='item'){const o=data.placed[drag.i];if(collides(o.id,o.x,o.y,drag.i)&&!collides(o.id,drag.prev.x,drag.prev.y,drag.i)){Object.assign(o,drag.prev);notify('Se superpone con otro mueble. Se conservó la posición anterior.')}else{const cur={...o};Object.assign(o,drag.prev);snapshot();Object.assign(o,cur);save()}}drag=null}canvas.addEventListener('pointerup',finishDrag);canvas.addEventListener('pointercancel',finishDrag);
 const keyDown=new Set();window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','a','d','A','D'].includes(e.key)&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)){keyDown.add(e.key.toLowerCase());if(e.key.startsWith('Arrow'))e.preventDefault()}if(e.key==='Escape'&&mode==='edit')setMode('play');if((e.key==='Delete'||e.key==='Backspace')&&mode==='edit'&&selected>=0&&document.activeElement?.tagName!=='INPUT'){e.preventDefault();removeSelected()}});window.addEventListener('keyup',e=>keyDown.delete(e.key.toLowerCase()));window.addEventListener('blur',()=>keyDown.clear());
 function tick(t){const dt=Math.min(55,t-last||16)/16.67;last=t;if(mode==='play'){if(keyDown.has('arrowleft')||keyDown.has('a')){goal=playerX-3.3*dt;facing='left'}if(keyDown.has('arrowright')||keyDown.has('d')){goal=playerX+3.3*dt;facing='right'}goal=clamp(goal,25,W-25);const dx=goal-playerX;if(Math.abs(dx)>1){facing=dx>0?'right':'left'}if(Math.abs(dx)>1){playerX+=Math.sign(dx)*Math.min(Math.abs(dx),3.3*dt);step+=.16*dt;data.playerX=playerX}else step=0;const focus=clamp(playerX-VIEW*.45,0,W-VIEW);cam+=(focus-cam)*Math.min(.11*dt,1)}draw(t)}
-function setMode(m){mode=m;placing=null;selected=-1;drag=null;$('scene-wrap').classList.toggle('editing',m==='edit');$('editor').classList.toggle('closed',m!=='edit');$('mode-btn').textContent=m==='edit'?'✓ Terminar':'✦ Decorar';$('tray-btn').hidden=m!=='edit';$('tray-btn').textContent='⌑ Ocultar inventario';$('lamp-btn').hidden=m==='edit';if(m==='edit'){inventory();notify('Elige un mueble. Arrastra el fondo para recorrer tu habitación.')}else save();selectedLabel()}
+function setMode(m){if(visiting)return;mode=m;placing=null;selected=-1;drag=null;$('scene-wrap').classList.toggle('editing',m==='edit');$('editor').classList.toggle('closed',m!=='edit');$('mode-btn').textContent=m==='edit'?'✓ Terminar':'✦ Decorar';$('tray-btn').hidden=m!=='edit';$('tray-btn').textContent='⌑ Ocultar inventario';$('lamp-btn').hidden=m==='edit';if(m==='edit'){inventory();notify('Elige un mueble. Arrastra el fondo para recorrer tu habitación.')}else save();selectedLabel()}
 function syncPlacedList(){const list=$('placed-list');if(!list)return;const previous=String(selected);list.replaceChildren();const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='Seleccionar mueble colocado…';list.append(placeholder);data.placed.forEach((o,i)=>{const opt=document.createElement('option');opt.value=String(i);opt.textContent=(byId[o.id]?.icon||'✦')+' '+(byId[o.id]?.name||o.id)+' · '+(i+1);list.append(opt)});list.value=selected>=0?previous:'';}
 function focusSelected(){if(selected<0)return;cam=clamp(data.placed[selected].x-VIEW/2,0,W-VIEW)}
 function nudge(dx,dy){if(selected<0)return;const o=data.placed[selected],p=target(byId[o.id],o.x+dx,o.y+dy);if(collides(o.id,p.x,p.y,selected)){notify('Ese espacio está ocupado');return}snapshot();o.x=p.x;o.y=p.y;save();selectedLabel()}
@@ -221,6 +225,41 @@ function clock(){const now=new Date(),hr=now.getHours();$('clock').textContent=(
 // No escribe nunca en la nube: evita sobrescribir accidentalmente una copia buena.
 async function initCloud(){
  const status=$('cloud-status'),btn=$('cloud-load');
+ if(visiting){
+   btn.hidden=true;
+   for(const id of ['mode-btn','tray-btn','reset-layout','lamp-btn'])if($(id))$(id).hidden=true;
+   $('editor').classList.add('closed');
+   $('save-label').textContent='Visita · solo lectura';
+   $('ambient-label').textContent='Visitando un hogar de La Ciudad';
+   const back=document.createElement('a');back.href='../visitas/index.html';back.textContent='← Volver al vecindario';
+   back.className='visit-back';back.style.cssText='position:absolute;top:14px;right:16px;background:#342a44;color:#f3eafb;border:1px solid #9782b3;padding:9px 12px;border-radius:8px;text-decoration:none;font:600 12px system-ui;z-index:15';
+   $('scene-wrap').append(back);
+   status.textContent='Comprobando permiso de visita…';
+   try{
+     if(!window.supabase?.createClient)throw Error('Sin conexión a Supabase');
+     const db=window.supabase.createClient('https://mqjprleqctafnhokxcyk.supabase.co','sb_publishable_i9HKZXTtwrm709JyZ33rcg_OMe5oMp7');
+     const {data:auth,error:authError}=await db.auth.getUser();
+     if(authError||!auth?.user)throw Error('Debes iniciar sesión para visitar habitaciones');
+     const {data:row,error}=await db.from('ciudad_rooms').select('state,visibility').eq('user_id',VISIT_ID).maybeSingle();
+     if(error)throw error;
+     if(!row||row.visibility!=='registered')throw Error('La habitación es privada o no está disponible');
+     const cloud=row.state;
+     if(!cloud||!Array.isArray(cloud.placed))throw Error('Esta habitación todavía no tiene decoración disponible');
+     const clean=cloud.placed.filter(o=>o&&byId[o.id]&&Number.isFinite(o.x)&&Number.isFinite(o.y)).slice(0,600).map(o=>({id:o.id,x:o.x,y:o.y}));
+     Object.assign(data,DEFAULT,{wall:cloud.wall||DEFAULT.wall,floor:cloud.floor||DEFAULT.floor,light:cloud.light||DEFAULT.light,lamps:cloud.lamps!==false,placed:clean});
+     goal=300;playerX=300;cam=0;
+     const {data:profile}=await db.from('ciudad_profiles').select('display_name').eq('user_id',VISIT_ID).maybeSingle();
+     const title=String(profile?.display_name||'otra persona').slice(0,35);
+     $('ambient-label').textContent='El hogar de '+title+' ✧';
+     status.textContent='Visitando a '+title+' · '+clean.length+' muebles · solo lectura';
+   }catch(e){
+     console.error('Visita a habitación',e);
+     status.textContent='No se pudo visitar: '+e.message;
+     data.placed=[]; // sin mostrar contenido no autorizado
+   }
+   return;
+ }
+
  const setStatus=(message)=>{status.textContent=message};
  if(!window.supabase?.createClient){setStatus('☁ Sin conexión a Supabase');btn.disabled=true;return}
  const db=window.supabase.createClient('https://mqjprleqctafnhokxcyk.supabase.co','sb_publishable_i9HKZXTtwrm709JyZ33rcg_OMe5oMp7',{auth:{persistSession:true,autoRefreshToken:true}});
