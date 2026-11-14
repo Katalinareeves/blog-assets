@@ -98,6 +98,7 @@ async function connect(){
   const profile=await db.from('ciudad_profiles').select('display_name').eq('user_id',uid).maybeSingle();
   if(profile.error)throw profile.error;
   nick=safeName(profile.data?.display_name||character.nombre||'Jugador');
+  await db.realtime.setAuth();
   const instance=crypto.randomUUID();
   channel=db.channel(TOPIC,{config:{private:true,presence:{key:instance},broadcast:{self:false,ack:false}}});
   channel.on('presence',{event:'sync'},presenceSync);
