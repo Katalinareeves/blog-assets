@@ -1,0 +1,12 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Piedra, papel o tijera · La Ciudad</title><link rel="stylesheet" href="juegos.css?v=1"><style>
+.rps{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:32px 0}.rps button{font-size:36px;display:grid;gap:6px;place-items:center;min-width:125px;padding:22px;background:#283748}.rps button span{font-size:12px}.rps button.selected{outline:3px solid #bba9f0}.rps button:disabled{opacity:.6}.outcome{min-height:65px;text-align:center;border:1px solid #44546a;border-radius:12px;padding:18px;font-size:17px;font-weight:700}.room-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:11px}.note{font-size:12px;color:#a8b8c9;line-height:1.65;margin-top:16px}
+</style></head><body>
+<header class="top"><a href="../../index.html">← La Ciudad</a><span>LA CIUDAD / ARCADE</span><a href="index.html">← Arcade</a></header>
+<main><section class="hero"><span class="kicker">JUEGO 02 · DOS JUGADORES EN TIEMPO REAL</span><h1>Piedra, papel <em>o tijera.</em></h1><p>Dos amigos, una elección secreta hasta el resultado y una revancha cuando quieran. Sin apuestas ni recompensas.</p></section>
+<section class="arcade"><div class="lobby"><div class="lobby-left"><label for="room">Código de sala</label><div class="code-field"><input id="room" maxlength="8" placeholder="Código de 8 caracteres" autocomplete="off"><button type="button" id="create">Crear</button><button type="button" id="join">Entrar</button></div><div class="room-actions"><button id="invite" hidden>Copiar invitación</button><button id="leave" hidden>Salir</button></div></div><div class="lobby-right"><strong id="status" role="status">Comprobando cuenta…</strong><div id="people" class="players"></div></div></div>
+<div class="rps" id="choices"><button data-choice="rock" disabled>🪨<span>Piedra</span></button><button data-choice="paper" disabled>📄<span>Papel</span></button><button data-choice="scissors" disabled>✂️<span>Tijera</span></button></div>
+<div class="outcome" id="outcome">Una partida empieza cuando se conectan dos personas.</div>
+<div class="room-actions"><button id="again" disabled>Otra ronda ↻</button></div>
+<p class="note">Alfa recreativa: los participantes pueden verificar los resultados entre sí. Las partidas no generan semillas ni afectan el progreso universitario.</p>
+</section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="rps.js?v=1"></script></body></html>
