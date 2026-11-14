@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Universidad · La Ciudad V12</title>
   <link rel="stylesheet" href="../../ui.css">
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=14">
   <script src="../../ui.js"></script>
 </head>
 
@@ -43,15 +43,15 @@
     <div class="uni-v2-stats" id="uni-progress-stats" aria-live="polite"></div>
   </section>
   <nav class="tab-nav">
-    <button class="tab-btn active" data-tab="accesos"><span class="n">01</span>accesos</button>
-    <button class="tab-btn" data-tab="malla"><span class="n">02</span>malla</button>
+    <button class="tab-btn" data-tab="accesos"><span class="n">01</span>accesos</button>
+    <button class="tab-btn active" data-tab="malla"><span class="n">02</span>malla</button>
     <button class="tab-btn" data-tab="calificaciones"><span class="n">03</span>calificaciones</button>
     <button class="tab-btn" data-tab="agenda"><span class="n">04</span>agenda</button>
     <button class="tab-btn" data-tab="calendario"><span class="n">05</span>calendario</button>
     <button class="tab-btn" data-tab="estudio"><span class="n">06</span>estudio</button>
   </nav>
 
-<section class="panel" id="panel-accesos">
+<section class="panel hidden" id="panel-accesos">
 
     <div class="section-heading">
       <span class="heading-mark">◆</span>
@@ -70,7 +70,7 @@
        MALLA
        ===================================================== -->
 
-  <section class="panel hidden" id="panel-malla">
+  <section class="panel" id="panel-malla">
 
     <div class="section-heading">
       <span class="heading-mark">◆</span>
@@ -90,7 +90,7 @@
     </div>
     <div class="uni-malla-workspace">
       <div class="uni-malla-dashboard">
-        <div class="uni-malla-dashboard-title"><span class="uni-kicker">MAPA CURRICULAR / FÍSICA</span><strong>Explora tu recorrido.</strong><small>Clic para explorar · doble clic para aprobar · estados editables</small></div>
+        <div class="uni-malla-dashboard-title"><span class="uni-kicker">MAPA CURRICULAR / FÍSICA</span><strong>Explora tu recorrido.</strong><small>Clic para cursar · doble clic para aprobar · estados editables</small></div>
         <div class="uni-malla-track"><div class="uni-malla-track-info"><span>Progreso en esta malla</span><b id="uni-percent">0%</b></div><div class="uni-malla-track-bg"><div class="uni-malla-track-fill" id="uni-track-fill"></div></div><span id="uni-track-caption">0 de 37 asignaturas registradas como aprobadas</span></div>
       </div>
       <div class="uni-malla-controls">
@@ -312,7 +312,7 @@
 </dialog>
 <script src="../../semillas.js"></script>
 <script src="script.js"></script>
-<script src="malla-nueva.js?v=13"></script>
+<script src="malla-nueva.js?v=14"></script>
 <script src="personalizacion.js?v=12"></script>
 <script src="horario-editor.js"></script>
 <dialog id="horario-dialog" class="horario-dialog"><div class="horario-dialog-head"><div><small>UNIVERSIDAD / MI SEMANA</small><h2>Diseña tu horario</h2></div><button type="button" id="horario-close" aria-label="Cerrar">✕</button></div><p>Agrega bloques por día, hora y ramo. Puedes editar o eliminar cada clase. Nada se sincroniza con otras cuentas todavía.</p><div class="horario-inputs"><label>Día<select id="horario-day"><option value="lunes">Lunes</option><option value="martes">Martes</option><option value="miércoles">Miércoles</option><option value="jueves">Jueves</option><option value="viernes">Viernes</option></select></label><label>Desde<input id="horario-start" type="time" value="08:30"></label><label>Hasta<input id="horario-end" type="time" value="10:10"></label><label>Ramo<select id="horario-course"></select></label><button type="button" id="horario-add">+ Agregar clase</button></div><p role="status" id="horario-msg"></p><div id="horario-items" class="horario-items"></div><div class="horario-dialog-actions"><button type="button" id="horario-reset">Restaurar horario inicial</button><button type="button" id="horario-save">Guardar horario</button></div></dialog>
