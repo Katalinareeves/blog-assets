@@ -10,21 +10,6 @@
   const safeParse = (s, fallback) => { try { return JSON.parse(s); } catch { return fallback; } };
   function readProfiles(){ const p=safeParse(localStorage.getItem(PROFILES),null); return Array.isArray(p)&&p.length?p:[{...DEFAULT}]; }
   function writeProfiles(p){localStorage.setItem(PROFILES,JSON.stringify(p));}
-  // Migración visual a la malla de 37 asignaturas. Conserva respaldos y
-  // NO homologa ni marca aprobaciones automáticamente.
-  const newIds=new Set(RAMOS_MALLA.map(r=>r.id));
-  const migrationFlag='ciudadMallaNuevaV12';
-  if(!localStorage.getItem(migrationFlag)){
-    const previous=safeParse(localStorage.getItem(PROFILES),null);
-    if(Array.isArray(previous)&&previous.length){
-      const changed=previous.map(p=>{
-        const old=Array.isArray(p.curriculum)&&p.curriculum.length===36&&p.curriculum.some(r=>r.id==='calculo1');
-        return old?{...p,curriculum:RAMOS_MALLA.map(r=>({...r,prereq:[...r.prereq]}))}:p;
-      });
-      if(JSON.stringify(changed)!==JSON.stringify(previous))writeProfiles(changed);
-    }
-    localStorage.setItem(migrationFlag,'1');
-  }
   let profiles=readProfiles();
   let current=localStorage.getItem(CURRENT)||profiles[0].id;
   if(!profiles.some(p=>p.id===current))current=profiles[0].id;
@@ -41,59 +26,11 @@
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')persist();});
   const originalCurriculum=RAMOS_MALLA.map(r=>({...r,prereq:[...r.prereq]}));
   function validateCourse(r){return r&&typeof r.id==='string'&&/^[a-zA-Z0-9_-]{1,50}$/.test(r.id)&&typeof r.name==='string'&&r.name.trim().length>0&&r.name.length<=120&&Number.isInteger(r.sem)&&r.sem>=1&&r.sem<=16&&Array.isArray(r.prereq)&&r.prereq.every(x=>typeof x==='string');}
-  function curriculumFor(p){
-   // La malla vigente publicada tiene prioridad frente a antiguas plantillas personalizadas.
-   // Solo se usa una personalizada si fue guardada explícitamente SOBRE esta versión.
-   const reference=window.CIUDAD_NUEVA_MALLA;
-   if(Array.isArray(reference)&&reference.length){
-     if(p.curriculumPlan==='unab-admision-2027'&&Array.isArray(p.curriculum)&&p.curriculum.length)return p.curriculum;
-     return reference;
-   }
-   return Array.isArray(p.curriculum)&&p.curriculum.length?p.curriculum:originalCurriculum;
- }
+  function curriculumFor(p){return Array.isArray(p.curriculum)&&p.curriculum.length?p.curriculum:originalCurriculum;}
   function applyCurriculum(p){RAMOS_MALLA.splice(0,RAMOS_MALLA.length,...curriculumFor(p).map(r=>({...r,prereq:[...r.prereq]})));}
   function rerender(){refreshUniversityScene();renderStats();}
-  function renderStats(){
- const rawDone=safeParse(localStorage.getItem('mallaFisica'),[]);
- const rawDoing=safeParse(localStorage.getItem('ramosEnCurso'),[]);
- const valid=new Set(RAMOS_MALLA.map(r=>r.id));
- const allDone=Array.isArray(rawDone)?rawDone:[];
- const done=[...new Set(allDone)].filter(id=>valid.has(id));
- const unknown=[...new Set(allDone)].filter(id=>!valid.has(id));
- const doing=Array.isArray(rawDoing)?[...new Set(rawDoing)].filter(id=>valid.has(id)&&!done.includes(id)):[];
- const total=RAMOS_MALLA.length;const remaining=Math.max(0,total-done.length-doing.length);
- const div=$('uni-progress-stats');if(!div)return;div.replaceChildren();
- [[done.length,'Aprobados registrados'],[doing.length,'En curso'],[remaining,'Pendientes'],[total,'Total en esta malla']].forEach(([count,label])=>{
-  const item=document.createElement('div');const num=document.createElement('b');num.textContent=count;
-  const txt=document.createElement('span');txt.textContent=label;item.append(num,txt);div.append(item);
- });
- const warnings=[];
- if(unknown.length)warnings.push(unknown.length+' registros de aprobación sin correspondencia: '+unknown.join(', '));
- if(new Set(allDone).size!==allDone.length)warnings.push('Hay aprobaciones duplicadas en el almacenamiento.');
- if(doing.length+done.length>total)warnings.push('El avance supera el total de asignaturas.');
- if(done.length>=total-4 && doing.length>=4)warnings.push('Revisa tus estados: el número de aprobaciones parece incompatible con los ramos en curso.');
- const audit=$('uni-audit-result');if(audit){
-  audit.replaceChildren();
-  const intro=document.createElement('p');
-  intro.textContent='Plan activo: '+total+' asignaturas · '+done.length+' aprobaciones registradas · '+doing.length+' en curso. Son datos ingresados por el usuario, no certificados de la UNAB.';
-  audit.append(intro);
-  if(warnings.length){const box=document.createElement('div');box.className='uni-audit-alert';box.textContent=warnings.join(' ');audit.append(box);}
-  const details=document.createElement('details');const sum=document.createElement('summary');sum.textContent='Revisar cuáles están marcados como aprobados ('+done.length+')';details.append(sum);
-  const list=document.createElement('ol');done.forEach(id=>{
-   const li=document.createElement('li');li.className='uni-audit-item';
-   const name=document.createElement('span');name.textContent=RAMOS_MALLA.find(r=>r.id===id)?.name||id;
-   const remove=document.createElement('button');remove.type='button';remove.textContent='Corregir';remove.title='Quitar aprobación errónea de '+name.textContent;
-   remove.addEventListener('click',()=>{
-     if(!confirm('¿Quitar la aprobación registrada de '+name.textContent+'? No modifica las notas de la Universidad.'))return;
-     localStorage.setItem('ciudadMallaBackupAntesCorreccion',localStorage.getItem('mallaFisica')||'[]');
-     localStorage.setItem('mallaFisica',JSON.stringify([...new Set(allDone)].filter(x=>x!==id)));
-     persist();rerender();
-   });
-   li.append(name,remove);list.append(li);
- });details.append(list);audit.append(details);
- }
-}
-function applyTheme(p){const valid=/^#[0-9a-f]{6}$/i.test(p.accent)?p.accent:'#b78cff';document.documentElement.style.setProperty('--uni-accent',valid);$('uni-profile-title').textContent=p.name||'Mi universidad';$('uni-profile-subtitle').textContent=[p.degree,p.school].filter(Boolean).join(' · ')||'Tu espacio académico';$('uni-eyebrow').textContent=(p.school||'LA CIUDAD').toUpperCase()+' / EXPERIENCIA PERSONAL';}
+  function renderStats(){const done=safeParse(localStorage.getItem('mallaFisica'),[]);const doing=safeParse(localStorage.getItem('ramosEnCurso'),[]);const valid=new Set(RAMOS_MALLA.map(r=>r.id));const count=RAMOS_MALLA.length;const active=Array.isArray(doing)?[...new Set(doing)].filter(id=>valid.has(id)&&!(Array.isArray(done)&&done.includes(id))):[];const div=$('uni-progress-stats');div.replaceChildren();[[String(Array.isArray(done)?done.length:0),'aprobados'],[String(active.length),'en curso'],String(count),'ramos en tu malla'].forEach(pair=>{const el=document.createElement('div');const num=document.createElement('b');const name=document.createElement('span');if(Array.isArray(pair)){num.textContent=pair[0];name.textContent=pair[1];}else {num.textContent=pair;name.textContent='ramos en tu malla';}el.append(num,name);div.append(el);});}
+  function applyTheme(p){const valid=/^#[0-9a-f]{6}$/i.test(p.accent)?p.accent:'#b78cff';document.documentElement.style.setProperty('--uni-accent',valid);$('uni-profile-title').textContent=p.name||'Mi universidad';$('uni-profile-subtitle').textContent=[p.degree,p.school].filter(Boolean).join(' · ')||'Tu espacio académico';$('uni-eyebrow').textContent=(p.school||'LA CIUDAD').toUpperCase()+' / EXPERIENCIA PERSONAL';}
   window.addEventListener('universidadCursosActualizados',renderStats);
   applyCurriculum(active());applyTheme(active());rerender();
   let draft=null;
@@ -118,7 +55,7 @@ function applyTheme(p){const valid=/^#[0-9a-f]{6}$/i.test(p.accent)?p.accent:'#b
   $('uni-save').addEventListener('click',()=>{draft.name=$('uni-name').value.trim().slice(0,54)||'Mi universidad';draft.school=$('uni-school').value.trim().slice(0,80);draft.degree=$('uni-degree').value.trim().slice(0,100);draft.accent=$('uni-accent').value;
     const cs=draft.curriculum;if(!cs.length||cs.length>250||!cs.every(validateCourse)){feedback('Revisa los ramos: ID alfanumérico, nombre y semestre entre 1 y 16. Máximo 250.');return;}
     const ids=new Set(cs.map(r=>r.id));if(ids.size!==cs.length||cs.some(r=>r.prereq.some(id=>!ids.has(id)||id===r.id))){feedback('Hay IDs duplicados o prerrequisitos inexistentes.');return;}
-    draft.curriculumPlan='unab-admision-2027';profiles=profiles.map(p=>p.id===current?{...draft}:p);writeProfiles(profiles);applyCurriculum(active());applyTheme(active());rerender();persist();close();});
+    profiles=profiles.map(p=>p.id===current?{...draft}:p);writeProfiles(profiles);applyCurriculum(active());applyTheme(active());rerender();persist();close();});
   $('uni-profile-export').addEventListener('click',()=>{persist();const payload={format:'ciudad-universidad-v2',version:1,profile:active(),data:capture(),exportedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='universidad-respaldo-'+current+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500);});
   $('uni-import-file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;if(file.size>3e6){feedback('Archivo demasiado grande.');return;}try{const payload=JSON.parse(await file.text());if(payload.format!=='ciudad-universidad-v2'||!payload.profile||!Array.isArray(payload.profile.curriculum)||!payload.profile.curriculum.every(validateCourse)||typeof payload.data!=='object'||!payload.data){throw Error('Formato de respaldo no válido');}if(!confirm('¿Reemplazar el perfil actual con este respaldo?'))return;
     const p={...active(),name:String(payload.profile.name||'Mi universidad').slice(0,54),school:String(payload.profile.school||'').slice(0,80),degree:String(payload.profile.degree||'').slice(0,100),accent:/^#[0-9a-f]{6}$/i.test(payload.profile.accent)?payload.profile.accent:'#b78cff',curriculum:payload.profile.curriculum};profiles=profiles.map(x=>x.id===current?p:x);writeProfiles(profiles);const data={};DATA_KEYS.forEach(k=>{if(typeof payload.data[k]==='string')data[k]=payload.data[k];});localStorage.setItem(PREFIX+current,JSON.stringify(data));restore(current);location.reload();}catch(err){feedback('No se pudo importar: '+err.message);}finally{e.target.value='';}});
