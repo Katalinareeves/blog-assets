@@ -24,6 +24,8 @@ function setState(id,value){
  setRamosEnCurso(getRamosEnCurso().filter(x=>x!==id).concat(value==='current'?[id]:[]));
  window.dispatchEvent(new Event('universidadCursosActualizados'));
  refreshUniversityScene();
+ // La vista actual se actualiza incluso si el render heredado cambia en otro módulo.
+ render();
  const cloud=window.CiudadCloud;if(cloud?.state.signedIn&&cloud.state.enabled){cloud.upload().catch(e=>console.warn('Sincronización pendiente',e));}
 }
 function linePaths(){
@@ -85,7 +87,15 @@ function render(){
    const title=document.createElement('strong');title.textContent=course.name;
    const foot=document.createElement('span');foot.className='uni-course-foot';foot.textContent=stateOf(course.id)==='completed'?'✓ Aprobado':stateOf(course.id)==='current'?'● En curso':'○ Pendiente';
    card.append(code,title,foot);
-   card.addEventListener('click',()=>{selected=selected===course.id?null:course.id;render();});
+   // Un clic selecciona y muestra relaciones; doble clic aprueba/desaprueba.
+   // No se debe convertir el primer clic en "en curso" al hacer doble clic.
+   card.addEventListener('click',()=>{selected=course.id;render();});
+   card.addEventListener('dblclick',event=>{
+     event.preventDefault();
+     const next=stateOf(course.id)==='completed'?'pending':'completed';
+     selected=course.id;setState(course.id,next);render();
+   });
+   card.title='Clic: detalles · doble clic: aprobar / desmarcar';
    column.append(card);
   }
   grid.append(column);
