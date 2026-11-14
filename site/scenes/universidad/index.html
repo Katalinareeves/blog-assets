@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Universidad · La Ciudad V12</title>
   <link rel="stylesheet" href="../../ui.css">
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
   <script src="../../ui.js"></script>
 </head>
 
@@ -88,12 +88,25 @@
       <span><i class="uni-dot pending"></i>Pendiente</span><span><i class="uni-dot current"></i>En curso</span><span><i class="uni-dot completed"></i>Aprobado</span>
       <small>Las conexiones mostradas solo representan requisitos que pudieron documentarse. No se bloquea la edición de estados.</small>
     </div>
+    <div class="uni-malla-workspace">
+      <div class="uni-malla-dashboard">
+        <div class="uni-malla-dashboard-title"><span class="uni-kicker">MAPA CURRICULAR / FÍSICA</span><strong>Explora tu recorrido.</strong><small>Clic para explorar · doble clic para aprobar · estados editables</small></div>
+        <div class="uni-malla-track"><div class="uni-malla-track-info"><span>Progreso en esta malla</span><b id="uni-percent">0%</b></div><div class="uni-malla-track-bg"><div class="uni-malla-track-fill" id="uni-track-fill"></div></div><span id="uni-track-caption">0 de 37 asignaturas registradas como aprobadas</span></div>
+      </div>
+      <div class="uni-malla-controls">
+        <label class="uni-course-search"><span>⌕</span><input type="search" id="uni-search" placeholder="Buscar asignatura…" autocomplete="off" aria-label="Buscar asignatura"></label>
+        <div class="uni-status-filters" role="group" aria-label="Filtrar por estado">
+          <button type="button" data-show="all" class="active">Todas</button>
+          <button type="button" data-show="current">En curso</button>
+          <button type="button" data-show="completed">Aprobadas</button>
+        </div>
+      </div>
     <div class="uni-study-layout"><div class="uni-map-area">
       <div class="uni-map-hint">DESLIZA PARA EXPLORAR LOS OCHO SEMESTRES <span>→</span></div>
     <div class="malla-grid" id="malla-grid"></div></div>
       <aside class="uni-inspector" id="uni-course-inspector" aria-live="polite"><div class="uni-inspector-empty">Selecciona una asignatura para consultar sus relaciones y marcarla.</div></aside>
     </div>
-    <div class="uni-malla-links"><a href="../biblioteca/index.html">Explorar biblioteca ↗</a><a href="../cuenta/index.html">Respaldo de progreso ↗</a></div>
+    <div class="uni-malla-links"><a href="../biblioteca/index.html">Explorar biblioteca ↗</a><a href="../cuenta/index.html">Respaldo de progreso ↗</a></div></div>
   </section>
 
 
@@ -299,7 +312,7 @@
 </dialog>
 <script src="../../semillas.js"></script>
 <script src="script.js"></script>
-<script src="malla-nueva.js?v=12"></script>
+<script src="malla-nueva.js?v=13"></script>
 <script src="personalizacion.js?v=12"></script>
 <script src="horario-editor.js"></script>
 <dialog id="horario-dialog" class="horario-dialog"><div class="horario-dialog-head"><div><small>UNIVERSIDAD / MI SEMANA</small><h2>Diseña tu horario</h2></div><button type="button" id="horario-close" aria-label="Cerrar">✕</button></div><p>Agrega bloques por día, hora y ramo. Puedes editar o eliminar cada clase. Nada se sincroniza con otras cuentas todavía.</p><div class="horario-inputs"><label>Día<select id="horario-day"><option value="lunes">Lunes</option><option value="martes">Martes</option><option value="miércoles">Miércoles</option><option value="jueves">Jueves</option><option value="viernes">Viernes</option></select></label><label>Desde<input id="horario-start" type="time" value="08:30"></label><label>Hasta<input id="horario-end" type="time" value="10:10"></label><label>Ramo<select id="horario-course"></select></label><button type="button" id="horario-add">+ Agregar clase</button></div><p role="status" id="horario-msg"></p><div id="horario-items" class="horario-items"></div><div class="horario-dialog-actions"><button type="button" id="horario-reset">Restaurar horario inicial</button><button type="button" id="horario-save">Guardar horario</button></div></dialog>
