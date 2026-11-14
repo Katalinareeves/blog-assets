@@ -35,7 +35,21 @@
 }
   function applyCurriculum(p){RAMOS_MALLA.splice(0,RAMOS_MALLA.length,...curriculumFor(p).map(r=>({...r,prereq:[...r.prereq]})));}
   function rerender(){refreshUniversityScene();renderStats();}
-  function renderStats(){const done=safeParse(localStorage.getItem('mallaFisica'),[]);const doing=safeParse(localStorage.getItem('ramosEnCurso'),[]);const valid=new Set(RAMOS_MALLA.map(r=>r.id));const count=RAMOS_MALLA.length;const active=Array.isArray(doing)?[...new Set(doing)].filter(id=>valid.has(id)&&!(Array.isArray(done)&&done.includes(id))):[];const div=$('uni-progress-stats');div.replaceChildren();[[String(Array.isArray(done)?done.length:0),'aprobados'],[String(active.length),'en curso'],String(count),'ramos en tu malla'].forEach(pair=>{const el=document.createElement('div');const num=document.createElement('b');const name=document.createElement('span');if(Array.isArray(pair)){num.textContent=pair[0];name.textContent=pair[1];}else {num.textContent=pair;name.textContent='ramos en tu malla';}el.append(num,name);div.append(el);});}
+  function renderStats(){
+    const rawDone=safeParse(localStorage.getItem('mallaFisica'),[]);
+    const rawDoing=safeParse(localStorage.getItem('ramosEnCurso'),[]);
+    const ids=new Set(RAMOS_MALLA.map(r=>r.id));
+    const done=Array.isArray(rawDone)?new Set(rawDone.filter(id=>ids.has(id))):new Set();
+    const active=Array.isArray(rawDoing)?new Set(rawDoing.filter(id=>ids.has(id)&&!done.has(id))):new Set();
+    const total=ids.size, pending=Math.max(0,total-done.size-active.size);
+    const div=$('uni-progress-stats');if(!div)return;div.replaceChildren();
+    [[done.size,'aprobados'],[active.size,'en curso'],[pending,'pendientes'],[total,'ramos en tu malla']].forEach(([count,label])=>{
+      const el=document.createElement('div'),num=document.createElement('b'),name=document.createElement('span');
+      num.textContent=String(count);name.textContent=label;el.append(num,name);div.append(el);
+    });
+    // Los IDs heredados quedan intactos para no perder datos, pero no cuentan
+    // como asignaturas aprobadas de la malla actual.
+  }
   function applyTheme(p){const valid=/^#[0-9a-f]{6}$/i.test(p.accent)?p.accent:'#b78cff';document.documentElement.style.setProperty('--uni-accent',valid);$('uni-profile-title').textContent=p.name||'Mi universidad';$('uni-profile-subtitle').textContent=[p.degree,p.school].filter(Boolean).join(' · ')||'Tu espacio académico';$('uni-eyebrow').textContent=(p.school||'LA CIUDAD').toUpperCase()+' / EXPERIENCIA PERSONAL';}
   window.addEventListener('universidadCursosActualizados',renderStats);
   applyCurriculum(active());applyTheme(active());rerender();
