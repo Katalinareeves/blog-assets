@@ -178,7 +178,7 @@ function character(t){
 }
 
 function draw(now){ctx.clearRect(0,0,VIEW,H);ctx.save();ctx.translate(-Math.round(cam),0);background(now);studioDetails(now);
- const objects=data.placed.slice().sort((a,b)=>a.y-b.y);const foreground=objects.filter(o=>o.y>=360);const behind=objects.filter(o=>o.y<360);for(const o of behind)furniture(o,now);character(now);for(const o of foreground)furniture(o,now);
+ const objects=data.placed.slice().sort((a,b)=>a.y-b.y);const foreground=objects.filter(o=>o.y>=360);const behind=objects.filter(o=>o.y<360);for(const o of behind)furniture(o,now);character(now);if(window.CiudadRoomOnline?.draw)window.CiudadRoomOnline.draw(ctx,drawCharacter);for(const o of foreground)furniture(o,now);
  // Partículas y motas de luz.
  for(let i=0;i<28;i++){let x=(i*197+Math.sin(now/2700+i)*18)%W,y=38+(i*73)%288;ellipse(x,y,1.4,1.4,night()?'#fff2c88a':'#fff9eb8c')}
  ctx.restore();if(placing){ctx.save();ctx.globalAlpha=.45;const pos={x:pointer.x+cam,y:pointer.y};ctx.translate(-Math.round(cam),0);furniture({id:placing,x:pos.x,y:pos.y},now);ctx.restore()}requestAnimationFrame(tick)}
@@ -296,5 +296,10 @@ async function initCloud(){
  await load(false);
 }
 
+window.CiudadRoomBridge={
+  visiting,visitId:VISIT_ID,
+  getPosition:()=>({x:Math.round(playerX),dir:facing,step:Math.floor(step*3)%2?1:0}),
+  isEditing:()=>mode==='edit'
+};
 clock();setInterval(clock,45000);initCloud();setInterval(()=>{if(mode==='play')save()},7000);cam=clamp(playerX-VIEW*.45,0,W-VIEW);inventory();selectedLabel();requestAnimationFrame(tick);
 })();
