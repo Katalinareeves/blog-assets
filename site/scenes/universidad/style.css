@@ -226,3 +226,40 @@ body.ui{background:#090b14;color:#ece9f7;background-image:radial-gradient(ellips
 
 /* Misiones de enfoque */
 .focus-mission{padding:26px;margin:12px 0 22px;border-radius:18px;border:1px solid #6f4f91;background:radial-gradient(circle at 95% 10%,#6a387033,transparent 45%),#161426}.focus-mission>span{color:#dca5ee;font-size:11px;letter-spacing:2.4px}.focus-mission h3{font-size:23px;margin:11px 0;color:#f2eaf8}.focus-mission p,.focus-feedback{color:#beaeca;font-size:13px;line-height:1.6}.focus-mission label{display:block;font-size:12px;margin:17px 0 8px;color:#d7c4e4}.focus-mission input{width:100%;padding:13px 15px;border:1px solid #66537b;border-radius:11px;background:#0e0e1e;color:#f4e9fd}.focus-track{height:10px;border-radius:100px;background:#302741;overflow:hidden;margin-top:18px}.focus-track div{height:100%;width:0;background:linear-gradient(90deg,#9c77ea,#e7a6dc);transition:width 1s linear;box-shadow:0 0 20px #cf8be877}.focus-milestones{display:flex;justify-content:space-between;gap:12px;margin:9px 0 20px;color:#bba9cf;font-size:10px;letter-spacing:.7px}.focus-feedback{margin:12px 0}.focus-feedback.completed{color:#d4a9f3;font-weight:700}
+
+/* Universidad V11 · interfaz académica: contraste, densidad y claridad */
+.uni-cloud-gateway{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:18px clamp(16px,4vw,56px);padding:20px 24px;border-radius:15px;border:1px solid var(--border-strong,#645778);background:linear-gradient(120deg,#252234,#171925);box-shadow:0 12px 38px #08090d24;color:#f3edf9}
+.uni-cloud-gateway strong{display:block;font-size:17px;letter-spacing:-.015em;margin:5px 0}
+.uni-cloud-gateway p{font-size:12px;color:#c4bed2;margin:6px 0 0;max-width:580px}
+.uni-cloud-eyebrow{font:700 10px/1.4 monospace;letter-spacing:.15em;color:#b7a6ce}
+.uni-cloud-actions{display:flex;flex-wrap:wrap;gap:9px}
+.uni-cloud-actions button,.uni-cloud-actions a{border:1px solid #857698;padding:10px 13px;border-radius:9px;color:#f7f1fc;background:#3e3452;font:600 12px/1.2 inherit;cursor:pointer;text-decoration:none;transition:background .15s,transform .15s}
+.uni-cloud-actions a{background:transparent}
+.uni-cloud-actions button:hover,.uni-cloud-actions a:hover{background:#54466a;transform:translateY(-1px)}
+.uni-plan-context{border:1px solid var(--border);background:var(--surface);padding:19px 21px;border-radius:14px;margin-bottom:14px;color:var(--text)}
+.uni-plan-context strong{font-size:14px}
+.uni-plan-context p{font-size:12px;line-height:1.65;color:var(--muted);max-width:940px;margin:8px 0 12px}
+.uni-reference-links{display:flex;flex-wrap:wrap;gap:9px}
+.uni-reference-links a{border:1px solid var(--border);color:var(--accent);border-radius:7px;padding:8px 10px;font-weight:650;font-size:11px;text-decoration:none}
+.uni-reference-links a:hover{background:var(--surface-2)}
+.uni-audit{margin:0 0 20px;padding:16px 20px;border:1px solid var(--border);border-radius:12px;background:var(--surface);font-size:12px;line-height:1.6;color:var(--muted)}
+.uni-audit p{margin:0 0 10px}
+.uni-audit details{padding-top:9px;border-top:1px solid var(--border)}
+.uni-audit summary{color:var(--text);font-weight:650;cursor:pointer}
+.uni-audit ol{columns:2;margin:12px 0 0;line-height:1.8}
+.uni-audit-alert{border-left:3px solid #d79a6c;background:#b77e4e18;padding:10px 12px;margin:8px 0 12px;color:var(--text)}
+.uni-v2-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+.malla-grid{grid-template-columns:repeat(8,minmax(185px,1fr));gap:10px}
+.malla-semestre{min-width:185px;gap:7px}
+.malla-semestre .sem-label{background:transparent;border-color:var(--border-strong);color:var(--text);letter-spacing:.09em;border-radius:8px;text-align:left;padding:10px 12px}
+.ramo-card{min-height:101px;padding:13px;border-left-width:3px;border-radius:9px;box-shadow:0 3px 12px #0000000a}
+.ramo-card.locked{opacity:.68}
+.ramo-card.completed{background:color-mix(in srgb,var(--accent-2-soft) 65%,var(--surface))}
+.ramo-name{font-size:12px;letter-spacing:-.01em}
+.ramo-book-link{display:inline-flex;align-self:flex-start;font-size:11px;font-weight:700;color:var(--accent);padding:4px 0;text-decoration:none}
+.ramo-book-link:hover{text-decoration:underline}
+#scene-container .hero h1{max-width:1000px;font-size:clamp(28px,4.2vw,58px);letter-spacing:-.045em}
+#scene-container .hero p{max-width:660px;line-height:1.65}
+.tab-nav{scrollbar-width:thin}
+.tab-btn:focus-visible,.ramo-card:focus-visible,.uni-cloud-actions button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:720px){.uni-cloud-gateway{padding:17px;margin:12px 16px}.uni-v2-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.uni-audit ol{columns:1}.malla-grid{grid-template-columns:repeat(8,minmax(160px,1fr))}.malla-semestre{min-width:160px}.uni-cloud-actions{width:100%}}
