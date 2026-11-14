@@ -335,3 +335,85 @@ body.ui{background:#090b14;color:#ece9f7;background-image:radial-gradient(ellips
 :root[data-theme="light"] .uni-course-card.uni-status-current{background:#dcf0e9!important}
 @media(max-width:1050px){.uni-study-layout{grid-template-columns:1fr}.uni-inspector{position:static;min-height:unset}#panel-malla .malla-grid.uni-graph{max-height:65vh;min-height:440px}}
 @media(max-width:620px){.uni-curriculum-actions{width:100%}.uni-curriculum-actions a,.uni-curriculum-actions button{flex:1}.uni-semester{flex-basis:166px}.uni-map-legend small{margin-left:0}}
+
+/* =========================================================
+   UNIVERSIDAD / VISOR DE MALLA · interfaz editorial V13
+   ========================================================= */
+body:has(#panel-malla:not(.hidden)) #scene-container{max-width:none}
+body:has(#panel-malla:not(.hidden)) #scene-container>.hero{padding-top:24px;padding-bottom:14px}
+body:has(#panel-malla:not(.hidden)) #scene-container>.hero h1{font-size:clamp(27px,2.8vw,39px);margin:8px 0 4px}
+body:has(#panel-malla:not(.hidden)) #scene-container>.hero p{font-size:12px;margin-top:2px}
+body:has(#panel-malla:not(.hidden)) .uni-v2-profile{margin-top:7px;margin-bottom:14px;padding:14px 21px;border-radius:12px}
+body:has(#panel-malla:not(.hidden)) .uni-v2-profile-main{padding:8px 0}
+body:has(#panel-malla:not(.hidden)) .uni-v2-profile-main h2{font-size:21px}
+body:has(#panel-malla:not(.hidden)) .uni-v2-profile-main p{font-size:11px}
+body:has(#panel-malla:not(.hidden)) .uni-v2-stats{padding-top:8px}
+body:has(#panel-malla:not(.hidden)) .uni-v2-stats b{font-size:21px}
+body:has(#panel-malla:not(.hidden)) .uni-v2-stats span{font-size:10px}
+body:has(#panel-malla:not(.hidden)) #panel-malla{max-width:none;padding:20px clamp(12px,2.3vw,32px)}
+body:has(#panel-malla:not(.hidden)) .uni-cloud-gateway{padding:12px 17px;margin-top:13px;margin-bottom:4px}
+body:has(#panel-malla:not(.hidden)) .uni-cloud-gateway strong{font-size:13px;margin:2px 0}
+body:has(#panel-malla:not(.hidden)) .uni-cloud-gateway p{margin:3px 0 0}
+#panel-malla .uni-curriculum-head h3{font-size:23px;margin:4px 0}
+#panel-malla .uni-curriculum-head p{font-size:11px}
+#panel-malla .uni-curriculum-top{padding:0;margin:0 0 15px}
+#panel-malla .uni-map-legend{gap:10px;border:0;background:transparent;margin:0;padding:5px 0 13px}
+#panel-malla .uni-map-legend span{padding:4px 10px;border-radius:40px;border:1px solid var(--border);background:var(--surface);font-size:10px}
+#panel-malla .uni-map-legend small{font-size:10px}
+.uni-malla-workspace{border:1px solid #374253;border-radius:18px;padding:16px 16px 3px;background:linear-gradient(160deg,#1b222e 0%,#161d27 100%);box-shadow:0 18px 55px #00000024;color:#f0f3f7}
+.uni-malla-dashboard{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:8px 7px 17px}
+.uni-malla-dashboard-title{display:flex;flex-direction:column;gap:4px}
+.uni-malla-dashboard-title strong{font-weight:740;letter-spacing:-.035em;font-size:22px;color:#f4f5f8;line-height:1.2}
+.uni-malla-dashboard-title small{font-size:11px;color:#aab9ce}
+.uni-malla-track{width:260px;max-width:40%;display:flex;flex-direction:column;gap:7px}
+.uni-malla-track-info{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.uni-malla-track-info span{font-size:11px;font-weight:650;color:#c6d0df}
+.uni-malla-track-info b{font-size:22px;font-variant-numeric:tabular-nums;color:#e7d9ff}
+.uni-malla-track-bg{width:100%;height:6px;background:#3a4556;border-radius:20px;overflow:hidden}
+.uni-malla-track-fill{height:100%;width:0;background:linear-gradient(90deg,#a5b8db,#d2b4eb);border-radius:20px;transition:width .3s}
+#uni-track-caption{font-size:10px;color:#aab9ce}
+.uni-malla-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 14px}
+#panel-malla .uni-course-search{display:flex;align-items:center;gap:8px;background:#26313f;border:1px solid #455367;border-radius:10px;padding:0 12px;height:40px;min-width:220px;width:min(340px,100%);color:#b4c1d4}
+#panel-malla .uni-course-search span{font-size:22px;line-height:1}
+#panel-malla .uni-course-search input{height:100%;border:none!important;outline:0!important;background:transparent!important;color:#f0f4f9!important;box-shadow:none!important;padding:0;font-size:12px}
+#panel-malla .uni-course-search input::placeholder{color:#a8b6c8}
+.uni-status-filters{display:flex;gap:4px;padding:3px;background:#242d3b;border:1px solid #3a4555;border-radius:10px}
+.uni-status-filters button{background:transparent;border:0;color:#b4c2d2;border-radius:7px;padding:8px 14px;font:650 11px/1.2 system-ui,sans-serif;cursor:pointer}
+.uni-status-filters button.active{color:#faf8ff;background:#53627c;box-shadow:0 2px 7px #0003}
+#panel-malla .uni-study-layout{grid-template-columns:minmax(0,1fr) minmax(220px,255px);gap:12px}
+#panel-malla .uni-map-area{background:linear-gradient(160deg,#1b2631,#17202b);border-color:#344354;box-shadow:none;border-radius:12px}
+#panel-malla .malla-grid.uni-graph{min-height:490px;max-height:67vh;gap:10px;padding:14px 12px}
+#panel-malla .uni-semester{flex-basis:168px;gap:7px}
+#panel-malla .uni-semester-header{padding:3px 2px 9px}
+#panel-malla .uni-semester-header span{font-size:21px}
+#panel-malla .uni-semester-header small{font-size:9px}
+#panel-malla button.uni-course-card{min-height:91px;border-radius:9px;padding:11px;background:#25313f;border-color:#3b4a5d;border-left-width:3px;gap:8px}
+#panel-malla button.uni-course-card:hover{background:#303e50;transform:translateY(-2px)}
+#panel-malla .uni-course-card strong{font-size:11.5px;letter-spacing:0;font-weight:630;line-height:1.35}
+#panel-malla .uni-course-index{font-size:9px;color:#98abc1}
+#panel-malla .uni-course-foot{font-size:9px;color:#a8b6c7}
+#panel-malla button.uni-course-card.is-selected{outline:2px solid #d2b8f5;outline-offset:1px;box-shadow:0 0 0 5px #aa91d326}
+#panel-malla button.uni-course-card.uni-filtered-out{opacity:.15;filter:grayscale(1);pointer-events:none}
+#panel-malla .uni-inspector{top:76px;border-radius:12px;padding:17px 16px;background:#212c3b;border-color:#3c4a5d;box-shadow:none;color:#eff3f8}
+#panel-malla .uni-inspector h3{font-size:19px}
+#panel-malla .uni-inspector p{color:#b9c4d5}
+#panel-malla .uni-inspector-tag{color:#cfb8f3}
+#panel-malla .uni-related{border-top-color:#415267}
+#panel-malla .uni-state-buttons button{background:#2e3a4b;border-color:#506078;color:#e8eef6}
+#panel-malla .uni-state-buttons button.active{background:#5d507e;border-color:#b7a2e9}
+#panel-malla .uni-malla-links{padding:0 6px}
+#panel-malla .uni-malla-links a{color:#ddd8ed;border-color:#4e5a6c;background:#2b3544}
+@media(max-width:980px){
+ #panel-malla .uni-study-layout{grid-template-columns:1fr}
+ #panel-malla .uni-inspector{position:static}
+ .uni-malla-dashboard{align-items:flex-start}
+}
+@media(max-width:610px){
+ .uni-malla-workspace{padding:12px 10px 0}
+ .uni-malla-dashboard{flex-wrap:wrap;gap:12px}
+ .uni-malla-dashboard-title strong{font-size:19px}
+ .uni-malla-track{max-width:100%;width:100%}
+ .uni-status-filters{width:100%;justify-content:space-around}
+ .uni-status-filters button{flex:1;padding:9px 6px}
+ #panel-malla .uni-course-search{width:100%}
+}
