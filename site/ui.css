@@ -163,3 +163,28 @@ body.ui input[type=checkbox] { width: 18px; height: 18px; padding: 0; accent-col
   .brand { display: none; }
   body.ui .tab-btn { padding: 8px 13px; font-size: 13px; }
 }
+
+/* La Ciudad · sistema visual compartido V11: menos pastel, mejor accesibilidad */
+:root:not([data-theme="light"]){
+  --bg:#11151d;--bg-2:#171c26;
+  --surface:#1c2330;--surface-2:#252e3c;--surface-3:#2d3647;
+  --border:#303b4a;--border-strong:#495568;
+  --text:#edf1f6;--muted:#bac3d1;--faint:#8f9aab;
+  --accent:#b8a1ea;--accent-soft:rgba(184,161,234,.13);
+  --accent-2:#b4a1c8;--accent-2-soft:rgba(180,161,200,.13);
+  --shadow:0 1px 0 #ffffff06 inset,0 12px 34px #00000024;
+}
+body.ui{line-height:1.55}
+body.ui a{text-underline-offset:3px}
+body.ui button{transition-duration:.16s}
+body.ui button:disabled{cursor:not-allowed}
+body.ui .topbar{box-shadow:0 5px 22px #00000012}
+body.ui .card{box-shadow:var(--shadow)}
+body.ui .section-heading h2{letter-spacing:-.025em}
+body.ui .tab-nav{scrollbar-width:thin}
+body.ui input,body.ui select,body.ui textarea{min-height:42px}
+body.ui ::selection{background:var(--accent-soft);color:var(--text)}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ body.ui *,body.ui *::before,body.ui *::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
