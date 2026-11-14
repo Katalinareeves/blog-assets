@@ -74,7 +74,7 @@ async function load(){
   const [a,b,c]=await Promise.all([
    db.from('ciudad_friendships').select('id,requester_id,recipient_id,status').limit(300),
    db.from('ciudad_profiles').select('user_id,username,display_name').limit(500),
-   db.from('ciudad_rooms').select('user_id').eq('visibility','registered').limit(500)
+   db.from('ciudad_rooms').select('user_id').in('visibility',['registered','friends']).limit(500)
   ]);
   for(const x of [a,b,c])if(x.error)throw x.error;
   links=a.data||[];users=b.data||[];homes=new Set((c.data||[]).map(x=>x.user_id));
