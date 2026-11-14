@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:#f1ecf8;background:radial-gradient(ellipse 850px 450px at 70% -180px,#624e7c67,transparent 70%),#11141d;font-family:'DM Sans',system-ui,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:17px max(18px,calc((100vw - 1180px)/2));border-bottom:1px solid #353b4e;background:#1a1d2a}
+header a{text-decoration:none;color:#dacbea;font-size:12px}header span,.eyebrow{font:700 10px/1.5 'Space Mono',monospace;letter-spacing:.13em;color:#bda0e6}
+main{max-width:1180px;margin:auto;padding:34px 18px 65px}.hero{margin-bottom:25px}h1{font-size:clamp(35px,5vw,60px);letter-spacing:-.07em;line-height:1.1;margin:9px 0}.hero em{font-style:normal;color:#c6a7ea}.hero p{max-width:650px;color:#afbccc;font-size:13px;line-height:1.65}
+.social-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,350px);gap:18px;align-items:start}
+.social-main,.social-side{display:grid;gap:18px}.panel{border:1px solid #3e465b;border-radius:15px;background:linear-gradient(145deg,#23283a,#1b2230);padding:20px;box-shadow:0 13px 35px #0002}
+.panel-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:17px}
+h2{font-size:22px;letter-spacing:-.04em;margin:7px 0 12px}.panel-head h2{margin-bottom:0}
+h2 span{font:600 13px 'Space Mono',monospace;color:#a4e0c9;background:#34504a;border-radius:8px;padding:4px 8px}
+button{background:#675086;color:#f8f1ff;border:1px solid #957bb8;padding:10px 13px;border-radius:8px;font:700 12px 'DM Sans',sans-serif;cursor:pointer}
+button:disabled{opacity:.45;cursor:default}button:hover:not(:disabled){filter:brightness(1.13)}button.subtle{background:transparent}
+.message{min-height:20px;color:#bfb6db;font-size:12px;margin-bottom:18px}
+.friend-list{display:grid;gap:10px}.friend{display:flex;gap:12px;align-items:center;padding:13px;background:#1a2332;border:1px solid #37485e;border-radius:11px}
+.friend-avatar{display:grid;place-items:center;width:43px;height:43px;flex:none;border-radius:10px;background:linear-gradient(145deg,#483a64,#394963);color:#dbbeff;font-size:22px}
+.friend-info{min-width:0;flex:1}.friend-info strong{font-size:13px;display:block;overflow-wrap:anywhere}.friend-info span{display:block;font-size:11px;color:#aebace;margin-top:5px}
+.friend-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.friend-actions a,.visit-link{border-radius:8px;background:#554567;color:#f1e4ff;text-decoration:none;padding:10px 12px;font-size:11px;font-weight:700}
+.friend-actions .muted{background:transparent;border:1px solid #5a6272}.friend-actions .accept{background:#326959;border-color:#589d87}
+.empty{padding:20px 16px;color:#9daec5;border:1px dashed #4a5065;border-radius:10px;font-size:12px;line-height:1.6}
+.find label{display:block;margin:18px 0 8px;color:#c7c9d9;font-size:11px;font-weight:700}
+.search{display:flex;gap:7px}.search input{width:100%;min-width:0;padding:11px;border:1px solid #55617b;background:#131b2b;border-radius:8px;color:white;font:inherit;font-size:13px}
+.hint,.tips p{color:#a8b9cb;font-size:11px;line-height:1.65}.tips p{margin-bottom:19px}
+#results{margin-top:15px}button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #ccaaf8;outline-offset:3px}
+@media(max-width:850px){.social-layout{grid-template-columns:1fr}.social-side{grid-row:1}.friend{flex-wrap:wrap}.friend-actions{justify-content:start}}
