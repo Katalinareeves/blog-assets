@@ -16,6 +16,10 @@
   <button id="charBtn" class="night-toggle" title="cambiar personaje">☺</button>
 </div>
 
+<section id="ciudad-online-panel" aria-label="Plaza multijugador" style="max-width:900px;margin:8px auto 12px;padding:12px 16px;background:#211d30;border:1px solid #655878;border-radius:12px;color:#f2edf7;font-family:'Exo 2',system-ui,sans-serif;display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap">
+ <div style="display:flex;flex-direction:column;gap:3px"><strong style="font-size:13px">✦ Plaza online <span style="font-size:10px;color:#c7badb">ALPHA</span></strong><span id="ciudad-online-status" style="font-size:11px;color:#c9bed6" role="status">Comprobando conexión…</span></div>
+ <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="font-size:11px"><b id="ciudad-online-count">0</b> conectados</span><div id="ciudad-online-players" style="display:flex;gap:5px;font-size:10px;flex-wrap:wrap"></div><button id="ciudad-online-action" type="button" style="border:1px solid #aa94c6;border-radius:8px;background:#4e4168;color:white;cursor:pointer;padding:9px 13px;font-weight:700;font-size:11px">Entrar al online</button></div>
+</section>
 <div id="canvas-container">
   <canvas id="gameCanvas" width="640" height="480"></canvas>
 
@@ -79,6 +83,6 @@
 
 <nav id="lugares" aria-label="lugares"></nav>
 
-<script src="script.js?v=30"></script>
-<a href="scenes/cuenta/index.html" style="position:fixed;right:16px;bottom:16px;z-index:9999;background:#f9f3ea;color:#453a44;border:2px solid #c6b3c4;border-radius:25px;padding:10px 18px;font:600 14px system-ui;text-decoration:none;box-shadow:0 3px 16px #0002">☁ Mi cuenta</a><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="scenes/cloud-progress.js?v=10"></script></body>
+<script src="script.js?v=31"></script>
+<a href="scenes/cuenta/index.html" style="position:fixed;right:16px;bottom:16px;z-index:9999;background:#f9f3ea;color:#453a44;border:2px solid #c6b3c4;border-radius:25px;padding:10px 18px;font:600 14px system-ui;text-decoration:none;box-shadow:0 3px 16px #0002">☁ Mi cuenta</a><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="scenes/cloud-progress.js?v=10"></script><script src="multiplayer.js?v=1"></script></body>
 </html>
