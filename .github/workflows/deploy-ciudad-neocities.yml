@@ -1,0 +1,54 @@
+name: Publicar La Ciudad en Neocities
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-la-ciudad-neocities
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+
+      - name: Verificar contenido publicable
+        shell: bash
+        run: |
+          test -f site/index.html || { echo "::error::Falta site/index.html; no se publica nada."; exit 1; }
+          test -f site/scenes/universidad/index.html || { echo "::error::Falta la Universidad en site/"; exit 1; }
+          if find site -type f \( -name '.env' -o -name '.env.*' -o -iname '*service_role*' -o -iname '*secret*' \) | grep -q .; then
+            echo "::error::Posible secreto dentro de site/. Revisar antes de publicar."
+            exit 1
+          fi
+          if find site -type f | grep -Ei '(^|/)(jardin|el-jardin|private|privado)(/|$)' >/dev/null; then
+            echo "::error::El Jardín o contenido privado está en la carpeta pública. Se cancela el despliegue."
+            exit 1
+          fi
+
+      - name: Comprobar clave de Neocities
+        env:
+          NEOCITIES_API_TOKEN: ${{ secrets.NEOCITIES_API_TOKEN }}
+        shell: bash
+        run: |
+          if [ -z "$NEOCITIES_API_TOKEN" ]; then
+            echo "::error::Configura NEOCITIES_API_TOKEN en Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Publicar solo site/ (sin borrar archivos remotos)
+        uses: bcomnes/deploy-to-neocities@v3
+        with:
+          api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
+          dist_dir: site
+          cleanup: false
+          preview_before_deploy: true
