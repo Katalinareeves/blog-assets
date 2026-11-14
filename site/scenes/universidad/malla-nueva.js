@@ -17,6 +17,9 @@ RAMOS_MALLA.splice(0,RAMOS_MALLA.length,...curriculum.map(c=>({...c,prereq:[...c
 const typeName={matematica:'Matemáticas',mecanica:'Física',computacion:'Computación',investigacion:'Investigación',general:'Formación general',ingles:'Inglés'};
 const known=new Map(curriculum.map(c=>[c.id,c]));
 let selected=null;
+let clickTimer=null;
+let lastTouchTap=0,lastTouchId='';
+let ignoreNextDblclickUntil=0;
 let activeSearch='',activeFilter='all';
 function refreshProgress(){
  const done=new Set(getCompletados().filter(id=>known.has(id)));
@@ -111,8 +114,9 @@ function render(){
    card.append(code,title,foot);
    // Un clic selecciona y muestra relaciones; doble clic aprueba/desaprueba.
    // No se debe convertir el primer clic en "en curso" al hacer doble clic.
-   // Mantener el DOM estable: reconstruirlo en click rompe el evento dblclick.
-   card.addEventListener('click',()=>{
+   // Un clic: en curso (si no está aprobado). Dos clics/toques: aprobado.
+   // El pequeño retardo evita que el primer clic del doble active "en curso".
+   const selectOnly=()=>{
      selected=course.id;
      grid.querySelectorAll('.uni-course-card').forEach(el=>{
        const active=el.dataset.ramoId===selected;
@@ -120,13 +124,37 @@ function render(){
        el.setAttribute('aria-pressed',String(active));
      });
      inspector();linePaths();
+   };
+   const approve=()=>{
+     if(clickTimer){clearTimeout(clickTimer);clickTimer=null;}
+     selected=course.id;
+     setState(course.id,stateOf(course.id)==='completed'?'pending':'completed');
+   };
+   card.addEventListener('click',event=>{
+     if(Date.now()<ignoreNextDblclickUntil)return;
+     selectOnly();
+     if(event.detail>=2)return;
+     if(clickTimer)clearTimeout(clickTimer);
+     clickTimer=setTimeout(()=>{
+       clickTimer=null;
+       if(stateOf(course.id)!=='completed')setState(course.id,stateOf(course.id)==='current'?'pending':'current');
+     },260);
    });
    card.addEventListener('dblclick',event=>{
      event.preventDefault();
-     selected=course.id;
-     setState(course.id,stateOf(course.id)==='completed'?'pending':'completed');
+     if(Date.now()<ignoreNextDblclickUntil)return;
+     approve();
    });
-   card.title='Clic: detalles · doble clic: aprobar / desmarcar';
+   card.addEventListener('pointerup',event=>{
+     if(event.pointerType!=='touch')return;
+     const now=Date.now();
+     if(lastTouchId===course.id&&now-lastTouchTap<390){
+       ignoreNextDblclickUntil=now+450;
+       approve();
+       lastTouchTap=0;lastTouchId='';
+     }else{lastTouchTap=now;lastTouchId=course.id;}
+   });
+   card.title='Clic: en curso · doble clic: aprobar o desmarcar';
    column.append(card);
   }
   grid.append(column);
