@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box}body{margin:0;color:#f1eef9;background:radial-gradient(ellipse 900px 450px at 60% -30%,#5d397249,transparent 75%),#11141e;font-family:'DM Sans',system-ui,sans-serif}
+.site-nav{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;padding:17px max(18px,calc((100vw - 1200px)/2));background:#191d29;border-bottom:1px solid #34384a}
+.site-nav a{color:#e1d6ed;text-decoration:none;font-size:12px}.site-nav span{color:#b7a6d8;font:700 10px 'Space Mono',monospace;letter-spacing:.13em}
+main{max-width:1150px;margin:auto;padding:30px 18px 60px}.intro{margin-bottom:27px}.eyebrow{color:#c4a7ed;font:700 10px/1.5 'Space Mono',monospace;letter-spacing:.12em}
+h1{font-size:clamp(38px,6vw,70px);letter-spacing:-.075em;margin:7px 0;line-height:1}h1 em{font-style:normal;color:#bba1eb}.intro p{font-size:13px;color:#b2bfd0;line-height:1.6;max-width:640px}
+.game-shell{border:1px solid #42415c;border-radius:17px;background:linear-gradient(150deg,#23243a,#191e2d);overflow:hidden;box-shadow:0 24px 70px #0005}
+.game-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:19px 25px;border-bottom:1px solid #41435b;flex-wrap:wrap}
+.game-top h2{font-size:22px;letter-spacing:-.04em;margin:5px 0 0}.stats{display:flex;gap:24px}.stats div{display:grid;gap:4px;text-align:right}.stats small{font:700 9px 'Space Mono',monospace;color:#b1b0c9}.stats strong{font-size:24px;font-variant-numeric:tabular-nums;color:#e7d9fb}
+.main-game{display:grid;grid-template-columns:minmax(0,1fr) 250px;align-items:start;gap:20px;padding:20px}
+.board-area{position:relative;width:min(100%,560px);margin:auto;border:2px solid #5c5275;border-radius:14px;overflow:hidden;background:#171627;box-shadow:inset 0 0 40px #0006}
+canvas{display:block;width:100%;height:auto;aspect-ratio:560/680;touch-action:none;cursor:crosshair;image-rendering:auto}
+.overlay{position:absolute;inset:0;background:linear-gradient(150deg,#13182df2,#28203af0);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;text-align:center;padding:25px;z-index:5}
+.overlay[hidden]{display:none}.overlay>span{font:700 11px 'Space Mono',monospace;letter-spacing:.2em;color:#cbaafa}
+.overlay strong{font-size:clamp(26px,5vw,40px);letter-spacing:-.055em;max-width:390px;line-height:1.15}
+.overlay p{font-size:13px;line-height:1.65;color:#bcbdd0;max-width:330px}
+button{font:700 12px 'DM Sans',sans-serif;cursor:pointer;color:#f4effb;background:#655180;padding:12px 16px;border:1px solid #9783bf;border-radius:9px;transition:filter .15s,transform .15s}
+button:hover{filter:brightness(1.15);transform:translateY(-1px)}button:focus-visible,a:focus-visible{outline:2px solid #ebd0ff;outline-offset:3px}
+.choices{display:flex;gap:9px;flex-wrap:wrap;justify-content:center}.choices button:first-child{background:#ad8ee0;color:#21182a}
+.sidebar{display:flex;flex-direction:column;gap:12px}.panel{background:#20273a;border:1px solid #41465e;border-radius:11px;padding:17px}
+.panel small{display:block;font-size:11px;line-height:1.6;color:#acb6cb}.next-orb{font-size:65px;line-height:1.4;text-align:center;color:#e39dc4;text-shadow:0 0 25px #d77ebc70}
+.big-number{font-size:37px;font-weight:800;letter-spacing:-.06em;margin:11px 0;color:#f0d6fb;font-variant-numeric:tabular-nums}.reward .big-number{color:#b8d7bb}
+.restart{width:100%;background:#413c5b}.return{font-size:12px;color:#cbb5e8;text-align:center;text-decoration:none;padding:10px}
+.help{border-top:1px solid #42445e;color:#a8aec7;padding:14px 22px;font:700 10px/1.7 'Space Mono',monospace;display:flex;flex-wrap:wrap;gap:14px}
+@media(max-width:780px){.main-game{grid-template-columns:1fr;padding:12px}.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.restart,.return{grid-column:1/-1}.game-top{padding:14px}.stats{gap:12px}}
+@media(max-width:460px){.sidebar{grid-template-columns:1fr 1fr;gap:8px}.panel{padding:11px}.big-number{font-size:28px}.stats strong{font-size:18px}.stats small{font-size:8px}.help{font-size:9px}}
