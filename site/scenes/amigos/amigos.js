@@ -1,0 +1,1 @@
+(()=>{'use strict';const el=document.getElementById('notice');if(el)el.textContent='Conectando amistades…';})();
