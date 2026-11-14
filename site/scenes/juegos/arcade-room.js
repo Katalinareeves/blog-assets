@@ -75,7 +75,7 @@ canvas.addEventListener('pointermove',e=>{hover=indexAt(e);canvas.style.cursor=h
 canvas.addEventListener('pointerleave',()=>hover=-1);
 canvas.addEventListener('click',e=>{const idx=indexAt(e);if(idx>=0)location.href=machines[idx].href;});
 canvas.addEventListener('keydown',e=>{
- if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();selected=(selected+(e.key==='ArrowRight'?1:3) )%machines.length;hover=-1;}
+ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();selected=(selected+(e.key==='ArrowRight'?1:machines.length-1))%machines.length;hover=-1;}
  if(e.key==='Enter'||e.key===' '){e.preventDefault();location.href=machines[hover>=0?hover:selected].href;}
 });
 requestAnimationFrame(scene);
