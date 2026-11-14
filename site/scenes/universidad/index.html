@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universidad · La Ciudad V15</title>
+  <title>Universidad · La Ciudad · Malla</title>
   <link rel="stylesheet" href="../../ui.css">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
+<link rel="stylesheet" href="malla-pro.css?v=16">
   <script src="../../ui.js"></script>
 </head>
 
@@ -67,48 +68,40 @@
 
 
   <!-- =====================================================
-       MALLA
+       MALLA · diseño editorial, lógica V9 intacta
        ===================================================== -->
-
   <section class="panel" id="panel-malla">
-
-    <div class="section-heading">
-      <span class="heading-mark">◆</span>
+    <div class="mc-heading">
       <div>
-        <h2>Malla curricular</h2>
-        <p>tu progreso en la licenciatura</p>
+        <span class="mc-eyebrow">LA CIUDAD / MI RECORRIDO ACADÉMICO</span>
+        <h2>Malla curricular<span class="mc-heading-star"> ✳</span></h2>
+        <p>Ocho semestres para construir tu propia historia en física.</p>
+      </div>
+      <div class="mc-heading-actions">
+        <a href="../biblioteca/index.html">Biblioteca ↗</a>
+        <button type="button" id="uni-malla-open">Personalizar malla ↗</button>
       </div>
     </div>
-
-    <div class="uni-curriculum-top">
-      <div class="uni-curriculum-head"><span class="uni-kicker">PLAN VIGENTE EN EL PANEL · 37 ASIGNATURAS</span><h3>Una malla que puedes explorar.</h3><p>Haz clic en una asignatura para consultar sus relaciones y registrar tu avance. No se asignan aprobaciones automáticamente.</p></div>
-      <div class="uni-curriculum-actions"><a href="https://admision.unab.cl/assets/themes/unab/mallas/licenciatura-en-fisica.html" target="_blank" rel="noopener noreferrer">Malla de Admisión UNAB ↗</a><button type="button" id="uni-malla-open">Personalizar asignaturas</button></div>
+    <div class="mc-overview">
+      <div class="mc-stat"><span>ASIGNATURAS</span><strong id="mc-total">36</strong><small>Plan de Licenciatura</small></div>
+      <div class="mc-stat"><span>APROBADAS</span><strong id="mc-done">0</strong><small>Registradas por ti</small></div>
+      <div class="mc-stat"><span>EN CURSO</span><strong id="mc-current">0</strong><small>Este semestre</small></div>
+      <div class="mc-stat mc-stat-progress"><span>AVANCE EN TU MALLA</span><div><strong id="mc-progress">0%</strong><span id="mc-pending">36 pendientes</span></div><div class="mc-progress-track"><div id="mc-progress-bar"></div></div></div>
     </div>
-    <div class="uni-map-legend" aria-label="Estados de la malla">
-      <span><i class="uni-dot pending"></i>Pendiente</span><span><i class="uni-dot current"></i>En curso</span><span><i class="uni-dot completed"></i>Aprobado</span>
-      <small>Las conexiones mostradas solo representan requisitos que pudieron documentarse. No se bloquea la edición de estados.</small>
+    <div class="mc-toolbar">
+      <div class="mc-toolbar-help"><span class="mc-key">1 clic</span> en curso <span class="mc-sep">·</span> <span class="mc-key">2 clics</span> aprobado</div>
+      <label class="mc-search"><span aria-hidden="true">⌕</span><input id="mc-search" type="search" placeholder="Buscar ramo…" autocomplete="off" aria-label="Buscar ramo"></label>
+      <div class="mc-legend"><span><i class="mc-dot mc-dot-done"></i>Aprobado</span><span><i class="mc-dot mc-dot-current"></i>En curso</span><span><i class="mc-dot mc-dot-open"></i>Disponible</span></div>
     </div>
-    <div class="uni-malla-workspace">
-      <div class="uni-malla-dashboard">
-        <div class="uni-malla-dashboard-title"><span class="uni-kicker">MAPA CURRICULAR / FÍSICA</span><strong>Explora tu recorrido.</strong><small>Clic para cursar · doble clic para aprobar · estados editables</small></div>
-        <div class="uni-malla-track"><div class="uni-malla-track-info"><span>Progreso en esta malla</span><b id="uni-percent">0%</b></div><div class="uni-malla-track-bg"><div class="uni-malla-track-fill" id="uni-track-fill"></div></div><span id="uni-track-caption">0 de 37 asignaturas registradas como aprobadas</span></div>
-      </div>
-      <div class="uni-malla-controls">
-        <label class="uni-course-search"><span>⌕</span><input type="search" id="uni-search" placeholder="Buscar asignatura…" autocomplete="off" aria-label="Buscar asignatura"></label>
-        <div class="uni-status-filters" role="group" aria-label="Filtrar por estado">
-          <button type="button" data-show="all" class="active">Todas</button>
-          <button type="button" data-show="current">En curso</button>
-          <button type="button" data-show="completed">Aprobadas</button>
-        </div>
-      </div>
-    <div class="uni-study-layout"><div class="uni-map-area">
-      <div class="uni-map-hint">DESLIZA PARA EXPLORAR LOS OCHO SEMESTRES <span>→</span></div>
-    <div class="malla-grid" id="malla-grid"></div></div>
-      <aside class="uni-inspector" id="uni-course-inspector" aria-live="polite"><div class="uni-inspector-empty">Selecciona una asignatura para consultar sus relaciones y marcarla.</div></aside>
+    <div class="mc-scroll-caption">EXPLORA LOS SEMESTRES <span>DESLIZA HORIZONTALMENTE ↗</span></div>
+    <div class="mc-grid-shell">
+      <div class="malla-grid" id="malla-grid"></div>
     </div>
-    <div class="uni-malla-links"><a href="../biblioteca/index.html">Explorar biblioteca ↗</a><a href="../cuenta/index.html">Respaldo de progreso ↗</a></div></div>
+    <div class="mc-bottom">
+      <span>Al pasar por un ramo se iluminan sus prerrequisitos y las asignaturas que desbloquea.</span>
+      <a href="../cuenta/index.html">Mi cuenta y respaldo ☁ ↗</a>
+    </div>
   </section>
-
 
   <!-- =====================================================
        CALIFICACIONES
@@ -312,8 +305,8 @@
 </dialog>
 <script src="../../semillas.js"></script>
 <script src="script.js"></script>
-<script src="malla-nueva.js?v=15"></script>
-<script src="personalizacion.js?v=15"></script>
+<script src="personalizacion.js?v=16"></script>
+<script src="malla-pro.js?v=16"></script>
 <script src="horario-editor.js"></script>
 <dialog id="horario-dialog" class="horario-dialog"><div class="horario-dialog-head"><div><small>UNIVERSIDAD / MI SEMANA</small><h2>Diseña tu horario</h2></div><button type="button" id="horario-close" aria-label="Cerrar">✕</button></div><p>Agrega bloques por día, hora y ramo. Puedes editar o eliminar cada clase. Nada se sincroniza con otras cuentas todavía.</p><div class="horario-inputs"><label>Día<select id="horario-day"><option value="lunes">Lunes</option><option value="martes">Martes</option><option value="miércoles">Miércoles</option><option value="jueves">Jueves</option><option value="viernes">Viernes</option></select></label><label>Desde<input id="horario-start" type="time" value="08:30"></label><label>Hasta<input id="horario-end" type="time" value="10:10"></label><label>Ramo<select id="horario-course"></select></label><button type="button" id="horario-add">+ Agregar clase</button></div><p role="status" id="horario-msg"></p><div id="horario-items" class="horario-items"></div><div class="horario-dialog-actions"><button type="button" id="horario-reset">Restaurar horario inicial</button><button type="button" id="horario-save">Guardar horario</button></div></dialog>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="../cloud-progress.js?v=11"></script><script>
