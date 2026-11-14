@@ -55,7 +55,18 @@
   audit.append(intro);
   if(warnings.length){const box=document.createElement('div');box.className='uni-audit-alert';box.textContent=warnings.join(' ');audit.append(box);}
   const details=document.createElement('details');const sum=document.createElement('summary');sum.textContent='Revisar cuáles están marcados como aprobados ('+done.length+')';details.append(sum);
-  const list=document.createElement('ol');done.forEach(id=>{const li=document.createElement('li');li.textContent=RAMOS_MALLA.find(r=>r.id===id)?.name||id;list.append(li);});details.append(list);audit.append(details);
+  const list=document.createElement('ol');done.forEach(id=>{
+   const li=document.createElement('li');li.className='uni-audit-item';
+   const name=document.createElement('span');name.textContent=RAMOS_MALLA.find(r=>r.id===id)?.name||id;
+   const remove=document.createElement('button');remove.type='button';remove.textContent='Corregir';remove.title='Quitar aprobación errónea de '+name.textContent;
+   remove.addEventListener('click',()=>{
+     if(!confirm('¿Quitar la aprobación registrada de '+name.textContent+'? No modifica las notas de la Universidad.'))return;
+     localStorage.setItem('ciudadMallaBackupAntesCorreccion',localStorage.getItem('mallaFisica')||'[]');
+     localStorage.setItem('mallaFisica',JSON.stringify([...new Set(allDone)].filter(x=>x!==id)));
+     persist();rerender();
+   });
+   li.append(name,remove);list.append(li);
+ });details.append(list);audit.append(details);
  }
 }
 function applyTheme(p){const valid=/^#[0-9a-f]{6}$/i.test(p.accent)?p.accent:'#b78cff';document.documentElement.style.setProperty('--uni-accent',valid);$('uni-profile-title').textContent=p.name||'Mi universidad';$('uni-profile-subtitle').textContent=[p.degree,p.school].filter(Boolean).join(' · ')||'Tu espacio académico';$('uni-eyebrow').textContent=(p.school||'LA CIUDAD').toUpperCase()+' / EXPERIENCIA PERSONAL';}
