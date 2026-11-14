@@ -24,3 +24,5 @@ button:hover{filter:brightness(1.15);transform:translateY(-1px)}button:focus-vis
 .help{border-top:1px solid #42445e;color:#a8aec7;padding:14px 22px;font:700 10px/1.7 'Space Mono',monospace;display:flex;flex-wrap:wrap;gap:14px}
 @media(max-width:780px){.main-game{grid-template-columns:1fr;padding:12px}.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.restart,.return{grid-column:1/-1}.game-top{padding:14px}.stats{gap:12px}}
 @media(max-width:460px){.sidebar{grid-template-columns:1fr 1fr;gap:8px}.panel{padding:11px}.big-number{font-size:28px}.stats strong{font-size:18px}.stats small{font-size:8px}.help{font-size:9px}}
+.cosmetic{margin:13px 0 8px;padding:11px 12px;border-radius:9px;border:1px dashed #65597a;color:#b0a9c5;font-size:12px;font-weight:750;line-height:1.4}
+.cosmetic.unlocked{border-style:solid;border-color:#b19be2;background:#46335f77;color:#ebd4ff;box-shadow:0 0 20px #a488cf20}
