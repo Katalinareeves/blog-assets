@@ -239,3 +239,39 @@ body {
 .char-btn.ghost{color:#d4b0f2;border-color:#8d6aaf}
 .char-btn.ghost:hover{background:#493052}
 @media(max-width:650px){#hud{max-width:97vw;padding:8px;gap:7px;flex-wrap:wrap;justify-content:center}.char-box{padding:14px;max-height:98%}.char-cols{gap:12px}}
+
+/* Plaza online v2 · HUD flotante. No altera el layout flex del RPG. */
+.online-hud {
+  position:fixed;left:18px;top:16px;z-index:19;width:235px;max-width:calc(100vw - 36px);
+  display:flex;flex-direction:column;gap:8px;padding:11px 13px;
+  background:rgba(19,19,30,.87);backdrop-filter:blur(12px);
+  border:1px solid #6c597e;border-radius:11px;
+  box-shadow:0 8px 26px #0006;color:#eee9f3;font-family:'Exo 2',system-ui,sans-serif;
+}
+.online-hud-info{display:flex;flex-direction:column;gap:4px;min-width:0}
+.online-hud-info strong{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:650;letter-spacing:.01em}
+.online-hud-info strong small{color:#a9a1b9;font-size:9px;letter-spacing:.09em}
+.online-dot{height:7px;width:7px;border-radius:50%;background:#8cc8b6;box-shadow:0 0 8px #8cc8b64b;display:inline-block}
+#ciudad-online-status{font:400 10px/1.4 'Exo 2',sans-serif;color:#bcb7ca;max-width:100%;overflow-wrap:anywhere}
+.online-hud-actions{display:flex;align-items:center;gap:9px;justify-content:space-between;flex-wrap:wrap}
+.online-counter{font-size:10px;color:#d8d2e1;white-space:nowrap}
+.online-names{display:flex;gap:3px;flex-wrap:wrap;width:100%;font-size:9px}
+.online-names:empty{display:none}
+.online-names span{border-radius:30px;background:#40374f;color:#ded4e9;padding:3px 6px}
+#ciudad-online-action{font-family:'Exo 2',sans-serif;font-size:10px;font-weight:700;border:1px solid #a78ec5;border-radius:7px;color:#f1eafa;background:#514066;padding:7px 10px;cursor:pointer}
+#ciudad-online-action:disabled{opacity:.6;cursor:wait}
+.arcade-hud{position:fixed;right:18px;top:17px;z-index:19;text-decoration:none;color:#eee9f6;
+  background:rgba(29,24,41,.91);border:1px solid #78628d;border-radius:9px;
+  box-shadow:0 8px 26px #0005;font:700 11px/1.2 'Exo 2',sans-serif;padding:11px 14px;
+  transition:background .15s}
+.arcade-hud:hover{background:#514069}
+#canvas-container{flex:none;margin:0 auto;max-width:calc(100vw - 32px)}
+#gameCanvas{max-width:100%;height:auto}
+@media(max-width:750px){
+  .online-hud{top:7px;left:8px;padding:8px 10px;width:190px}
+  .arcade-hud{top:8px;right:8px;padding:9px 10px}
+  .arcade-hud span{display:none}
+  #hud{top:75px}
+  #canvas-container{max-width:calc(100vw - 14px)}
+  #lugares{bottom:6px}
+}
