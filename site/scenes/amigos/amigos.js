@@ -81,6 +81,21 @@ async function load(){
   draw();notice('Listo para encontrarte con tus amigos ✳');
  }catch(e){console.error(e);notice('Error cargando amistades: '+e.message);}
 }
+$('demo').onclick=()=>{
+ const list=$('friends');list.replaceChildren();
+ const sample=[{display_name:'Amiga de ejemplo',username:'demo_fisica'},{display_name:'Compañero de ejemplo',username:'demo_particulas'}];
+ for(const p of sample){
+  const fake=btn('Ejemplo · no interactivo',()=>{notice('Esto es solo una demostración visual. No se envió ninguna solicitud.')});
+  fake.disabled=true;
+  list.append(line(p,[fake],'SIMULADO'));
+ }
+ $('friend-count').textContent='2 (demo)';
+ const requests=$('requests');requests.replaceChildren();
+ const fake=btn('Aceptar (demo)',()=>{notice('Demostración: para agregar un amigo real, busca su @usuario.')});fake.disabled=true;
+ requests.append(line({display_name:'Solicitud de ejemplo',username:'demo_visitante'},[fake],'SIMULADO'));
+ $('request-count').textContent='1 (demo)';
+ notice('Vista de ejemplo: son perfiles ficticios. No se modificó tu cuenta ni la base de datos.');
+};
 $('find').onclick=search;$('search').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();search()}};
 $('refresh').onclick=load;
 void load().then(()=>{const q=new URLSearchParams(location.search).get('usuario');if(q){$('search').value=q;search()}});
