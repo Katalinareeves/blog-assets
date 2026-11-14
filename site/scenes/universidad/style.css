@@ -268,3 +268,70 @@ body.ui{background:#090b14;color:#ece9f7;background-image:radial-gradient(ellips
 .uni-audit-item span{font-size:12px;color:var(--text)}
 .uni-audit-item button{margin-left:9px;border:1px solid var(--border-strong);background:var(--surface-2);color:var(--muted);font:600 10px/1.3 system-ui,sans-serif;padding:4px 7px;border-radius:5px;cursor:pointer}
 .uni-audit-item button:hover{color:var(--text);border-color:var(--accent)}
+
+/* ==== Malla UNAB · V12 / diseño interactivo de producto ==== */
+#panel-malla{--new-bg:#151b24;--new-surface:#1e2632;--new-border:#354151;--new-text:#e9edf4;--new-muted:#b2bfce;--new-lilac:#b4a1e6}
+#panel-malla .section-heading{margin-bottom:18px}
+.uni-curriculum-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+.uni-kicker{font:700 10px/1.3 monospace;letter-spacing:.14em;color:var(--accent)}
+.uni-curriculum-head h3{font-size:clamp(22px,2.2vw,32px);letter-spacing:-.045em;margin:9px 0 6px;font-weight:750}
+.uni-curriculum-head p{font-size:12px;line-height:1.6;color:var(--muted);margin:0;max-width:650px}
+.uni-curriculum-actions{display:flex;flex-wrap:wrap;gap:9px}
+.uni-curriculum-actions a,.uni-curriculum-actions button,.uni-malla-links a{border:1px solid var(--border-strong);background:var(--surface);color:var(--text);border-radius:9px;text-decoration:none;padding:9px 12px;font:650 11px/1.3 system-ui,sans-serif;cursor:pointer}
+.uni-curriculum-actions a:hover,.uni-curriculum-actions button:hover,.uni-malla-links a:hover{border-color:var(--accent);background:var(--surface-2)}
+.uni-map-legend{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin:0 0 12px;padding:12px 16px;border:1px solid var(--border);background:var(--surface);border-radius:11px;font-size:11px;color:var(--text)}
+.uni-map-legend span{display:inline-flex;align-items:center;gap:7px;font-weight:650}
+.uni-map-legend small{margin-left:auto;color:var(--muted);font-size:10px;line-height:1.5;max-width:440px}
+.uni-dot{height:9px;width:9px;border-radius:3px;display:inline-block;background:#79879b}
+.uni-dot.current{background:#75b3ab}.uni-dot.completed{background:#b7a4e7}
+.uni-study-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,285px);align-items:start;gap:16px}
+.uni-map-area{min-width:0;border:1px solid var(--new-border);border-radius:15px;background:linear-gradient(160deg,#1a222d,#151b24);overflow:hidden}
+.uni-map-hint{padding:13px 15px;font:750 10px/1.4 monospace;color:#aebdd2;letter-spacing:.09em;display:flex;justify-content:space-between;border-bottom:1px solid #303d4a}
+#panel-malla .malla-grid.uni-graph{position:relative;display:flex;gap:13px;overflow:auto;scroll-behavior:smooth;min-height:620px;max-height:76vh;padding:15px;align-items:flex-start;scrollbar-color:#61708a #111722}
+.uni-graph-canvas{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:2}
+.uni-line{stroke:#b9a7f7;stroke-width:2;fill:none;opacity:.9;stroke-dasharray:6 4;filter:drop-shadow(0 0 3px #b9a7f766)}
+.uni-line.downstream{stroke:#74c5b1;stroke-dasharray:none}
+.uni-semester{display:flex;flex-direction:column;gap:9px;flex:0 0 180px;position:relative;z-index:1}
+.uni-semester-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #465568;padding:5px 2px 13px;margin-bottom:3px}
+.uni-semester-header span{font-size:25px;letter-spacing:-.055em;font-weight:800;color:#e5e9f0}
+.uni-semester-header small{font:650 10px/1.3 monospace;color:#9cabc0;letter-spacing:.04em}
+#panel-malla button.uni-course-card{position:relative;text-align:left;display:flex;flex-direction:column;gap:10px;justify-content:space-between;width:100%;min-height:100px;border-radius:10px;border:1px solid #465365;border-left:3px solid #8595ab;background:#27313e;color:#f0f3f8;cursor:pointer;padding:13px 12px 11px;box-shadow:0 5px 14px #05080c20;transition:transform .16s,border-color .16s,box-shadow .16s,background .16s}
+#panel-malla button.uni-course-card:hover{transform:translateY(-3px);background:#303d4f;box-shadow:0 12px 22px #0004}
+#panel-malla button.uni-course-card:focus-visible{outline:2px solid #c8b2ff;outline-offset:3px}
+.uni-course-card.uni-cat-matematica{border-left-color:#90b5df!important}
+.uni-course-card.uni-cat-mecanica{border-left-color:#dfaa82!important}
+.uni-course-card.uni-cat-computacion{border-left-color:#87bdac!important}
+.uni-course-card.uni-cat-investigacion{border-left-color:#d4acd6!important}
+.uni-course-card.uni-cat-ingles{border-left-color:#9ab4b8!important}
+.uni-course-card.uni-status-completed{background:#312d49!important;border-color:#8979b4!important}
+.uni-course-card.uni-status-current{background:#233b40!important;border-color:#6ea49a!important}
+.uni-course-card.is-selected{outline:2px solid #d1b9ff;outline-offset:2px}
+.uni-course-index{font:700 10px/1.2 monospace;color:#a3b1c5}
+.uni-course-card strong{font:650 12px/1.35 system-ui,sans-serif;letter-spacing:-.012em}
+.uni-course-foot{font:650 10px/1.2 monospace;letter-spacing:.01em;color:#b9c6d8}
+.uni-course-card.uni-status-current .uni-course-foot{color:#99dfcd}
+.uni-course-card.uni-status-completed .uni-course-foot{color:#d9c6ff}
+.uni-inspector{position:sticky;top:82px;padding:21px;background:var(--surface);border:1px solid var(--border-strong);border-radius:15px;min-height:270px;box-shadow:0 15px 40px #00000012}
+.uni-inspector-empty{min-height:190px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:13px;line-height:1.65}
+.uni-inspector-tag{font:700 10px/1.6 monospace;color:var(--accent);letter-spacing:.08em}
+.uni-inspector h3{font-size:clamp(17px,1.7vw,23px);line-height:1.22;letter-spacing:-.035em;margin:12px 0}
+.uni-inspector p{font-size:12px;color:var(--muted);line-height:1.6}
+.uni-inspector small{display:block;margin-top:13px;color:var(--faint);line-height:1.5;font-size:10px}
+.uni-state-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:15px 0}
+.uni-state-buttons button{font:650 10px/1.25 system-ui,sans-serif;padding:10px 3px;border:1px solid var(--border-strong);background:var(--surface-2);color:var(--text);border-radius:7px;cursor:pointer}
+.uni-state-buttons button.active{border-color:var(--accent);background:var(--accent-soft)}
+.uni-related{margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:12px}
+.uni-related b{font-size:11px}
+.uni-malla-links{display:flex;flex-wrap:wrap;gap:9px;margin:17px 0}
+#panel-malla .uni-course-inspector{min-width:0}
+:root[data-theme="light"] #panel-malla .uni-map-area{background:linear-gradient(145deg,#f2f5fa,#e7ecf4)}
+:root[data-theme="light"] .uni-map-hint{color:#556271;border-color:#c3ceda}
+:root[data-theme="light"] .uni-semester-header span{color:#2b3444}
+:root[data-theme="light"] .uni-semester-header small{color:#56667c}
+:root[data-theme="light"] #panel-malla button.uni-course-card{background:#fff;color:#2a3342;border-color:#c8d1df;box-shadow:0 3px 10px #2341}
+:root[data-theme="light"] #panel-malla button.uni-course-card:hover{background:#f0edfa}
+:root[data-theme="light"] .uni-course-index,:root[data-theme="light"] .uni-course-foot{color:#617084}
+:root[data-theme="light"] .uni-course-card.uni-status-completed{background:#ebe3fa!important}
+:root[data-theme="light"] .uni-course-card.uni-status-current{background:#dcf0e9!important}
+@media(max-width:1050px){.uni-study-layout{grid-template-columns:1fr}.uni-inspector{position:static;min-height:unset}#panel-malla .malla-grid.uni-graph{max-height:65vh;min-height:440px}}
+@media(max-width:620px){.uni-curriculum-actions{width:100%}.uni-curriculum-actions a,.uni-curriculum-actions button{flex:1}.uni-semester{flex-basis:166px}.uni-map-legend small{margin-left:0}}
