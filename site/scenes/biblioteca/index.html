@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>la biblioteca — la ciudad</title>
+  <link rel="stylesheet" href="../../ui.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../../ui.js"></script>
+</head>
+<body class="ui">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="../../index.html" id="back-link">← la ciudad</a>
+    <span class="brand">La Ciudad <span class="brand-sep">/</span> <span class="brand-page">Biblioteca</span></span>
+  </div>
+  <div class="topbar-right">
+    <div class="seed-counter">semillas <span id="seed-count">0</span></div>
+    <button id="theme-toggle" class="theme-toggle" type="button" title="cambiar tema">☀</button>
+  </div>
+</header>
+
+<div id="scene-container">
+
+  <!-- ===== CATÁLOGO ===== -->
+  <div id="catalog-view">
+    <section class="hero">
+      <span class="eyebrow">archivo personal</span>
+      <h1>la <em>biblioteca</em></h1>
+      <p>los libros de la carrera, con visor integrado y tu progreso de lectura.</p>
+      <div class="hero-meta">
+        <span class="chip"><strong id="stat-books">0</strong>&nbsp;libros</span>
+        <span class="chip"><strong id="stat-pages">0</strong>&nbsp;páginas leídas</span>
+        <span class="chip"><strong id="stat-done">0</strong>&nbsp;terminados</span>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <div id="subject-chips" class="chips"></div>
+      <div class="toolbar-right">
+        <select id="status-filter" aria-label="filtrar por estado">
+          <option value="">todos los estados</option>
+          <option value="reading">leyendo</option>
+          <option value="to-read">por leer</option>
+          <option value="done">terminados</option>
+        </select>
+        <button id="add-toggle" class="btn small" type="button">+ agregar libro</button>
+      </div>
+    </div>
+
+    <section id="add-panel" class="card add-card hidden">
+      <h3>agregar libro</h3>
+      <p class="sub">se guarda solo en tu navegador. el link puede ser de Google Drive (compartido con “cualquiera con el enlace”) o un PDF directo.</p>
+      <div class="add-grid">
+        <input id="a-title" type="text" maxlength="160" placeholder="título">
+        <input id="a-author" type="text" maxlength="160" placeholder="autor">
+        <input id="a-subject" type="text" maxlength="60" placeholder="ramo (ej: Electromagnetismo)" list="subject-list">
+        <input id="a-pages" type="number" min="0" max="5000" placeholder="páginas (opcional)">
+        <input id="a-url" type="url" placeholder="link del libro (Drive o PDF)" class="span2">
+      </div>
+      <datalist id="subject-list"></datalist>
+      <div class="row-actions">
+        <button id="a-save" class="btn" type="button">guardar libro</button>
+        <button id="a-cancel" class="btn ghost" type="button">cancelar</button>
+        <span id="a-msg" class="msg"></span>
+      </div>
+    </section>
+
+    <p id="catalog-status" class="catalog-status">cargando…</p>
+    <div id="book-grid" class="book-grid"></div>
+  </div>
+
+  <!-- ===== LECTOR ===== -->
+  <div id="reader-view" class="hidden">
+    <div class="reader-top">
+      <button id="back-library" class="btn ghost small" type="button">← volver</button>
+      <div class="reader-info">
+        <span id="reader-subject" class="tag"></span>
+        <h2 id="reader-title"></h2>
+        <span id="reader-author" class="muted"></span>
+      </div>
+      <a id="reader-open" class="btn ghost small" href="#" target="_blank" rel="noopener noreferrer">abrir en pestaña nueva ↗</a>
+    </div>
+
+    <div class="reader-layout">
+      <div class="reader-frame-wrap" id="reader-frame-wrap"></div>
+
+      <aside class="card progress-card">
+        <h3>tu progreso</h3>
+        <div class="p-bar"><div id="p-bar-fill"></div></div>
+        <p class="p-line"><strong id="p-page">0</strong> <span id="p-total"></span> <span id="p-percent" class="muted"></span></p>
+
+        <label class="field">
+          <span>página en la que vas</span>
+          <input id="p-input" type="number" min="0" max="5000" inputmode="numeric">
+        </label>
+        <label class="field">
+          <span>total de páginas del libro</span>
+          <input id="p-total-input" type="number" min="0" max="5000" inputmode="numeric" placeholder="opcional">
+        </label>
+        <label class="check">
+          <input id="p-noseeds" type="checkbox">
+          <span>ya lo había leído (sin semillas)</span>
+        </label>
+        <button id="p-save" class="btn" type="button">guardar progreso</button>
+
+        <label class="field">
+          <span>estado</span>
+          <select id="p-status">
+            <option value="to-read">por leer</option>
+            <option value="reading">leyendo</option>
+            <option value="done">terminado</option>
+          </select>
+        </label>
+
+        <p class="note" id="p-note"></p>
+        <p class="msg" id="p-msg"></p>
+        <button id="p-delete" class="btn ghost small hidden" type="button">quitar este libro</button>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <strong>La biblioteca</strong>
+        <p>Los libros de la carrera, con visor y progreso de lectura.</p>
+      </div>
+      <div>
+        <h3 class="footer-title">Mapa del sitio</h3>
+        <ul><li><a href="../../index.html">La ciudad</a></li><li><a href="../universidad/index.html">Universidad</a></li><li><a href="../pphy/index.html">PPHY</a></li></ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Datos</h3>
+        <p>Todo lo que registras se guarda en este navegador.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div id="seed-toast" class="seed-toast hidden"><span>◆</span><strong id="toast-text"></strong></div>
+
+<script src="../../semillas.js"></script>
+<script src="library.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="../cloud-progress.js?v=10"></script></body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>la ciudad</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Exo+2:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=30">
+</head>
+<body>
+
+<div id="hud">
+  <div class="hud-title">LA CIUDAD <span class="hud-ver" title="versión de los archivos">v3.0</span></div>
+  <div class="hud-seeds">SEMILLAS: <span id="val-seeds">0</span></div>
+  <button id="nightToggle" class="night-toggle" title="cambiar a modo noche">☾</button>
+  <button id="charBtn" class="night-toggle" title="cambiar personaje">☺</button>
+</div>
+
+<div id="canvas-container">
+  <canvas id="gameCanvas" width="640" height="480"></canvas>
+
+  <div id="prompt-box" class="hidden">presiona <span class="key">E</span></div>
+
+  <div id="dialog-box" class="hidden">
+    <div id="dialog-title"></div>
+    <div id="dialog-text"></div>
+    <div id="dialog-options"></div>
+  </div>
+
+  <div id="travel-screen" class="hidden">
+    <div class="travel-text">tomando la micro<span class="dots">...</span></div>
+    <div class="travel-sub">rumbo al jardín</div>
+  </div>
+
+
+  <div id="char-overlay" class="hidden">
+    <div class="char-box">
+      <div id="char-title" class="char-title">elige tu personaje</div>
+      <div class="char-cols">
+        <div class="char-left">
+          <div class="char-sub">personajes</div>
+          <div id="char-presets" class="char-presets"></div>
+          <div class="char-sub">tu nombre</div>
+          <input id="char-name" type="text" maxlength="20" placeholder="opcional">
+        </div>
+        <div class="char-right">
+          <div class="char-sub">personalizar</div>
+          <div class="char-previews">
+            <canvas id="char-prev-down"  width="48" height="72"></canvas>
+            <canvas id="char-prev-left"  width="48" height="72"></canvas>
+            <canvas id="char-prev-up"    width="48" height="72"></canvas>
+            <canvas id="char-prev-right" width="48" height="72"></canvas>
+          </div>
+          <div class="char-grid">
+            <label>piel <input id="char-skin" type="color"></label>
+            <label>pelo <input id="char-hair" type="color"></label>
+            <label>polera <input id="char-top" type="color"></label>
+            <label>pantalón <input id="char-bottom" type="color"></label>
+            <label>acento <input id="char-accent" type="color"></label>
+            <label>peinado
+              <select id="char-style">
+                <option value="largo">largo</option>
+                <option value="corto">corto</option>
+                <option value="cola">cola</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="char-actions">
+        <button id="char-cancel" type="button" class="char-btn ghost">cancelar</button>
+        <button id="char-save" type="button" class="char-btn">listo</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="fade"></div>
+</div>
+
+<nav id="lugares" aria-label="lugares"></nav>
+
+<script src="script.js?v=30"></script>
+<a href="scenes/cuenta/index.html" style="position:fixed;right:16px;bottom:16px;z-index:9999;background:#f9f3ea;color:#453a44;border:2px solid #c6b3c4;border-radius:25px;padding:10px 18px;font:600 14px system-ui;text-decoration:none;box-shadow:0 3px 16px #0002">☁ Mi cuenta</a><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="scenes/cloud-progress.js?v=10"></script></body>
+</html>

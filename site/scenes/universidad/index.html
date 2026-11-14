@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universidad · La Ciudad V10</title>
+  <link rel="stylesheet" href="../../ui.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../../ui.js"></script>
+</head>
+
+<body class="ui">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="../../index.html" id="back-link">← la ciudad</a>
+    <span class="brand">La Ciudad <span class="brand-sep">/</span> <span class="brand-page">Universidad</span></span>
+  </div>
+  <div class="topbar-right">
+    <div class="seed-counter" id="seed-counter">semillas <span id="seed-count">0</span></div>
+    <button id="theme-toggle" class="theme-toggle" type="button" title="cambiar tema">☀</button>
+  </div>
+</header>
+
+<section id="uni-cloud-gateway" style="margin:14px auto;max-width:1080px;padding:15px 20px;border:1px solid #b5a5bd;border-radius:14px;background:var(--surface,#28212f);color:inherit;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between"><div><strong>☁ Tu universidad, en cualquier dispositivo</strong><div id="uni-cloud-status" style="font-size:13px;opacity:.8;margin-top:5px">Comprobando la sesión…</div></div><a href="../cuenta/index.html" style="background:#efe6f2;color:#382a42;padding:10px 16px;border-radius:22px;text-decoration:none;font-weight:700">Iniciar sesión / Crear cuenta</a></section>
+<div id="scene-container">
+
+  <section class="hero">
+    <span class="eyebrow" id="uni-eyebrow">TU ESPACIO ACADÉMICO / LA CIUDAD</span>
+    <h1>Tu camino, <em>tu universo.</em></h1>
+    <p>Una universidad diseñada a tu manera: personaliza tu malla, registra tus ramos y organiza lo que viene.</p>
+  </section>
+
+  <section class="uni-v2-profile" aria-label="Personalización universitaria">
+    <div class="uni-v2-profile-header"><span class="uni-v2-kicker">IDENTIDAD / PERFIL LOCAL</span><span class="uni-v2-chip" id="uni-profile-status">Este navegador</span></div>
+    <div class="uni-v2-profile-main">
+      <div><span class="uni-v2-minilabel">ESTÁS EN</span><h2 id="uni-profile-title">Mi espacio</h2><p id="uni-profile-subtitle">Personaliza tu experiencia académica.</p></div>
+      <div class="uni-v2-actions"><button type="button" id="uni-profile-edit">Personalizar espacio ↗</button><button type="button" id="uni-profile-export" class="uni-v2-quiet">Exportar respaldo</button></div>
+    </div>
+    <div class="uni-v2-stats" id="uni-progress-stats" aria-live="polite"></div>
+  </section>
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="accesos"><span class="n">01</span>accesos</button>
+    <button class="tab-btn" data-tab="malla"><span class="n">02</span>malla</button>
+    <button class="tab-btn" data-tab="calificaciones"><span class="n">03</span>calificaciones</button>
+    <button class="tab-btn" data-tab="agenda"><span class="n">04</span>agenda</button>
+    <button class="tab-btn" data-tab="calendario"><span class="n">05</span>calendario</button>
+    <button class="tab-btn" data-tab="estudio"><span class="n">06</span>estudio</button>
+  </nav>
+
+<section class="panel" id="panel-accesos">
+
+    <div class="section-heading">
+      <span class="heading-mark">◆</span>
+      <div>
+        <h2>accesos rápidos</h2>
+        <p>puertas hacia la universidad real</p>
+      </div>
+    </div>
+
+    <div class="access-grid" id="access-grid"></div>
+
+  </section>
+
+
+  <!-- =====================================================
+       MALLA
+       ===================================================== -->
+
+  <section class="panel hidden" id="panel-malla">
+
+    <div class="section-heading">
+      <span class="heading-mark">◆</span>
+      <div>
+        <h2>malla curricular</h2>
+        <p>tu progreso en la licenciatura</p>
+      </div>
+    </div>
+
+    <div class="malla-legend">
+
+      <span class="legend-item">
+        <i class="legend-dot locked"></i>
+        bloqueado
+      </span>
+
+      <span class="legend-item">
+        <i class="legend-dot available"></i>
+        disponible
+      </span>
+
+      <span class="legend-item">
+        <i class="legend-dot current"></i>
+        en curso
+      </span>
+
+      <span class="legend-item">
+        <i class="legend-dot completed"></i>
+        aprobado
+      </span>
+
+    </div>
+
+    <div class="uni-v2-malla-tools">
+      <span>Personaliza los ramos y sus prerrequisitos desde <strong>Personalizar espacio</strong>.</span>
+      <button type="button" id="uni-malla-open">Editar mi malla ↗</button>
+    </div>
+    <div class="malla-grid" id="malla-grid"></div>
+
+  </section>
+
+
+  <!-- =====================================================
+       CALIFICACIONES
+       ===================================================== -->
+
+  <section class="panel hidden" id="panel-calificaciones">
+
+    <div class="section-heading">
+      <span class="heading-mark">◆</span>
+      <div>
+        <h2>calificaciones</h2>
+        <p>seguimiento de tus ramos actuales</p>
+      </div>
+    </div>
+
+    <div class="uni-course-manager">
+      <div><strong>Mis ramos de este semestre</strong><p>Marca solo los que realmente estás cursando. No se borrarán las calificaciones de los demás.</p></div>
+      <button type="button" id="uni-edit-current">Editar ramos en curso</button>
+      <div id="uni-current-list" class="uni-current-list hidden"></div>
+    </div>
+    <p class="uni-grade-help">Cada evaluación tiene un peso editable (%). El promedio considera solo evaluaciones con nota y peso válido; se indica cuánto del 100% tienes planificado y evaluado.</p>
+    <div class="grades-grid" id="grades-grid"></div>
+
+  </section>
+
+
+  <!-- =====================================================
+       AGENDA
+       ===================================================== -->
+
+  <section class="panel hidden" id="panel-agenda">
+
+    <div class="section-heading">
+      <span class="heading-mark">◆</span>
+      <div>
+        <h2>agenda</h2>
+        <p>recordatorios y cosas que no quieres olvidar</p>
+      </div>
+    </div>
+
+    <div class="agenda-add">
+
+      <select id="agenda-course">
+        <option value="">ramo</option>
+      </select>
+
+      <input
+        type="text"
+        id="agenda-text"
+        placeholder="ej. entregar guía, preguntar algo, estudiar..."
+      >
+
+      <button id="agenda-add-btn">agregar</button>
+
+    </div>
+
+    <div id="agenda-list"></div>
+
+  </section>
+
+
+  <!-- =====================================================
+       CALENDARIO
+       ===================================================== -->
+
+  <section class="panel hidden" id="panel-calendario">
+
+    <div class="section-heading">
+      <span class="heading-mark">◆</span>
+      <div>
+        <h2>calendario</h2>
+        <p>clases y próximas evaluaciones</p>
+      </div>
+    </div>
+
+
+    <div class="calendar-switch">
+
+      <button class="calendar-view-btn active" data-calendar-view="horario">
+        horario
+      </button>
+
+      <button class="calendar-view-btn" data-calendar-view="evaluaciones">
+        evaluaciones
+      </button>
+
+    </div>
+
+
+    <div class="horario-toolbar"><div><strong>Tu horario, tus reglas.</strong><span>Se guarda en el perfil local activo y se incluye en su respaldo JSON.</span></div><button type="button" id="horario-edit-open">✦ Editar horario</button></div>
+    <div id="calendar-horario" class="calendar-view">
+
+      <div class="schedule-grid" id="schedule-grid"></div>
+
+    </div>
+
+
+    <div id="calendar-evaluaciones" class="calendar-view hidden">
+
+      <div class="evaluation-add">
+
+        <select id="evaluation-course"></select>
+
+        <input
+          type="text"
+          id="evaluation-name"
+          placeholder="nombre de la evaluación"
+        >
+
+        <input
+          type="date"
+          id="evaluation-date"
+        >
+
+        <button id="evaluation-add-btn">
+          agregar
+        </button>
+
+      </div>
+
+      <div id="evaluation-list"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       MODO ESTUDIO
+       ===================================================== -->
+
+  <section class="panel hidden" id="panel-estudio">
+
+    <div class="section-heading">
+      <span class="heading-mark">◆</span>
+      <div>
+        <h2>modo estudio</h2>
+        <p>25 minutos de enfoque · 5 de descanso</p>
+      </div>
+    </div>
+
+    <div class="timer-wrap">
+
+      <div class="focus-mission"><span>✧ MISIÓN DE ENFOQUE</span><h3>Un paso más hacia tu próxima recompensa.</h3><p>Elige una tarea concreta, cumple un bloque de concentración y recoge una semilla. No hay obligación de completar más.</p><label for="focus-intention">Mi objetivo de esta sesión</label><input type="text" id="focus-intention" maxlength="110" placeholder="Ej. resolver dos problemas de mecánica"></div>
+      <div class="timer-mode" id="timer-mode">
+        enfoque
+      </div>
+
+      <div class="timer-display" id="timer-display">
+        25:00
+      </div>
+
+      <div class="focus-track" aria-hidden="true"><div id="focus-progress"></div></div><div class="focus-milestones"><span>COMIENZO</span><span id="focus-progress-text">0 % completado</span><span>META</span></div>
+      <div class="timer-controls">
+
+        <button id="timer-start">
+          iniciar
+        </button>
+
+        <button id="timer-reset">
+          reiniciar
+        </button>
+
+      </div>
+
+      <p id="focus-feedback" class="focus-feedback" role="status">Una sesión completa de 25 minutos otorga 1 semilla local. Puedes pausar sin perder el avance.</p>
+
+    </div>
+
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div><strong>Universidad · La Ciudad</strong><p>Tu espacio académico configurable</p></div>
+      <div>
+        <h3 class="footer-title">Mapa del sitio</h3>
+        <ul><li><a href="../../index.html">La ciudad</a></li><li><a href="../biblioteca/index.html">Biblioteca</a></li><li><a href="../pphy/index.html">PPHY</a></li></ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Datos</h3>
+        <p>Versión de perfiles locales: exporta un respaldo antes de cambiar de dispositivo. No hay sincronización en la nube todavía.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+<dialog id="uni-v2-dialog" class="uni-v2-dialog" aria-labelledby="uni-v2-dialog-title">
+ <form method="dialog" id="uni-dialog-shell">
+  <div class="uni-v2-dialog-top"><span class="uni-v2-kicker">UNIVERSIDAD / CONFIGURACIÓN</span><button value="cancel" class="uni-v2-close" type="button" id="uni-close" aria-label="Cerrar">✕</button></div>
+  <h2 id="uni-v2-dialog-title">Haz tuyo este espacio.</h2>
+  <p class="uni-v2-dialog-help">Puedes crear varios perfiles locales. Son espacios independientes <strong>en este navegador</strong>, no cuentas privadas.</p>
+  <label>Perfil local<select id="uni-profile-select"></select></label>
+  <div class="uni-v2-profile-actions"><button type="button" id="uni-new-profile">+ Nuevo perfil</button><button type="button" id="uni-remove-profile" class="uni-v2-quiet">Eliminar perfil</button></div>
+  <div class="uni-v2-fields"><label>Nombre del espacio<input id="uni-name" maxlength="54" placeholder="Mi universidad"></label><label>Universidad<input id="uni-school" maxlength="80" placeholder="Ej. UNAB"></label><label>Carrera o programa<input id="uni-degree" maxlength="100" placeholder="Ej. Licenciatura en Física"></label><label>Color de acento<input id="uni-accent" type="color" value="#b78cff"></label></div>
+  <div class="uni-v2-editor-top"><h3>Mi malla curricular</h3><button type="button" id="uni-add-course">+ Agregar ramo</button></div>
+  <p class="uni-v2-editor-note">Edita por fila. Los prerrequisitos se escriben como IDs separados por coma. Cambiar o borrar IDs podría afectar estados existentes.</p>
+  <div class="uni-v2-course-list" id="uni-course-list"></div>
+  <div class="uni-v2-import"><label for="uni-import-file" class="uni-v2-import-label">Importar respaldo JSON</label><input id="uni-import-file" type="file" accept="application/json,.json"><span>Importar reemplaza los datos del perfil seleccionado. Guarda antes un respaldo.</span></div>
+  <p class="uni-v2-feedback" id="uni-feedback" role="status"></p>
+  <div class="uni-v2-dialog-actions"><button type="button" id="uni-cancel">Cancelar</button><button type="button" id="uni-save">Guardar cambios</button></div>
+ </form>
+</dialog>
+<script src="../../semillas.js"></script>
+<script src="script.js"></script>
+<script src="personalizacion.js"></script>
+<script src="horario-editor.js"></script>
+<dialog id="horario-dialog" class="horario-dialog"><div class="horario-dialog-head"><div><small>UNIVERSIDAD / MI SEMANA</small><h2>Diseña tu horario</h2></div><button type="button" id="horario-close" aria-label="Cerrar">✕</button></div><p>Agrega bloques por día, hora y ramo. Puedes editar o eliminar cada clase. Nada se sincroniza con otras cuentas todavía.</p><div class="horario-inputs"><label>Día<select id="horario-day"><option value="lunes">Lunes</option><option value="martes">Martes</option><option value="miércoles">Miércoles</option><option value="jueves">Jueves</option><option value="viernes">Viernes</option></select></label><label>Desde<input id="horario-start" type="time" value="08:30"></label><label>Hasta<input id="horario-end" type="time" value="10:10"></label><label>Ramo<select id="horario-course"></select></label><button type="button" id="horario-add">+ Agregar clase</button></div><p role="status" id="horario-msg"></p><div id="horario-items" class="horario-items"></div><div class="horario-dialog-actions"><button type="button" id="horario-reset">Restaurar horario inicial</button><button type="button" id="horario-save">Guardar horario</button></div></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="../cloud-progress.js?v=10"></script><script>window.addEventListener('ciudad-cloud-status',e=>{const el=document.getElementById('uni-cloud-status');if(el)el.textContent=e.detail.status;});</script></body>
+</html>

@@ -1,0 +1,71 @@
+{
+  "version": 2,
+  "updated": "2026-10-20",
+  "books": [
+    {
+      "id": "marion-classical-dynamics",
+      "title": "Classical Dynamics of Particles and Systems",
+      "shortTitle": "Classical Dynamics",
+      "author": "Jerry B. Marion & Stephen T. Thornton",
+      "subject": "Mecánica Clásica",
+      "status": "reading",
+      "pages": 0,
+      "pdf": "https://pub-c22c60809ebc437a9c5cc7bcd6fe8de8.r2.dev/Marion_Jerry_B_Thornton_Stephen_T_Classi.pdf",
+      "description": "Texto principal de referencia para mecánica clásica.",
+      "driveUrl": "",
+      "pagesPerSeed": 10
+    },
+    {
+      "id": "butkov-matematical-physics",
+      "title": "Mathematical Physics",
+      "shortTitle": "Mathematical Physics",
+      "author": "E. Butkov",
+      "subject": "Métodos Matemáticos",
+      "status": "reading",
+      "pages": 0,
+      "pdf": "",
+      "description": "Referencia para herramientas matemáticas utilizadas en física.",
+      "driveUrl": "https://archive.org/details/mathematicalphys00butk/page/2/mode/2up",
+      "pagesPerSeed": 10
+    },
+    {
+      "id": "blundell-concepts-thermal-physics",
+      "title": "Concepts in Thermal Physics",
+      "shortTitle": "Concepts in Thermal Physics",
+      "author": "Stephen J. Blundell & Katherine M. Blundell",
+      "subject": "Termodinámica",
+      "status": "reading",
+      "pages": 0,
+      "pdf": "",
+      "description": "Texto de referencia para termodinámica y física estadística.",
+      "driveUrl": "https://drive.google.com/file/d/1yjdugbNPXeWMuk9MbubmU5tdquSZvdlm/view?usp=drive_link",
+      "pagesPerSeed": 10
+    },
+    {
+      "id": "greiner-thermodynamics-statistical-mechanics",
+      "title": "Thermodynamics and Statistical Mechanics",
+      "shortTitle": "Thermodynamics and Statistical Mechanics",
+      "author": "Walter Greiner, Ludwig Neise & Horst Stöcker",
+      "subject": "Termodinámica",
+      "status": "to-read",
+      "pages": 0,
+      "pdf": "",
+      "description": "Referencia avanzada de termodinámica y mecánica estadística.",
+      "driveUrl": "https://drive.google.com/file/d/1wfxFwiY8wn74jeSGlNzgDL1dLxDqP5LZ/view?usp=drive_link",
+      "pagesPerSeed": 10
+    },
+    {
+      "id": "callen-thermodynamics",
+      "title": "Thermodynamics and an Introduction to Thermostatistics",
+      "shortTitle": "Thermodynamics",
+      "author": "Herbert B. Callen",
+      "subject": "Termodinámica",
+      "status": "to-read",
+      "pages": 0,
+      "pdf": "",
+      "description": "Texto clásico para el desarrollo formal de la termodinámica.",
+      "driveUrl": "https://drive.google.com/file/d/1US7acDE3sV6ncfng8eqmLUcpy_ZP03EM/view?usp=drive_link",
+      "pagesPerSeed": 10
+    }
+  ]
+}

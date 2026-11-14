@@ -1,0 +1,40 @@
+(()=>{'use strict';
+const $=id=>document.getElementById(id), URL='https://mqjprleqctafnhokxcyk.supabase.co', KEY='sb_publishable_i9HKZXTtwrm709JyZ33rcg_OMe5oMp7', ROOM='ciudadHabitacionV6';
+const note=(t)=>{$('notice').textContent=t};
+if(!window.supabase?.createClient){note('No se cargó Supabase. Comprueba tu conexión a internet o revisa la consola.');return}
+const db=window.supabase.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true}});
+let signup=false,uid=null,rev=null,roomVisibility='private',busy=false;
+const setBusy=v=>{busy=v;document.querySelectorAll('button').forEach(b=>{if(b.id!=='tab-login'&&b.id!=='tab-signup')b.disabled=v})};
+const err=e=>{console.error(e);note(e?.message||'Ocurrió un error inesperado.')};
+function localJson(k){try{return JSON.parse(localStorage.getItem(k)||'null')}catch{return null}}
+function validRoom(v){return !!v&&typeof v==='object'&&!Array.isArray(v)&&Array.isArray(v.placed)&&v.placed.length<=600&&v.placed.every(o=>o&&typeof o.id==='string'&&o.id.length<90&&Number.isFinite(o.x)&&Number.isFinite(o.y))}
+function mode(on){signup=on;$('signup-fields').hidden=!on;$('username').required=on;$('display-name').required=on;$('tab-login').classList.toggle('active',!on);$('tab-signup').classList.toggle('active',on);$('submit-auth').textContent=on?'Crear cuenta':'Entrar';$('password').autocomplete=on?'new-password':'current-password';note('')}
+$('tab-login').onclick=()=>mode(false);$('tab-signup').onclick=()=>mode(true);
+async function showUser(user){uid=user?.id||null;$('signed-in').hidden=!uid;$('signed-out').hidden=!!uid;if(!uid){rev=null;return}
+ $('player-email').textContent=user.email||'';const [p,r]=await Promise.all([db.from('ciudad_profiles').select('username,display_name').eq('user_id',uid).maybeSingle(),db.from('ciudad_rooms').select('revision,visibility').eq('user_id',uid).maybeSingle()]);
+ if(p.error)throw p.error;if(r.error)throw r.error;$('player-label').textContent=p.data?.display_name||'Cuenta creada';rev=r.data?.revision||null;roomVisibility=r.data?.visibility||'private';$('public-room').checked=roomVisibility==='registered';
+ $('profile-completion').hidden=!!p.data;if(!p.data)note('¡Bienvenida! Completa tu perfil para que otros jugadores puedan reconocerte.');
+}
+$('auth-form').onsubmit=async e=>{e.preventDefault();if(busy)return;setBusy(true);try{const email=$('email').value.trim(),password=$('password').value;
+ if(signup){const username=$('username').value.trim().toLowerCase(),display_name=$('display-name').value.trim();if(!/^[a-z0-9_]{3,20}$/.test(username)||!display_name||display_name.length>35)throw Error('Revisa el nombre de usuario y el nombre visible.');
+ const {data,error}=await db.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)throw error;
+ if(data.session?.user){await createProfile(data.session.user,username,display_name);await showUser(data.session.user);note('Cuenta creada. Ahora puedes guardar tu personaje y habitación.')}else{sessionStorage.setItem('ciudadPendingProfile',JSON.stringify({username,display_name,email}));note('Revisa tu correo y confirma la cuenta. Luego vuelve aquí e inicia sesión.')} }
+ else{const {data,error}=await db.auth.signInWithPassword({email,password});if(error)throw error;await showUser(data.user);note('¡Sesión iniciada!')} }
+ catch(e){err(e)}finally{setBusy(false)}};
+async function createProfile(user,username,display_name){const av=localJson('ciudadPersonaje')||{};const {error}=await db.from('ciudad_profiles').insert({user_id:user.id,username,display_name,avatar:av});if(error)throw error}
+async function pending(user){if(!user)return;const raw=sessionStorage.getItem('ciudadPendingProfile');if(!raw)return;let v;try{v=JSON.parse(raw)}catch{return}if(v.email!==user.email)return;
+ const {data,error}=await db.from('ciudad_profiles').select('user_id').eq('user_id',user.id).maybeSingle();if(error)throw error;if(!data){await createProfile(user,v.username,v.display_name)}sessionStorage.removeItem('ciudadPendingProfile')}
+$('complete-profile').onclick=async()=>{if(!uid)return;const username=$('complete-username').value.trim().toLowerCase(),display_name=$('complete-display').value.trim();if(!/^[a-z0-9_]{3,20}$/.test(username)||!display_name||display_name.length>35){note('Revisa el nombre de usuario y el nombre visible.');return}setBusy(true);try{await createProfile({id:uid},username,display_name);await showUser({id:uid,email:$('player-email').textContent});note('Perfil listo. ¡Bienvenida a La Ciudad!')}catch(e){err(e)}finally{setBusy(false)}};
+$('logout').onclick=async()=>{setBusy(true);try{const {error}=await db.auth.signOut();if(error)throw error;await showUser(null);note('Has cerrado sesión. Los datos locales permanecen en este navegador.')}catch(e){err(e)}finally{setBusy(false)}};
+$('save-avatar').onclick=async()=>{if(!uid)return;const v=localJson('ciudadPersonaje');if(!v||typeof v!=='object'||Array.isArray(v)){note('Primero personaliza tu personaje desde La Ciudad.');return}setBusy(true);try{const {error}=await db.from('ciudad_profiles').update({avatar:v,updated_at:new Date().toISOString()}).eq('user_id',uid);if(error)throw error;note('Tu personaje se guardó en tu cuenta.')}catch(e){err(e)}finally{setBusy(false)}};
+$('upload-room').onclick=async()=>{if(!uid)return;const state=localJson(ROOM);if(!validRoom(state)){note('No encontré una habitación válida en este navegador. Entra primero a la habitación.');return}
+ if(!confirm('¿Guardar la habitación de este navegador en la nube? Si ya tienes una, solamente se actualizará si no ha cambiado desde que abriste la cuenta.'))return;
+ setBusy(true);try{if(rev===null){const {data,error}=await db.from('ciudad_rooms').insert({user_id:uid,state,visibility:roomVisibility}).select('revision').single();if(error)throw error;rev=data.revision}
+ else{const {data,error}=await db.from('ciudad_rooms').update({state,revision:rev+1,updated_at:new Date().toISOString()}).eq('user_id',uid).eq('revision',rev).select('revision').maybeSingle();if(error)throw error;if(!data)throw Error('La habitación cambió en otro dispositivo. Recarga esta página antes de intentar guardar; puedes recuperar la copia de la nube.');rev=data.revision}
+ note('¡Habitación guardada en tu cuenta! Ya puedes recuperarla desde otro dispositivo.')}catch(e){err(e)}finally{setBusy(false)}};
+$('download-room').onclick=async()=>{if(!uid)return;setBusy(true);try{const {data,error}=await db.from('ciudad_rooms').select('state,revision').eq('user_id',uid).maybeSingle();if(error)throw error;if(!data)throw Error('Todavía no tienes una habitación guardada en la nube.');if(!validRoom(data.state))throw Error('La habitación guardada no tiene un formato compatible.');
+ if(!confirm('¿Recuperar tu habitación de la nube? Se hará una copia de seguridad de la habitación local y luego se reemplazará.'))return;
+ const local=localStorage.getItem(ROOM);if(local){const blob=new Blob([local],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='respaldo-habitacion-local.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}localStorage.setItem(ROOM,JSON.stringify(data.state));rev=data.revision;note('Habitación recuperada. Entra a «Abrir mi habitación» para verla.')}catch(e){err(e)}finally{setBusy(false)}};
+$('public-room').onchange=async e=>{if(!uid)return;const visibility=e.target.checked?'registered':'private';setBusy(true);try{const {error}=await db.from('ciudad_rooms').update({visibility}).eq('user_id',uid);if(error)throw error;roomVisibility=visibility;note(visibility==='registered'?'Tu habitación puede ser consultada por otros jugadores registrados.':'Tu habitación es privada.')}catch(er){e.target.checked=!e.target.checked;err(er)}finally{setBusy(false)}};
+(async()=>{try{const {data,error}=await db.auth.getUser();if(error&&error.name!=='AuthSessionMissingError')throw error;if(data?.user){await pending(data.user);await showUser(data.user)}else await showUser(null)}catch(e){err(e)}})();
+})();

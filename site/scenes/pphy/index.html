@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#090912" name="theme-color"/>
+<title>PPHY | Particle Physics UNAB</title>
+<link href="../../ui.css" rel="stylesheet"/><link href="style.css" rel="stylesheet"/><link href="public.css" rel="stylesheet"/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet"/></head>
+<body>
+<canvas aria-hidden="true" id="canvas"></canvas><div aria-hidden="true" id="grain"></div><div aria-hidden="true" class="progress" id="progress"></div>
+<header id="header"><a aria-label="PPHY, ir a inicio" class="brand" href="#inicio"><span class="first">P</span><span>PHY</span></a><nav aria-label="Navegación principal" class="top-nav"><a href="#nosotros">Nosotros</a><a href="#hacemos">Qué hacemos</a><button class="access" id="login-button" type="button">Acceso integrantes <span>↗</span></button><button aria-label="Abrir menú de secciones" class="menu-btn" id="menu-button" type="button">☰</button></nav></header>
+<main>
+<section class="hero" id="inicio"><div class="hero-grid"></div><div class="hero-sticky"><div class="hero-copy"><div class="eyebrow">01 / Particle Physics · UNAB</div><h1>Lo <span class="outline">invisible</span><br/>también nos<br/><span class="accent">conecta.</span></h1><p class="hero-lead">Una comunidad estudiantil unida por la curiosidad, el aprendizaje compartido y la física de partículas.</p><div class="sub-hero"><a class="link-arrow" href="#nosotros">Explorar PPHY <b>↗</b></a></div></div><div class="hero-index">PARTICLE PHYSICS / DIGITAL EXPERIENCE</div><div class="hero-foot"><span class="scrollmark"><i></i> DESLIZA PARA EXPLORAR</span><span>UNIVERSIDAD ANDRÉS BELLO · CHILE</span></div></div></section>
+<section class="section about" id="nosotros"><div class="section-inner"><div class="section-heading reveal"><span class="eyebrow">01 / Nosotros</span><span class="thin">ORIGEN / COMUNIDAD</span></div><div class="about-grid"><div class="reveal"><h2 class="huge">La física no termina en una <em>sala de clases.</em></h2><p class="bodytext">PPHY es una comunidad estudiantil de física de partículas. Nos une el gusto por conversar, cuestionarnos y aprender juntos. No se trata de cátedras: compartimos ideas, lecturas y preguntas como amigos que disfrutan la física.</p><div class="microfacts"><span>ESTUDIO EN CONJUNTO</span><span>CURIOSIDAD COMPARTIDA</span><span>DIVULGACIÓN</span></div></div><div aria-label="Visualización decorativa de círculos concéntricos" class="about-graphic reveal"><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="node"></div><span class="graphic-label">PPHY / CONNECTION FIELD<br/>VISUAL STUDY · NO EXPERIMENTAL DATA</span></div></div></div></section>
+<section class="section activities" id="hacemos"><div class="section-inner"><div class="section-heading reveal"><span class="eyebrow">02 / Qué hacemos</span><span class="thin">CONVERSAR / APRENDER / COMPARTIR</span></div><div class="activity-intro"><h2 class="huge reveal">La curiosidad se <em>comparte.</em></h2><p class="bodytext reveal">La física de partículas es nuestro punto de encuentro. Leemos, discutimos, divulgamos y nos acompañamos en el proceso de entender temas complejos.</p></div><div class="activities-list">
+<div class="activity reveal"><span class="n">01</span><h3>Estudio colaborativo</h3><p>Lecturas y explicaciones compartidas, sin formato de clase.</p><span class="arr">↗</span><div class="activity-art"><svg viewbox="0 0 140 110"><circle cx="70" cy="55" r="32"></circle><circle cx="70" cy="55" r="16"></circle><path d="M10 75L70 55 120 10M8 20L70 55 129 90"></path></svg></div></div>
+<div class="activity reveal"><span class="n">02</span><h3>Divulgación</h3><p>Compartir el entusiasmo por la física de partículas.</p><span class="arr">↗</span><div class="activity-art"><svg viewbox="0 0 140 110"><path d="M0 55Q35 2 70 55T140 55M0 65Q35 12 70 65T140 65"></path></svg></div></div>
+<div class="activity reveal"><span class="n">03</span><h3>Reuniones y conversación</h3><p>Discutir física desde la amistad y la curiosidad.</p><span class="arr">↗</span><div class="activity-art"><svg viewbox="0 0 140 110"><circle cx="34" cy="44" r="9"></circle><circle cx="70" cy="20" r="9"></circle><circle cx="106" cy="44" r="9"></circle><path d="M34 44L70 20 106 44 70 88Z"></path><circle cx="70" cy="88" r="9"></circle></svg></div></div>
+</div><aside class="status reveal"><div><span class="eyebrow">EN ESTE MOMENTO / LECTURA</span><p><strong>Modern Particle Physics · Mark Thomson</strong></p><p>Actualmente avanzamos en la lectura por nuestra cuenta; las reuniones regulares están en pausa por ahora.</p></div><span class="tag">ESTUDIO EN CURSO ↗</span></aside></div></section>
+<section class="section closing" id="cierre"><div class="section-inner"><span class="eyebrow reveal">03 / La curiosidad continúa</span><h2 class="huge reveal" style="margin-top:35px">Siempre hay <em>algo más</em> por descubrir.</h2><p class="bodytext reveal" style="max-width:700px;margin-top:35px">Una comunidad q encuentra en la física una razón para seguir preguntando y compartiendo ideas.</p><div class="bottomrow"><a class="link-arrow" href="#inicio">Volver al inicio <b>↑</b></a><p>PARTICLE PHYSICS / UNAB</p></div></div></section>
+<section aria-labelledby="workspace-title" class="workspace hidden" id="workspace">
+<div class="workspace-inner"><p class="mode-banner bad hidden" id="err-banner" role="alert"></p><p class="mode-banner hidden" id="mode-banner"></p>
+<div class="workspace-top"><span class="eyebrow">PPHY / ESPACIO DE ESTUDIO</span><div class="workspace-identity"><span id="user-name"></span><button class="btn ghost small" id="logout-btn" type="button">Cerrar sesión ↗</button></div></div>
+<nav aria-label="Navegación del espacio de estudio" class="workspace-nav">
+<button class="tab-btn active" data-tab="inicio" type="button">Inicio</button>
+<button class="tab-btn" data-tab="materiales" type="button">Materiales</button>
+<button class="tab-btn" data-tab="apuntes" type="button">Apuntes</button>
+<button class="tab-btn" data-tab="subir" type="button">Nuevo apunte</button>
+<button class="tab-btn" data-tab="plan" type="button">Plan de lectura</button>
+<button class="tab-btn extra-tab hidden" data-tab="libro" type="button">Lector</button>
+</nav>
+<div class="workspace-content" id="app">
+<section class="panel" id="panel-inicio"><span class="eyebrow">01 / OVERVIEW</span><h2 class="workspace-title" id="workspace-title">Nuestro espacio de estudio.</h2><p class="workspace-lead">Un lugar para continuar leyendo, compartir ideas y organizar lo aprendido.</p><div class="overview-grid"><button class="overview-feature" data-go-tab="materiales" type="button"><span class="tiny">MATERIAL / 001</span><strong>Modern Particle Physics</strong><span>Mark Thomson · Explorar material ↗</span></button><button class="overview-feature" data-go-tab="apuntes" type="button"><span class="tiny">CUADERNO</span><strong>Apuntes del grupo</strong><span>Leer y compartir notas ↗</span></button><button class="overview-feature" data-go-tab="plan" type="button"><span class="tiny">LECTURA</span><strong>Plan de lectura</strong><span>Ver capítulos ↗</span></button></div></section>
+<section class="panel hidden" id="panel-materiales"><span class="eyebrow">02 / BIBLIOTECA</span><h2 class="workspace-title">Materiales.</h2><p class="workspace-lead">Nuestra biblioteca comienza con el libro que estamos estudiando.</p><div class="material-card"><div><span class="tiny">MATERIAL / 001</span><h3>Modern Particle Physics</h3><p>Mark Thomson</p></div><button class="btn" data-go-tab="libro" type="button">Abrir lector ↗</button></div></section>
+<section class="panel" id="panel-apuntes"><nav aria-label="Navegación del material" class="material-context"><span>THOMSON /</span><button data-go-tab="libro" type="button">Lectura</button><button data-go-tab="apuntes" type="button">Apuntes</button><button data-go-tab="plan" type="button">Plan</button></nav>
+<div class="section-heading">
+<h2>apuntes del grupo</h2>
+<p>filtra por capítulo, tipo o autor</p>
+</div>
+<div class="filters">
+<select id="f-chapter"></select>
+<select id="f-kind">
+<option value="">todos los tipos</option>
+<option value="apunte">apuntes</option>
+<option value="duda">dudas</option>
+<option value="resumen">resúmenes</option>
+<option value="ejercicio">ejercicios</option>
+<option value="otro">otros</option>
+</select>
+<select id="f-author"></select>
+<button class="btn ghost small" id="refresh-btn" type="button">actualizar</button>
+</div>
+<div class="notes-list" id="notes-list"></div>
+</section><section class="panel hidden" id="panel-subir">
+<div class="section-heading">
+<h2>subir apunte</h2>
+<p>puedes escribir ecuaciones con $...$ o $$...$$ (LaTeX)</p>
+</div>
+<div class="card form-card">
+<div class="form-col">
+<div class="row">
+<select id="n-chapter"></select>
+<select id="n-kind">
+<option value="apunte">apunte</option>
+<option value="duda">duda para la reunión</option>
+<option value="resumen">resumen</option>
+<option value="ejercicio">ejercicio</option>
+<option value="otro">otro</option>
+</select>
+</div>
+<input id="n-title" maxlength="160" placeholder="título" type="text"/>
+<textarea id="n-body" placeholder="texto del apunte. ej: la tasa de decaimiento es $\Gamma = 1/\tau$" rows="9"></textarea>
+<input id="n-link" placeholder="link opcional (Drive, PDF, imagen…)" type="url"/>
+<div class="row">
+<button class="btn" id="n-save" type="button">guardar apunte</button>
+<button class="btn ghost" id="n-preview-btn" type="button">vista previa</button>
+</div>
+<p class="msg" id="n-msg"></p>
+<div class="note-body preview hidden" id="n-preview"></div>
+</div>
+</div>
+</section><section class="panel hidden" id="panel-libro"><nav aria-label="Navegación del material" class="material-context"><span>THOMSON /</span><button data-go-tab="libro" type="button">Lectura</button><button data-go-tab="apuntes" type="button">Apuntes</button><button data-go-tab="plan" type="button">Plan</button></nav>
+<div class="section-heading">
+<h2>el libro</h2>
+<p id="book-sub">léelo aquí mismo o ábrelo en otra pestaña</p>
+</div>
+<div id="book-box"></div>
+</section><section class="panel hidden" id="panel-plan"><nav aria-label="Navegación del material" class="material-context"><span>THOMSON /</span><button data-go-tab="libro" type="button">Lectura</button><button data-go-tab="apuntes" type="button">Apuntes</button><button data-go-tab="plan" type="button">Plan</button></nav>
+<div class="section-heading">
+<h2>plan de lectura</h2>
+<p id="plan-sub"></p>
+</div>
+<div class="plan-list" id="plan-list"></div>
+</section></div></div></section></main>
+<footer><a class="brand" href="#inicio"><span class="first">P</span><span>PHY</span></a><span>COMUNIDAD ESTUDIANTIL · FÍSICA DE PARTÍCULAS</span><span>PPHY · 2026</span></footer>
+<div class="modal-backdrop" id="backdrop" role="presentation">
+<section aria-labelledby="modal-title" aria-modal="true" class="modal" role="dialog">
+<button aria-label="Cerrar panel" class="close" id="close-modal" type="button">×</button>
+<span class="eyebrow">PPHY / ESPACIO PRIVADO</span>
+<h2 id="modal-title">Bienvenido<br/>de vuelta.</h2>
+<p>Solo integrantes autorizados pueden acceder a los materiales y apuntes.</p>
+<div class="auth-card" id="auth-panel">
+<div class="form-col">
+<label for="auth-email">Correo electrónico</label><input autocomplete="email" id="auth-email" placeholder="correo@ejemplo.cl" type="email"/>
+<label for="auth-pass">Contraseña</label><input autocomplete="current-password" id="auth-pass" placeholder="••••••••" type="password"/>
+<button class="submit" id="auth-login" type="button">Ingresar ↗</button>
+<p class="msg" id="auth-msg" role="status"></p>
+</div></div>
+<p class="hint">ACCESO EXCLUSIVO PARA INTEGRANTES · PPHY</p>
+</section></div><div aria-hidden="true" class="hidden" id="legacy-support">
+<div id="userbar"></div><button id="auth-signup" type="button"></button><input id="auth-name" value=""/><button id="diag-btn" type="button"></button><pre id="diag-out"></pre><div id="seed-count"></div>
+<div id="side-list"></div><div id="hero-chips"></div><div id="hero-info"></div><button id="cta-primary" type="button"></button><span id="cta-primary-text"></span><button id="cta-secondary" type="button"></button>
+</div><div class="viewer hidden" id="viewer">
+<div class="viewer-bar">
+<a href="#" id="viewer-open" rel="noopener noreferrer" target="_blank">abrir en pestaña nueva ↗</a>
+<button class="btn ghost small" id="viewer-close" type="button">cerrar</button>
+</div>
+<iframe id="viewer-frame" sandbox="allow-scripts allow-same-origin allow-popups" title="visor"></iframe>
+</div><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js"></script><script src="config.js"></script><script src="script.js"></script><script src="public.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="../cloud-progress.js?v=10"></script></body></html>

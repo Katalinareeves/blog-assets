@@ -1,0 +1,228 @@
+/* ============================================================
+   UNIVERSIDAD — componentes (usa ../../ui.css para tokens y layout)
+   ============================================================ */
+
+/* ---------- accesos ---------- */
+.access-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.access-card {
+  position: relative; min-height: 150px; padding: 66px 20px 20px; display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: flex-end; gap: 6px; text-decoration: none; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+  transition: transform .18s, border-color .18s, background .18s;
+}
+.access-card:hover { transform: translateY(-3px); border-color: var(--accent); background: var(--surface-2); }
+.access-symbol {
+  position: absolute; top: 16px; left: 18px; width: 38px; height: 38px; display: grid; place-items: center;
+  border-radius: 12px; font-size: 18px; font-weight: 700; color: var(--accent); background: var(--accent-soft);
+}
+.access-card .label { font-size: 17px; font-weight: 700; line-height: 1.2; }
+.access-description { font-size: 13px; color: var(--muted); line-height: 1.4; }
+.access-arrow { position: absolute; top: 18px; right: 18px; font-size: 16px; color: var(--faint); transition: color .18s, transform .18s; }
+.access-card:hover .access-arrow { color: var(--accent-2); transform: translate(2px, -2px); }
+.pending-card { opacity: .6; border-style: dashed; }
+.pending-card .pending { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--warn); }
+
+/* ---------- malla ---------- */
+.malla-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.legend-item {
+  display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: 999px;
+  font-size: 12px; font-weight: 600; color: var(--muted); background: var(--surface); border: 1px solid var(--border);
+}
+.legend-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; border: 2px solid currentColor; }
+.legend-dot.locked { color: var(--faint); }
+.legend-dot.available { color: var(--accent); }
+.legend-dot.current { color: var(--ok); background: var(--ok); }
+.legend-dot.completed { color: var(--accent-2); background: var(--accent-2); }
+
+.malla-grid {
+  width: 100%; display: grid; grid-template-columns: repeat(8, minmax(158px, 1fr));
+  gap: 12px; overflow-x: auto; padding: 2px 2px 16px;
+}
+.malla-semestre { min-width: 158px; display: flex; flex-direction: column; gap: 8px; }
+.malla-semestre .sem-label {
+  padding: 8px 10px; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-soft); border-radius: 999px; border: 1px solid var(--border); text-shadow: none;
+}
+.ramo-card {
+  position: relative; min-height: 84px; padding: 12px 12px 11px 14px; display: flex; flex-direction: column;
+  justify-content: space-between; gap: 8px; background: var(--surface); border: 1px solid var(--border);
+  border-left: 4px solid var(--faint); border-radius: 12px; color: var(--muted); box-shadow: none;
+  transition: border-color .15s, background .15s, opacity .15s, transform .15s;
+}
+.ramo-card.available { color: var(--text); cursor: default; }
+.ramo-card.current { color: var(--text); background: var(--ok-soft); border-color: var(--ok); cursor: pointer; }
+.ramo-card.completed { color: var(--text); background: var(--accent-2-soft); border-color: var(--accent-2); cursor: pointer; }
+.ramo-card.locked { opacity: .45; }
+.ramo-card.available:hover { background: var(--surface-2); border-color: var(--accent); transform: translateY(-1px); }
+.ramo-card.current:hover, .ramo-card.completed:hover { transform: translateY(-1px); }
+.ramo-card.cat-matematica { border-left-color: var(--accent); }
+.ramo-card.cat-mecanica { border-left-color: var(--accent-2); }
+.ramo-card.cat-humanista { border-left-color: #6f8fb0; }
+.ramo-card.cat-ingles { border-left-color: var(--ok); }
+.ramo-card.cat-general { border-left-color: var(--faint); }
+.ramo-name { font-size: 13px; font-weight: 600; line-height: 1.35; }
+.ramo-state-label { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+.ramo-card.current .ramo-state-label { color: var(--ok); }
+.ramo-card.completed .ramo-state-label { color: var(--accent-2); }
+.ramo-state-dot { display: none; }
+
+/* ---------- calificaciones ---------- */
+.grades-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grade-card { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+.grade-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.grade-subject { color: var(--text); font-size: 17px; font-weight: 700; line-height: 1.25; }
+.grade-meta { color: var(--muted); font-size: 12px; margin-top: 4px; }
+.grade-average { color: var(--accent-2); font-size: 30px; font-weight: 800; white-space: nowrap; letter-spacing: -.02em; }
+.grade-list { margin-top: 10px; }
+.grade-row { display: grid; grid-template-columns: minmax(0, 1fr) 76px 76px 30px; gap: 8px; align-items: center; padding: 6px 0; border: 0; }
+.grade-row input { padding: 8px 10px; font-size: 13px; }
+.grade-delete, .agenda-delete, .evaluation-delete {
+  border: 0; background: transparent; color: var(--faint); font-size: 16px; padding: 4px 8px; border-radius: 8px; cursor: pointer; line-height: 1;
+}
+.grade-delete:hover, .agenda-delete:hover, .evaluation-delete:hover { color: var(--danger); background: var(--surface-2); }
+.grade-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; }
+.grade-method { color: var(--muted); font-size: 12px; }
+.grade-add, .agenda-add button, .evaluation-add button, .timer-controls button, .calendar-view-btn {
+  display: inline-flex; align-items: center; justify-content: center; padding: 9px 16px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; cursor: pointer; color: var(--text); background: var(--surface);
+  border: 1px solid var(--border-strong); box-shadow: none; transition: border-color .15s, background .15s, transform .15s;
+}
+.grade-add:hover, .agenda-add button:hover, .evaluation-add button:hover, .timer-controls button:hover, .calendar-view-btn:hover {
+  border-color: var(--accent); background: var(--accent-soft); transform: translateY(-1px);
+}
+.calendar-view-btn.active { color: var(--on-accent); border-color: var(--accent); background: var(--accent); }
+.empty-grade { color: var(--muted); font-size: 13px; padding: 10px 0; }
+
+/* ---------- agenda ---------- */
+.agenda-add { display: grid; grid-template-columns: 190px minmax(0, 1fr) auto; gap: 8px; margin-bottom: 16px; }
+.agenda-item {
+  display: grid; grid-template-columns: 28px 1fr 30px; gap: 12px; align-items: center; padding: 14px 16px; margin-bottom: 8px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); transition: border-color .15s, background .15s;
+}
+.agenda-item:hover { border-color: var(--border-strong); background: var(--surface-2); }
+.agenda-check { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--border-strong); background: transparent; color: var(--ok); font-size: 12px; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.agenda-check:hover { border-color: var(--ok); }
+.agenda-item.done .agenda-check { background: var(--ok-soft); border-color: var(--ok); }
+.agenda-course { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+.agenda-date { color: var(--muted); font-size: 12px; margin: 2px 0; }
+.agenda-text { color: var(--text); font-size: 14px; line-height: 1.45; }
+.agenda-item.done .agenda-text { color: var(--muted); text-decoration: line-through; }
+
+/* ---------- calendario ---------- */
+.calendar-switch { display: flex; gap: 8px; margin-bottom: 16px; }
+.calendar-view.hidden { display: none; }
+#calendar-horario {
+  overflow-x: auto; padding-bottom: 0; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.schedule-grid { display: grid; grid-template-columns: 62px repeat(5, minmax(135px, 1fr)); min-width: 760px; position: relative; border: 0; background: transparent; }
+.schedule-corner, .schedule-day { height: 44px; background: var(--surface-2); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.schedule-day { display: flex; align-items: center; justify-content: center; color: var(--text); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; text-shadow: none; }
+.schedule-times { position: relative; min-height: 590px; background: var(--surface); border-right: 1px solid var(--border); }
+.schedule-time { position: absolute; transform: translateY(-50%); width: 100%; padding-right: 8px; text-align: right; color: var(--faint); font-size: 11px; font-weight: 600; }
+.schedule-column { position: relative; min-height: 590px; border-right: 1px solid var(--border); }
+.schedule-hour-line { position: absolute; left: 0; right: 0; height: 1px; background: var(--border); opacity: .7; }
+.schedule-class {
+  position: absolute; left: 5px; right: 5px; min-height: 48px; padding: 8px 10px; overflow: hidden;
+  border: 1px solid currentColor; border-left-width: 4px; border-radius: 10px; box-shadow: none;
+  transition: transform .15s, filter .15s;
+}
+.schedule-class:hover { transform: translateY(-1px); filter: brightness(1.08); }
+.schedule-class[data-course="metodos"] { color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.schedule-class[data-course="clasica"] { color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 16%, transparent); }
+.schedule-class[data-course="electromagnetismo"] { color: #5d86b3; background: rgba(93,134,179,.16); }
+.schedule-class[data-course="termo"] { color: #c0586a; background: rgba(192,88,106,.16); }
+.schedule-class-name { display: block; color: var(--text); font-size: 13px; font-weight: 700; line-height: 1.3; margin-bottom: 3px; }
+.schedule-class-time { display: block; color: var(--muted); font-size: 11px; line-height: 1.4; }
+
+.evaluation-add { display: grid; grid-template-columns: 200px minmax(0, 1fr) 150px auto; gap: 8px; margin-bottom: 16px; }
+.evaluation-item, .evaluation-row {
+  display: grid; grid-template-columns: 110px 1fr 30px; gap: 14px; align-items: center; padding: 14px 16px; margin-bottom: 8px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); transition: border-color .15s, background .15s;
+}
+.evaluation-row:hover { border-color: var(--border-strong); background: var(--surface-2); }
+.evaluation-date { color: var(--accent-2); font-size: 13px; font-weight: 700; }
+.evaluation-course { color: var(--accent); font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.evaluation-name { color: var(--text); font-size: 14px; line-height: 1.4; }
+
+/* ---------- modo estudio ---------- */
+.timer-wrap {
+  width: min(560px, 100%); margin: 8px auto 0; padding: 44px 28px; display: flex; flex-direction: column; align-items: center; gap: 20px;
+  text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow);
+}
+.timer-mode { color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.timer-display { color: var(--text); font-size: clamp(56px, 12vw, 88px); font-weight: 800; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; text-shadow: none; }
+.timer-controls { display: flex; gap: 10px; }
+.scene-placeholder-note { margin: 0; color: var(--muted); font-size: 13px; text-align: center; }
+
+.empty-state {
+  padding: 36px 18px; text-align: center; border: 1px dashed var(--border-strong); border-radius: var(--radius);
+  background: var(--surface); color: var(--muted); font-size: 14px;
+}
+.grades-grid > .empty-state { grid-column: 1 / -1; }
+.empty-state-symbol { color: var(--accent); font-size: 22px; margin-bottom: 8px; }
+.empty-state p { margin: 0; }
+
+@media (max-width: 980px) {
+  .access-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grades-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .access-grid { grid-template-columns: 1fr; }
+  .agenda-add, .evaluation-add { grid-template-columns: 1fr; }
+  .agenda-add button, .evaluation-add button { width: 100%; }
+  .grade-row { grid-template-columns: minmax(0, 1fr) 62px 62px 28px; }
+}
+
+/* Universidad 2.0, capa editorial sobre la escena existente. */
+:root{--uni-accent:#b78cff}
+body.ui{background:#090b14;color:#ece9f7;background-image:radial-gradient(ellipse 70% 45% at 78% 4%,color-mix(in srgb,var(--uni-accent) 12%,transparent),transparent 75%),linear-gradient(110deg,transparent 0 49.9%,rgba(151,139,204,.026) 50% 50.1%,transparent 50.2%);background-attachment:fixed}
+#scene-container{max-width:1400px;margin:auto}
+#scene-container .hero{position:relative;padding:clamp(54px,9vw,124px) clamp(24px,5vw,74px) 52px;border-bottom:1px solid #302a47;overflow:hidden;isolation:isolate}
+#scene-container .hero:before{content:"";pointer-events:none;position:absolute;z-index:-1;width:min(65vw,670px);height:min(65vw,670px);right:-14%;top:-48%;border:1px solid #6d5c8755;border-radius:50%;box-shadow:0 0 0 55px #8e70c50a,0 0 0 108px #8e70c508,0 0 90px 40px #8e70c50b;animation:uni-orbit 24s linear infinite}
+#scene-container .hero:after{content:"";pointer-events:none;position:absolute;right:0;bottom:0;width:53%;height:100%;background:repeating-linear-gradient(90deg,transparent 0 51px,#b8a7e409 52px 53px),repeating-linear-gradient(0deg,transparent 0 51px,#b8a7e409 52px 53px);mask-image:linear-gradient(to left,#000,transparent);z-index:-1}
+@keyframes uni-orbit{to{transform:rotate(360deg)}}
+#scene-container .hero .eyebrow,.uni-v2-kicker{font:600 11px/1.4 monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--uni-accent)}
+#scene-container .hero h1{font-size:clamp(42px,7vw,94px);line-height:1;letter-spacing:-.065em;max-width:880px;text-transform:none;color:#f5f2fc;margin:20px 0}
+#scene-container .hero h1 em{font-style:normal;color:var(--uni-accent)}
+#scene-container .hero p{color:#b9b0cd;max-width:590px;line-height:1.7}
+.uni-v2-profile{margin:22px clamp(16px,4vw,56px);border:1px solid #4e405f;background:linear-gradient(115deg,#1b172c,#111320 65%,#181226);padding:clamp(20px,3vw,38px);border-radius:16px;position:relative;overflow:hidden}
+.uni-v2-profile:before{content:"";position:absolute;right:-110px;top:-135px;width:300px;height:300px;border:1px solid #b78cff50;border-radius:50%;box-shadow:0 0 0 35px #b78cff08,0 0 0 85px #b78cff06;pointer-events:none}
+.uni-v2-profile-header,.uni-v2-profile-main,.uni-v2-actions,.uni-v2-dialog-top,.uni-v2-editor-top,.uni-v2-dialog-actions,.uni-v2-profile-actions{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.uni-v2-chip{border:1px solid #54476b;border-radius:99px;padding:5px 10px;color:#c3bad5;font-size:11px}
+.uni-v2-profile-main{padding:24px 0;align-items:end}.uni-v2-minilabel{font:10px monospace;letter-spacing:.18em;color:#9b92ae}
+.uni-v2-profile h2{font-size:clamp(26px,4vw,50px);letter-spacing:-.04em;line-height:1.15;margin:7px 0;color:#f5f1ff}.uni-v2-profile p{margin:0;color:#aaa1bd;font-size:14px}
+.uni-v2-profile button,.uni-v2-malla-tools button,.uni-v2-dialog button{padding:10px 14px;background:var(--uni-accent);color:#13101c;border:0;border-radius:7px;font-weight:700;cursor:pointer;font:600 12px/1.4 sans-serif;transition:transform .2s,filter .2s}
+.uni-v2-profile button:hover,.uni-v2-malla-tools button:hover,.uni-v2-dialog button:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.uni-v2-profile button.uni-v2-quiet,.uni-v2-dialog button.uni-v2-quiet{background:#302641;color:#ebe0f8;border:1px solid #665375}
+.uni-v2-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #40364e;padding-top:18px;gap:12px}.uni-v2-stats div{display:grid;gap:4px}.uni-v2-stats b{color:#f0e7ff;font-size:clamp(22px,3vw,36px);font-weight:600}.uni-v2-stats span{font-size:11px;color:#a69abc;text-transform:uppercase;letter-spacing:.07em}
+#scene-container .tab-nav{background:#10101ddf;border-bottom:1px solid #373045;backdrop-filter:blur(18px)}
+#scene-container .panel{border-color:#40354f}#scene-container .section-heading h2{letter-spacing:-.035em}
+.uni-v2-malla-tools{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:0 0 18px;color:#bdb2d0;font-size:12px}.uni-v2-malla-tools strong{color:#e2cafd}
+.uni-v2-dialog{border:1px solid #66547b;max-width:min(1050px,96vw);max-height:90dvh;overflow:auto;background:#11101e;color:#efeaf8;border-radius:16px;box-shadow:0 20px 90px #000c;padding:clamp(16px,3vw,34px);width:100%}.uni-v2-dialog::backdrop{background:#03040bdc;backdrop-filter:blur(7px)}
+.uni-v2-dialog h2{color:#f2eafd;font-size:clamp(24px,4vw,44px);letter-spacing:-.045em;margin:20px 0 7px}.uni-v2-dialog-help{color:#b3a7c4;font-size:13px;max-width:600px;line-height:1.6}.uni-v2-dialog label{color:#c8bdd6;display:flex;flex-direction:column;gap:6px;font-size:11px;margin:10px 0;min-width:0}
+.uni-v2-dialog input,.uni-v2-dialog select{color:#f3edfb;background:#211c30;border:1px solid #554565;padding:10px;border-radius:6px;min-width:0;width:100%;font-size:13px}
+.uni-v2-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px;margin:20px 0}.uni-v2-editor-top{border-top:1px solid #493b57;padding-top:20px;margin-top:20px}.uni-v2-editor-top h3{font-size:20px;color:#f4eaff;margin:0}.uni-v2-editor-note{font-size:12px;color:#aa9abb}
+.uni-v2-course-list{max-height:35dvh;overflow:auto;padding-right:5px;display:grid;gap:7px}.uni-v2-course{display:grid;grid-template-columns:1.1fr 2fr .6fr 1.1fr 1.8fr 30px;gap:8px;align-items:end;background:#201b30;border:1px solid #40334e;padding:7px;border-radius:7px}.uni-v2-course label{margin:0}.uni-v2-course input{padding:8px}.uni-v2-dialog .uni-v2-remove{background:transparent;color:#d9a3bf;padding:9px}
+.uni-v2-import{margin-top:20px;padding:14px;border:1px dashed #695379;border-radius:9px;display:grid;gap:8px;font-size:12px;color:#b7a9c8}.uni-v2-import-label{font-weight:700;color:#d2b9ed}.uni-v2-feedback{font-size:12px;color:#e1a9d2;min-height:1.3em}.uni-v2-dialog-actions{border-top:1px solid #453651;padding-top:16px;justify-content:flex-end}
+@media(max-width:800px){.uni-v2-course{grid-template-columns:repeat(2,minmax(0,1fr))}.uni-v2-fields{grid-template-columns:1fr}.uni-v2-profile-main{align-items:start}.uni-v2-stats{gap:6px}}
+@media(prefers-reduced-motion:reduce){#scene-container .hero:before{animation:none}}
+
+/* Ajustes V2.1 */
+.uni-course-manager {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:18px;margin:0 0 12px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+.uni-course-manager p,.uni-grade-help{font-size:13px;line-height:1.6;color:var(--muted)}
+.uni-course-manager button{border:1px solid var(--border-strong);color:var(--text);background:var(--surface-2);border-radius:12px;padding:10px 14px;cursor:pointer}
+.uni-current-list{flex-basis:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:7px;max-height:340px;overflow-y:auto}
+.uni-current-list.hidden{display:none}
+.uni-current-option{display:flex;align-items:center;gap:9px;font-size:13px;padding:9px;border:1px solid var(--border);border-radius:9px;cursor:pointer}
+.uni-current-option input{accent-color:var(--accent)}
+.uni-grade-help{margin:0 0 16px}
+.grade-method{line-height:1.5;max-width:270px;text-align:right}
+.grade-weight{min-width:0}
+@media(max-width:680px){.grade-row{grid-template-columns:minmax(0,1fr) 64px 64px 26px;gap:4px}.grade-row input{padding:7px 4px}.grades-grid{grid-template-columns:1fr}}
+
+/* V2.2: Editor personal de horario */
+.horario-toolbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 20px;margin:12px 0 20px;border:1px solid #554576;border-radius:16px;background:linear-gradient(110deg,#211a34,#131625)}.horario-toolbar div{display:grid;gap:6px}.horario-toolbar strong{color:#f5edff}.horario-toolbar span{font-size:12px;color:#c0b3d3}.horario-toolbar button,.horario-dialog button{background:#9764da;color:#fff;border:0;border-radius:10px;padding:11px 15px;cursor:pointer;font-weight:700}.horario-empty{padding:36px;color:#cbb8de}.horario-dialog{max-width:min(850px,94vw);max-height:86vh;overflow:auto;width:100%;background:#101322;color:#f5efff;border:1px solid #66517d;border-radius:18px;padding:26px;box-shadow:0 30px 130px #000b}.horario-dialog::backdrop{background:#05030acc;backdrop-filter:blur(9px)}.horario-dialog-head,.horario-dialog-actions{display:flex;justify-content:space-between;align-items:center;gap:16px}.horario-dialog-head small{color:#c596fa;letter-spacing:2px}.horario-dialog h2{margin:6px 0 10px;font-size:28px}.horario-dialog p{color:#c9bed8;margin-bottom:15px}.horario-inputs{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));gap:12px}.horario-inputs label{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#c5b9d5}.horario-inputs input,.horario-inputs select{min-width:0;background:#1e2335;border:1px solid #5b5274;padding:11px;border-radius:9px;color:#fff}.horario-inputs>button{grid-column:1/-1}.horario-items{margin:20px 0;max-height:240px;overflow:auto}.horario-row{display:flex;align-items:center;gap:8px;padding:10px;border-bottom:1px solid #38364d}.horario-row span{flex:1;font-size:13px}.horario-row button{background:#24253b;border:1px solid #4d4668;font-size:12px}.horario-dialog-actions button:first-child{background:#323044}@media(max-width:650px){.horario-inputs{grid-template-columns:1fr 1fr}.horario-toolbar{flex-direction:column;align-items:stretch}.horario-row{flex-wrap:wrap}.horario-row span{flex-basis:100%}}
+
+/* Misiones de enfoque */
+.focus-mission{padding:26px;margin:12px 0 22px;border-radius:18px;border:1px solid #6f4f91;background:radial-gradient(circle at 95% 10%,#6a387033,transparent 45%),#161426}.focus-mission>span{color:#dca5ee;font-size:11px;letter-spacing:2.4px}.focus-mission h3{font-size:23px;margin:11px 0;color:#f2eaf8}.focus-mission p,.focus-feedback{color:#beaeca;font-size:13px;line-height:1.6}.focus-mission label{display:block;font-size:12px;margin:17px 0 8px;color:#d7c4e4}.focus-mission input{width:100%;padding:13px 15px;border:1px solid #66537b;border-radius:11px;background:#0e0e1e;color:#f4e9fd}.focus-track{height:10px;border-radius:100px;background:#302741;overflow:hidden;margin-top:18px}.focus-track div{height:100%;width:0;background:linear-gradient(90deg,#9c77ea,#e7a6dc);transition:width 1s linear;box-shadow:0 0 20px #cf8be877}.focus-milestones{display:flex;justify-content:space-between;gap:12px;margin:9px 0 20px;color:#bba9cf;font-size:10px;letter-spacing:.7px}.focus-feedback{margin:12px 0}.focus-feedback.completed{color:#d4a9f3;font-weight:700}
