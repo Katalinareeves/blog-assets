@@ -767,6 +767,23 @@ function renderMallaCurricular() {
 
             `;
 
+            // Bibliografía contextual: enlaza a los libros ya catalogados, sin duplicarlos.
+            const libraryTopic = ({
+              clasica1:'Mecánica Clásica',clasica2:'Mecánica Clásica',
+              metodos1:'Métodos Matemáticos',metodos2:'Métodos Matemáticos',metodos3:'Métodos Matemáticos',
+              termo:'Termodinámica',mecanicaestadistica:'Termodinámica'
+            })[ramo.id];
+            if(libraryTopic){
+              const link=document.createElement('a');
+              link.className='ramo-book-link';
+              link.href='../biblioteca/index.html?q='+encodeURIComponent(libraryTopic);
+              link.textContent='↗ Bibliografía';
+              link.title='Ver libros de '+libraryTopic;
+              link.addEventListener('click',event=>event.stopPropagation());
+              link.addEventListener('dblclick',event=>event.stopPropagation());
+              card.appendChild(link);
+            }
+
             // ------------------------------------------------
             // CLICK
             // ------------------------------------------------
