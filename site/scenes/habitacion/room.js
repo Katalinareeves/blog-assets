@@ -242,7 +242,7 @@ async function initCloud(){
      if(authError||!auth?.user)throw Error('Debes iniciar sesión para visitar habitaciones');
      const {data:row,error}=await db.from('ciudad_rooms').select('state,visibility').eq('user_id',VISIT_ID).maybeSingle();
      if(error)throw error;
-     if(!row||row.visibility!=='registered')throw Error('La habitación es privada o no está disponible');
+     if(!row||!['registered','friends'].includes(row.visibility))throw Error('La habitación es privada o no está disponible');
      const cloud=row.state;
      if(!cloud||!Array.isArray(cloud.placed))throw Error('Esta habitación todavía no tiene decoración disponible');
      const clean=cloud.placed.filter(o=>o&&byId[o.id]&&Number.isFinite(o.x)&&Number.isFinite(o.y)).slice(0,600).map(o=>({id:o.id,x:o.x,y:o.y}));
