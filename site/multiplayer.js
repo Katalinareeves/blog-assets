@@ -82,7 +82,7 @@ function sendPosition(force=false){
  if(!force&&now-lastSendTime<125)return;
  const position=currentState();
  const serialized=JSON.stringify(position);
- if(!force&&lastSent===serialized)return;
+ if(!force&&lastSent===serialized&&now-lastSendTime<1900)return;
  lastSent=serialized;lastSendTime=now;
  channel.send({type:'broadcast',event:'move',payload:{user_id:uid,position}}).catch(()=>{});
 }
@@ -95,9 +95,23 @@ async function connect(){
   const {data,error}=await db.auth.getUser();
   if(error||!data?.user){tell('Para jugar online necesitas iniciar sesión');button.textContent='Iniciar sesión';button.onclick=()=>location.href='scenes/cuenta/index.html?return=plaza';button.disabled=false;return;}
   uid=data.user.id;
-  const profile=await db.from('ciudad_profiles').select('display_name').eq('user_id',uid).maybeSingle();
+  const profile=await db.from('ciudad_profiles').select('display_name,avatar').eq('user_id',uid).maybeSingle();
   if(profile.error)throw profile.error;
   nick=safeName(profile.data?.display_name||character.nombre||'Jugador');
+  // Usar apariencia de nube solo en un navegador sin personaje propio.
+  if(!localStorage.getItem('ciudadPersonaje')&&profile.data?.avatar?.skin){
+    character=sanitizeChar(profile.data.avatar);
+    localStorage.setItem('ciudadPersonaje',JSON.stringify(character));
+  }
+  async function saveAppearance(){
+    if(!uid)return;
+    const a={skin:character.skin,hair:character.hair,top:character.top,bottom:character.bottom,accent:character.accent,style:character.style,nombre:character.nombre||''};
+    const {error}=await db.from('ciudad_profiles').update({avatar:a}).eq('user_id',uid);
+    if(error)console.warn('Avatar pendiente de sincronizar',error);
+    sendPosition(true);
+  }
+  window.addEventListener('ciudad-personaje-guardado',()=>{void saveAppearance()});
+  if(!profile.data?.avatar?.skin)void saveAppearance();
   await db.realtime.setAuth();
   const instance=crypto.randomUUID();
   channel=db.channel(TOPIC,{config:{private:true,presence:{key:instance},broadcast:{self:false,ack:false}}});
