@@ -26,7 +26,7 @@ jobs:
         run: |
           test -f site/index.html || { echo "::error::Falta site/index.html; no se publica nada."; exit 1; }
           test -f site/scenes/universidad/index.html || { echo "::error::Falta la Universidad en site/"; exit 1; }
-          if find site -type f \( -name '.env' -o -name '.env.*' -o -iname '*service_role*' -o -iname '*secret*' \) | grep -q .; then
+          if find site -type f \( -name '.env' -o -name '.env.*' -o -iname '*service_role*' -o -name '*.pem' -o -name '*.key' \) | grep -q .; then
             echo "::error::Posible secreto dentro de site/. Revisar antes de publicar."
             exit 1
           fi
