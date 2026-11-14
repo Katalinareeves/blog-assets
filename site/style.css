@@ -280,3 +280,10 @@ body {
 .vecindario-hud{position:fixed;right:18px;top:61px;z-index:19;text-decoration:none;color:#eee9f6;background:rgba(29,24,41,.91);border:1px solid #78628d;border-radius:9px;box-shadow:0 8px 26px #0005;font:700 11px/1.2 'Exo 2',sans-serif;padding:11px 14px;transition:background .15s}
 .vecindario-hud:hover{background:#514069}
 @media(max-width:750px){.vecindario-hud{right:8px;top:48px;padding:9px 10px}.vecindario-hud span{display:none}}
+
+/* Amigos online: tercer acceso compacto, totalmente fuera del flujo del mapa */
+.amigos-hud{position:fixed;right:18px;top:105px;z-index:19;text-decoration:none;color:#eee9f6;
+background:rgba(29,24,41,.91);border:1px solid #78628d;border-radius:9px;box-shadow:0 8px 26px #0005;
+font:700 11px/1.2 'Exo 2',sans-serif;padding:11px 14px;transition:background .15s}
+.amigos-hud:hover{background:#514069}
+@media(max-width:750px){.amigos-hud{right:8px;top:88px;padding:9px 10px}.amigos-hud span{display:none}}
