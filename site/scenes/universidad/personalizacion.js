@@ -26,7 +26,13 @@
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')persist();});
   const originalCurriculum=RAMOS_MALLA.map(r=>({...r,prereq:[...r.prereq]}));
   function validateCourse(r){return r&&typeof r.id==='string'&&/^[a-zA-Z0-9_-]{1,50}$/.test(r.id)&&typeof r.name==='string'&&r.name.trim().length>0&&r.name.length<=120&&Number.isInteger(r.sem)&&r.sem>=1&&r.sem<=16&&Array.isArray(r.prereq)&&r.prereq.every(x=>typeof x==='string');}
-  function curriculumFor(p){return Array.isArray(p.curriculum)&&p.curriculum.length?p.curriculum:originalCurriculum;}
+  function curriculumFor(p){
+  // La V12 migró temporalmente algunos perfiles a otra malla. La V9 es la base
+  // restaurada y no debemos dejar que esa migración visual la sobreescriba.
+  const cs=p.curriculum;
+  if(Array.isArray(cs)&&cs.length===37&&cs.some(r=>r.id==='calc_diff')&&cs.some(r=>r.id==='filosofia'))return originalCurriculum;
+  return Array.isArray(cs)&&cs.length?cs:originalCurriculum;
+}
   function applyCurriculum(p){RAMOS_MALLA.splice(0,RAMOS_MALLA.length,...curriculumFor(p).map(r=>({...r,prereq:[...r.prereq]})));}
   function rerender(){refreshUniversityScene();renderStats();}
   function renderStats(){const done=safeParse(localStorage.getItem('mallaFisica'),[]);const doing=safeParse(localStorage.getItem('ramosEnCurso'),[]);const valid=new Set(RAMOS_MALLA.map(r=>r.id));const count=RAMOS_MALLA.length;const active=Array.isArray(doing)?[...new Set(doing)].filter(id=>valid.has(id)&&!(Array.isArray(done)&&done.includes(id))):[];const div=$('uni-progress-stats');div.replaceChildren();[[String(Array.isArray(done)?done.length:0),'aprobados'],[String(active.length),'en curso'],String(count),'ramos en tu malla'].forEach(pair=>{const el=document.createElement('div');const num=document.createElement('b');const name=document.createElement('span');if(Array.isArray(pair)){num.textContent=pair[0];name.textContent=pair[1];}else {num.textContent=pair;name.textContent='ramos en tu malla';}el.append(num,name);div.append(el);});}
