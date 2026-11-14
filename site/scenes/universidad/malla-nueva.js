@@ -89,11 +89,20 @@ function render(){
    card.append(code,title,foot);
    // Un clic selecciona y muestra relaciones; doble clic aprueba/desaprueba.
    // No se debe convertir el primer clic en "en curso" al hacer doble clic.
-   card.addEventListener('click',()=>{selected=course.id;render();});
+   // Mantener el DOM estable: reconstruirlo en click rompe el evento dblclick.
+   card.addEventListener('click',()=>{
+     selected=course.id;
+     grid.querySelectorAll('.uni-course-card').forEach(el=>{
+       const active=el.dataset.ramoId===selected;
+       el.classList.toggle('is-selected',active);
+       el.setAttribute('aria-pressed',String(active));
+     });
+     inspector();linePaths();
+   });
    card.addEventListener('dblclick',event=>{
      event.preventDefault();
-     const next=stateOf(course.id)==='completed'?'pending':'completed';
-     selected=course.id;setState(course.id,next);render();
+     selected=course.id;
+     setState(course.id,stateOf(course.id)==='completed'?'pending':'completed');
    });
    card.title='Clic: detalles · doble clic: aprobar / desmarcar';
    column.append(card);
