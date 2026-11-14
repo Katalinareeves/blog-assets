@@ -1,0 +1,29 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#171a29"><title>Amigos · La Ciudad</title><link rel="stylesheet" href="amigos.css?v=1"></head><body>
+<header><a href="../../index.html">← La Ciudad</a><span>LA CIUDAD / AMIGOS</span><a href="../visitas/index.html">Vecindario ↗</a></header>
+<main>
+<section class="hero"><span class="eyebrow">✳ LA CIUDAD · COMUNIDAD</span><h1>La Ciudad es mejor <em>contigo.</em></h1><p>Encuentra a tus amigos por su nombre de usuario, invítalos y compartan sus pequeños mundos.</p></section>
+<div class="message" id="notice" role="status">Comprobando sesión…</div>
+<section class="social-layout">
+<div class="social-main">
+ <section class="panel">
+ <div class="panel-head"><div><span class="eyebrow">TU GENTE</span><h2>Mis amigos <span id="friend-count">0</span></h2></div><button type="button" id="refresh" class="subtle">Actualizar ↻</button></div>
+ <div class="friend-list" id="friends"><div class="empty">Cuando alguien acepte tu solicitud, aparecerá aquí. ✦</div></div>
+ </section>
+ <section class="panel">
+ <div class="panel-head"><div><span class="eyebrow">NOTIFICACIONES</span><h2>Solicitudes <span id="request-count">0</span></h2></div></div>
+ <div id="requests" class="friend-list"><div class="empty">Todavía no tienes invitaciones pendientes.</div></div>
+ </section>
+</div>
+<aside class="social-side">
+ <section class="panel find"><span class="eyebrow">CONOCE A ALGUIEN</span><h2>Buscar jugadores</h2>
+ <label for="search">Nombre de usuario</label>
+ <div class="search"><input id="search" placeholder="Ej. usuario_fisica" autocomplete="off" maxlength="30" spellcheck="false"><button id="find" type="button">Buscar</button></div>
+ <p class="hint">La búsqueda funciona con nombres de usuario. No se muestran correos electrónicos ni datos académicos.</p>
+ <div id="results" class="friend-list"></div>
+ </section>
+ <section class="panel tips"><span class="eyebrow">HOGARES COMPARTIDOS</span><h2>Visitar habitaciones</h2><p>Podrás visitar la habitación de un amigo si la tiene abierta para usuarios registrados. La privacidad la decide su dueño.</p><a class="visit-link" href="../visitas/index.html">Explorar vecindario ↗</a></section>
+</aside>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script>
+<script src="amigos.js?v=1"></script></body></html>
