@@ -41,7 +41,16 @@
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')persist();});
   const originalCurriculum=RAMOS_MALLA.map(r=>({...r,prereq:[...r.prereq]}));
   function validateCourse(r){return r&&typeof r.id==='string'&&/^[a-zA-Z0-9_-]{1,50}$/.test(r.id)&&typeof r.name==='string'&&r.name.trim().length>0&&r.name.length<=120&&Number.isInteger(r.sem)&&r.sem>=1&&r.sem<=16&&Array.isArray(r.prereq)&&r.prereq.every(x=>typeof x==='string');}
-  function curriculumFor(p){return Array.isArray(p.curriculum)&&p.curriculum.length?p.curriculum:originalCurriculum;}
+  function curriculumFor(p){
+   // La malla vigente publicada tiene prioridad frente a antiguas plantillas personalizadas.
+   // Solo se usa una personalizada si fue guardada explícitamente SOBRE esta versión.
+   const reference=window.CIUDAD_NUEVA_MALLA;
+   if(Array.isArray(reference)&&reference.length){
+     if(p.curriculumPlan==='unab-admision-2027'&&Array.isArray(p.curriculum)&&p.curriculum.length)return p.curriculum;
+     return reference;
+   }
+   return Array.isArray(p.curriculum)&&p.curriculum.length?p.curriculum:originalCurriculum;
+ }
   function applyCurriculum(p){RAMOS_MALLA.splice(0,RAMOS_MALLA.length,...curriculumFor(p).map(r=>({...r,prereq:[...r.prereq]})));}
   function rerender(){refreshUniversityScene();renderStats();}
   function renderStats(){
@@ -109,7 +118,7 @@ function applyTheme(p){const valid=/^#[0-9a-f]{6}$/i.test(p.accent)?p.accent:'#b
   $('uni-save').addEventListener('click',()=>{draft.name=$('uni-name').value.trim().slice(0,54)||'Mi universidad';draft.school=$('uni-school').value.trim().slice(0,80);draft.degree=$('uni-degree').value.trim().slice(0,100);draft.accent=$('uni-accent').value;
     const cs=draft.curriculum;if(!cs.length||cs.length>250||!cs.every(validateCourse)){feedback('Revisa los ramos: ID alfanumérico, nombre y semestre entre 1 y 16. Máximo 250.');return;}
     const ids=new Set(cs.map(r=>r.id));if(ids.size!==cs.length||cs.some(r=>r.prereq.some(id=>!ids.has(id)||id===r.id))){feedback('Hay IDs duplicados o prerrequisitos inexistentes.');return;}
-    profiles=profiles.map(p=>p.id===current?{...draft}:p);writeProfiles(profiles);applyCurriculum(active());applyTheme(active());rerender();persist();close();});
+    draft.curriculumPlan='unab-admision-2027';profiles=profiles.map(p=>p.id===current?{...draft}:p);writeProfiles(profiles);applyCurriculum(active());applyTheme(active());rerender();persist();close();});
   $('uni-profile-export').addEventListener('click',()=>{persist();const payload={format:'ciudad-universidad-v2',version:1,profile:active(),data:capture(),exportedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='universidad-respaldo-'+current+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500);});
   $('uni-import-file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;if(file.size>3e6){feedback('Archivo demasiado grande.');return;}try{const payload=JSON.parse(await file.text());if(payload.format!=='ciudad-universidad-v2'||!payload.profile||!Array.isArray(payload.profile.curriculum)||!payload.profile.curriculum.every(validateCourse)||typeof payload.data!=='object'||!payload.data){throw Error('Formato de respaldo no válido');}if(!confirm('¿Reemplazar el perfil actual con este respaldo?'))return;
     const p={...active(),name:String(payload.profile.name||'Mi universidad').slice(0,54),school:String(payload.profile.school||'').slice(0,80),degree:String(payload.profile.degree||'').slice(0,100),accent:/^#[0-9a-f]{6}$/i.test(payload.profile.accent)?payload.profile.accent:'#b78cff',curriculum:payload.profile.curriculum};profiles=profiles.map(x=>x.id===current?p:x);writeProfiles(profiles);const data={};DATA_KEYS.forEach(k=>{if(typeof payload.data[k]==='string')data[k]=payload.data[k];});localStorage.setItem(PREFIX+current,JSON.stringify(data));restore(current);location.reload();}catch(err){feedback('No se pudo importar: '+err.message);}finally{e.target.value='';}});
