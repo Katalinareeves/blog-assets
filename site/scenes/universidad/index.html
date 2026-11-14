@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Universidad · La Ciudad V11</title>
   <link rel="stylesheet" href="../../ui.css">
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=11.2">
   <script src="../../ui.js"></script>
 </head>
 
@@ -108,7 +108,7 @@
  <span>Plan editable · los prerrequisitos son referenciales hasta contrastarlos con tu DUN.</span>
  <button type="button" id="uni-malla-open">Editar mi malla ↗</button>
 </div>
-<div class="uni-plan-context"><strong>Control de malla y homologaciones</strong><p>Este panel usa el plan histórico de 36 ramos o el perfil personalizado que hayas guardado. UNAB también publica un plan de 37 asignaturas. No son intercambiables automáticamente. Las aprobaciones se muestran según tus datos, no como certificación oficial.</p><div class="uni-reference-links"><a href="https://www.unab.cl/carreras/mallas/lic_fisica.pdf" target="_blank" rel="noopener noreferrer">Malla UNAB · PDF ↗</a><a href="https://admision.unab.cl/assets/themes/unab/mallas/licenciatura-en-fisica.html" target="_blank" rel="noopener noreferrer">Plan UNAB de 37 asignaturas ↗</a><a href="../biblioteca/index.html">Abrir biblioteca universitaria ↗</a></div></div>
+<div class="uni-plan-context"><strong>Control de malla y homologaciones</strong><p>Este panel usa el plan histórico de 36 ramos o el perfil personalizado que hayas guardado. UNAB también publica un plan de 37 asignaturas. No son intercambiables automáticamente. Las aprobaciones se muestran según tus datos, no como certificación oficial.</p><div class="uni-reference-links"><a href="https://www.unab.cl/carreras/mallas/lic_fisica.pdf" target="_blank" rel="noopener noreferrer">Malla UNAB · PDF ↗</a><a href="https://admision.unab.cl/assets/themes/unab/mallas/licenciatura-en-fisica.html" target="_blank" rel="noopener noreferrer">Plan UNAB de 37 asignaturas ↗</a><a href="comparador.html">Comparar los planes de 36 y 37 ramos ↗</a><a href="../biblioteca/index.html">Abrir biblioteca universitaria ↗</a></div></div>
 <div class="uni-audit" id="uni-audit-result" aria-live="polite"></div>
     <div class="malla-grid" id="malla-grid"></div>
 
@@ -317,7 +317,7 @@
 </dialog>
 <script src="../../semillas.js"></script>
 <script src="script.js"></script>
-<script src="personalizacion.js?v=11"></script>
+<script src="personalizacion.js?v=11.2"></script>
 <script src="horario-editor.js"></script>
 <dialog id="horario-dialog" class="horario-dialog"><div class="horario-dialog-head"><div><small>UNIVERSIDAD / MI SEMANA</small><h2>Diseña tu horario</h2></div><button type="button" id="horario-close" aria-label="Cerrar">✕</button></div><p>Agrega bloques por día, hora y ramo. Puedes editar o eliminar cada clase. Nada se sincroniza con otras cuentas todavía.</p><div class="horario-inputs"><label>Día<select id="horario-day"><option value="lunes">Lunes</option><option value="martes">Martes</option><option value="miércoles">Miércoles</option><option value="jueves">Jueves</option><option value="viernes">Viernes</option></select></label><label>Desde<input id="horario-start" type="time" value="08:30"></label><label>Hasta<input id="horario-end" type="time" value="10:10"></label><label>Ramo<select id="horario-course"></select></label><button type="button" id="horario-add">+ Agregar clase</button></div><p role="status" id="horario-msg"></p><div id="horario-items" class="horario-items"></div><div class="horario-dialog-actions"><button type="button" id="horario-reset">Restaurar horario inicial</button><button type="button" id="horario-save">Guardar horario</button></div></dialog>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="../cloud-progress.js?v=11"></script><script>
