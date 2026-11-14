@@ -1,0 +1,52 @@
+name: Importar sitio actual de Neocities
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['scripts/ciudad_public_paths.txt']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-ciudad
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Importar archivos públicos del sitio (sin Jardín)
+        run: python3 scripts/import_public_site.py
+      - name: Crear commit inicial de sitio
+        shell: bash
+        run: |
+          git add site/
+          if git diff --cached --quiet; then
+            echo "La copia ya está actualizada."
+          else
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'backup: importar versión publicada de La Ciudad'
+            git push
+          fi
+      - name: Verificar clave para publicación
+        env:
+          NEOCITIES_API_TOKEN: ${{ secrets.NEOCITIES_API_TOKEN }}
+        run: |
+          if [ -z "$NEOCITIES_API_TOKEN" ]; then
+            echo "::warning::Sin NEOCITIES_API_TOKEN; sitio importado pero no desplegado."
+            echo "NEOCITIES_DEPLOY=0" >> "$GITHUB_ENV"
+          else
+            echo "NEOCITIES_DEPLOY=1" >> "$GITHUB_ENV"
+          fi
+      - name: Publicar carpeta site sin eliminar archivos remotos
+        if: env.NEOCITIES_DEPLOY == '1'
+        uses: bcomnes/deploy-to-neocities@v3
+        with:
+          api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
+          dist_dir: site
+          cleanup: false
+          preview_before_deploy: true
