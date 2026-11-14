@@ -80,7 +80,7 @@ async function connect(){
   if(!owner){note('No se encontró la habitación');return;}
   const {data:room,error:roomError}=await db.from('ciudad_rooms').select('visibility').eq('user_id',owner).maybeSingle();
   if(roomError||!room){note('Esta habitación no está disponible online');return;}
-  if(view.visiting&&room.visibility!=='registered'){note('Esta habitación es privada');return;}
+  if(view.visiting&&!['registered','friends'].includes(room.visibility)){note('Esta habitación es privada');return;}
   const {data:profile}=await db.from('ciudad_profiles').select('display_name').eq('user_id',me).maybeSingle();
   name=String(profile?.display_name||'Jugador').slice(0,25);
   await db.realtime.setAuth();
