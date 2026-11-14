@@ -6,8 +6,8 @@ const R=18,STEPX=38,STEPY=33,LEFT=43,TOP=67,COLS=13,ROWS=18;
 const COLORS=['#dcb0f3','#8bd9d1','#f6b2bc','#e7cf88','#9ebef2'];
 const names=['violeta','menta','coral','ámbar','cielo'];
 const recordsKey='ciudadBubbleLabV1';
-let best=0,tickets=0;
-try{const v=JSON.parse(localStorage.getItem(recordsKey)||'{}');best=Math.max(0,Number(v.best)||0);tickets=Math.max(0,Number(v.tickets)||0);}catch{}
+let best=0,tickets=0,unlocked=false;
+try{const v=JSON.parse(localStorage.getItem(recordsKey)||'{}');best=Math.max(0,Number(v.best)||0);tickets=Math.max(0,Number(v.tickets)||0);unlocked=Boolean(v.unlocked);}catch{}
 const grid=Array.from({length:ROWS},()=>Array(COLS).fill(-1));
 const stars=Array.from({length:55},(_,i)=>({x:(i*97+31)%W,y:(i*137+29)%H,z:i%3+1}));
 let mode='solo',running=false,finished=false,ball=null,next=0,aim=-Math.PI/2,score=0,combo=0,shots=0,misses=0;
@@ -17,14 +17,16 @@ const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
 const cell=(r,c)=>({x:LEFT+c*STEPX+(r%2)*STEPX/2,y:TOP+r*STEPY});
 const inside=(r,c)=>r>=0&&r<ROWS&&c>=0&&c<COLS;
 const setText=(id,v)=>{$(id).textContent=String(v)};
-const persist=()=>{try{localStorage.setItem(recordsKey,JSON.stringify({best,tickets}));}catch{}};
+const persist=()=>{try{localStorage.setItem(recordsKey,JSON.stringify({best,tickets,unlocked}));}catch{}};
 function updateHud(){
+ if(score>=450&&!unlocked){unlocked=true;persist();}
  if(score>best){best=score;persist();}
  setText('score',score.toLocaleString('es-CL'));
  setText('best',best.toLocaleString('es-CL'));
  setText('shots',shots);setText('combo','×'+Math.max(1,combo));setText('tickets',tickets);
  $('next-orb').style.color=COLORS[next];$('next-orb').textContent='●';
  setText('bot-score',botScore.toLocaleString('es-CL'));
+ const cosmetic=$('cosmetic');if(cosmetic){cosmetic.textContent=unlocked?'✳ Aura nebular desbloqueada':'Bloqueado · 450 puntos';cosmetic.classList.toggle('unlocked',unlocked);}
 }
 function reset(m){
  mode=m||mode;running=true;finished=false;ball=null;score=0;combo=0;shots=0;misses=0;botScore=0;botClock=0;elapsed=0;
@@ -164,6 +166,7 @@ function render(t){
  const ambient=ctx.createRadialGradient(W/2,230,20,W/2,280,430);
  ambient.addColorStop(0,'#6f4e9a13');ambient.addColorStop(1,'transparent');
  ctx.fillStyle=ambient;ctx.fillRect(0,0,W,H);
+ if(unlocked){const aura=ctx.createRadialGradient(W/2,180,15,W/2,230,355);aura.addColorStop(0,'#bca2ff33');aura.addColorStop(1,'#ab86ef00');ctx.fillStyle=aura;ctx.fillRect(0,0,W,H);}
  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)if(grid[r][c]>=0){const p=cell(r,c);orb(p.x,p.y,grid[r][c]);}
  if(running){
   elapsed+=dt;
