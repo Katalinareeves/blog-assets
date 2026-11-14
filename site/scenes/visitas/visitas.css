@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+:root{font-family:'DM Sans',system-ui,sans-serif;background:#11151c;color:#eff0f5}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse 850px 400px at 80% -10%,#41335c69,transparent 70%),#11151c}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px max(20px,calc((100vw - 1160px)/2));background:#1b212c;border-bottom:1px solid #343f4d}header a{font-size:12px;color:#dad1ed;text-decoration:none}header span,.eyebrow{font:700 10px 'Space Mono',monospace;letter-spacing:.1em;color:#bea4ef}
+main{max-width:1160px;margin:auto;padding:clamp(24px,5vw,68px) 20px}h1{font-size:clamp(37px,5vw,68px);letter-spacing:-.07em;margin:12px 0 8px}.lead{font-size:14px;color:#b3becc;max-width:620px;line-height:1.7;margin-bottom:29px}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 0}.bar label{font-size:12px;color:#b7bed0;font-weight:700}
+.bar input{min-height:42px;background:#1c2735;color:#fff;border:1px solid #546277;border-radius:9px;padding:12px 14px;font:inherit;flex:1;min-width:180px}.bar button{border:1px solid #806eaa;background:#5c497c;color:white;padding:12px 15px;border-radius:9px;font:700 12px inherit;cursor:pointer}
+#message{font-size:12px;color:#b1bfcc;margin:10px 0 18px;min-height:16px}
+.homes{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:15px}
+.home{min-height:200px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(145deg,#222c3b,#1b2330);border:1px solid #3a4a60;border-radius:15px;padding:22px;box-shadow:0 15px 34px #0002}
+.home .mark{color:#c8abea;font-size:22px}.home h2{margin:3px 0 0;font-size:20px;letter-spacing:-.035em}.home p{margin:0;color:#b4c2d2;font-size:12px}.home a{align-self:start;margin-top:auto;text-decoration:none;background:#7962a3;color:white;border-radius:8px;font-size:12px;font-weight:700;padding:10px 14px}.home a:hover{background:#9376ba}
+.help{margin-top:36px;border-top:1px solid #364254;padding-top:24px;font-size:12px;color:#b3bfd0;line-height:1.6}.help strong{color:#eae8f0}.help a{color:#c5aceb;text-decoration:none}
