@@ -704,6 +704,7 @@ function initCharacterUI() {
   document.getElementById('char-save').addEventListener('click', () => {
     character = sanitizeChar(charUI.draft);
     saveChar(character);
+    window.dispatchEvent(new Event('ciudad-personaje-guardado'));
     if(window.CityMultiplayer)window.CityMultiplayer.sendPosition(true);
     closeCharacterEditor();
   });
