@@ -35,9 +35,35 @@ async function enable(){await requireUser();const r=await remote();if(r?.snapsho
 function disable(){localStorage.removeItem(FLAG);state.enabled=false;state.status='Respaldo automático pausado';emit();}
 function changes(){if(!state.enabled||!state.signedIn)return;const newData=JSON.stringify(collect());if(newData!==changes.last){dirty=true;changes.last=newData;}}
 async function flush(){if(!state.enabled||!state.signedIn||!dirty||busy)return;try{await upload()}catch(e){state.status='Sin sincronizar: '+e.message;emit();}}
-const api={state,collect,remote,upload,download,enable,disable};window.CiudadCloud=api;
+async function bootstrap(){
+ const {data,error}=await client.auth.getUser();
+ if(error||!data?.user){state.signedIn=false;state.status='Inicia sesión para sincronizar';emit();return;}
+ current=data.user;state.signedIn=true;
+ const r=await remote();const cloud=r?.snapshot&&Object.keys(r.snapshot).length?validate(r.snapshot):null;
+ const local=collect();
+ const meaningful=Object.entries(local).some(([k,v])=>{
+  if(k==='mallaFisica'||k==='ramosEnCurso'){try{return JSON.parse(v).length>0;}catch{return false;}}
+  if(k==='ciudadV2Profiles'){try{return JSON.parse(v).some(p=>p.curriculum||p.name!=='Mi universidad');}catch{return false;}}
+  if(k==='ciudadV2Current'||k==='ciudadPersonaje'||k==='ciudadModoNoche')return false;
+  if(k.startsWith('ciudadV2Snapshot:')){try{return Object.keys(JSON.parse(v)).some(x=>!['ciudadPersonaje','ciudadModoNoche'].includes(x));}catch{return false;}}
+  return v!==''&&v!=='[]'&&v!=='{}';
+ });
+ if(cloud&&!meaningful){await download();state.status='Recuperado desde nube';emit();location.reload();return;}
+ if(!cloud&&meaningful){await upload();state.status='Primer respaldo guardado';emit();}
+ else if(cloud&&Object.entries(cloud).some(([k,v])=>local[k]!==v)){
+  state.status='Hay datos locales y en nube: elige Guardar o Recuperar.';
+  emit();return;
+ }
+ state.enabled=true;localStorage.setItem(FLAG,'1');
+ state.status='Progreso sincronizado · automático';
+ state.lastSaved=r?.updated_at||state.lastSaved;emit();
+ changes.last=JSON.stringify(collect());
+ if(timer)clearInterval(timer);
+ timer=setInterval(async()=>{changes();await flush()},12000);
+ document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){changes();void flush();}});
+}
+const api={state,collect,remote,upload,download,enable,disable,bootstrap};window.CiudadCloud=api;
 if(!window.supabase?.createClient){state.status='La conexión con Supabase no está disponible';emit();return;}
 client=window.supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:true,autoRefreshToken:true}});
-(async()=>{try{const {data}=await client.auth.getUser();current=data?.user||null;state.signedIn=!!current;state.enabled=!!current&&localStorage.getItem(FLAG)==='1';state.status=current?(state.enabled?'Respaldo automático activado':'Sesión iniciada, respaldo opcional'):'Inicia sesión para guardar el progreso';emit();if(state.enabled){changes.last=JSON.stringify(collect());timer=setInterval(async()=>{changes();await flush()},12000);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){changes();void flush()}});}}
-catch(e){state.status='Error de sesión: '+e.message;emit()}})();
+(async()=>{try{await bootstrap();}catch(e){state.status='Sincronización pendiente: '+e.message;emit();console.error('Universidad nube:',e);}})();
 })();
