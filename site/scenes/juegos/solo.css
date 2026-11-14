@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse 850px 490px at 70% -200px,#65478762,transparent 80%),#11151f;color:#f1eff8;font-family:'DM Sans',system-ui,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:17px max(20px,calc((100vw - 1100px)/2));background:#1a1e2b;border-bottom:1px solid #3e4059}
+header a{font-size:12px;color:#dfd2f1;text-decoration:none}header span,.eyebrow{font:700 10px 'Space Mono',monospace;color:#c6aceb;letter-spacing:.12em}
+main{max-width:1100px;padding:32px 18px 50px;margin:auto}h1{font-size:clamp(38px,6vw,67px);letter-spacing:-.07em;margin:10px 0}h1 em{font-style:normal;color:#c5a9ed}.lead{font-size:13px;color:#b3bfce;line-height:1.7;max-width:700px;margin-bottom:23px}
+.play{display:grid;grid-template-columns:minmax(0,1fr) 225px;gap:16px;align-items:start}.board{position:relative;max-width:640px;overflow:hidden;border-radius:15px;border:1px solid #685878;background:#19172d;box-shadow:0 20px 48px #0005}
+canvas{width:100%;aspect-ratio:1;display:block;touch-action:none}.cover{position:absolute;inset:0;background:#16192de9;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:15px;padding:20px}
+.cover[hidden]{display:none}.cover strong{font-size:clamp(22px,4vw,37px);letter-spacing:-.05em}.cover p{font-size:13px;color:#b8bad1;max-width:320px;line-height:1.7}
+button{background:#7a61a5;color:#fff;border:1px solid #a68bc7;border-radius:9px;padding:12px 19px;cursor:pointer;font:700 12px 'DM Sans',sans-serif}button:hover{filter:brightness(1.16)}button:focus-visible{outline:2px solid #e8caff}
+aside{display:grid;gap:12px}.metric{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#232a3b;border:1px solid #404a62;border-radius:10px;padding:15px}.metric small{font:700 10px 'Space Mono',monospace;color:#bac1d1}.metric b{font-size:23px;color:#dcc5fb}aside p{font-size:11px;line-height:1.6;color:#99aabc}
+@media(max-width:780px){.play{grid-template-columns:1fr}aside{grid-template-columns:repeat(2,minmax(0,1fr))}aside button,aside p{grid-column:1/-1}}
