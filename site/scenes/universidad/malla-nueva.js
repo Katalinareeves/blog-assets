@@ -17,6 +17,27 @@ RAMOS_MALLA.splice(0,RAMOS_MALLA.length,...curriculum.map(c=>({...c,prereq:[...c
 const typeName={matematica:'Matemáticas',mecanica:'Física',computacion:'Computación',investigacion:'Investigación',general:'Formación general',ingles:'Inglés'};
 const known=new Map(curriculum.map(c=>[c.id,c]));
 let selected=null;
+let activeSearch='',activeFilter='all';
+function refreshProgress(){
+ const done=new Set(getCompletados().filter(id=>known.has(id)));
+ const current=new Set(getRamosEnCurso().filter(id=>known.has(id)&&!done.has(id)));
+ const percent=Math.round(done.size/curriculum.length*100);
+ const label=document.getElementById('uni-percent'),fill=document.getElementById('uni-track-fill'),caption=document.getElementById('uni-track-caption');
+ if(label)label.textContent=percent+'%';
+ if(fill)fill.style.width=percent+'%';
+ if(caption)caption.textContent=done.size+' aprobadas · '+current.size+' en curso · '+(curriculum.length-done.size-current.size)+' pendientes';
+}
+function applyCourseFilters(){
+ const term=activeSearch.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+ document.querySelectorAll('#malla-grid .uni-course-card').forEach(card=>{
+  const course=known.get(card.dataset.ramoId);
+  const state=stateOf(card.dataset.ramoId);
+  const found=course?.name.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().includes(term);
+  const visible=(!term||found)&&(activeFilter==='all'||activeFilter===state);
+  card.classList.toggle('uni-filtered-out',!visible);
+ });
+ refreshProgress();
+}
 function stateOf(id){if(getCompletados().includes(id))return 'completed';if(getRamosEnCurso().includes(id))return 'current';return 'pending';}
 function setState(id,value){
  const course=RAMOS_MALLA.find(c=>c.id===id);if(!course)return;
@@ -24,6 +45,7 @@ function setState(id,value){
  setRamosEnCurso(getRamosEnCurso().filter(x=>x!==id).concat(value==='current'?[id]:[]));
  window.dispatchEvent(new Event('universidadCursosActualizados'));
  refreshUniversityScene();
+ refreshProgress();
  // La vista actual se actualiza incluso si el render heredado cambia en otro módulo.
  render();
  const cloud=window.CiudadCloud;if(cloud?.state.signedIn&&cloud.state.enabled){cloud.upload().catch(e=>console.warn('Sincronización pendiente',e));}
@@ -110,11 +132,22 @@ function render(){
   grid.append(column);
  }
  inspector();
+ applyCourseFilters();
  requestAnimationFrame(linePaths);
 }
 renderMallaCurricular=render;
 window.addEventListener('resize',()=>requestAnimationFrame(linePaths));
 const tab=document.querySelector('[data-tab="malla"]');if(tab)tab.addEventListener('click',()=>requestAnimationFrame(linePaths));
 window.addEventListener('universidadCursosActualizados',()=>{if(selected)inspector();});
+document.getElementById('uni-search')?.addEventListener('input',e=>{
+ activeSearch=e.target.value.trim();applyCourseFilters();
+});
+document.querySelectorAll('.uni-status-filters [data-show]').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  activeFilter=btn.dataset.show;
+  document.querySelectorAll('.uni-status-filters [data-show]').forEach(x=>x.classList.toggle('active',x===btn));
+  applyCourseFilters();
+ });
+});
 render();
 })();
