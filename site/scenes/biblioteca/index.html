@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>la biblioteca — la ciudad</title>
   <link rel="stylesheet" href="../../ui.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=11">
   <script src="../../ui.js"></script>
 </head>
 <body class="ui">
@@ -28,7 +28,7 @@
     <section class="hero">
       <span class="eyebrow">archivo personal</span>
       <h1>la <em>biblioteca</em></h1>
-      <p>los libros de la carrera, con visor integrado y tu progreso de lectura.</p>
+      <p>Material de estudio conectado con tu malla curricular y tu progreso personal de lectura.</p><a href="../universidad/index.html" class="btn small" style="display:inline-flex;margin-top:14px">← Volver a Universidad</a>
       <div class="hero-meta">
         <span class="chip"><strong id="stat-books">0</strong>&nbsp;libros</span>
         <span class="chip"><strong id="stat-pages">0</strong>&nbsp;páginas leídas</span>
@@ -36,6 +36,7 @@
       </div>
     </section>
 
+    <div class="library-context-search"><label for="library-course-filter">Buscar bibliografía por ramo o título</label><input id="library-course-filter" type="search" autocomplete="off" placeholder="Ej.: Termodinámica, Mecánica Clásica, Métodos Matemáticos"></div>
     <div class="toolbar">
       <div id="subject-chips" class="chips"></div>
       <div class="toolbar-right">
@@ -142,6 +143,6 @@
 <div id="seed-toast" class="seed-toast hidden"><span>◆</span><strong id="toast-text"></strong></div>
 
 <script src="../../semillas.js"></script>
-<script src="library.js"></script>
+<script src="library.js?v=11"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="../cloud-progress.js?v=10"></script></body>
 </html>
