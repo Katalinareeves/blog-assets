@@ -28,11 +28,11 @@ function refreshProgress(){
  if(caption)caption.textContent=done.size+' aprobadas · '+current.size+' en curso · '+(curriculum.length-done.size-current.size)+' pendientes';
 }
 function applyCourseFilters(){
- const term=activeSearch.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+ const term=activeSearch.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  document.querySelectorAll('#malla-grid .uni-course-card').forEach(card=>{
   const course=known.get(card.dataset.ramoId);
   const state=stateOf(card.dataset.ramoId);
-  const found=course?.name.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().includes(term);
+  const found=course?.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(term);
   const visible=(!term||found)&&(activeFilter==='all'||activeFilter===state);
   card.classList.toggle('uni-filtered-out',!visible);
  });
