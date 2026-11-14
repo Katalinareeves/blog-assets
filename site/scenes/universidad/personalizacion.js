@@ -10,6 +10,21 @@
   const safeParse = (s, fallback) => { try { return JSON.parse(s); } catch { return fallback; } };
   function readProfiles(){ const p=safeParse(localStorage.getItem(PROFILES),null); return Array.isArray(p)&&p.length?p:[{...DEFAULT}]; }
   function writeProfiles(p){localStorage.setItem(PROFILES,JSON.stringify(p));}
+  // Migración visual a la malla de 37 asignaturas. Conserva respaldos y
+  // NO homologa ni marca aprobaciones automáticamente.
+  const newIds=new Set(RAMOS_MALLA.map(r=>r.id));
+  const migrationFlag='ciudadMallaNuevaV12';
+  if(!localStorage.getItem(migrationFlag)){
+    const previous=safeParse(localStorage.getItem(PROFILES),null);
+    if(Array.isArray(previous)&&previous.length){
+      const changed=previous.map(p=>{
+        const old=Array.isArray(p.curriculum)&&p.curriculum.length===36&&p.curriculum.some(r=>r.id==='calculo1');
+        return old?{...p,curriculum:RAMOS_MALLA.map(r=>({...r,prereq:[...r.prereq]}))}:p;
+      });
+      if(JSON.stringify(changed)!==JSON.stringify(previous))writeProfiles(changed);
+    }
+    localStorage.setItem(migrationFlag,'1');
+  }
   let profiles=readProfiles();
   let current=localStorage.getItem(CURRENT)||profiles[0].id;
   if(!profiles.some(p=>p.id===current))current=profiles[0].id;
