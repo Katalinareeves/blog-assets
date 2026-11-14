@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#17192b"><title>Bubble Lab · La Ciudad</title><link rel="stylesheet" href="bubble.css?v=1"></head>
+<body>
+<header class="site-nav"><a href="index.html">← Arcade</a><span>LA CIUDAD / BUBBLE LAB</span><a href="../habitacion/index.html">Mi habitación ↗</a></header>
+<main>
+<section class="intro"><span class="eyebrow">MÁQUINA 01 · LABORATORIO CÓSMICO</span><h1>Bubble <em>Lab.</em></h1><p>Un universo de partículas, combinaciones y pequeñas explosiones. Haz grupos de tres, libera el tablero y supera tu récord.</p></section>
+<section class="game-shell" aria-label="Bubble Lab">
+<div class="game-top">
+  <div><span class="eyebrow">PARTIDA</span><h2 id="mode-label">Modo solitario</h2></div>
+  <div class="stats"><div><small>PUNTOS</small><strong id="score">0</strong></div><div><small>RÉCORD</small><strong id="best">0</strong></div><div><small>TIROS</small><strong id="shots">0</strong></div></div>
+</div>
+<div class="main-game">
+  <div class="board-area">
+    <canvas id="bubble-canvas" width="560" height="680" tabindex="0" aria-label="Tablero Bubble Lab: mueve el ratón y haz clic para lanzar orbes, o usa flechas y espacio"></canvas>
+    <div class="overlay" id="intro-overlay"><span>✳ BUBBLE LAB ✳</span><strong>¡Hora de experimentar!</strong><p>Combina al menos 3 orbes del mismo tipo. Usa el ratón o las flechas para apuntar.</p><div class="choices"><button type="button" id="solo-start">Jugar sola</button><button type="button" id="bot-start">Contra bot</button></div></div>
+    <div class="overlay" id="end-overlay" hidden><span id="end-kicker">FIN DE PARTIDA</span><strong id="end-title">¡Buen intento!</strong><p id="end-copy"></p><button id="again">Volver a jugar ↻</button></div>
+  </div>
+  <aside class="sidebar">
+    <div class="panel"><span class="eyebrow">SIGUIENTE ORBE</span><div class="next-orb" id="next-orb">●</div><small>Haz clic en el tablero para disparar</small></div>
+    <div class="panel"><span class="eyebrow">COMBOS</span><div class="big-number" id="combo">×1</div><small>¡Encadena eliminaciones para multiplicar puntos!</small></div>
+    <div class="panel bot-panel" id="bot-panel" hidden><span class="eyebrow">RIVAL VIRTUAL</span><div class="big-number" id="bot-score">0</div><small id="bot-message">Tu rival también está haciendo combinaciones.</small></div>
+    <div class="panel reward"><span class="eyebrow">TICKETS DE ARCADE</span><div class="big-number" id="tickets">0</div><small>Recompensa de esta máquina, guardada en este dispositivo. No son semillas y aún no compran muebles.</small></div>
+    <button class="restart" id="restart">Reiniciar partida ↻</button><a class="return" href="index.html">Volver al salón Arcade ↗</a>
+  </aside>
+</div>
+<div class="help">MOUSE · apuntar y disparar <span>← → · apuntar</span> ESPACIO · disparar <span>R · reiniciar</span></div>
+</section></main><script src="bubble.js?v=1"></script></body></html>
