@@ -66,7 +66,7 @@ function onSnapshot({payload}){
 function onMove({payload}){if(!payload||!participants.some(p=>p.id===payload.from))return;move(payload.index,payload.from,payload.role);}
 async function leave(){
  if(channel){try{await channel.untrack();await db.removeChannel(channel);}catch(e){console.warn(e)}}
- channel=null;room=null;participants=[];reset(false);$('leave-room').hidden=true;
+ channel=null;room=null;participants=[];reset(false);$('leave-room').hidden=true;$('copy-invite').hidden=true;
  $('create-room').disabled=false;$('join-room').disabled=false;codeInput.disabled=false;
  refresh();
 }
@@ -87,7 +87,7 @@ async function join(code){
   channel.on('broadcast',{event:'snapshot'},onSnapshot);
   channel.subscribe(async (state,error)=>{
     if(state==='SUBSCRIBED'){
-     $('leave-room').hidden=false;
+     $('leave-room').hidden=false;$('copy-invite').hidden=false;
      await channel.track({uid,name});
      send('sync_request',{from:uid});refresh();
     }else if(state==='CHANNEL_ERROR'||state==='TIMED_OUT'){
@@ -107,6 +107,12 @@ for(let i=0;i<9;i++){
 $('create-room').onclick=()=>{const bytes=new Uint8Array(4);crypto.getRandomValues(bytes);const code=[...bytes].map(n=>n.toString(16).padStart(2,'0')).join('');void join(code);};
 $('join-room').onclick=()=>void join(codeInput.value.trim().toLowerCase());
 $('leave-room').onclick=()=>void leave();
+$('copy-invite').onclick=async()=>{
+ if(!room)return;
+ const link=location.origin+location.pathname+'?sala='+room;
+ try{await navigator.clipboard.writeText(link);write('Enlace copiado. Envíalo a tu amigo.');}
+ catch(e){prompt('Copia este enlace para invitar:',link);}
+};
 $('reset-game').onclick=()=>reset(true);
 window.addEventListener('pagehide',()=>{if(channel)void channel.untrack();});
 const params=new URLSearchParams(location.search);const invite=params.get('sala');
