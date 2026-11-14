@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universidad · La Ciudad V10</title>
+  <title>Universidad · La Ciudad V11</title>
   <link rel="stylesheet" href="../../ui.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=11">
   <script src="../../ui.js"></script>
 </head>
 
@@ -22,17 +22,20 @@
   </div>
 </header>
 
-<section id="uni-cloud-gateway" style="margin:14px auto;max-width:1080px;padding:15px 20px;border:1px solid #b5a5bd;border-radius:14px;background:var(--surface,#28212f);color:inherit;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between"><div><strong>☁ Tu universidad, en cualquier dispositivo</strong><div id="uni-cloud-status" style="font-size:13px;opacity:.8;margin-top:5px">Comprobando la sesión…</div></div><a href="../cuenta/index.html" style="background:#efe6f2;color:#382a42;padding:10px 16px;border-radius:22px;text-decoration:none;font-weight:700">Iniciar sesión / Crear cuenta</a></section>
+<section id="uni-cloud-gateway" class="uni-cloud-gateway" aria-label="Sincronización académica">
+ <div><span class="uni-cloud-eyebrow">TU CUENTA · SINCRONIZACIÓN</span><strong>Tu Universidad, en todos tus dispositivos</strong><p id="uni-cloud-status" role="status">Comprobando la sesión…</p></div>
+ <div class="uni-cloud-actions"><button type="button" id="uni-cloud-upload">Guardar en nube</button><button type="button" id="uni-cloud-download">Recuperar progreso</button><a href="../cuenta/index.html">Mi cuenta ↗</a></div>
+</section>
 <div id="scene-container">
 
   <section class="hero">
     <span class="eyebrow" id="uni-eyebrow">TU ESPACIO ACADÉMICO / LA CIUDAD</span>
     <h1>Tu camino, <em>tu universo.</em></h1>
-    <p>Una universidad diseñada a tu manera: personaliza tu malla, registra tus ramos y organiza lo que viene.</p>
+    <p>Planifica tu formación en física: malla curricular, bibliografía, evaluaciones y progreso académico, todo en un espacio.</p>
   </section>
 
   <section class="uni-v2-profile" aria-label="Personalización universitaria">
-    <div class="uni-v2-profile-header"><span class="uni-v2-kicker">IDENTIDAD / PERFIL LOCAL</span><span class="uni-v2-chip" id="uni-profile-status">Este navegador</span></div>
+    <div class="uni-v2-profile-header"><span class="uni-v2-kicker">IDENTIDAD / ESPACIO ACADÉMICO</span><span class="uni-v2-chip" id="uni-profile-status">Este navegador</span></div>
     <div class="uni-v2-profile-main">
       <div><span class="uni-v2-minilabel">ESTÁS EN</span><h2 id="uni-profile-title">Mi espacio</h2><p id="uni-profile-subtitle">Personaliza tu experiencia académica.</p></div>
       <div class="uni-v2-actions"><button type="button" id="uni-profile-edit">Personalizar espacio ↗</button><button type="button" id="uni-profile-export" class="uni-v2-quiet">Exportar respaldo</button></div>
@@ -102,9 +105,11 @@
     </div>
 
     <div class="uni-v2-malla-tools">
-      <span>Personaliza los ramos y sus prerrequisitos desde <strong>Personalizar espacio</strong>.</span>
-      <button type="button" id="uni-malla-open">Editar mi malla ↗</button>
-    </div>
+ <span>Plan editable · los prerrequisitos son referenciales hasta contrastarlos con tu DUN.</span>
+ <button type="button" id="uni-malla-open">Editar mi malla ↗</button>
+</div>
+<div class="uni-plan-context"><strong>Control de malla y homologaciones</strong><p>Este panel usa el plan histórico de 36 ramos o el perfil personalizado que hayas guardado. UNAB también publica un plan de 37 asignaturas. No son intercambiables automáticamente. Las aprobaciones se muestran según tus datos, no como certificación oficial.</p><div class="uni-reference-links"><a href="https://www.unab.cl/carreras/mallas/lic_fisica.pdf" target="_blank" rel="noopener noreferrer">Malla UNAB · PDF ↗</a><a href="https://admision.unab.cl/assets/themes/unab/mallas/licenciatura-en-fisica.html" target="_blank" rel="noopener noreferrer">Plan UNAB de 37 asignaturas ↗</a><a href="../biblioteca/index.html">Abrir biblioteca universitaria ↗</a></div></div>
+<div class="uni-audit" id="uni-audit-result" aria-live="polite"></div>
     <div class="malla-grid" id="malla-grid"></div>
 
   </section>
@@ -289,7 +294,7 @@
       </div>
       <div>
         <h3 class="footer-title">Datos</h3>
-        <p>Versión de perfiles locales: exporta un respaldo antes de cambiar de dispositivo. No hay sincronización en la nube todavía.</p>
+        <p>Los perfiles y la malla se guardan localmente y pueden respaldarse en Supabase desde una cuenta. Verifica el estado de sincronización antes de cerrar sesión.</p>
       </div>
     </div>
   </footer>
@@ -312,8 +317,24 @@
 </dialog>
 <script src="../../semillas.js"></script>
 <script src="script.js"></script>
-<script src="personalizacion.js"></script>
+<script src="personalizacion.js?v=11"></script>
 <script src="horario-editor.js"></script>
 <dialog id="horario-dialog" class="horario-dialog"><div class="horario-dialog-head"><div><small>UNIVERSIDAD / MI SEMANA</small><h2>Diseña tu horario</h2></div><button type="button" id="horario-close" aria-label="Cerrar">✕</button></div><p>Agrega bloques por día, hora y ramo. Puedes editar o eliminar cada clase. Nada se sincroniza con otras cuentas todavía.</p><div class="horario-inputs"><label>Día<select id="horario-day"><option value="lunes">Lunes</option><option value="martes">Martes</option><option value="miércoles">Miércoles</option><option value="jueves">Jueves</option><option value="viernes">Viernes</option></select></label><label>Desde<input id="horario-start" type="time" value="08:30"></label><label>Hasta<input id="horario-end" type="time" value="10:10"></label><label>Ramo<select id="horario-course"></select></label><button type="button" id="horario-add">+ Agregar clase</button></div><p role="status" id="horario-msg"></p><div id="horario-items" class="horario-items"></div><div class="horario-dialog-actions"><button type="button" id="horario-reset">Restaurar horario inicial</button><button type="button" id="horario-save">Guardar horario</button></div></dialog>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="../cloud-progress.js?v=10"></script><script>window.addEventListener('ciudad-cloud-status',e=>{const el=document.getElementById('uni-cloud-status');if(el)el.textContent=e.detail.status;});</script></body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="../cloud-progress.js?v=11"></script><script>
+(function(){
+ const status=document.getElementById('uni-cloud-status');
+ function update(){if(window.CiudadCloud)status.textContent=window.CiudadCloud.state.status;}
+ window.addEventListener('ciudad-cloud-status',update);setTimeout(update,250);
+ document.getElementById('uni-cloud-upload').addEventListener('click',async()=>{
+  if(!window.CiudadCloud){status.textContent='No se cargó la conexión con Supabase';return;}
+  if(!confirm('Guardar el progreso académico de este navegador en tu cuenta. Esto reemplazará la copia académica anterior, no tu habitación.'))return;
+  try{const r=await window.CiudadCloud.upload();status.textContent='Respaldo guardado: '+r.count+' registros';}catch(e){status.textContent='No se pudo guardar: '+e.message;}
+ });
+ document.getElementById('uni-cloud-download').addEventListener('click',async()=>{
+  if(!window.CiudadCloud){status.textContent='No se cargó la conexión con Supabase';return;}
+  if(!confirm('Recuperar desde Supabase. Guardaremos antes una copia local de este dispositivo.'))return;
+  try{const r=await window.CiudadCloud.download();status.textContent='Recuperados '+r.count+' registros';location.reload();}catch(e){status.textContent='No se pudo recuperar: '+e.message;}
+ });
+})();
+</script></body>
 </html>
