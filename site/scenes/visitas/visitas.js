@@ -25,7 +25,7 @@ async function load(){
   if(authError||!user){message('Inicia sesión para ver las habitaciones abiertas.');const a=document.createElement('a');a.href='../cuenta/index.html';a.textContent='Iniciar sesión ↗';$('homes').replaceChildren(a);return;}
   message('Buscando puertas abiertas…');
   const [{data:rooms,error:roomsError},{data:profiles,error:profilesError}]=await Promise.all([
-   db.from('ciudad_rooms').select('user_id').eq('visibility','registered').limit(150),
+   db.from('ciudad_rooms').select('user_id').in('visibility',['registered','friends']).limit(150),
    db.from('ciudad_profiles').select('user_id,username,display_name').limit(250)
   ]);
   if(roomsError)throw roomsError;if(profilesError)throw profilesError;
