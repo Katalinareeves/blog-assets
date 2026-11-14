@@ -186,7 +186,20 @@ function add(id,x,y){if(available(id)<=0)return notify('Ya utilizaste todas las 
 function nearest(x,y){const hits=data.placed.map((o,i)=>({o,i,d:byId[o.id]})).filter(v=>Math.abs(x-v.o.x)<v.d.w/2+8&&y>=v.o.y-v.d.h-7&&y<=v.o.y+12);hits.sort((a,b)=>b.o.y-a.o.y||b.i-a.i);return hits.length?hits[0].i:-1}
 let history=[];function snapshot(){history.push(JSON.stringify({placed:data.placed,wall:data.wall,floor:data.floor,light:data.light}));if(history.length>20)history.shift();$('undo-btn').disabled=false}
 function mousePos(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*VIEW,y:(e.clientY-r.top)/r.height*H}}
-canvas.addEventListener('pointerdown',e=>{const p=mousePos(e),world=screenToWorld(e.clientX-canvas.getBoundingClientRect().left,e.clientY-canvas.getBoundingClientRect().top);pointer.x=p.x;pointer.y=p.y;canvas.setPointerCapture(e.pointerId);if(mode==='play'){goal=clamp(world.x,25,W-25);return}const found=nearest(world.x,world.y);if(placing){add(placing,world.x,world.y);return}if(found>=0){selected=found;drag={type:'item',i:found,dx:world.x-data.placed[found].x,dy:world.y-data.placed[found].y,prev:{...data.placed[found]}};selectedLabel();}else{drag={type:'pan',start:e.clientX,cam};selected=-1;selectedLabel();}});
+canvas.addEventListener('pointerdown',e=>{const p=mousePos(e),world=screenToWorld(e.clientX-canvas.getBoundingClientRect().left,e.clientY-canvas.getBoundingClientRect().top);pointer.x=p.x;pointer.y=p.y;canvas.setPointerCapture(e.pointerId);if(mode==='play'){
+ const hit=nearest(world.x,world.y);
+ if(hit>=0&&data.placed[hit]?.id==='desk'){
+  const desk=data.placed[hit];
+  if(Math.abs(playerX-desk.x)>135){
+   goal=clamp(desk.x,25,W-25);
+   notify('Acércate al escritorio y vuelve a pulsarlo para abrir el Arcade');
+   return;
+  }
+  if(confirm('¿Abrir los minijuegos online desde tu computador?'))location.href='../juegos/index.html';
+  return;
+ }
+ goal=clamp(world.x,25,W-25);return
+}const found=nearest(world.x,world.y);if(placing){add(placing,world.x,world.y);return}if(found>=0){selected=found;drag={type:'item',i:found,dx:world.x-data.placed[found].x,dy:world.y-data.placed[found].y,prev:{...data.placed[found]}};selectedLabel();}else{drag={type:'pan',start:e.clientX,cam};selected=-1;selectedLabel();}});
 canvas.addEventListener('pointermove',e=>{const r=canvas.getBoundingClientRect(),p=mousePos(e);pointer.x=p.x;pointer.y=p.y;if(!drag||mode!=='edit')return;if(drag.type==='pan')cam=clamp(drag.cam-(e.clientX-drag.start)/r.width*VIEW,0,W-VIEW);else{const w=screenToWorld(e.clientX-r.left,e.clientY-r.top),o=data.placed[drag.i],d=byId[o.id],at=target(d,w.x-drag.dx,w.y-drag.dy);o.x=at.x;o.y=at.y;}});
 function finishDrag(){if(drag?.type==='item'){const o=data.placed[drag.i];if(collides(o.id,o.x,o.y,drag.i)&&!collides(o.id,drag.prev.x,drag.prev.y,drag.i)){Object.assign(o,drag.prev);notify('Se superpone con otro mueble. Se conservó la posición anterior.')}else{const cur={...o};Object.assign(o,drag.prev);snapshot();Object.assign(o,cur);save()}}drag=null}canvas.addEventListener('pointerup',finishDrag);canvas.addEventListener('pointercancel',finishDrag);
 const keyDown=new Set();window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','a','d','A','D'].includes(e.key)&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)){keyDown.add(e.key.toLowerCase());if(e.key.startsWith('Arrow'))e.preventDefault()}if(e.key==='Escape'&&mode==='edit')setMode('play');if((e.key==='Delete'||e.key==='Backspace')&&mode==='edit'&&selected>=0&&document.activeElement?.tagName!=='INPUT'){e.preventDefault();removeSelected()}});window.addEventListener('keyup',e=>keyDown.delete(e.key.toLowerCase()));window.addEventListener('blur',()=>keyDown.clear());
