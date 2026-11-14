@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universidad · La Ciudad V11</title>
+  <title>Universidad · La Ciudad V12</title>
   <link rel="stylesheet" href="../../ui.css">
-  <link rel="stylesheet" href="style.css?v=11.2">
+  <link rel="stylesheet" href="style.css?v=12">
   <script src="../../ui.js"></script>
 </head>
 
@@ -75,43 +75,25 @@
     <div class="section-heading">
       <span class="heading-mark">◆</span>
       <div>
-        <h2>malla curricular</h2>
+        <h2>Malla curricular</h2>
         <p>tu progreso en la licenciatura</p>
       </div>
     </div>
 
-    <div class="malla-legend">
-
-      <span class="legend-item">
-        <i class="legend-dot locked"></i>
-        bloqueado
-      </span>
-
-      <span class="legend-item">
-        <i class="legend-dot available"></i>
-        disponible
-      </span>
-
-      <span class="legend-item">
-        <i class="legend-dot current"></i>
-        en curso
-      </span>
-
-      <span class="legend-item">
-        <i class="legend-dot completed"></i>
-        aprobado
-      </span>
-
+    <div class="uni-curriculum-top">
+      <div class="uni-curriculum-head"><span class="uni-kicker">PLAN VIGENTE EN EL PANEL · 37 ASIGNATURAS</span><h3>Una malla que puedes explorar.</h3><p>Haz clic en una asignatura para consultar sus relaciones y registrar tu avance. No se asignan aprobaciones automáticamente.</p></div>
+      <div class="uni-curriculum-actions"><a href="https://admision.unab.cl/assets/themes/unab/mallas/licenciatura-en-fisica.html" target="_blank" rel="noopener noreferrer">Malla de Admisión UNAB ↗</a><button type="button" id="uni-malla-open">Personalizar asignaturas</button></div>
     </div>
-
-    <div class="uni-v2-malla-tools">
- <span>Plan editable · los prerrequisitos son referenciales hasta contrastarlos con tu DUN.</span>
- <button type="button" id="uni-malla-open">Editar mi malla ↗</button>
-</div>
-<div class="uni-plan-context"><strong>Control de malla y homologaciones</strong><p>Este panel usa el plan histórico de 36 ramos o el perfil personalizado que hayas guardado. UNAB también publica un plan de 37 asignaturas. No son intercambiables automáticamente. Las aprobaciones se muestran según tus datos, no como certificación oficial.</p><div class="uni-reference-links"><a href="https://www.unab.cl/carreras/mallas/lic_fisica.pdf" target="_blank" rel="noopener noreferrer">Malla UNAB · PDF ↗</a><a href="https://admision.unab.cl/assets/themes/unab/mallas/licenciatura-en-fisica.html" target="_blank" rel="noopener noreferrer">Plan UNAB de 37 asignaturas ↗</a><a href="comparador.html">Comparar los planes de 36 y 37 ramos ↗</a><a href="../biblioteca/index.html">Abrir biblioteca universitaria ↗</a></div></div>
-<div class="uni-audit" id="uni-audit-result" aria-live="polite"></div>
-    <div class="malla-grid" id="malla-grid"></div>
-
+    <div class="uni-map-legend" aria-label="Estados de la malla">
+      <span><i class="uni-dot pending"></i>Pendiente</span><span><i class="uni-dot current"></i>En curso</span><span><i class="uni-dot completed"></i>Aprobado</span>
+      <small>Las conexiones mostradas solo representan requisitos que pudieron documentarse. No se bloquea la edición de estados.</small>
+    </div>
+    <div class="uni-study-layout"><div class="uni-map-area">
+      <div class="uni-map-hint">DESLIZA PARA EXPLORAR LOS OCHO SEMESTRES <span>→</span></div>
+    <div class="malla-grid" id="malla-grid"></div></div>
+      <aside class="uni-inspector" id="uni-course-inspector" aria-live="polite"><div class="uni-inspector-empty">Selecciona una asignatura para consultar sus relaciones y marcarla.</div></aside>
+    </div>
+    <div class="uni-malla-links"><a href="../biblioteca/index.html">Explorar biblioteca ↗</a><a href="../cuenta/index.html">Respaldo de progreso ↗</a></div>
   </section>
 
 
@@ -317,7 +299,8 @@
 </dialog>
 <script src="../../semillas.js"></script>
 <script src="script.js"></script>
-<script src="personalizacion.js?v=11.2"></script>
+<script src="malla-nueva.js?v=12"></script>
+<script src="personalizacion.js?v=12"></script>
 <script src="horario-editor.js"></script>
 <dialog id="horario-dialog" class="horario-dialog"><div class="horario-dialog-head"><div><small>UNIVERSIDAD / MI SEMANA</small><h2>Diseña tu horario</h2></div><button type="button" id="horario-close" aria-label="Cerrar">✕</button></div><p>Agrega bloques por día, hora y ramo. Puedes editar o eliminar cada clase. Nada se sincroniza con otras cuentas todavía.</p><div class="horario-inputs"><label>Día<select id="horario-day"><option value="lunes">Lunes</option><option value="martes">Martes</option><option value="miércoles">Miércoles</option><option value="jueves">Jueves</option><option value="viernes">Viernes</option></select></label><label>Desde<input id="horario-start" type="time" value="08:30"></label><label>Hasta<input id="horario-end" type="time" value="10:10"></label><label>Ramo<select id="horario-course"></select></label><button type="button" id="horario-add">+ Agregar clase</button></div><p role="status" id="horario-msg"></p><div id="horario-items" class="horario-items"></div><div class="horario-dialog-actions"><button type="button" id="horario-reset">Restaurar horario inicial</button><button type="button" id="horario-save">Guardar horario</button></div></dialog>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="../cloud-progress.js?v=11"></script><script>
