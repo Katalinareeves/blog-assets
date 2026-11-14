@@ -1,13 +1,22 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arcade · La Ciudad</title><link rel="stylesheet" href="juegos.css?v=1"></head><body>
-<header class="top"><a href="../../index.html">← Volver a La Ciudad</a><span>LA CIUDAD / ARCADE</span><a href="../cuenta/index.html">Mi cuenta ↗</a></header>
-<main><section class="hero"><div class="kicker">✳ UN LUGAR PARA JUGAR JUNTOS</div><h1>Arcade <em>de La Ciudad.</em></h1><p>Pequeños juegos que conectan a la comunidad. Invita a alguien, comparte un código y jueguen en tiempo real, estén donde estén.</p></section>
-<section class="arcade">
- <div class="game-heading"><div><span class="kicker">JUEGO 01 / DOS JUGADORES</span><h2>Tres en raya</h2><p>Una sala privada por código. El primero con tres símbolos en línea gana.</p></div><span class="tag">ONLINE · ALPHA</span></div>
- <div class="lobby"><div class="lobby-left"><label for="room-code">Código de sala</label><div class="code-field"><input id="room-code" placeholder="Ej. a8f23b10" maxlength="8" autocomplete="off" spellcheck="false"><button id="create-room">Crear sala</button><button id="join-room">Unirme</button></div><small>Comparte el código de ocho caracteres con un amigo. No contiene información personal.</small></div>
- <div class="lobby-right"><strong id="game-status" role="status">Inicia sesión para entrar al arcade.</strong><div id="players-list" class="players"></div><div class="room-buttons"><button id="copy-invite" hidden>Copiar invitación ↗</button><button id="leave-room" hidden>Salir de sala</button></div></div></div>
- <div class="game-stage"><div class="board-wrap"><div class="board" id="game-board" aria-label="Tablero de tres en raya"></div><button id="reset-game" disabled>Nueva partida ↻</button></div>
- <aside><div class="stat"><small>TU SÍMBOLO</small><strong id="my-symbol">–</strong></div><div class="stat"><small>RONDA</small><strong id="turn-display">–</strong></div><p>Los resultados de esta alfa son recreativos. Las partidas no otorgan semillas y se reinician al cerrar la sala.</p><a href="../../index.html">Encontrarnos en la plaza ↗</a></aside></div>
-</section><section class="arcade" style="margin-top:18px"><div class="game-heading"><div><span class="kicker">JUEGO 02 / DOS JUGADORES</span><h2>Piedra, papel o tijera</h2><p>Elige una jugada y desafía a un amigo desde otra cuenta.</p></div><a class="arcade-link" href="rps.html" style="display:inline-block;padding:12px 16px;background:#5e4d80;border-radius:9px;color:#f5ecff;text-decoration:none;font-size:12px;font-weight:700">Jugar online ↗</a></div></section><section class="arcade" style="margin-top:18px"><div class="game-heading"><div><span class="kicker">JUEGO 03 / FÍSICA / DOS JUGADORES</span><h2>Duelo de física ⚛</h2><p>Una trivia de cinco preguntas científicas y puntuación compartida.</p></div><a href="quiz.html" style="display:inline-block;padding:12px 16px;background:#5e4d80;border-radius:9px;color:#f5ecff;text-decoration:none;font-size:12px;font-weight:700">Jugar online ↗</a></div></section><footer>LA CIUDAD · Primer prototipo de minijuegos multijugador. Próximamente: más juegos, desafíos de física e invitaciones entre amigos.</footer></main>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="juegos.js?v=1"></script>
-</body></html>
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#11121f"><title>Arcade · La Ciudad</title><link rel="stylesheet" href="arcade-room.css?v=1"></head>
+<body>
+<header><a href="../../index.html">← La Ciudad</a><span>LA CIUDAD / ARCADE</span><a href="../visitas/index.html">Vecindario ↗</a></header>
+<main>
+<section class="intro"><span class="kicker">✳ LA CIUDAD · SALÓN DE JUEGOS</span><h1>Una partida <em>más.</em></h1><p>Un rincón iluminado, muchas formas de jugar y siempre una máquina esperándote. Entra sola o vuelve con tus amigos.</p></section>
+<section class="room-wrap" aria-label="Salón Arcade interactivo">
+  <div class="scene-head"><span>◈ SALÓN ARCADE</span><span>SELECCIONA UNA MÁQUINA PARA JUGAR</span></div>
+  <canvas id="arcade-canvas" width="1024" height="560" aria-label="Salón arcade pixel art con máquinas interactivas" tabindex="0"></canvas>
+  <div class="room-help">✦ Haz clic en las máquinas o elige un juego desde el catálogo inferior</div>
+</section>
+<section class="featured" id="feature"><div class="featured-label">MÁQUINA DESTACADA · 01</div><div class="featured-main"><div><h2>Bubble Lab <span>✳</span></h2><p>Un laboratorio de partículas cósmicas con combos, explosiones y un rival virtual. Juega a tu ritmo y supera tu récord.</p><div class="feature-tags"><span>Solitario</span><span>Contra bot</span><span>Récord local</span></div></div><a href="bubble.html" class="main-cta">Encender máquina ↗</a></div></section>
+<section class="catalog"><div class="catalog-head"><div><span class="kicker">ELIGE TU PRÓXIMA PARTIDA</span><h2>Máquinas del salón.</h2></div><p>Pasa por una máquina para conocer su juego. Las partidas online de la sección clásicos siguen en prueba.</p></div>
+<div class="machines">
+<a href="bubble.html" class="machine-link active"><span class="machine-icon">✳</span><div><strong>Bubble Lab</strong><small>Bubble shooter · Solo o bot</small></div><b>01 ↗</b></a>
+<a href="quiz.html" class="machine-link"><span class="machine-icon">⚛</span><div><strong>Duelo de física</strong><small>Trivia online · Dos jugadores</small></div><b>02 ↗</b></a>
+<a href="rps.html" class="machine-link"><span class="machine-icon">✂</span><div><strong>Piedra, papel o tijera</strong><small>Clásico online · Dos jugadores</small></div><b>03 ↗</b></a>
+<a href="clasicos.html" class="machine-link"><span class="machine-icon">◇</span><div><strong>Gabinete clásico</strong><small>Tres en raya y prototipos</small></div><b>04 ↗</b></a>
+</div>
+</section>
+<footer>LA CIUDAD · ARCADA SOCIAL · Los premios de Bubble Lab son provisionales y no modifican tus semillas.</footer>
+</main><script src="arcade-room.js?v=1"></script></body></html>
