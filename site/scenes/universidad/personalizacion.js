@@ -29,8 +29,36 @@
   function curriculumFor(p){return Array.isArray(p.curriculum)&&p.curriculum.length?p.curriculum:originalCurriculum;}
   function applyCurriculum(p){RAMOS_MALLA.splice(0,RAMOS_MALLA.length,...curriculumFor(p).map(r=>({...r,prereq:[...r.prereq]})));}
   function rerender(){refreshUniversityScene();renderStats();}
-  function renderStats(){const done=safeParse(localStorage.getItem('mallaFisica'),[]);const doing=safeParse(localStorage.getItem('ramosEnCurso'),[]);const valid=new Set(RAMOS_MALLA.map(r=>r.id));const count=RAMOS_MALLA.length;const active=Array.isArray(doing)?[...new Set(doing)].filter(id=>valid.has(id)&&!(Array.isArray(done)&&done.includes(id))):[];const div=$('uni-progress-stats');div.replaceChildren();[[String(Array.isArray(done)?done.length:0),'aprobados'],[String(active.length),'en curso'],String(count),'ramos en tu malla'].forEach(pair=>{const el=document.createElement('div');const num=document.createElement('b');const name=document.createElement('span');if(Array.isArray(pair)){num.textContent=pair[0];name.textContent=pair[1];}else {num.textContent=pair;name.textContent='ramos en tu malla';}el.append(num,name);div.append(el);});}
-  function applyTheme(p){const valid=/^#[0-9a-f]{6}$/i.test(p.accent)?p.accent:'#b78cff';document.documentElement.style.setProperty('--uni-accent',valid);$('uni-profile-title').textContent=p.name||'Mi universidad';$('uni-profile-subtitle').textContent=[p.degree,p.school].filter(Boolean).join(' · ')||'Tu espacio académico';$('uni-eyebrow').textContent=(p.school||'LA CIUDAD').toUpperCase()+' / EXPERIENCIA PERSONAL';}
+  function renderStats(){
+ const rawDone=safeParse(localStorage.getItem('mallaFisica'),[]);
+ const rawDoing=safeParse(localStorage.getItem('ramosEnCurso'),[]);
+ const valid=new Set(RAMOS_MALLA.map(r=>r.id));
+ const allDone=Array.isArray(rawDone)?rawDone:[];
+ const done=[...new Set(allDone)].filter(id=>valid.has(id));
+ const unknown=[...new Set(allDone)].filter(id=>!valid.has(id));
+ const doing=Array.isArray(rawDoing)?[...new Set(rawDoing)].filter(id=>valid.has(id)&&!done.includes(id)):[];
+ const total=RAMOS_MALLA.length;const remaining=Math.max(0,total-done.length-doing.length);
+ const div=$('uni-progress-stats');if(!div)return;div.replaceChildren();
+ [[done.length,'Aprobados registrados'],[doing.length,'En curso'],[remaining,'Pendientes'],[total,'Total en esta malla']].forEach(([count,label])=>{
+  const item=document.createElement('div');const num=document.createElement('b');num.textContent=count;
+  const txt=document.createElement('span');txt.textContent=label;item.append(num,txt);div.append(item);
+ });
+ const warnings=[];
+ if(unknown.length)warnings.push(unknown.length+' registros de aprobación sin correspondencia: '+unknown.join(', '));
+ if(new Set(allDone).size!==allDone.length)warnings.push('Hay aprobaciones duplicadas en el almacenamiento.');
+ if(doing.length+done.length>total)warnings.push('El avance supera el total de asignaturas.');
+ if(done.length>=total-4 && doing.length>=4)warnings.push('Revisa tus estados: el número de aprobaciones parece incompatible con los ramos en curso.');
+ const audit=$('uni-audit-result');if(audit){
+  audit.replaceChildren();
+  const intro=document.createElement('p');
+  intro.textContent='Plan activo: '+total+' asignaturas · '+done.length+' aprobaciones registradas · '+doing.length+' en curso. Son datos ingresados por el usuario, no certificados de la UNAB.';
+  audit.append(intro);
+  if(warnings.length){const box=document.createElement('div');box.className='uni-audit-alert';box.textContent=warnings.join(' ');audit.append(box);}
+  const details=document.createElement('details');const sum=document.createElement('summary');sum.textContent='Revisar cuáles están marcados como aprobados ('+done.length+')';details.append(sum);
+  const list=document.createElement('ol');done.forEach(id=>{const li=document.createElement('li');li.textContent=RAMOS_MALLA.find(r=>r.id===id)?.name||id;list.append(li);});details.append(list);audit.append(details);
+ }
+}
+function applyTheme(p){const valid=/^#[0-9a-f]{6}$/i.test(p.accent)?p.accent:'#b78cff';document.documentElement.style.setProperty('--uni-accent',valid);$('uni-profile-title').textContent=p.name||'Mi universidad';$('uni-profile-subtitle').textContent=[p.degree,p.school].filter(Boolean).join(' · ')||'Tu espacio académico';$('uni-eyebrow').textContent=(p.school||'LA CIUDAD').toUpperCase()+' / EXPERIENCIA PERSONAL';}
   window.addEventListener('universidadCursosActualizados',renderStats);
   applyCurriculum(active());applyTheme(active());rerender();
   let draft=null;
