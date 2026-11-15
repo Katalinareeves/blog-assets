@@ -38,7 +38,7 @@ function presenceSync(){
      const who=String(item?.user_id||key);
      if(who===uid||!who)continue;
      live.add(who);
-     const prev=remote.get(who)||{x:80,y:390,dir:'down',step:0,name:'Jugador',avatar:null};
+     const prev=remote.get(who)||{x:player.x,y:390,dir:'down',step:0,name:'Jugador',avatar:null};
      prev.online=true;prev.name=safeName(item?.name||prev.name);
      remote.set(who,prev);
    }
@@ -52,7 +52,7 @@ function updatePeer(payload){
  if(!who||who===uid||!remote.has(who))return;
  const peer=remote.get(who);
  const next=payload.position||{};
- peer.x=limit(next.x,16,606);peer.y=limit(next.y,16,439);
+ peer.x=limit(next.x,16,W-34);peer.y=limit(next.y,16,439);
  peer.dir=['up','down','left','right'].includes(next.dir)?next.dir:'down';
  peer.step=next.step===1?1:0;
  if(next.avatar&&typeof next.avatar==='object'){
