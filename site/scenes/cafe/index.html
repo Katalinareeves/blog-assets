@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#191426"><title>Café República · La Ciudad</title><link rel="stylesheet" href="cafe.css?v=2"></head><body>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#191426"><title>Café República · La Ciudad</title><link rel="stylesheet" href="cafe.css?v=3"></head><body>
 <header class="top"><a href="../../index.html">← Volver a República</a><span>LA CIUDAD / CAFÉ REPÚBLICA</span><a href="../amigos/index.html">♡ Amigos</a></header>
 <main><section class="intro"><span class="eyebrow">REPÚBLICA · CUADRA PONIENTE</span><h1>Café República <em>☕</em></h1><p>Un local pequeño entre clases. Siéntate, conversa con Mila o tómate algo calentito antes de volver a la U.</p></section>
 <section class="needs-panel" aria-label="Bienestar de tu personaje">
@@ -8,7 +8,7 @@
  <div id="focus-status" class="focus-status">✧ Sin efecto de concentración</div>
 </section>
 <section class="cafe-shell">
- <div class="scene-head"><span>CAFÉ REPÚBLICA · INTERIOR</span><div><span id="status">WASD para caminar · E para interactuar</span><button id="sound-toggle" type="button" aria-pressed="false" title="Activar sonido ambiental">♫ Ambiente: off</button></div></div>
+ <div class="scene-head"><span>CAFÉ REPÚBLICA · INTERIOR</span><div><span id="status">WASD para caminar · E para interactuar</span><span class="cafe-online" id="cafe-online" role="status">♡ Individual</span><button id="cafe-wave" type="button" title="Saludar a quienes estén en el café">👋 Saludar</button><button id="cafe-invite" type="button">♡ Invitar</button><button id="sound-toggle" type="button" aria-pressed="false" title="Activar sonido ambiental">♫ Ambiente: off</button></div></div>
  <div class="room"><canvas id="cafe-scene" width="960" height="530" tabindex="0" aria-label="Interior pixel art estilo República. Camina con WASD o flechas; E para interactuar. Toca las mesas o la barra para interactuar."></canvas><div class="scene-note" id="scene-note" role="status">Acércate a la barra para atender pedidos ✧</div></div>
  <div class="instructions"><span>WASD / FLECHAS · caminar</span><span>E · interactuar</span><span>CLIC / TOQUE · barra y mesas</span><span>♡ SENTARSE · mejora el ánimo</span></div>
 </section>
@@ -26,4 +26,4 @@
  </div>
  <aside class="side-card"><span class="eyebrow">UN RATO TRANQUILO</span><h2>Después de clases.</h2><p>Acércate a las mesas, siéntate y recupera un poquito de ánimo. Aquí no hay apuro.</p><div class="little-note"><span>✦</span><div><strong>Un café sin apuro</strong><small>Las necesidades se guardan en este dispositivo y aparecen también en República.</small></div></div><a href="../../index.html" class="back-link">Volver a pasear por República ↗</a></aside>
 </section>
-</main><script src="../wellbeing.js?v=1"></script><script src="cafe.js?v=2"></script></body></html>
+</main><script src="../wellbeing.js?v=2"></script><script src="cafe.js?v=3"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="cafe-online.js?v=1"></script></body></html>
