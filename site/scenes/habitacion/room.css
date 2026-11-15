@@ -84,3 +84,7 @@ body{background:radial-gradient(ellipse at 55% 0%,#50505a,#24252c 78%)}
  .room-reactions{flex:1}.room-phrases{flex:3}.room-phrases select{flex:1}
  #room-magic-toggle{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.room-reactions button:hover{transform:none}}
+
+#room-photo{min-height:34px;padding:7px 11px;background:#345d60;color:#e8fbf7;border:1px solid #76aeb3;border-radius:8px;font:650 11px system-ui;cursor:pointer;white-space:nowrap}
+#room-photo:hover{background:#43777a}
+#room-photo:disabled{opacity:.55;cursor:wait}
