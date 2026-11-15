@@ -22,6 +22,21 @@ try{magicOn=localStorage.getItem('ciudadRoomMagicEffects')!=='off';}catch{}
 const magicBtn=document.getElementById('room-magic-toggle');
 function reflectMagic(){if(!magicBtn)return;magicBtn.setAttribute('aria-pressed',String(magicOn));magicBtn.textContent=magicOn?'✳ Brillitos: sí':'✳ Brillitos: no';}
 reflectMagic();
+const photoBtn=document.getElementById('room-photo');
+if(photoBtn)photoBtn.addEventListener('click',()=>{
+ const canvas=document.getElementById('room');
+ if(!canvas||!canvas.toBlob)return;
+ const original=photoBtn.textContent;photoBtn.textContent='Guardando…';photoBtn.disabled=true;
+ canvas.toBlob(blob=>{
+  if(blob){
+   const url=URL.createObjectURL(blob),a=document.createElement('a');
+   a.href=url;a.download='la-ciudad-recuerdo-'+new Date().toISOString().slice(0,10)+'.png';
+   document.body.append(a);a.click();a.remove();
+   setTimeout(()=>URL.revokeObjectURL(url),3000);
+  }
+  photoBtn.textContent=original;photoBtn.disabled=false;
+ },'image/png');
+});
 if(magicBtn)magicBtn.addEventListener('click',()=>{magicOn=!magicOn;reflectMagic();try{localStorage.setItem('ciudadRoomMagicEffects',magicOn?'on':'off')}catch{}});
 function paintMagic(ctx){
  if(!magicOn)return;
