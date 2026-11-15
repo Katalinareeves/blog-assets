@@ -172,6 +172,7 @@ function scene(now){
  if(sittingAt>=0){
   const t=tables[sittingAt];drawCharacter(t.x-9,t.y+23,avatar,0,'down');
  }else drawCharacter(player.x,player.y,avatar,player.step,player.dir);
+ if(window.CiudadCafeOnline?.draw)window.CiudadCafeOnline.draw(ctx,drawCharacter);
  if(now-toastAt<1500){txt('✧',480,188,16,'#fff0ae');}
  requestAnimationFrame(scene);
 }
@@ -241,5 +242,9 @@ $('sound-toggle').addEventListener('click',async()=>{
   }catch{ambientOn=false;}
  }else if(window.__cafeAmbience&&audio){window.__cafeAmbience.gain.gain.setTargetAtTime(0,audio.currentTime,.15);}
 });
+window.CiudadCafeBridge={
+ getState:()=>{const t=tables[sittingAt];return {x:Math.round(t?t.x-9:player.x),y:Math.round(t?t.y+23:player.y),dir:player.dir,step:player.step,avatar}},
+ getUserName:()=>String(avatar.nombre||'Visitante').slice(0,20)
+};
 nextOrder();update();requestAnimationFrame(scene);requestAnimationFrame(updateLoop);
 })();
