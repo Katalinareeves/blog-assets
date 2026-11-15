@@ -9,6 +9,8 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const W = canvas.width;
 const H = canvas.height;
+const ORIGINAL_W = 640;
+const DISTRICT_OFFSET = (W - ORIGINAL_W) / 2;
 
 const SEED_KEY = 'ciudadSemillas';
 function getSeeds() { return parseInt(localStorage.getItem(SEED_KEY) || '0', 10); }
@@ -41,7 +43,7 @@ function initNightToggle() {
 
 const state = { isPaused: false, transitioning: false };
 
-const player = { x: 80, y: 390, w: 18, h: 25, speed: 3, dir: 'down', step: 0, stepTimer: 0 };
+const player = { x: 80 + DISTRICT_OFFSET, y: 390, w: 18, h: 25, speed: 3, dir: 'down', step: 0, stepTimer: 0 };
 
 const keys = {};
 window.addEventListener('keydown', e => {
@@ -109,12 +111,12 @@ const buildings = [
   },
 ];
 buildings.forEach(b => {
-  if (b.entrada) b.entradaAbs = { x: b.x + b.entrada.x, y: b.y + b.h - b.entrada.h, w: b.entrada.w, h: b.entrada.h };
+  if (b.entrada) b.entradaAbs = { x: DISTRICT_OFFSET + b.x + b.entrada.x, y: b.y + b.h - b.entrada.h, w: b.entrada.w, h: b.entrada.h };
 });
 
 // ── PARADA DE MICRO — reemplaza el bus animado de fondo por un punto
 // de interacción real, junto a la vereda inferior ──
-const busStop = { x: 540, y: 424, w: 20, h: 10, href: null };
+const busStop = { x: 540 + DISTRICT_OFFSET, y: 424, w: 20, h: 10, href: null };
 
 let nearTarget = null; // { kind:'building', ref } | { kind:'bus', ref }
 
@@ -175,6 +177,19 @@ function startTravel(href) {
 //  + paleta de día/noche alternable con isNight
 // ══════════════════════════════════════════════════════════
 function drawScene() {
+  // La cuadra original ocupa el centro, sin modificar sus píxeles ni fachadas.
+  drawDistrictExtensions();
+  ctx.save();
+  ctx.beginPath();ctx.rect(DISTRICT_OFFSET,0,ORIGINAL_W,H);ctx.clip();
+  ctx.translate(DISTRICT_OFFSET,0);
+  drawOriginalDistrict();
+  ctx.restore();
+  // Personajes en coordenadas globales: las fachadas nuevas sí son explorables.
+  drawPlayer(player);
+  if (window.CityMultiplayer) window.CityMultiplayer.draw();
+}
+
+function drawOriginalDistrict() {
   const t = performance.now() / 1000;
 
   if (isNight) {
@@ -285,12 +300,57 @@ function drawScene() {
   drawMicro(Math.floor((t * 40) % (W + 80)) - 80, 230);
   drawRepublicaTraffic(t);
   drawRepublicaDetails(t);
-  drawParadaMicro(busStop, nearTarget && nearTarget.kind === 'bus');
+  drawParadaMicro({ ...busStop, x: busStop.x - DISTRICT_OFFSET }, nearTarget && nearTarget.kind === 'bus');
   drawRepublicaPedestrians(t);
 
-  drawPlayer(player);
-  // Dibujar jugadores remotos sobre el mismo lienzo y con el sprite original.
-  if (window.CityMultiplayer) window.CityMultiplayer.draw();
+}
+
+// Nuevas fachadas de la misma cuadra, no reemplazos de las originales.
+const districtExtras=[
+ {id:null,label:'CAFÉ',type:'patrimonial',x:0,y:0,w:80,h:130,
+  colorBase:'#b5a186',colorOscuro:'#877362',colorMoldura:'#d2bf9f',
+  ventanas:[[8,15],[45,15],[8,52],[45,52],[8,88],[45,88]],
+  anchoV:24,altoV:20,entrada:{x:27,w:26,h:27},colV:'#27323c',cornisa:true},
+ {id:null,label:'COPIAS',type:'moderna',x:80,y:0,w:80,h:130,
+  colorBase:'#66616d',colorClaro:'#81798b',
+  ventanas:[[8,12],[45,12],[8,42],[45,42],[8,73],[45,73]],anchoV:24,altoV:20,
+  entrada:{x:29,w:24,h:30},colV:'#263d4c'},
+ {id:null,label:'LIBRERÍA',type:'patrimonial',x:W-160,y:0,w:80,h:130,
+  colorBase:'#c4ad8c',colorOscuro:'#9b876e',colorMoldura:'#dfc5a5',
+  ventanas:[[8,14],[44,14],[8,51],[44,51],[8,87],[44,87]],anchoV:24,altoV:22,
+  entrada:{x:27,w:26,h:28},colV:'#304455',cornisa:true},
+ {id:null,label:'CASA',type:'patrimonial',x:W-80,y:0,w:80,h:130,
+  colorBase:'#b5a49b',colorOscuro:'#8c7773',colorMoldura:'#d4bbb1',
+  ventanas:[[8,14],[44,14],[8,51],[44,51],[8,87],[44,87]],anchoV:24,altoV:22,
+  entrada:{x:29,w:24,h:28},colV:'#33404a',cornisa:false}
+];
+function drawDistrictExtensions(){
+ const t=performance.now()/1000;
+ ctx.fillStyle=isNight?'#0b0616':'#a4d5ec';ctx.fillRect(0,0,W,H);
+ const sky=ctx.createLinearGradient(0,0,0,128);
+ sky.addColorStop(0,isNight?'#170d2b':'#8ad1ef');
+ sky.addColorStop(1,isNight?'#0c081a':'#c6ebfa');
+ ctx.fillStyle=sky;ctx.fillRect(0,0,W,128);
+ for(const [x,w] of [[0,DISTRICT_OFFSET],[DISTRICT_OFFSET+ORIGINAL_W,DISTRICT_OFFSET]]){
+  ctx.fillStyle=isNight?'#221a34':'#cfc9b4';ctx.fillRect(x,128,w,18);
+  ctx.fillStyle=isNight?'#302446':'#dfd9c2';ctx.fillRect(x,145,w,4);
+  ctx.fillStyle=isNight?'#100a1e':'#5a5a56';ctx.fillRect(x,149,w,H-149);
+  ctx.fillStyle=isNight?'#221a34':'#cfc9b4';ctx.fillRect(x,436,w,28);
+  ctx.fillStyle=isNight?'#302446':'#dfd9c2';ctx.fillRect(x,435,w,4);
+  ctx.strokeStyle=isNight?'#160f24':'#b0aa93';ctx.lineWidth=.5;
+  for(let i=x;i<x+w;i+=16){ctx.beginPath();ctx.moveTo(i,128);ctx.lineTo(i,146);ctx.moveTo(i,436);ctx.lineTo(i,464);ctx.stroke();}
+  ctx.strokeStyle=isNight?'#76698a':'#dfc652';ctx.lineWidth=2;ctx.setLineDash([22,14]);
+  ctx.beginPath();ctx.moveTo(x,290);ctx.lineTo(x+w,290);ctx.stroke();ctx.setLineDash([]);
+ }
+ for(const b of districtExtras) {
+  if(b.type==='patrimonial')drawFachadaPatrimonial(b);else drawFachadaModerna(b);
+ }
+ // Detalles de calle discretos, sin afiches ni bicicletas.
+ for(const px of [90,W-91]){drawPosteLuz(px,146,-100);drawPosteLuz(px,436,1);}
+ for(const px of [138,W-136])drawArbol(px,150);
+ for(const px of [85,W-95])drawArbol(px,440);
+ // Autos de la cuadra extendida circulan por la calle, sin invadir las veredas.
+ drawAuto2(((t*21+W/2)%(W+110))-65,246,'#4c5766',false);
 }
 
 function drawFachadaPatrimonial(b) {
