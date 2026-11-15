@@ -458,86 +458,49 @@ function drawArbol(x, y) {
 
 // ── REPÚBLICA VIVA · Ambientación adicional no interactiva ──
 // No modifica fachadas, grafitis, colisiones, autos estacionados ni edificios originales.
+// ── REPÚBLICA VIVA, versión limpia ──
+// Mantiene intactos los grafitis originales, fachadas y colisiones.
+// NPCs caminando SOLAMENTE en las veredas: superior (y 128-146)
+// e inferior (y 436-464). Sus pies se apoyan en esas superficies.
 const republicaPeople = [
-  {seed:19,y:398,speed:10.2,reverse:false,top:'#b58ac2',hair:'#4b293a',skin:'#e1b18e',bottom:'#383247',style:'corto',accent:'#f1bbd1'},
-  {seed:276,y:402,speed:7.4,reverse:true,top:'#708c9a',hair:'#30202b',skin:'#e5c8a4',bottom:'#353b4a',style:'cola',accent:'#d9d4e4'},
-  {seed:445,y:409,speed:8.4,reverse:false,top:'#876b78',hair:'#8a4933',skin:'#deb08a',bottom:'#24243f',style:'largo',accent:'#e7bfbd'},
-  {seed:72,y:111,speed:5.9,reverse:false,top:'#445e73',hair:'#2e2837',skin:'#c28b6c',bottom:'#383b48',style:'corto',accent:'#d9d2a0'},
-  {seed:356,y:112,speed:6.7,reverse:true,top:'#9b7769',hair:'#564133',skin:'#efd3ac',bottom:'#434056',style:'largo',accent:'#cfa6f1'},
+  {seed:17,feet:142,speed:7.3,reverse:false,top:'#b58ac2',hair:'#4b293a',skin:'#e1b18e',bottom:'#383247',style:'corto',accent:'#f1bbd1'},
+  {seed:311,feet:142,speed:5.8,reverse:true,top:'#708c9a',hair:'#30202b',skin:'#e5c8a4',bottom:'#353b4a',style:'cola',accent:'#d9d4e4'},
+  {seed:119,feet:461,speed:7.0,reverse:false,top:'#876b78',hair:'#8a4933',skin:'#deb08a',bottom:'#24243f',style:'largo',accent:'#e7bfbd'},
+  {seed:476,feet:461,speed:6.1,reverse:true,top:'#445e73',hair:'#2e2837',skin:'#c28b6c',bottom:'#383b48',style:'corto',accent:'#d9d2a0'}
 ];
 function drawRepublicaPedestrians(t){
-  const pace=t*.8;
-  for (let i=0;i<republicaPeople.length;i++){
-    const n=republicaPeople[i],span=W+100;
-    const progress=((pace*n.speed+n.seed)%span+span)%span;
-    const xx=n.reverse?W+45-progress:progress-45;
-    const cfg={skin:n.skin,hair:n.hair,top:n.top,bottom:n.bottom,style:n.style,accent:n.accent};
-    const p={x:Math.round(xx),y:n.y,w:13,h:21,dir:n.reverse?'left':'right',step:Math.floor(t*n.speed/3.2)%2};
-    ctx.save();ctx.translate(p.x,p.y);ctx.scale(.84,.84);
-    drawCharacter(ctx,{x:0,y:0,w:18,h:25,dir:p.dir,step:p.step},cfg);ctx.restore();
-    // Mochilas de estudiantes, discretas para conservar la escala del escenario.
-    ctx.fillStyle=n.reverse?'#7b6d95':'#5b465a';
-    ctx.fillRect(Math.round(xx)+(n.reverse?7:1),n.y+7,4,9);
-  }
-  // Estudiante junto al cruce, contemplando la calle.
-  if(Math.sin(t*.4)>-.65){
-    ctx.fillStyle='#403846';ctx.fillRect(275,411,7,10);
-    ctx.fillStyle='#e3ba9c';ctx.fillRect(276,405,5,6);
-    ctx.fillStyle='#694358';ctx.fillRect(275,402,8,4);
-    ctx.fillStyle='#342c42';ctx.fillRect(276,421,2,6);ctx.fillRect(280,421,2,6);
-  }
+ for (const n of republicaPeople){
+  const span=W+90;
+  const offset=((t*n.speed+n.seed)%span+span)%span;
+  const xx=n.reverse?W+35-offset:offset-35;
+  const y=n.feet-25; // los pies quedan exactamente en la vereda
+  const cfg={skin:n.skin,hair:n.hair,top:n.top,bottom:n.bottom,style:n.style,accent:n.accent};
+  ctx.save();ctx.translate(Math.round(xx),Math.round(y));
+  drawCharacter(ctx,{x:0,y:0,w:18,h:25,dir:n.reverse?'left':'right',step:Math.floor(t*n.speed/3)%2},cfg);
+  ctx.restore();
+ }
 }
 function drawRepublicaTraffic(t){
-  // Dos carriles con tráfico lento, sin invadir la vereda ni afectar al jugador.
-  const cars=[
-    {offset:34,speed:26,y:198,color:'#67556c',reverse:false},
-    {offset:310,speed:19,y:278,color:'#3a6170',reverse:true},
-    {offset:585,speed:17,y:336,color:'#6a4945',reverse:true},
-    {offset:420,speed:24,y:188,color:'#7e766a',reverse:false},
-  ];
-  cars.forEach((car,i)=>{
-    const travel=(t*car.speed+car.offset)%(W+105);
-    const x=car.reverse?W+60-travel:travel-70;
-    ctx.save();ctx.globalAlpha=.92;
-    drawAuto2(Math.round(x),car.y,car.color,car.reverse);
-    ctx.restore();
-  });
-  // Bicicleta ocasional: ruedas animadas y una estudiante en el trayecto.
-  const bx=W+70-((t*23+220)%(W+160)),by=382;
-  if(bx>-30&&bx<W+30){
-    ctx.strokeStyle=isNight?'#c2a5e0':'#56656f';ctx.lineWidth=1.5;
-    for(const ox of [-8,10]){ctx.beginPath();ctx.arc(bx+ox,by,6,0,Math.PI*2);ctx.stroke();}
-    ctx.beginPath();ctx.moveTo(bx-8,by);ctx.lineTo(bx,by-9);ctx.lineTo(bx+10,by);ctx.lineTo(bx-1,by);ctx.closePath();ctx.stroke();
-    ctx.fillStyle='#bf8fa8';ctx.fillRect(bx-3,by-25,7,13);
-    ctx.fillStyle='#e6b8a0';ctx.fillRect(bx-2,by-31,6,6);
-  }
+ // Solo dos autos en circulación. La micro original ya tiene su propio recorrido.
+ const cars=[
+   {offset:30,speed:19,y:184,color:'#51425d',reverse:false},
+   {offset:392,speed:16,y:336,color:'#4e6673',reverse:true}
+ ];
+ for(const car of cars){
+  const v=(t*car.speed+car.offset)%(W+100);
+  const x=car.reverse?W+50-v:v-60;
+  drawAuto2(Math.round(x),car.y,car.color,car.reverse);
+ }
 }
 function drawRepublicaDetails(t){
-  ctx.save();
-  // Señalética de la cuadra y afiches: se añaden sobre paredes sin borrar los rayados existentes.
-  ctx.fillStyle=isNight?'#29213c':'#bbb3a4';ctx.fillRect(260,115,3,34);
-  ctx.fillStyle='#214f5b';ctx.fillRect(238,101,43,14);
-  ctx.fillStyle='#e8ede9';ctx.textAlign='center';ctx.font='bold 6px monospace';
-  ctx.fillText('REPÚBLICA',259,110);ctx.textAlign='left';
-  // Afiches de actividades universitarias.
-  const papers=[{x:178,y:110,c:'#e8c8d8'},{x:442,y:115,c:'#c8dbd2'},{x:517,y:113,c:'#cfbde2'}];
-  for(const p of papers){ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,11,13);ctx.fillStyle='#775568';ctx.fillRect(p.x+2,p.y+3,7,2);ctx.fillRect(p.x+2,p.y+7,5,1);ctx.fillRect(p.x+2,p.y+9,6,1);}
-  // Gatito del barrio que cambia lentamente de lugar.
-  const catX=530+Math.sin(t*.31)*11;
-  ctx.fillStyle='#242030';ctx.fillRect(catX,417,10,8);
-  ctx.fillRect(catX+1,413,3,5);ctx.fillRect(catX+7,413,3,5);
-  ctx.fillRect(catX+9,416,7,3);
-  ctx.fillStyle='#d9b0cf';ctx.fillRect(catX+2,417,1,1);ctx.fillRect(catX+7,417,1,1);
-  // Reflejos animados de los faroles, únicamente de noche.
-  if(isNight){
-    for(const x of [160,380,560]){
-      ctx.globalAlpha=.1+.035*Math.sin(t*2+x);
-      const g=ctx.createRadialGradient(x,452,2,x,452,48);
-      g.addColorStop(0,'#e7be76');g.addColorStop(1,'#e7be7600');
-      ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,452,48,0,Math.PI*2);ctx.fill();
-    }
-  }
-  ctx.restore();
+ // Un único detalle ambiental silencioso: el gato del barrio en la vereda.
+ const x=528+Math.sin(t*.32)*7, y=426;
+ ctx.save();
+ ctx.fillStyle='#242030';ctx.fillRect(x,y,10,8);
+ ctx.fillRect(x+1,y-4,3,5);ctx.fillRect(x+7,y-4,3,5);
+ ctx.fillRect(x+9,y+1,6,3);
+ ctx.fillStyle='#d9b0cf';ctx.fillRect(x+2,y+1,1,1);ctx.fillRect(x+7,y+1,1,1);
+ ctx.restore();
 }
 function drawAuto2(x, y, color, espejo) {
   const aw = 42, ah = 20;
