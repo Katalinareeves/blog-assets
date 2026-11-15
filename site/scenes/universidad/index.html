@@ -8,6 +8,14 @@
   <link rel="stylesheet" href="style.css?v=16">
 <link rel="stylesheet" href="malla-pro.css?v=16">
   <script src="../../ui.js"></script>
+  <style>
+  .cafe-study{display:flex;align-items:center;flex-wrap:wrap;justify-content:space-between;gap:12px;margin:15px 0 20px;padding:15px 18px;border:1px solid #8d729a;border-radius:12px;background:rgba(124,93,133,.11)}
+  .cafe-study-content{flex:1;min-width:220px}.cafe-study-kicker{display:block;font:700 9px system-ui;color:#b68dba;letter-spacing:.12em;margin-bottom:5px}
+  .cafe-study-content strong{display:block;font-size:15px}.cafe-study-content p{font-size:11px;line-height:1.5;opacity:.72;margin:6px 0 0}
+  .cafe-study-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.cafe-study-actions>span{font-variant-numeric:tabular-nums;font:700 20px monospace;margin-right:5px}
+  .cafe-study-actions button{border:1px solid #aa87ac;background:#493a52;color:#f5e5ed;border-radius:7px;padding:9px 12px;cursor:pointer}
+  .cafe-study-actions a{font-size:11px;color:#be8aaa}.cafe-study>small{flex-basis:100%;font-size:11px;opacity:.75}
+  </style>
 </head>
 
 <body class="ui">
@@ -35,6 +43,13 @@
     <p>Planifica tu formación en física: malla curricular, bibliografía, evaluaciones y progreso académico, todo en un espacio.</p>
   </section>
 
+  <section class="cafe-study" aria-label="Rincón de estudio y concentración">
+   <div class="cafe-study-content"><span class="cafe-study-kicker">✧ DESCANSOS Y CONCENTRACIÓN</span><strong>Un bloque de estudio tranquilo.</strong>
+    <p id="cafe-study-buff">Si vienes del Café República con concentración activa, completar el bloque recupera más ánimo.</p>
+   </div>
+   <div class="cafe-study-actions"><span id="cafe-study-time" aria-live="off">10:00</span><button type="button" id="cafe-study-start">Empezar 10 min ↗</button><button type="button" id="cafe-study-stop" hidden>Terminar</button><a href="../cafe/index.html">☕ Ir al Café</a></div>
+   <small id="cafe-study-message" role="status">Un pequeño pomodoro opcional. No modifica calificaciones ni semillas.</small>
+  </section>
   <section class="uni-v2-profile" aria-label="Personalización universitaria">
     <div class="uni-v2-profile-header"><span class="uni-v2-kicker">IDENTIDAD / ESPACIO ACADÉMICO</span><span class="uni-v2-chip" id="uni-profile-status">Este navegador</span></div>
     <div class="uni-v2-profile-main">
@@ -325,5 +340,5 @@
   try{const r=await window.CiudadCloud.download();status.textContent='Recuperados '+r.count+' registros';location.reload();}catch(e){status.textContent='No se pudo recuperar: '+e.message;}
  });
 })();
-</script></body>
+</script><script src="../wellbeing.js?v=2"></script><script src="cafe-focus.js?v=1"></script></body>
 </html>
