@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>la ciudad</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Exo+2:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=37">
+<link rel="stylesheet" href="style.css?v=38">
 </head>
 <body class="republica-viva">
 
@@ -28,15 +28,16 @@
     <button id="ciudad-online-action" type="button">Conectar</button>
   </div>
 </div>
-<nav class="city-social-dock" aria-label="Explorar La Ciudad">
-  <span class="city-dock-label">EXPLORAR REPÚBLICA</span>
-  <div class="city-dock-links">
-    <a class="arcade-hud" href="scenes/juegos/index.html" title="Arcade"><span aria-hidden="true">🎮</span> Arcade</a>
-    <a class="vecindario-hud" href="scenes/visitas/index.html" title="Vecindario"><span aria-hidden="true">⌂</span> Vecindario</a>
-    <a class="amigos-hud" href="scenes/amigos/index.html" title="Amigos"><span aria-hidden="true">♡</span> Amigos</a>
-    <a class="city-account" href="scenes/cuenta/index.html" title="Mi cuenta"><span aria-hidden="true">☁</span> Cuenta</a>
-  </div>
-</nav>
+<details class="city-social-menu" id="city-social-menu">
+  <summary aria-label="Abrir menú de La Ciudad"><span aria-hidden="true">☰</span> Menú <span class="menu-chevron" aria-hidden="true">⌄</span></summary>
+  <nav class="city-social-menu-panel" aria-label="Explorar La Ciudad">
+    <span class="city-menu-heading">EXPLORAR REPÚBLICA</span>
+    <a href="scenes/juegos/index.html"><span aria-hidden="true">🎮</span> Arcade</a>
+    <a href="scenes/visitas/index.html"><span aria-hidden="true">⌂</span> Vecindario</a>
+    <a href="scenes/amigos/index.html"><span aria-hidden="true">♡</span> Amigos</a>
+    <a href="scenes/cuenta/index.html"><span aria-hidden="true">☁</span> Mi cuenta</a>
+  </nav>
+</details>
 <div id="canvas-container">
   <canvas id="gameCanvas" width="960" height="480"></canvas>
 
@@ -100,6 +101,6 @@
 
 <nav id="lugares" aria-label="lugares"></nav>
 
-<script src="script.js?v=34"></script>
+<script src="script.js?v=35"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="scenes/cloud-progress.js?v=10"></script><script src="multiplayer.js?v=3"></script></body>
 </html>
