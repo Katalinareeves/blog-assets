@@ -97,7 +97,7 @@ const buildings = [
   },
   {
     id: 'taller', label: 'TALLER', type: 'moderna', x: 470, y: 0, w: 90, h: 130,
-    colorBase: '#304050', colorClaro: '#405060',
+    colorBase: '#c4b18c', colorClaro: '#d9c7a6',
     ventanas: [[8, 8], [36, 8], [64, 8], [8, 34], [36, 34], [64, 34], [8, 60], [36, 60], [64, 60], [8, 86], [36, 86], [64, 86]],
     anchoV: 20, altoV: 20, entrada: { x: 33, w: 24, h: 22 }, colV: '#204060',
     href: '/scenes/taller/index.html?v=30',
@@ -471,13 +471,13 @@ function drawFachadaModerna(b) {
   if (b.entrada) {
     const ex = x + b.entrada.x, ey = y + h - b.entrada.h;
     ctx.fillStyle = highlighted ? '#4fd8ff' : '#0a0c10'; ctx.fillRect(ex, ey, b.entrada.w, b.entrada.h);
-    ctx.strokeStyle = '#7a8390'; ctx.lineWidth = 1; ctx.strokeRect(ex, ey, b.entrada.w, b.entrada.h);
+    ctx.strokeStyle = b.id === 'taller' ? '#a18d6c' : '#7a8390'; ctx.lineWidth = 1; ctx.strokeRect(ex, ey, b.entrada.w, b.entrada.h);
   }
   if (b.label) {
     // El rótulo del Taller queda en la planta baja, no escondido arriba.
     const labelY = b.id === 'taller' ? y + h - 17 : y;
     ctx.fillStyle = 'rgba(0,0,0,0.72)'; ctx.fillRect(x + 2, labelY, w - 4, 13);
-    ctx.font = '6px "Press Start 2P",monospace'; ctx.fillStyle = highlighted ? '#4fd8ff' : '#a5d9f3';
+    ctx.font = '6px "Press Start 2P",monospace'; ctx.fillStyle = highlighted ? '#f9e19c' : '#d0c060';
     ctx.textAlign = 'center'; ctx.fillText(b.label, x + w / 2, labelY + 9); ctx.textAlign = 'left';
   }
   ctx.strokeStyle = 'rgba(0,0,0,0.4)'; ctx.lineWidth = 1; ctx.strokeRect(x, y, w, h);
