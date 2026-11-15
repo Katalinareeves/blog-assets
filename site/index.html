@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>la ciudad</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Exo+2:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=38">
+<link rel="stylesheet" href="style.css?v=39">
 </head>
 <body class="republica-viva">
 
@@ -28,6 +28,16 @@
     <button id="ciudad-online-action" type="button">Conectar</button>
   </div>
 </div>
+<details class="city-wellbeing" id="city-wellbeing">
+ <summary aria-label="Ver hambre, energía y ánimo">🍞 <span id="city-hunger-mini">78</span> · ⚡ <span id="city-energy-mini">74</span> · ♡ <span id="city-mood-mini">82</span></summary>
+ <div class="city-wellbeing-details" aria-label="Bienestar de tu personaje">
+  <div><label>🍞 Hambre</label><meter id="city-hunger" min="0" max="100" value="78"></meter></div>
+  <div><label>⚡ Energía</label><meter id="city-energy" min="0" max="100" value="74"></meter></div>
+  <div><label>♡ Ánimo</label><meter id="city-mood" min="0" max="100" value="82"></meter></div>
+  <small id="city-focus">Sin concentración activa</small>
+  <a href="scenes/cafe/index.html">☕ Ir al Café República</a>
+ </div>
+</details>
 <details class="city-social-menu" id="city-social-menu">
   <summary aria-label="Abrir menú de La Ciudad"><span aria-hidden="true">☰</span> Menú <span class="menu-chevron" aria-hidden="true">⌄</span></summary>
   <nav class="city-social-menu-panel" aria-label="Explorar La Ciudad">
@@ -101,6 +111,6 @@
 
 <nav id="lugares" aria-label="lugares"></nav>
 
-<script src="script.js?v=37"></script>
+<script src="script.js?v=37"></script><script src="scenes/wellbeing.js?v=2"></script><script src="city-needs.js?v=1"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="scenes/cloud-progress.js?v=10"></script><script src="multiplayer.js?v=3"></script></body>
 </html>
