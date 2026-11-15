@@ -22,7 +22,7 @@
  function get(){return {hunger:data.hunger,energy:data.energy,mood:data.mood,focusUntil:data.focusUntil,focusActive:data.focusUntil>Date.now()}}
  function change(deltas,focusMinutes=0){
   for(const k of ['hunger','energy','mood'])if(Number.isFinite(deltas?.[k]))data[k]=clamp(data[k]+deltas[k]);
-  if(focusMinutes>0)data.focusUntil=Math.max(data.focusUntil,Date.now())+Math.min(focusMinutes,30)*60*1000;
+  if(focusMinutes>0)data.focusUntil=Math.min(Date.now()+30*60*1000,Math.max(data.focusUntil,Date.now())+Math.min(focusMinutes,30)*60*1000);
   save();return get();
  }
  function onChange(fn){listeners.add(fn);fn(get());return ()=>listeners.delete(fn)}
