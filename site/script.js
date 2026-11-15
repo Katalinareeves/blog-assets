@@ -311,7 +311,7 @@ function drawOriginalDistrict() {
 
 // Nuevas fachadas de la misma cuadra, no reemplazos de las originales.
 const districtExtras=[
- {id:null,label:'CAFÉ',type:'patrimonial',x:0,y:0,w:80,h:130,
+ {id:'cafe',label:'CAFÉ',href:'/scenes/cafe/index.html',type:'patrimonial',x:0,y:0,w:80,h:130,
   colorBase:'#b5a186',colorOscuro:'#877362',colorMoldura:'#d2bf9f',
   ventanas:[[8,15],[45,15],[8,52],[45,52],[8,88],[45,88]],
   anchoV:24,altoV:20,entrada:{x:27,w:26,h:27},colV:'#27323c',cornisa:true},
@@ -328,6 +328,14 @@ const districtExtras=[
   ventanas:[[8,14],[44,14],[8,51],[44,51],[8,87],[44,87]],anchoV:24,altoV:22,
   entrada:{x:29,w:24,h:28},colV:'#33404a',cornisa:false}
 ];
+// Solo el Café se vuelve una entrada interactiva. El resto sigue siendo decorativo.
+const cafeBuilding=districtExtras.find(b=>b.id==='cafe');
+if(cafeBuilding){
+ cafeBuilding.entradaAbs={
+  x:cafeBuilding.x+cafeBuilding.entrada.x,y:cafeBuilding.y+cafeBuilding.h-cafeBuilding.entrada.h,
+  w:cafeBuilding.entrada.w,h:cafeBuilding.entrada.h
+ };
+}
 function drawDistrictExtensions(){
  const t=performance.now()/1000;
  ctx.fillStyle=isNight?'#0b0616':'#a4d5ec';ctx.fillRect(0,0,W,H);
@@ -349,6 +357,10 @@ function drawDistrictExtensions(){
  for(const b of districtExtras) {
   if(b.type==='patrimonial')drawFachadaPatrimonial(b);else drawFachadaModerna(b);
  }
+ // Acento cálido en el Café: marquesina discreta, sin modificar el resto de República.
+ ctx.fillStyle='#765060';ctx.fillRect(14,112,53,6);
+ ctx.fillStyle='#f1d2b5';ctx.fillRect(18,114,8,3);
+ ctx.fillRect(29,114,8,3);ctx.fillRect(40,114,8,3);
  // Detalles de calle discretos, sin afiches ni bicicletas.
  for(const px of [90,W-91]){drawPosteLuz(px,146,-100);drawPosteLuz(px,436,1);}
  for(const px of [138,W-136])drawArbol(px,150);
@@ -861,6 +873,9 @@ function update() {
   for (const b of buildings) {
     if (b.entradaAbs && rectsOverlap(pr, triggerZone(b.entradaAbs))) { nearTarget = { kind: 'building', ref: b }; break; }
   }
+  if (!nearTarget && cafeBuilding && rectsOverlap(pr, triggerZone(cafeBuilding.entradaAbs,20))) {
+    nearTarget={kind:'building',ref:cafeBuilding};
+  }
   if (!nearTarget && rectsOverlap(pr, triggerZone(busStop, 18))) {
     nearTarget = { kind: 'bus', ref: busStop };
   }
@@ -876,7 +891,7 @@ function gameLoop() {
 function initLugares() {
   const nav = document.getElementById('lugares');
   if (!nav) return;
-  buildings.filter(b => b.href && b.label).forEach(b => {
+  [...buildings.filter(b=>b.href&&b.label),cafeBuilding].filter(Boolean).forEach(b => {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.textContent = b.label;
