@@ -184,6 +184,12 @@ function drawScene() {
   ctx.translate(DISTRICT_OFFSET,0);
   drawOriginalDistrict();
   ctx.restore();
+  // Todo el tránsito se dibuja en coordenadas del mundo completo (960 px),
+  // FUERA del recorte de la cuadra original. Cruza sus límites sin teletransportarse.
+  const worldTime = performance.now() / 1000;
+  drawMicro(((worldTime * 40) % (W + 100)) - 85, 230);
+  drawRepublicaTraffic(worldTime);
+  drawRepublicaPedestrians(worldTime);
   // Personajes en coordenadas globales: las fachadas nuevas sí son explorables.
   drawPlayer(player);
   if (window.CityMultiplayer) window.CityMultiplayer.draw();
@@ -296,12 +302,10 @@ function drawOriginalDistrict() {
   drawAuto2(30, 150, '#1a243a', false); drawAuto2(440, 155, '#181a28', false);
   drawAuto2(105, 408, '#282018', true); drawAuto2(480, 408, '#201818', true);
 
-  // la micro cruzando la calle en loop — de aquí sale hacia el jardín
-  drawMicro(Math.floor((t * 40) % (W + 80)) - 80, 230);
-  drawRepublicaTraffic(t);
+  // La micro, los vehículos y estudiantes se dibujan una sola vez en
+  // coordenadas globales, después de cerrar el recorte de la cuadra antigua.
   drawRepublicaDetails(t);
   drawParadaMicro({ ...busStop, x: busStop.x - DISTRICT_OFFSET }, nearTarget && nearTarget.kind === 'bus');
-  drawRepublicaPedestrians(t);
 
 }
 
@@ -315,11 +319,11 @@ const districtExtras=[
   colorBase:'#66616d',colorClaro:'#81798b',
   ventanas:[[8,12],[45,12],[8,42],[45,42],[8,73],[45,73]],anchoV:24,altoV:20,
   entrada:{x:29,w:24,h:30},colV:'#263d4c'},
- {id:null,label:'LIBRERÍA',type:'patrimonial',x:W-160,y:0,w:80,h:130,
+ {id:null,label:'',type:'patrimonial',x:W-160,y:0,w:80,h:130,
   colorBase:'#c4ad8c',colorOscuro:'#9b876e',colorMoldura:'#dfc5a5',
   ventanas:[[8,14],[44,14],[8,51],[44,51],[8,87],[44,87]],anchoV:24,altoV:22,
   entrada:{x:27,w:26,h:28},colV:'#304455',cornisa:true},
- {id:null,label:'CASA',type:'patrimonial',x:W-80,y:0,w:80,h:130,
+ {id:null,label:'',type:'patrimonial',x:W-80,y:0,w:80,h:130,
   colorBase:'#b5a49b',colorOscuro:'#8c7773',colorMoldura:'#d4bbb1',
   ventanas:[[8,14],[44,14],[8,51],[44,51],[8,87],[44,87]],anchoV:24,altoV:22,
   entrada:{x:29,w:24,h:28},colV:'#33404a',cornisa:false}
@@ -349,8 +353,7 @@ function drawDistrictExtensions(){
  for(const px of [90,W-91]){drawPosteLuz(px,146,-100);drawPosteLuz(px,436,1);}
  for(const px of [138,W-136])drawArbol(px,150);
  for(const px of [85,W-95])drawArbol(px,440);
- // Autos de la cuadra extendida circulan por la calle, sin invadir las veredas.
- drawAuto2(((t*21+W/2)%(W+110))-65,246,'#4c5766',false);
+ // Todo el tráfico se dibuja en drawScene fuera del recorte, de borde a borde.
 }
 
 function drawFachadaPatrimonial(b) {
@@ -471,9 +474,11 @@ function drawFachadaModerna(b) {
     ctx.strokeStyle = '#7a8390'; ctx.lineWidth = 1; ctx.strokeRect(ex, ey, b.entrada.w, b.entrada.h);
   }
   if (b.label) {
-    ctx.fillStyle = 'rgba(0,0,0,0.55)'; ctx.fillRect(x, y, w, 10);
-    ctx.font = '5px "Press Start 2P",monospace'; ctx.fillStyle = highlighted ? '#4fd8ff' : '#80c0e0';
-    ctx.textAlign = 'center'; ctx.fillText(b.label, x + w / 2, y + 8); ctx.textAlign = 'left';
+    // El rótulo del Taller queda en la planta baja, no escondido arriba.
+    const labelY = b.id === 'taller' ? y + h - 17 : y;
+    ctx.fillStyle = 'rgba(0,0,0,0.72)'; ctx.fillRect(x + 2, labelY, w - 4, 13);
+    ctx.font = '6px "Press Start 2P",monospace'; ctx.fillStyle = highlighted ? '#4fd8ff' : '#a5d9f3';
+    ctx.textAlign = 'center'; ctx.fillText(b.label, x + w / 2, labelY + 9); ctx.textAlign = 'left';
   }
   ctx.strokeStyle = 'rgba(0,0,0,0.4)'; ctx.lineWidth = 1; ctx.strokeRect(x, y, w, h);
   if (highlighted && Math.sin(performance.now() / 200) > 0.3) {
