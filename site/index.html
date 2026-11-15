@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>la ciudad</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Exo+2:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=36">
+<link rel="stylesheet" href="style.css?v=37">
 </head>
 <body class="republica-viva">
 
@@ -28,11 +28,17 @@
     <button id="ciudad-online-action" type="button">Conectar</button>
   </div>
 </div>
-<a class="arcade-hud" href="scenes/juegos/index.html" title="Abrir minijuegos online">🎮 <span>Arcade</span></a>
-<a class="amigos-hud" href="scenes/amigos/index.html" title="Buscar amigos y solicitudes">♡ <span>Amigos</span></a>
-<a class="vecindario-hud" href="scenes/visitas/index.html" title="Visitar las habitaciones de otros jugadores">⌂ <span>Vecindario</span></a>
+<nav class="city-social-dock" aria-label="Explorar La Ciudad">
+  <span class="city-dock-label">EXPLORAR REPÚBLICA</span>
+  <div class="city-dock-links">
+    <a class="arcade-hud" href="scenes/juegos/index.html" title="Arcade"><span aria-hidden="true">🎮</span> Arcade</a>
+    <a class="vecindario-hud" href="scenes/visitas/index.html" title="Vecindario"><span aria-hidden="true">⌂</span> Vecindario</a>
+    <a class="amigos-hud" href="scenes/amigos/index.html" title="Amigos"><span aria-hidden="true">♡</span> Amigos</a>
+    <a class="city-account" href="scenes/cuenta/index.html" title="Mi cuenta"><span aria-hidden="true">☁</span> Cuenta</a>
+  </div>
+</nav>
 <div id="canvas-container">
-  <canvas id="gameCanvas" width="640" height="480"></canvas>
+  <canvas id="gameCanvas" width="960" height="480"></canvas>
 
   <div id="prompt-box" class="hidden">presiona <span class="key">E</span></div>
 
@@ -94,6 +100,6 @@
 
 <nav id="lugares" aria-label="lugares"></nav>
 
-<script src="script.js?v=33"></script>
-<a href="scenes/cuenta/index.html" class="city-account">☁ Mi cuenta</a><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="scenes/cloud-progress.js?v=10"></script><script src="multiplayer.js?v=2"></script></body>
+<script src="script.js?v=34"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="scenes/cloud-progress.js?v=10"></script><script src="multiplayer.js?v=3"></script></body>
 </html>
