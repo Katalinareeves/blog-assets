@@ -5,15 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>la ciudad</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Exo+2:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=34">
+<link rel="stylesheet" href="style.css?v=35">
 </head>
-<body>
+<body class="republica-viva">
+<canvas id="city-ambient" aria-hidden="true"></canvas>
+<div class="city-vignette" aria-hidden="true"></div>
 
 <div id="hud">
   <div class="hud-title">LA CIUDAD <span class="hud-ver" title="versión de los archivos">v3.0</span></div>
   <div class="hud-seeds">SEMILLAS: <span id="val-seeds">0</span></div>
   <button id="nightToggle" class="night-toggle" title="cambiar a modo noche">☾</button>
   <button id="charBtn" class="night-toggle" title="cambiar personaje">☺</button>
+  <button id="city-fullscreen" class="night-toggle city-fullscreen-btn" title="Ampliar a pantalla completa" aria-label="Pantalla completa">⛶</button>
 </div>
 
 <div class="online-hud" id="ciudad-online-panel" aria-label="Estado multijugador">
@@ -93,6 +96,6 @@
 
 <nav id="lugares" aria-label="lugares"></nav>
 
-<script src="script.js?v=31"></script>
-<a href="scenes/cuenta/index.html" style="position:fixed;right:16px;bottom:16px;z-index:9999;background:#f9f3ea;color:#453a44;border:2px solid #c6b3c4;border-radius:25px;padding:10px 18px;font:600 14px system-ui;text-decoration:none;box-shadow:0 3px 16px #0002">☁ Mi cuenta</a><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="scenes/cloud-progress.js?v=10"></script><script src="multiplayer.js?v=2"></script></body>
+<script src="script.js?v=32"></script>
+<a href="scenes/cuenta/index.html" class="city-account">☁ Mi cuenta</a><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.94.1"></script><script src="scenes/cloud-progress.js?v=10"></script><script src="multiplayer.js?v=2"></script><script src="city-immersive.js?v=1"></script></body>
 </html>
