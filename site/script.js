@@ -892,4 +892,17 @@ function initLugares() {
 initNightToggle();
 initLugares();
 initCharacterUI();
+// El menú se cierra al hacer clic fuera o presionar Escape, sin bloquear el movimiento.
+const socialMenu = document.getElementById('city-social-menu');
+if (socialMenu) {
+  document.addEventListener('pointerdown', event => {
+    if (socialMenu.open && !socialMenu.contains(event.target)) socialMenu.open = false;
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && socialMenu.open) {
+      socialMenu.open = false;
+      socialMenu.querySelector('summary')?.focus();
+    }
+  });
+}
 gameLoop();
