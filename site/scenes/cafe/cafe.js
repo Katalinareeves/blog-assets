@@ -38,103 +38,106 @@ function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(Math.round(x),Math
 function txt(str,x,y,size=12,color='#f3dfd9',align='center'){
  ctx.font='bold '+size+'px monospace';ctx.fillStyle=color;ctx.textAlign=align;ctx.fillText(str,Math.round(x),Math.round(y));
 }
-function drawWindow(x,now){
- rect(x-8,54,127,149,'#795b65');rect(x,62,111,130,'#252b49');
- const g=ctx.createLinearGradient(0,64,0,188);g.addColorStop(0,'#5e5179');g.addColorStop(1,'#b48c9b');
- ctx.fillStyle=g;ctx.fillRect(x+6,68,99,116);
- rect(x+52,68,5,116,'#d4a89f');rect(x+6,120,99,5,'#d4a89f');
- for(let i=0;i<9;i++){const sx=x+13+(i*19)%83,sy=77+(i*23)%37;rect(sx,sy,2,2,'#f4d2b7');}
- rect(x-11,194,133,8,'#b58b87');
- // Reflections move gently, but preserve the pixel style.
- rect(x+12+Math.sin(now/1700)*2,74,7,34,'#ffffff22');
+/* El interior usa la misma gramática gráfica de República:
+ * rectángulos enteros, fachadas patrimoniales, marcos de piedra y ventanas azul oscuro.
+ */
+function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h));}
+function txt(str,x,y,size=12,color='#f3dfd9',align='center'){
+ ctx.font='bold '+size+'px monospace';ctx.fillStyle=color;ctx.textAlign=align;ctx.fillText(str,Math.round(x),Math.round(y));
+}
+function drawWindow(x,night){
+ rect(x-5,39,123,147,'#ae9b74');rect(x,44,113,137,'#d8c898');
+ rect(x+9,55,94,114,night?'#14253b':'#294b63');
+ rect(x+12,58,88,108,night?'#21334d':'#8ec8dc');
+ rect(x+51,55,6,114,'#c6b68a');rect(x+9,108,94,5,'#c6b68a');
+ rect(x+4,169,106,9,'#ad9a74');
+ for(let i=0;i<5;i++){
+   const xx=x+18+i*16;
+   rect(xx,147+(i%2)*5,7,8,night?'#b9a78c':'#466a70');
+ }
+ // Avenida República, de noche o de día, vista desde el local.
+ rect(x+21,161,52,4,night?'#9d89ab':'#d7c299');
 }
 function plant(x,y){
- rect(x-9,y-3,18,19,'#ab7773');rect(x-12,y-5,24,6,'#d69b8c');
- rect(x-3,y-43,6,43,'#405e4c');
- for(const [dx,dy] of [[-16,-31],[7,-46],[-8,-50],[17,-28],[-14,-22],[4,-24]])rect(x+dx,y+dy,19,12,'#59836a');
- for(const [dx,dy] of [[-13,-32],[5,-44],[8,-27]])rect(x+dx,y+dy,10,4,'#80a27c');
+ rect(x-8,y-7,16,20,'#926959');rect(x-11,y-8,22,5,'#bf9274');
+ rect(x-3,y-45,6,38,'#3e593c');
+ for(const [dx,dy] of [[-14,-30],[7,-38],[-9,-48],[2,-54],[9,-22]])rect(x+dx,y+dy,15,14,'#315332');
+ for(const [dx,dy] of [[-11,-29],[4,-40],[4,-24]])rect(x+dx,y+dy,8,5,'#52794b');
 }
-function seat(x,y,t){
- // tables have no interaction-blocking collision; click to sit.
- rect(x-50,y-9,100,36,'#5e3c48');rect(x-54,y-15,108,14,'#ad7b78');
- rect(x-43,y-21,86,7,'#d5a09a');
- rect(x-43,y+25,12,21,'#46333d');rect(x+30,y+25,12,21,'#46333d');
- rect(x-16,y-28,19,9,'#ead7ca');rect(x-17,y-30,21,3,'#fff0e1');
- rect(x-6,y-33,3,5,'#c99b90');
- rect(x+18,y-23,5,5,'#e8bb8f');
- rect(x+14,y-37,12,13,'#d69dae');
- txt('✿',x+20,y-29,13,'#f9c2d7');
+function seat(x,y){
+ // Mesas más pequeñas que antes; personajes conservan el tamaño de la plaza.
+ rect(x-36,y+22,15,21,'#38313a');rect(x+21,y+22,15,21,'#38313a');
+ rect(x-43,y-6,86,13,'#806653');rect(x-39,y-10,78,8,'#b29672');
+ rect(x-30,y+6,8,27,'#6d4d43');rect(x+22,y+6,8,27,'#6d4d43');
+ rect(x-15,y-15,13,6,'#efe0c4');rect(x-16,y-18,14,4,'#faf0d9');
+ rect(x+15,y-13,8,8,'#7e624d');rect(x+17,y-16,3,5,'#a78b6a');
 }
 function drawCharacter(x,y,cfg,step=0,dir='down'){
- const p=cfg||{};
- const skin=/^#[0-9a-f]{6}$/i.test(p.skin||'')?p.skin:'#e9c6a9';
- const hair=/^#[0-9a-f]{6}$/i.test(p.hair||'')?p.hair:'#794a43';
- const top=/^#[0-9a-f]{6}$/i.test(p.top||'')?p.top:'#a68cbd';
- const bottom=/^#[0-9a-f]{6}$/i.test(p.bottom||'')?p.bottom:'#393143';
- rect(x+1,y+26,18,4,'#271c28aa');
+ const p=cfg||{},ok=v=>/^#[0-9a-f]{6}$/i.test(v||'');
+ const skin=ok(p.skin)?p.skin:'#e9c6a9',hair=ok(p.hair)?p.hair:'#794a43';
+ const top=ok(p.top)?p.top:'#a68cbd',bottom=ok(p.bottom)?p.bottom:'#393143';
+ rect(x+1,y+26,18,4,'#211a2855');
  rect(x+3,y+17+step,6,11,bottom);rect(x+11,y+17-step,6,11,bottom);
- rect(x+2,y+7,16,14,top);
- rect(x+3,y-3,15,14,skin);
- rect(x+1,y-7,18,8,hair);
- rect(x+1,y-4,4,15,hair);rect(x+16,y-4,4,15,hair);
+ rect(x+2,y+7,16,14,top);rect(x+3,y-3,15,14,skin);
+ rect(x+1,y-7,18,8,hair);rect(x+1,y-4,4,15,hair);rect(x+16,y-4,4,15,hair);
  if(dir!=='up'){rect(x+6,y+4,2,2,'#30232b');rect(x+14,y+4,2,2,'#30232b');}
 }
-let avatar={};try{avatar=JSON.parse(localStorage.getItem('ciudadPersonaje')||'{}')||{}}catch{}
+let avatar={};
+try{avatar=JSON.parse(localStorage.getItem('ciudadPersonaje')||'{}')||{}}catch{}
+const night=()=>{try{return localStorage.getItem('ciudadModoNoche')==='1'}catch{return false}};
 function scene(now){
  gameTime=now;
- // Walls and warm terracotta floor
- rect(0,0,W,H,'#ead1bb');
- for(let y=0;y<242;y+=40)rect(0,y,W,3,'#dab9a9');
- for(let x=0;x<W;x+=48)rect(x,0,2,242,'#e0bdaa');
- rect(0,236,W,H-236,'#b48b7f');
- for(let y=236;y<H;y+=51){
-  rect(0,y,W,2,'#99736f');
-  for(let x=(Math.floor(y/51)%2)*52;x<W;x+=104)rect(x,y,2,51,'#9a7971');
+ const isNight=night();
+ const wall=isNight?'#81746f':'#c8b888';
+ // Interior patrimonial inspirado en el propio motor de República.
+ rect(0,0,W,H,isNight?'#282037':'#c8b888');
+ rect(0,0,W,205,wall);
+ for(let x=0;x<W;x+=68){rect(x,0,2,206,isNight?'#756674':'#b8a77f');}
+ for(let y=0;y<206;y+=47){rect(0,y,W,2,isNight?'#756674':'#b4a375');}
+ rect(0,204,W,12,isNight?'#554657':'#a28c69');
+ rect(0,216,W,H-216,isNight?'#2f2b34':'#6b6960');
+ for(let y=216;y<H;y+=28){
+   rect(0,y,W,2,isNight?'#292431':'#54564f');
+   for(let x=(Math.floor(y/28)%2)*25;x<W;x+=50)rect(x,y,1,28,isNight?'#38323d':'#5a5b51');
  }
- rect(0,224,W,15,'#744f59');rect(0,239,W,5,'#dfb4aa');
- // shelves, coffee counter, lights
- drawWindow(65,now);drawWindow(405,now);drawWindow(747,now);
- rect(244,62,137,125,'#815962');rect(253,72,119,107,'#4d3c4f');
- for(let i=0;i<3;i++){rect(253,93+i*37,119,6,'#c38e85');for(let j=0;j<6;j++){const cx=264+j*17;rect(cx,73+i*36,12,20, ['#efc29d','#b77971','#d7bf96'][j%3]);}}
- txt('C A F É  R E P Ú B L I C A',480,37,17,'#704459');
- rect(0,219,W,4,'#eacbb7');
- for(const x of [164,480,794]){
-  rect(x-3,0,6,31,'#6d4c59');
-  ctx.save();ctx.globalAlpha=.38+.1*Math.sin(now/600+x);
-  ctx.fillStyle='#ffd7a3';ctx.beginPath();ctx.arc(x,42,36,0,Math.PI*2);ctx.fill();ctx.restore();
-  rect(x-18,28,36,18,'#f3d3a8');rect(x-13,45,26,4,'#a87877');
+ drawWindow(49,isNight);drawWindow(411,isNight);drawWindow(780,isNight);
+ // Molduras, vigas, azulejos y estantería: sin elementos modernos ni brillos.
+ rect(0,10,W,10,isNight?'#a68c79':'#dcc898');
+ rect(0,198,W,6,isNight?'#ab8e76':'#dfc797');
+ rect(227,49,135,130,isNight?'#51414a':'#a58d65');
+ rect(234,57,121,115,'#342d36');
+ for(let i=0;i<3;i++){
+   rect(236,83+i*31,117,5,'#9c8169');
+   for(let j=0;j<6;j++){const xx=242+j*18;rect(xx,62+i*31,12,20,['#d0ac81','#a47563','#c8b58f'][j%3]);}
  }
- plant(35,208);plant(918,209);
- // counter
- rect(285,212,388,93,'#5b414b');rect(287,220,382,79,'#895a62');
- for(let i=0;i<9;i++)rect(301+i*40,244,28,49,'#80535d');
- rect(271,199,418,20,'#d9a196');rect(271,215,418,9,'#a97474');
- // coffee equipment
- rect(335,159,79,39,'#454052');rect(342,166,65,27,'#a59aa4');
- rect(351,169,44,4,'#4b4051');rect(352,181,18,9,'#443d4b');rect(386,181,16,9,'#443d4b');
- for(let i=0;i<4;i++){const x=471+i*40;rect(x,179,20,19,'#e9d3b9');rect(x+4,174,11,6,'#d2a895');rect(x+20,183,5,8,'#e9d3b9');}
- txt('PIDE AQUÍ',481,240,12,'#ffecd8');
- // resident barista
- drawCharacter(580,160,{skin:'#c58f78',hair:'#342b37',top:'#e6bba3',bottom:'#47313e'},0,'down');
- txt('MILA ☕',591,144,10,'#553b4a');
- // tables and chairs
- for(const t of tables){
-   rect(t.x-48,t.y+42,29,31,'#7b5365');rect(t.x+20,t.y+42,29,31,'#7b5365');
-   seat(t.x,t.y,now);
+ rect(368,26,223,28,'#302633');
+ rect(373,30,213,19,'#b59d7b');
+ txt('C A F É   R E P Ú B L I C A',478,44,13,'#29212c');
+ // Faroles cálidos al nivel de la escala del juego.
+ for(const x of [176,476,790]){
+   rect(x-2,0,4,22,'#554b44');rect(x-16,20,32,13,'#bca16c');
+   rect(x-10,32,20,4,isNight?'#f1c471':'#d3bf92');
  }
- // tiny guest reading near the windows
- drawCharacter(117,251,{skin:'#e8bb9e',hair:'#754944',top:'#5e786e',bottom:'#4c3d4c'},0,'down');
- rect(147,271,22,13,'#d5b6cb');rect(149,272,18,9,'#f4d9db');
+ plant(26,213);plant(930,217);
+ // Caja y barra, con equipamiento mínimo.
+ rect(275,216,409,86,'#4c4141');rect(283,228,393,67,'#766452');
+ for(let i=0;i<9;i++)rect(296+i*43,235,30,54,'#685547');
+ rect(267,202,426,20,'#cfb38b');rect(270,220,419,7,'#a58b6e');
+ rect(327,163,62,35,'#383641');rect(333,169,50,24,'#87868a');
+ rect(343,173,31,4,'#2c2831');rect(347,187,13,5,'#3b2e35');
+ for(let i=0;i<4;i++){const xx=443+i*42;rect(xx,185,15,14,'#e1d5bb');rect(xx+2,179,11,7,'#c7ae95');}
+ txt('PEDIDOS  →',475,251,12,'#f5e2c1');
+ // Mila, siempre con la escala del personaje original.
+ drawCharacter(575,168,{skin:'#c58f78',hair:'#342b37',top:'#e6bba3',bottom:'#47313e'});
+ txt('MILA',586,152,9,'#684857');
+ // Piso, sillas y clientela, ubicados en la zona caminable.
+ for(const t of tables){seat(t.x,t.y);}
+ drawCharacter(115,300,{skin:'#e8bb9e',hair:'#754944',top:'#5e786e',bottom:'#4c3d4c'});
+ rect(143,319,20,12,'#dad1bd');rect(145,320,17,9,'#f2e8d0');
  if(sittingAt>=0){
-  const t=tables[sittingAt];
-  drawCharacter(t.x-10,t.y+27,avatar,0,'down');
- }else{
-  drawCharacter(player.x,player.y,avatar,player.step,player.dir);
- }
- // interactive guides
- ctx.save();ctx.globalAlpha=.7+.3*Math.sin(now/450);
- txt('✧',480,190,17,'#ffefbe');
- ctx.restore();
+  const t=tables[sittingAt];drawCharacter(t.x-9,t.y+23,avatar,0,'down');
+ }else drawCharacter(player.x,player.y,avatar,player.step,player.dir);
+ if(now-toastAt<1500){txt('✧',480,188,16,'#fff0ae');}
  requestAnimationFrame(scene);
 }
 function move(dt){
