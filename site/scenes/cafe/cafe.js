@@ -4,8 +4,46 @@ const $=id=>document.getElementById(id),canvas=$('cafe-scene'),ctx=canvas.getCon
 const W=960,H=530,saveKey='ciudadCafeRecordV1';
 const player={x:460,y:402,w:19,h:29,dir:'down',step:0,seat:false};
 const keys=new Set(),tables=[{x:190,y:335},{x:375,y:335},{x:690,y:335},{x:825,y:335}];
-let raf=0,last=0,gameTime=0,orderIndex=0,served=0,best=0,toastAt=0,sittingAt=-1,ambientOn=false,audio=null;
+let raf=0,last=0,gameTime=0,orderIndex=0,served=0,best=0,toastAt=0,sittingAt=-1,ambientOn=false,audio=null,lastRestAt=0;
 try{best=Math.max(0,Number(localStorage.getItem(saveKey))||0)}catch{}
+const wellbeing=window.CiudadBienestar;
+const menuItems=[
+ {id:'sopaipilla',icon:'🥟',name:'Sopaipilla con pebre',detail:'Un clásico después de clases',effect:'+25 hambre · +5 ánimo',delta:{hunger:25,mood:5},focus:0},
+ {id:'sandwich',icon:'🥪',name:'Sándwich vegetariano',detail:'Palta, tomate y queso',effect:'+34 hambre · +6 energía',delta:{hunger:34,energy:6},focus:0},
+ {id:'tecito',icon:'🍵',name:'Tecito calentito',detail:'Para sentarse a conversar',effect:'+9 energía · +15 ánimo',delta:{energy:9,mood:15},focus:0},
+ {id:'cafe',icon:'☕',name:'Café con leche',detail:'Una pausa antes de estudiar',effect:'+18 energía · +6 ánimo · concentración 20 min',delta:{energy:18,mood:6},focus:20}
+];
+function needsUI(v){
+ for(const k of ['hunger','energy','mood']){
+  const el=$(k+'-bar'),label=$(k+'-value');
+  if(el)el.style.width=v[k]+'%';
+  if(label)label.textContent=v[k]+'%';
+ }
+ const label=$('focus-status');
+ if(label)label.textContent=v.focusActive?'✧ Concentración activa · '+Math.ceil((v.focusUntil-Date.now())/60000)+' min':'✧ Sin efecto de concentración';
+}
+if(wellbeing)wellbeing.onChange(needsUI);
+function takeFood(item){
+ if(!wellbeing)return;
+ wellbeing.change(item.delta,item.focus);
+ const feedback=$('food-feedback');
+ feedback.textContent=item.icon+' Disfrutaste '+item.name.toLowerCase()+'. '+item.effect+'. Puedes seguir explorando ♡';
+ setStatus('¡Qué rico! '+item.name+' en Café República ☕');
+ toastAt=performance.now();
+}
+function drawMenu(){
+ const container=$('food-grid');if(!container)return;
+ for(const item of menuItems){
+  const card=document.createElement('article');card.className='food-item';
+  const emoji=document.createElement('div');emoji.className='food-emoji';emoji.textContent=item.icon;
+  const title=document.createElement('strong');title.textContent=item.name;
+  const desc=document.createElement('small');desc.textContent=item.detail;
+  const effect=document.createElement('small');effect.className='effect';effect.textContent=item.effect;
+  const buy=document.createElement('button');buy.type='button';buy.textContent='Pedir · gratis';buy.addEventListener('click',()=>takeFood(item));
+  card.append(emoji,title,desc,effect,buy);container.append(card);
+ }
+}
+drawMenu();
 const recipes=[
  {name:'Latte de vainilla',base:'espresso',finish:'milk',flavor:'vanilla',detail:'Café suave con leche y un toque floral'},
  {name:'Chocolate calentito',base:'cocoa',finish:'milk',flavor:'chocolate',detail:'El favorito de los días de lluvia'},
@@ -25,6 +63,7 @@ $('serve').addEventListener('click',()=>{
  const msg=$('feedback');
  if(ok){
   served++;orderIndex++;if(served>best){best=served;try{localStorage.setItem(saveKey,String(best))}catch{}}
+  if(wellbeing)wellbeing.change({mood:3,energy:1});
   msg.textContent='¡Pedido perfecto! ♡ Gracias por el cafecito.';
   msg.style.color='#aed9c0';setStatus('¡Qué rico! El café se llenó de sonrisas ♡');
   update();nextOrder();
@@ -41,10 +80,6 @@ function txt(str,x,y,size=12,color='#f3dfd9',align='center'){
 /* El interior usa la misma gramática gráfica de República:
  * rectángulos enteros, fachadas patrimoniales, marcos de piedra y ventanas azul oscuro.
  */
-function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h));}
-function txt(str,x,y,size=12,color='#f3dfd9',align='center'){
- ctx.font='bold '+size+'px monospace';ctx.fillStyle=color;ctx.textAlign=align;ctx.fillText(str,Math.round(x),Math.round(y));
-}
 function drawWindow(x,night){
  rect(x-5,39,123,147,'#ae9b74');rect(x,44,113,137,'#d8c898');
  rect(x+9,55,94,114,night?'#14253b':'#294b63');
@@ -156,12 +191,20 @@ function move(dt){
  }else player.step=0;
 }
 let prev=0;function updateLoop(now){const dt=Math.min(2,(now-prev||16)/16.66);prev=now;move(dt);requestAnimationFrame(updateLoop);}
+function restAt(index){
+ sittingAt=index;
+ // 3 puntos de ánimo por descanso, máximo una vez cada 3 minutos.
+ if(wellbeing&&(Date.now()-lastRestAt>3*60*1000)){
+  wellbeing.change({mood:3});lastRestAt=Date.now();
+ }
+ setStatus('Te sentaste a descansar. Pulsa E o toca el suelo para levantarte ♡');
+}
 function interact(){
  if(sittingAt>=0){sittingAt=-1;setStatus('Te levantaste. Qué rico estuvo el descanso ♡');return;}
  if(player.y<350&&player.x>250&&player.x<720){document.getElementById('orders').scrollIntoView({behavior:'smooth',block:'center'});setStatus('¡Mila te espera en la barra! Prepara un pedido ☕');return;}
  let chosen=-1,bestDist=1e9;
  tables.forEach((t,i)=>{const d=Math.hypot(player.x-t.x,player.y-t.y);if(d<bestDist){chosen=i;bestDist=d;}});
- if(bestDist<110){sittingAt=chosen;setStatus('Te sentaste a descansar un ratito. Pulsa E para levantarte ♡');}
+ if(bestDist<110){restAt(chosen);}
  else setStatus('Acércate a una mesa o a la barra para interactuar ✧');
 }
 window.addEventListener('keydown',e=>{
@@ -177,7 +220,7 @@ canvas.addEventListener('pointerdown',e=>{
  if(y<312&&x>=270&&x<=700){sittingAt=-1;document.getElementById('orders').scrollIntoView({behavior:'smooth'});setStatus('¡Vamos a preparar algo rico! ☕');return;}
  let closest=-1,dist=120;
  tables.forEach((t,i)=>{const d=Math.hypot(x-t.x,y-t.y);if(d<dist){closest=i;dist=d;}});
- if(closest>=0){sittingAt=closest;setStatus('Te sentaste en una mesita. Toca el piso para levantarte ♡');return;}
+ if(closest>=0){restAt(closest);return;}
  sittingAt=-1;player.x=Math.max(26,Math.min(W-42,x));player.y=Math.max(284,Math.min(H-51,y-18));setStatus('Explorando el Café República ✧');
 });
 $('sound-toggle').addEventListener('click',async()=>{
