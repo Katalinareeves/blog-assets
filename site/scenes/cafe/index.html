@@ -1,14 +1,21 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#191426"><title>Café República · La Ciudad</title><link rel="stylesheet" href="cafe.css?v=1"></head><body>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#191426"><title>Café República · La Ciudad</title><link rel="stylesheet" href="cafe.css?v=2"></head><body>
 <header class="top"><a href="../../index.html">← Volver a República</a><span>LA CIUDAD / CAFÉ REPÚBLICA</span><a href="../amigos/index.html">♡ Amigos</a></header>
-<main><section class="intro"><span class="eyebrow">✳ UN RINCÓN EN REPÚBLICA</span><h1>Café <em>República.</em></h1><p>Un lugarcito entre clases para sentarse, pedir algo rico y escuchar el rumor de la ciudad. El café siempre está abierto. ♡</p></section>
-<section class="cafe-shell">
- <div class="scene-head"><span>☕ CAFÉ REPÚBLICA</span><div><span id="status">Camina con las flechas o WASD</span><button id="sound-toggle" type="button" aria-pressed="false" title="Activar sonido ambiental">♫ Ambiente: off</button></div></div>
- <div class="room"><canvas id="cafe-scene" width="960" height="530" tabindex="0" aria-label="Interior del café con barra y mesas. Camina con WASD o flechas, E para interactuar. También puedes tocar las mesas y la barra."></canvas><div class="scene-note" id="scene-note" role="status">Acércate a la barra para atender pedidos ✧</div></div>
- <div class="instructions"><span>WASD / FLECHAS · caminar</span><span>E · interactuar</span><span>CLIC / TOQUE · barra y mesas</span></div>
+<main><section class="intro"><span class="eyebrow">REPÚBLICA · CUADRA PONIENTE</span><h1>Café República <em>☕</em></h1><p>Un local pequeño entre clases. Siéntate, conversa con Mila o tómate algo calentito antes de volver a la U.</p></section>
+<section class="needs-panel" aria-label="Bienestar de tu personaje">
+ <div class="need"><div class="need-heading"><span>🍞 HAMBRE</span><strong id="hunger-value">78%</strong></div><div class="need-track"><div id="hunger-bar" class="need-fill hunger"></div></div></div>
+ <div class="need"><div class="need-heading"><span>⚡ ENERGÍA</span><strong id="energy-value">74%</strong></div><div class="need-track"><div id="energy-bar" class="need-fill energy"></div></div></div>
+ <div class="need"><div class="need-heading"><span>♡ ÁNIMO</span><strong id="mood-value">82%</strong></div><div class="need-track"><div id="mood-bar" class="need-fill mood"></div></div></div>
+ <div id="focus-status" class="focus-status">✧ Sin efecto de concentración</div>
 </section>
+<section class="cafe-shell">
+ <div class="scene-head"><span>CAFÉ REPÚBLICA · INTERIOR</span><div><span id="status">WASD para caminar · E para interactuar</span><button id="sound-toggle" type="button" aria-pressed="false" title="Activar sonido ambiental">♫ Ambiente: off</button></div></div>
+ <div class="room"><canvas id="cafe-scene" width="960" height="530" tabindex="0" aria-label="Interior pixel art estilo República. Camina con WASD o flechas; E para interactuar. Toca las mesas o la barra para interactuar."></canvas><div class="scene-note" id="scene-note" role="status">Acércate a la barra para atender pedidos ✧</div></div>
+ <div class="instructions"><span>WASD / FLECHAS · caminar</span><span>E · interactuar</span><span>CLIC / TOQUE · barra y mesas</span><span>♡ SENTARSE · mejora el ánimo</span></div>
+</section>
+<section class="food-section" aria-label="Carta del café"><div class="food-header"><div><span class="eyebrow">LA CARTA DEL BARRIO</span><h2>¿Qué vas a pedir?</h2><p>Comer y tomar algo recupera tus necesidades. El beneficio de concentración dura 20 minutos.</p></div><span class="local-tag">CONSUMOS DE PRUEBA · SIN SEMILLAS</span></div><div class="food-grid" id="food-grid"></div><p class="food-feedback" id="food-feedback" role="status">No hay castigos por estar desconectada. El hambre, la energía y el ánimo bajan lentamente solo mientras juegas.</p></section>
 <section class="below">
  <div class="order-card" id="orders">
-  <div class="order-header"><div><span class="eyebrow">☕ MINI JUEGO · BARISTA</span><h2>Pedidos del día</h2><p>Prepara lo que pidió la clientela. Una combinación correcta suma puntos.</p></div><div class="stats"><div><small>ACERTADOS</small><strong id="orders-done">0</strong></div><div><small>RÉCORD</small><strong id="best">0</strong></div></div></div>
+  <div class="order-header"><div><span class="eyebrow">MINIJUEGO · BARRA DEL CAFÉ</span><h2>Pedidos del día</h2><p>Conservamos los pedidos de Mila. Cada acierto también te anima un poquito.</p></div><div class="stats"><div><small>ACERTADOS</small><strong id="orders-done">0</strong></div><div><small>RÉCORD</small><strong id="best">0</strong></div></div></div>
   <div class="ticket" id="ticket"><span class="eyebrow">PEDIDO N.º <span id="order-number">1</span></span><strong id="order-name">Latte de vainilla</strong><small id="order-detail">Elige los ingredientes y sirve el pedido</small></div>
   <div class="ingredients">
    <div class="ingredient-group"><label for="base">Base</label><select id="base"><option value="espresso">☕ Espresso</option><option value="tea">🍵 Té</option><option value="cocoa">🍫 Cacao</option></select></div>
@@ -17,6 +24,6 @@
   </div>
   <div class="order-footer"><button id="serve" type="button">Servir pedido ↗</button><span id="feedback" role="status">Cada bebida tiene su propia receta ✨</span></div>
  </div>
- <aside class="side-card"><span class="eyebrow">TU RINCÓN</span><h2>Quedarse un rato.</h2><p>Prueba las mesitas del escenario. Puedes sentarte un momento, mirar las luces y volver a explorar.</p><div class="little-note"><span>✦</span><div><strong>Un café sin apuro</strong><small>Los pedidos son un minijuego local y no gastan semillas.</small></div></div><a href="../../index.html" class="back-link">Volver a pasear por República ↗</a></aside>
+ <aside class="side-card"><span class="eyebrow">UN RATO TRANQUILO</span><h2>Después de clases.</h2><p>Acércate a las mesas, siéntate y recupera un poquito de ánimo. Aquí no hay apuro.</p><div class="little-note"><span>✦</span><div><strong>Un café sin apuro</strong><small>Las necesidades se guardan en este dispositivo y aparecen también en República.</small></div></div><a href="../../index.html" class="back-link">Volver a pasear por República ↗</a></aside>
 </section>
-</main><script src="cafe.js?v=1"></script></body></html>
+</main><script src="../wellbeing.js?v=1"></script><script src="cafe.js?v=2"></script></body></html>
