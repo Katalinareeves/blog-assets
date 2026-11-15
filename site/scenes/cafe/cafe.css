@@ -25,3 +25,8 @@ button:hover{background:#825b7d}button:focus-visible,a:focus-visible,select:focu
 .order-footer{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:17px}.order-footer span{font-size:11px;color:#c6b4c0}.little-note{display:flex;gap:10px;align-items:center;margin:18px 0;padding:12px;border:1px solid #674f65;background:#30243b}.little-note>span{font-size:23px;color:#e5afc5}.little-note strong{display:block;font-size:12px}.little-note small{display:block;font-size:11px;color:#bba9b7;line-height:1.6;margin-top:5px}.back-link{color:#e1c4ae;text-decoration:none;font-size:12px}
 @media(max-width:850px){.needs-panel{grid-template-columns:repeat(3,1fr)}.focus-status{grid-column:1/-1;padding:4px 0 0;border-left:0}.below{grid-template-columns:1fr}.food-grid{grid-template-columns:repeat(2,1fr)}.scene-note{font-size:10px}.instructions{font-size:7px}}
 @media(max-width:520px){main{padding:18px 9px 35px}.top{padding:10px}.top span{display:none}.needs-panel{padding:11px;gap:9px}.need-heading{font-size:9px}.need-heading strong{font-size:9px}.food-section,.order-card,.side-card{padding:14px}.food-grid{gap:7px}.food-item{padding:10px}.food-item strong{font-size:12px}.food-item small{font-size:10px}.scene-head #status{display:none}.ingredients{grid-template-columns:1fr}.instructions{gap:7px}.order-header{flex-wrap:wrap}}
+
+.cafe-online{font:650 11px 'Exo 2',sans-serif;color:#e9cdae;white-space:nowrap}
+#cafe-wave,#cafe-invite{font-size:10px;padding:7px 9px;background:#493648;border:1px solid #92718e}
+#cafe-wave:hover,#cafe-invite:hover{background:#644963}
+@media(max-width:680px){.cafe-online{font-size:10px}.scene-head>div{gap:7px}}
